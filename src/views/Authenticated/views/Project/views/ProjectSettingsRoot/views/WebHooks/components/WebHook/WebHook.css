@@ -1,0 +1,35 @@
+@import 'variables.css';
+
+
+.webHook {
+  lost-utility: clearfix;
+  background: var(--lighter-grey);
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.name,
+.url,
+.status {
+  display: block;
+}
+
+.status,
+.url {
+  font-size: 12px;
+}
+
+.contentHolder {
+  lost-column: 9/12 9 0;
+}
+
+.controlsHolder {
+  lost-column: 3/12 3 0;
+  height: 60px;
+  line-height: 60px;
+  text-align: right;
+}

@@ -1,0 +1,22 @@
+.loginForm {
+  .submitButton {
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+
+  .forgotPassword {
+    display: block;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .signUp {
+    display: block;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .alert {
+    margin-bottom: 10px;
+  }
+}

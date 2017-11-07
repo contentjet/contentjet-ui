@@ -1,0 +1,17 @@
+@import '../input-variables.css';
+
+
+.checkboxInput {
+
+}
+
+.input {
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.labelText {
+  margin-bottom: 0;
+  vertical-align: middle;
+}

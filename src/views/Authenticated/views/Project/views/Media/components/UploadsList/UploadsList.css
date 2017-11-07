@@ -1,0 +1,37 @@
+@import 'variables.css';
+
+
+.uploadsList {
+  margin-top: 10px;
+
+  .item {
+    border: 1px solid var(--light-grey);
+    border-radius: 4px;
+    margin-bottom: 5px;
+    padding: 5px 3px;
+
+    &.complete .itemProgressIcon {
+      color: var(--brand-success);
+    }
+  }
+
+  .itemLabel {
+    font-size: 11px;
+    padding: 3px 0;
+  }
+
+  .itemProgressBarHolder {
+    line-height: 14px;
+  }
+
+  .itemProgressBar {
+    display: inline-block;
+    margin-right: 5px;
+    width: 92%;
+  }
+
+  .itemProgressIcon {
+    color: var(--brand-secondary);
+  }
+
+}

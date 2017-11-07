@@ -1,0 +1,109 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es6": true,
+        "phantomjs": true,
+        "node": true,
+        "mocha": true
+    },
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "indent": [
+            "error",
+            2
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-multi-spaces": [
+            "error"
+        ],
+        "space-before-blocks": [
+            "error"
+        ],
+        "arrow-spacing": [
+            "error"
+        ],
+        "jsx-quotes": [
+            "error"
+        ],
+        "react/prop-types": [
+            "error", {
+                "ignore": ["children", "className", "style", "params", "location"]
+            }
+        ],
+        "react/no-string-refs": [
+            "error"
+        ],
+        "react/self-closing-comp": [
+            "error", {
+                "component": true,
+                "html": false
+            }
+        ],
+        "react/style-prop-object": [
+            "error"
+        ],
+        "react/jsx-boolean-value": [
+            "error"
+        ],
+        "react/jsx-closing-bracket-location": [
+            "error"
+        ],
+        "react/jsx-curly-spacing": [
+            "error"
+        ],
+        "react/jsx-equals-spacing": [
+            "error"
+        ],
+        "react/jsx-filename-extension": [
+            "error"
+        ],
+        "react/jsx-first-prop-new-line": [
+            "error",
+            "multiline"
+        ],
+        "react/jsx-no-bind": [
+            "error", {
+                "ignoreRefs": true,
+                "allowArrowFunctions": true,
+                "allowBind": false
+            }
+        ],
+        "react/jsx-pascal-case": [
+            "error"
+        ],
+        "react/jsx-space-before-closing": [
+            "error"
+        ],
+        "react/jsx-wrap-multilines": [
+            "error"
+        ],
+        "react/no-multi-comp": [
+            "error", {
+                "ignoreStateless": true
+            }
+        ]
+    }
+}

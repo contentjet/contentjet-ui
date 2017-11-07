@@ -1,0 +1,33 @@
+@import 'variables.css';
+
+
+.entryTypeList {
+  margin: 0 auto;
+  max-width: 600px;
+
+  .item {
+    margin-bottom: 4px;
+
+    a {
+      background: #fff;
+      border: 1px solid var(--light-grey);
+      border-radius: 4px;
+      display: block;
+      line-height: 20px;
+      padding: 15px;
+    }
+
+    a:hover {
+      background: #fff;
+      border: 1px solid var(--brand-secondary);
+    }
+  }
+
+  .itemIcon {
+    font-size: 20px;
+    margin-right: 10px;
+    position: relative;
+    top: 1px;
+  }
+
+}

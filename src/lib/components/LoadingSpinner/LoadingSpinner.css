@@ -1,0 +1,55 @@
+@import 'variables.css';
+
+
+.loadingSpinner {
+  animation-name: loading-spinner-animation;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  box-sizing: border-box;
+  border-bottom-color: var(--loading-spinner-background-color, color(#ccc a(.2)));
+  border-left-color: var(--loading-spinner-foreground-color, #337ab7);
+  border-right-color: var(--loading-spinner-background-color, color(#ccc a(.2)));
+  border-top-color: var(--loading-spinner-background-color, color(#ccc a(.2)));
+  border-width: var(--loading-spinner-border-width, 8px);
+  border-style: solid;
+  font-size: 10px;
+  text-indent: -9999em;
+  transform: translateZ(0);
+  overflow: hidden;
+
+  &,
+  &::after {
+    border-radius: 50%;
+    height: var(--loading-spinner-size, 40px);
+    width: var(--loading-spinner-size, 40px);
+  }
+
+  &.mini {
+    border-width: calc(var(--loading-spinner-size-mini, 20px) * .2);
+
+    &,
+    &::after {
+      height: var(--loading-spinner-size-mini, 20px);
+      width: var(--loading-spinner-size-mini, 20px);
+    }
+  }
+
+  &.slow {
+    animation-duration: 2s;
+  }
+
+  &.fast {
+    animation-duration: .5s;
+  }
+}
+
+@keyframes loading-spinner-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,30 @@
+@import '../input-variables.css';
+
+
+.lockedTextInput {
+  .input {
+    @extend %form-input;
+    padding-left: 32px;
+  }
+
+  .icon {
+    color: var(--grey);
+    cursor: default;
+    font-size: 18px;
+    left: 3px;
+    position: absolute;
+    top: 26px;
+    line-height: 34px;
+    padding: 0 10px;
+  }
+
+  &.hasError .input {
+    @extend %form-input-error;
+  }
+
+  &.locked {
+    .input {
+      color: color(var(--form-control-color) a(.6));
+    }
+  }
+}

@@ -1,0 +1,28 @@
+@import '../input-variables.css';
+
+
+.entryInput {
+  text-align: center;
+
+  .list {
+    margin-top: 7px;
+  }
+
+  .listItem {
+    background: var(--lighter-grey);
+    border-radius: 3px;
+    display: block;
+    line-height: 34px;
+    margin-bottom: 4px;
+    padding-left: 10px;
+    text-align: left;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .editButton {
+    margin-top: 10px;
+  }
+}

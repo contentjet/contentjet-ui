@@ -1,0 +1,52 @@
+li.checkboxListItem {
+  background: #f7f7f7;
+  border-radius: 3px;
+  line-height: 35px;
+  margin-bottom: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  lost-flex-container: row;
+  align-items: center;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.moveable {
+    .column {
+      &:nth-child(1) {
+        text-align: center;
+        lost-column: 1/16 3 0 flex;
+      }
+
+      &:nth-child(2) {
+        lost-column: 12/16 3 0 flex;
+      }
+
+      &:nth-child(3) {
+        lost-column: 3/16 3 0 flex;
+        text-align: right;
+      }
+    }
+  }
+}
+
+.column {
+  &:nth-child(1) {
+    text-align: center;
+    lost-column: 1/16 2 0 flex;
+  }
+
+  &:nth-child(2) {
+    lost-column: 15/16 2 0 flex;
+  }
+}
+
+.arrowButton {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.input {
+  cursor: pointer;
+}

@@ -1,0 +1,35 @@
+@import 'variables.css';
+
+
+html,
+body {
+  color: var(--color);
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  height: 100%;
+  line-height: 1.42857143em;
+}
+
+a {
+  color: var(--anchor-color);
+  text-decoration: none;
+}
+
+:focus {
+  outline: none;
+}
+
+::selection {
+  background-color: var(--text-selection-background-color);
+}
+
+:global {
+  #content {
+    height: 100%;
+  }
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #f1f1f1;
+}

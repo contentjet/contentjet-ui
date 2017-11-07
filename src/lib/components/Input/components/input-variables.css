@@ -1,0 +1,65 @@
+@import 'variables.css';
+
+:root {
+  --form-control-background: #fff;
+  --form-control-color: #555;
+  --form-control-color-disabled: #888;
+  --form-control-border-color: #ccc;
+  --form-control-border-color-disabled: #ddd;
+  --form-control-border: 1px solid var(--form-control-border-color);
+  --form-control-box-shadow: none;
+  --form-control-box-shadow-focus: 0 0 4px color(var(--brand-secondary) a(.6));
+  --form-control-border-color-focus: var(--brand-secondary);
+
+  --form-control-border-color-error: var(--brand-danger);
+  --form-control-box-shadow-error: color(var(--brand-danger) a(.0745098)) 0 1px 1px 0 inset;
+  --form-control-border-color-focus-error: var(--brand-danger);
+  --form-control-box-shadow-focus-error: 0 0 8px color(var(--brand-danger) a(.6));
+
+  --calendar-header-button-background-color: color(var(--brand-secondary) lightness(+15%));
+  --calendar-day-button-background-color-hover: color(var(--brand-secondary) lightness(+35%));
+  --calendar-day-button-background-color-selected: color(var(--brand-secondary) lightness(+15%));
+  --time-choice-background-color-hover: color(var(--brand-secondary) lightness(+35%));
+  --time-choice-background-color-selected: color(var(--brand-secondary) lightness(+15%));
+}
+
+
+%form-input {
+  background: var(--form-control-background);
+  border: var(--form-control-border);
+  border-radius: 4px;
+  box-shadow: var(--form-control-box-shadow);
+  box-sizing: border-box;
+  color: var(--form-control-color);
+  cursor: auto;
+  display: block;
+  font-size: 14px;
+  height: 34px;
+  min-height: 34px;
+  line-height: 20px;
+  margin: 0;
+  padding: 6px 12px;
+  width: 100%;
+
+  &:focus {
+    border-color: var(--form-control-border-color-focus);
+    box-shadow: var(--form-control-box-shadow-focus);
+    outline: 0;
+  }
+
+  &:disabled {
+    border-color: var(--form-control-border-color-disabled);
+    color: var(--form-control-color-disabled);
+    cursor: not-allowed;
+  }
+}
+
+%form-input-error {
+  border-color: var(--form-control-border-color-error);
+  box-shadow: var(--form-control-box-shadow-error);
+
+  &:focus {
+    border-color: var(--form-control-border-color-focus-error);
+    box-shadow: var(--form-control-box-shadow-focus-error);
+  }
+}

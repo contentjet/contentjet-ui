@@ -1,0 +1,28 @@
+@import '../input-variables.css';
+
+
+.mediaInput {
+  text-align: center;
+
+  .listItem {
+    background: url('../images/ps_neutral_@2X.png');
+    background-size: 16px 16px;
+    margin-bottom: 4px;
+    padding: 5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .listItemImage {
+    display: block;
+    margin: 0 auto;
+    max-height: 200px;
+  }
+
+  .editButton {
+    margin-top: 10px;
+  }
+
+}

@@ -1,0 +1,19 @@
+@import 'variables.css';
+
+.progressBar {
+  background: var(--progress-bar-track-background, rgba(0, 0, 0, 0.1));
+  border-radius: var(--progress-bar-border-radius, 5px);
+  height: var(--progress-bar-height, 10px);
+  overflow: hidden;
+
+  .bar {
+    background: var(--progress-bar-background, #337ab7);
+    height: 100%;
+    transition: var(--progress-bar-transition, width 350ms ease-out);
+  }
+
+  &.complete .bar {
+    background: var(--progress-bar-background-complete, #9dda83);
+    transition: none;
+  }
+}

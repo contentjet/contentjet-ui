@@ -1,0 +1,59 @@
+@import 'variables.css';
+
+
+.entries {
+  padding-bottom: 100px;
+}
+
+.body {
+  lost-center: 95%;
+
+  .alert {
+    margin: 20px auto;
+  }
+}
+
+.controls {
+  lost-center: 95%;
+  padding-top: 15px;
+}
+
+.controlsRow {
+  lost-utility: clearfix;
+}
+
+.controlsColumn {
+  &:nth-child(1) {
+    lost-column: 7/12;
+  }
+
+  &:nth-child(2) {
+    lost-column: 3/12;
+  }
+
+  &:nth-child(3) {
+    lost-column: 2/12;
+  }
+}
+
+.btnGroup {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.reloadButton,
+.deleteSelectedButton {
+  margin-right: 10px;
+}
+
+.loadingSpinner {
+  margin: 50px auto;
+}
+
+.entriesTable {
+  margin-bottom: 10px;
+}
+
+.pagination.re-pagination {
+  margin-bottom: 10px;
+}

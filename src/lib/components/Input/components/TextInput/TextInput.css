@@ -1,0 +1,12 @@
+@import '../input-variables.css';
+
+
+.textInput {
+  .input {
+    @extend %form-input;
+  }
+
+  &.hasError .input {
+    @extend %form-input-error;
+  }
+}

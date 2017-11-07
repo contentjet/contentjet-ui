@@ -1,0 +1,97 @@
+@import '../input-variables.css';
+
+
+.datetimePicker {
+
+  :global {
+    .rw-datetime-picker {
+      box-shadow: var(--form-control-box-shadow);
+
+      .rw-widget-picker > .rw-select {
+        vertical-align: top;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+
+      .rw-input {
+        box-shadow: none;
+        height: 32px;
+        padding: 0;
+        padding-left: 12px;
+        padding-right: 12px;
+        border-radius: 4px;
+      }
+
+      .rw-calendar .rw-header .rw-btn-view {
+        background-color: var(--calendar-header-button-background-color);
+      }
+
+      .rw-calendar-grid td .rw-btn:hover {
+        background-color: var(--calendar-day-button-background-color-hover);
+      }
+
+      .rw-calendar-grid td .rw-btn.rw-state-selected:hover {
+        background-color: var(--calendar-day-button-background-color-selected);
+      }
+
+
+      .rw-state-selected,
+      .rw-state-selected:hover {
+        background-color: var(--calendar-day-button-background-color-selected);
+        border-color: var(--calendar-day-button-background-color-selected);
+      }
+
+      .rw-state-focus {
+        border-color: var(--calendar-day-button-background-color-selected);
+      }
+
+      .rw-list>.rw-list-option:hover {
+        background-color: var(--time-choice-background-color-hover);
+        border-color: var(--time-choice-background-color-hover);
+      }
+
+      .rw-list>.rw-list-option.rw-state-selected {
+        background-color: var(--time-choice-background-color-selected);
+        border-color: var(--time-choice-background-color-selected);
+      }
+
+      .rw-btn.rw-btn-time {
+        border-left-color: var(--form-control-border-color);
+      }
+
+      &:hover {
+        background-color: var(--form-control-background);
+        border-color: var(--form-control-border-color);
+      }
+
+      &.rw-widget.rw-state-focus {
+
+        .rw-widget-container {
+          border-color: var(--form-control-border-color-focus);
+          box-shadow: var(--form-control-box-shadow-focus);
+        }
+      }
+
+      &.rw-widget.rw-state-focus:hover {
+
+        .rw-widget-container {
+          border-color: var(--form-control-border-color-focus);
+          box-shadow: var(--form-control-box-shadow-focus);
+        }
+      }
+    }
+  }
+
+  &.hasError {
+    :global {
+      .rw-datetime-picker.rw-widget.rw-state-focus,
+      .rw-datetime-picker.rw-widget {
+
+        .rw-widget-container {
+          border-color: var(--form-control-border-color-error);
+          box-shadow: var(--form-control-box-shadow-error);
+        }
+      }
+    }
+  }
+}

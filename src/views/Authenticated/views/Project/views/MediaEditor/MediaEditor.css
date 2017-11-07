@@ -1,0 +1,43 @@
+@import 'variables.css';
+
+
+.mediaEditor {
+  height: 100%;
+  position: relative;
+}
+
+.body {
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  padding-bottom: 290px;
+  position: absolute;
+  right: 0;
+  top: var(--header-height);
+}
+
+.content {
+  lost-center: 60%;
+  padding-top: 20px;
+}
+
+.mediaHolder {
+  text-align: center;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.mediaName {
+  line-height: 2em;
+  text-align: center;
+}
+
+.cancelButton {
+  border: 1px solid transparent;
+  display: inline-block;
+  line-height: 1.42857143;
+  padding: 6px 12px;
+  vertical-align: middle;
+}

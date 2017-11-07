@@ -1,0 +1,28 @@
+@import 'variables.css';
+
+.dropdownButton {
+  display: inline-block;
+  line-height: 1em;
+  position: relative;
+
+  &.open .panel {
+    display: block;
+  }
+}
+
+.icon {
+  margin-left: 8px;
+}
+
+.panel {
+  background: var(--dropdown-button-panel-background, #fff);
+  border: var(--dropdown-button-panel-border, 1px solid #ccc);
+  border-top: none;
+  box-shadow: var(--dropdown-button-box-shadow, 0 1px 3px rgba(0, 0, 0, 0.2));
+  border-radius: var(--dropdown-button-panel-border-radius, 0 0 3px 3px);
+  display: none;
+  padding: 5px 0;
+  position: absolute;
+  right: 3px;
+  z-index: -1;
+}

@@ -1,0 +1,76 @@
+:root {
+  --brand-primary: #fd1555;
+  --brand-secondary: #20cbfd;
+  --brand-success: #9dda83;
+  --brand-success-background: color(var(--brand-success) lightness(+25%));
+  --brand-danger: #d9534f;
+  --brand-danger-background: color(var(--brand-danger) lightness(+35%));
+  --brand-warning: #faebcc;
+  --brand-warning-background: color(var(--brand-warning) lightness(+10%));
+
+  --grey: #999;
+  --light-grey: #efefef;
+  --lighter-grey: #f7f7f7;
+
+  --header-height: 56px;
+
+  --color: #333;
+  --anchor-color: var(--brand-secondary);
+  --text-selection-background-color: color(var(--brand-secondary) lightness(+30%));
+
+  --button-link-color: var(--brand-secondary);
+  --button-primary-bg: var(--brand-primary);
+
+  --progress-bar-background: var(--brand-secondary);
+  --progress-bar-background-complete: var(--brand-success);
+
+  --loading-spinner-size: 40px;
+  --loading-spinner-size-mini: 20px;
+  --loading-spinner-border-width: calc(var(--loading-spinner-size) * .2);
+  --loading-spinner-background-color: color(#ccc a(.2));
+  --loading-spinner-foreground-color: var(--brand-secondary);
+
+  --pagination-item-link-background-active: var(--brand-secondary);
+
+  --progress-bar-track-background: color(black a(.1));
+  --progress-bar-background: #337ab7;
+  --progress-bar-background-complete: #9dda83;
+  --progress-bar-height: 10px;
+  --progress-bar-border-radius: 5px;
+  --progress-bar-transition: width 350ms ease-out;
+
+  --dropdown-button-panel-background: #fff;
+  --dropdown-button-panel-border: 1px solid #ccc;
+  --dropdown-button-panel-border-radius: 0 0 3px 3px;
+  --dropdown-button-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+  --modal-background: color(black a(.2));
+  --modal-dialog-border-radius: 3px;
+  --modal-dialog-background: white;
+  --modal-dialog-header-border-bottom: 1px solid color(var(--brand-primary) lightness(-10%));
+  --modal-dialog-header-font-size: 18px;
+  --modal-dialog-body-padding: 15px;
+  --modal-close-button-font-size: 18px;
+
+  --pagination-item-margin: 0 5px 0 0;
+  --pagination-item-link-border: 1px solid #efefef;
+  --pagination-item-link-padding: 4px 8px;
+  --pagination-item-link-background: #fff;
+  --pagination-item-link-background-active: #337ab7;
+  --pagination-item-link-color: #999;
+  --pagination-item-link-color-active: #fff;
+  --pagination-item-link-font-size: 14px;
+
+  --panel-background: #fff;
+  --panel-border: 1px solid #eee;
+  --panel-header-padding: 15px 15px 0 15px;
+  --panel-footer-padding: 0 15px 15px 15px;
+  --panel-body-padding: 15px;
+  --panel-border-radius: 4px;
+  --panel-header-color: inherit;
+  --panel-header-background: none;
+  --panel-footer-background: none;
+  --panel-footer-color: inherit;
+  --panel-font-family: Arial, serif;
+  --panel-margin-bottom: 20px;
+}

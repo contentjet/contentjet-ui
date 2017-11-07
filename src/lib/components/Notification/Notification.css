@@ -1,0 +1,37 @@
+@import 'variables.css';
+
+
+.notification {
+  position: fixed;
+  z-index: 100;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 4px;
+  color: #fff;
+  border: 1px solid;
+
+  &.success {
+    color: color(var(--brand-success) lightness(-15%));
+    border-color: var(--brand-success);
+    background: var(--brand-success-background);
+  }
+
+  &.error {
+    color: var(--brand-danger);
+    border-color: var(--brand-danger);
+    background: var(--brand-danger-background);
+  }
+}
+
+.icon {
+  font-size: 18px;
+  vertical-align: middle;
+  margin-right: 7px;
+}
+
+.message {
+  vertical-align: middle;
+}

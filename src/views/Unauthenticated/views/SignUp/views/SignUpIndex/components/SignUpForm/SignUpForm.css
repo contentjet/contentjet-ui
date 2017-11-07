@@ -1,0 +1,9 @@
+.signUpForm {
+  .errorsAlert {
+    margin-bottom: 7px;
+  }
+
+  .submitButton {
+    margin-top: 15px;
+  }
+}

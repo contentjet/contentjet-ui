@@ -1,0 +1,14 @@
+.iconButton {
+
+  .text {
+    margin-left: .35em;
+    margin-right: 0;
+  }
+
+  &.right {
+    .text {
+      margin-left: 0;
+      margin-right: .35em;
+    }
+  }
+}

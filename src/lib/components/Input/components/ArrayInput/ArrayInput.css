@@ -1,0 +1,13 @@
+@import '../input-variables.css';
+
+
+.arrayInput {
+  &.hasError .textarea {
+    @extend %form-input-error;
+  }
+}
+
+.textarea {
+  @extend %form-input;
+  resize: vertical;
+}

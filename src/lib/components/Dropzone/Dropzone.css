@@ -1,0 +1,28 @@
+@import 'variables.css';
+
+
+.dropzone {
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+
+  .icon {
+    color: #ccc;
+    font-size: 42px;
+  }
+
+  &.active {
+    background: color(white a(.75));
+    border: 2px dashed var(--brand-secondary);
+
+    .icon {
+      color: var(--brand-secondary);
+    }
+  }
+}

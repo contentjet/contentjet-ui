@@ -1,0 +1,92 @@
+@import 'variables.css';
+
+
+.mediaItem {
+  padding: 5px;
+  position: relative;
+  color: var(--anchor-color);
+
+  &:hover .editButton {
+    opacity: 1;
+  }
+
+  .editButton {
+    color: #666;
+    opacity: 0;
+    padding: 4px 8px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    transition: opacity 150ms linear;
+  }
+
+  .imageHolder {
+    background: var(--lighter-grey);
+    display: inline-block;
+    height: 90px;
+    line-height: 90px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .metaHolder {
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+  }
+
+  .image {
+    max-height: 100%;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .imagePlaceholder {
+    color: #ccc;
+    font-size: 60px;
+    vertical-align: middle;
+  }
+
+  .label,
+  .tags {
+    display: block;
+    font-size: 11px;
+    line-height: 1.5em;
+    overflow: hidden;
+    padding-top: 5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &.selectable {
+    border: 2px solid transparent;
+  }
+
+  &.selected {
+    border-color: var(--brand-primary);
+  }
+
+  &.selectable {
+    cursor: pointer;
+  }
+
+  &.inline {
+    height: 90px;
+    line-height: 90px;
+    padding: 0;
+    lost-utility: clearfix;
+
+    .imageHolder {
+      lost-column: 5/12 2 10px;
+    }
+
+    .metaHolder {
+      display: inline-block;
+      lost-column: 7/12 2 10px;
+    }
+  }
+
+}

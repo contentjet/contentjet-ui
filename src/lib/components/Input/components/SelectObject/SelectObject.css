@@ -1,0 +1,13 @@
+@import '../input-variables.css';
+
+
+.selectObject {
+  .input {
+    @extend %form-input;
+    cursor: pointer;
+  }
+
+  &.hasError .input {
+    @extend %form-input-error;
+  }
+}

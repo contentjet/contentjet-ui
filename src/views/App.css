@@ -1,0 +1,8 @@
+.app {
+  height: 100%;
+  perspective: 1000px;
+
+  .content {
+    height: 100%;
+  }
+}

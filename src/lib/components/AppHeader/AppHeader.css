@@ -1,0 +1,42 @@
+@import 'variables.css';
+
+
+.appHeader {
+  background: var(--light-grey);
+  height: 36px;
+  line-height: 36px;
+  text-align: right;
+}
+
+.logoLink {
+  background: var(--brand-primary);
+  color: #fff;
+  display: block;
+  float: left;
+  height: 36px;
+  line-height: 36px;
+  padding: 9px 10px;
+  text-align: center;
+  width: 125px;
+  box-sizing: border-box;
+}
+
+.logo {
+  display: block;
+}
+
+.logoutButton {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.profileLink {
+  display: inline-block;
+  line-height: 1.42857143;
+  padding: 6px 15px;
+  vertical-align: middle;
+}
+
+.profileLinkText {
+  margin-left: .35em;
+}

@@ -1,0 +1,25 @@
+@import '../input-variables.css';
+
+
+.searchInput {
+  .input {
+    @extend %form-input;
+    border-radius: 34px;
+    padding-left: 30px;
+  }
+
+  .searchIcon {
+    bottom: 10px;
+    color: #666;
+    left: 12px;
+    position: absolute;
+  }
+
+  &.disabled .searchIcon {
+    cursor: default;
+  }
+
+  &.hasError .input {
+    @extend %form-input-error;
+  }
+}

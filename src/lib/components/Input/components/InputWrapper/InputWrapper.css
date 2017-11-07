@@ -1,0 +1,52 @@
+@import '../input-variables.css';
+
+
+.inputWrapper {
+  margin-bottom: 10px;
+  position: relative;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.requiredField .labelText::before {
+    color: var(--brand-danger);
+    content: '* ';
+    font-weight: bold;
+  }
+
+}
+
+.errorsList {
+  color: var(--brand-danger);
+  font-size: 12px;
+
+  li {
+    padding: 3px 0;
+    text-align: left;
+  }
+}
+
+.label {
+  cursor: pointer;
+  display: block;
+  text-align: left;
+}
+
+.labelText {
+  color: var(--color);
+  display: inline-block;
+  font-size: 14px;
+  margin: 0 0 5px 2px;
+  text-align: inherit;
+  font-weight: bold;
+}
+
+.helpText {
+  display: block;
+  font-size: 12px;
+  font-style: italic;
+  margin: 0 0 2px 2px;
+  text-align: left;
+  color: var(--grey, #999);
+}

@@ -1,0 +1,120 @@
+@import '../input-variables.css';
+
+
+.markdownInput {
+
+  &.fullscreen {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 0;
+    margin: 0;
+
+    .input {
+      height: 100%;
+      resize: none;
+    }
+
+    .row {
+      position: absolute;
+      top: 80px;
+      right: 10px;
+      bottom: 30px;
+      left: 10px;
+
+      .column {
+        lost-column: 1/2;
+        height: 100%;
+
+        &:nth-child(2) {
+          display: block;
+        }
+      }
+    }
+
+    .footer {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      left: 10px;
+    }
+  }
+
+  .controls {
+    lost-utility: clearfix;
+    margin: 3px 0 8px;
+  }
+
+  .fullscreenButton {
+    float: right;
+  }
+
+  .row {
+    lost-utility: clearfix;
+
+    .column {
+      &:nth-child(2) {
+        display: none;
+      }
+    }
+  }
+
+  .input {
+    @extend %form-input;
+    resize: vertical;
+    font-family: monospace;
+  }
+
+  &.hasError .input {
+    @extend %form-input-error;
+  }
+
+  .preview {
+    height: 100%;
+    overflow-y: auto;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    p {
+      margin-top: 0;
+    }
+
+    pre {
+      background: var(--lighter-grey);
+      border-radius: 4px;
+      padding: 3px 8px;
+    }
+  }
+
+  .previewImgHolder {
+    background: url('../images/ps_neutral_@2X.png');
+    background-size: 16px 16px;
+    margin-bottom: 1em;
+    padding: 5px;
+    text-align: center;
+
+    img {
+      max-height: 200px;
+      max-width: 100%;
+    }
+  }
+
+  .footer {
+    font-size: 11px;
+    line-height: 14px;
+    margin-top: 5px;
+    text-align: right;
+  }
+
+  .markdownIcon {
+    height: 14px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+
+}

@@ -1,0 +1,67 @@
+@import 'variables.css';
+
+
+.panel {
+  background: var(--panel-background, #fff);
+  border: var(--panel-border, 1px solid #eee);
+  border-radius: var(--panel-border-radius, 4px);
+  margin-bottom: var(--panel-margin-bottom, 20px);
+  font-family: var(--panel-font-family, Arial, serif);
+
+  .panelBody {
+    padding: var(--panel-body-padding, 15px);
+
+    p {
+      margin-top: 0;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .panelHeader {
+    color: var(--panel-header-color, inherit);
+    padding: var(--panel-header-padding, 15px 15px 0 15px);
+    border-top-left-radius: var(--panel-border-radius, 4px);
+    border-top-right-radius: var(--panel-border-radius, 4px);
+    background: var(--panel-header-background, none);
+
+    .headerHeading {
+      margin: 0;
+      padding: 0;
+    }
+
+    &.textLeft {
+      text-align: left;
+    }
+
+    &.textCenter {
+      text-align: center;
+    }
+
+    &.textRight {
+      text-align: right;
+    }
+  }
+
+  .panelFooter {
+    color: var(--panel-footer-color, inherit);
+    padding: var(--panel-footer-padding, 0 15px 15px 15px);
+    border-bottom-left-radius: var(--panel-border-radius, 4px);
+    border-bottom-right-radius: var(--panel-border-radius, 4px);
+    background: var(--panel-footer-background, none);
+
+    &.textLeft {
+      text-align: left;
+    }
+
+    &.textCenter {
+      text-align: center;
+    }
+
+    &.textRight {
+      text-align: right;
+    }
+  }
+}

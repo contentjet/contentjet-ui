@@ -1,0 +1,29 @@
+@import 'variables.css';
+
+
+.contentHeader {
+  background: var(--lighter-grey);
+  height: var(--header-height);
+  line-height: var(--header-height);
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.headingHolder {
+  lost-column: 6/12;
+  min-height: 100%;
+  padding-left: 15px;
+  box-sizing: border-box;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+.controls {
+  lost-column: 6/12;
+  padding-right: 15px;
+  text-align: right;
+  box-sizing: border-box;
+}

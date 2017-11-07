@@ -1,0 +1,39 @@
+@import '../input-variables.css';
+
+
+.multiSelectInput {
+  :global {
+    .rw-multiselect {
+
+      .rw-widget-input {
+        box-shadow: none;
+      }
+
+      &.rw-state-focus > .rw-widget-container,
+      &.rw-state-focus > .rw-widget-container:hover {
+        border-color: var(--form-control-border-color-focus);
+        box-shadow: var(--form-control-box-shadow-focus);
+      }
+
+      .rw-multiselect-tag {
+        background: var(--brand-secondary);
+        border-color: color(var(--brand-secondary) lightness(-3%));
+        color: #fff;
+      }
+
+      .rw-list-option.rw-state-focus,
+      .rw-list-option.rw-state-focus:hover {
+        border: 1px solid transparent;
+      }
+
+      .rw-popup {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+      }
+
+      .rw-list-option:hover {
+        background: var(--light-grey);
+        border: 1px solid transparent;
+      }
+    }
+  }
+}

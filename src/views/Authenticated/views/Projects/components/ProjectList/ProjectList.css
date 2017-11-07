@@ -1,0 +1,32 @@
+@import 'variables.css';
+
+
+.projectList {
+  margin: 20px 0;
+
+  .item {
+    margin-bottom: 4px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      background: #fff;
+      border: 1px solid var(--light-grey);
+      border-radius: 4px;
+      display: block;
+      padding: 10px 15px;
+    }
+
+    a:hover {
+      background: #fff;
+      border: 1px solid var(--brand-secondary);
+    }
+  }
+
+  .itemIcon {
+    margin-right: 10px;
+  }
+
+}

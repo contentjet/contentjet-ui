@@ -1,0 +1,9 @@
+.projectSettingsForm {
+  .footer {
+    text-align: right;
+  }
+
+  .metadataInput {
+    font-family: monospace;
+  }
+}

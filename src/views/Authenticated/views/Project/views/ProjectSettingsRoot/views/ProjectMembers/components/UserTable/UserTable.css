@@ -1,0 +1,11 @@
+@import 'variables.css';
+@import 'placeholders.css';
+
+.userTable {
+  @extend %table;
+  font-size: 12px;
+}
+
+.editButton {
+  padding: 0;
+}

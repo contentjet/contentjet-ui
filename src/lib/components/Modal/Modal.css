@@ -1,0 +1,75 @@
+@import 'variables.css';
+
+.modal {
+  background: var(--modal-background, color(black a(.2)));
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  perspective: 1000px;
+  perspective-origin: center;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
+
+  .dialog {
+    background: var(--modal-dialog-background, white);
+    border-radius: var(--modal-dialog-border-radius, 3px);
+    margin: 50px auto 30px;
+    width: 600px;
+
+    .header {
+      lost-utility: clearfix;
+      background: var(--brand-primary);
+      border-bottom: var(--modal-dialog-header-border-bottom, 1px solid #999);
+      padding: 10px 0;
+
+      .heading {
+        lost-column: 10/12;
+        color: white;
+        font-size: var(--modal-dialog-header-font-size, 18px);
+        height: 39px;
+        line-height: 39px;
+        margin-bottom: 0;
+        margin-top: 0;
+        padding-left: 15px;
+        box-sizing: border-box;
+      }
+
+      .controls {
+        lost-column: 2/12;
+        text-align: right;
+      }
+    }
+
+    .body {
+      padding: var(--modal-dialog-body-padding, 15px);
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .footer {
+      padding: 0 10px 10px;
+      text-align: right;
+    }
+
+    .closeButton {
+      color: white;
+      font-size: var(--modal-close-button-font-size, 18px);
+      padding-right: 14px;
+
+      &:hover {
+        background: none;
+      }
+    }
+  }
+
+  &.wide {
+    .dialog {
+      width: 80%;
+      max-width: 1100px;
+    }
+  }
+}

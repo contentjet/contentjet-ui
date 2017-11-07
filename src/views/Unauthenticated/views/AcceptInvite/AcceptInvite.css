@@ -1,0 +1,21 @@
+.acceptInvite {
+  text-align: center;
+
+  p.message {
+    margin: 10px 0 25px;
+  }
+
+  .projectName {
+    font-weight: bold;
+  }
+
+  .loginButton {
+    margin-bottom: 10px;
+  }
+
+  .signUp {
+    display: block;
+    font-size: 13px;
+    text-align: center;
+  }
+}

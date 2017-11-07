@@ -1,0 +1,26 @@
+@import 'variables.css';
+
+%table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+
+  tbody {
+    > tr:nth-of-type(odd) {
+      background: var(--lighter-grey);
+    }
+  }
+
+  th {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 6px;
+  }
+
+  td {
+    border: 1px solid #ddd;
+    border-top: 1px solid #ccc;
+    padding: 4px 6px;
+    text-align: left;
+  }
+}

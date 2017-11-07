@@ -1,0 +1,15 @@
+@import 'variables.css';
+
+.mediaList {
+  lost-utility: clearfix;
+
+  &.tiled .item {
+    lost-column: 1/5;
+    margin-bottom: 7px;
+  }
+
+}
+
+.item {
+  background: #eee;
+}

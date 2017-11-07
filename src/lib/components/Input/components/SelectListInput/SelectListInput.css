@@ -1,0 +1,26 @@
+@import '../input-variables.css';
+
+
+.selectListInput {
+
+  :global {
+
+    .rw-widget-container.rw-state-focus,
+    .rw-widget-container.rw-state-focus:hover {
+      border-color: var(--form-control-border-color-focus);
+      box-shadow: var(--form-control-box-shadow-focus);
+      outline: 0;
+    }
+
+    .rw-list-option:hover {
+      background: var(--light-grey);
+      border: 1px solid transparent;
+    }
+
+    .rw-list-option.rw-state-focus {
+      border: 1px solid transparent;
+    }
+
+  }
+
+}

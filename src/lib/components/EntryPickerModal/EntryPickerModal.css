@@ -1,0 +1,42 @@
+.controls {
+  lost-utility: clearfix;
+  margin-bottom: 15px;
+
+  .column {
+    lost-column: 1/2;
+  }
+}
+
+.listHolder {
+  lost-utility: clearfix;
+  height: 400px;
+
+  .column {
+    lost-column: 1/2;
+    height: 100%;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 3px;
+  }
+}
+
+.loadingSpinner {
+  margin: 180px auto 0 auto;
+}
+
+.list {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.listItem {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.buttonsItem {
+  text-align: center;
+  padding: 5px 0;
+}

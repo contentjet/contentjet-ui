@@ -1,0 +1,60 @@
+@import '../input-variables.css';
+
+.numberPicker {
+
+  :global {
+    .rw-number-picker {
+
+      .rw-input {
+        @extend %form-input;
+        border: 0;
+        box-shadow: none;
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 32px;
+      }
+
+      .rw-input:focus {
+        box-shadow: none;
+      }
+
+      &.rw-widget.rw-state-focus {
+
+        > .rw-widget-container {
+          border-color: var(--form-control-border-color-focus);
+          box-shadow: var(--form-control-box-shadow-focus);
+        }
+
+        > .rw-widget-container:hover {
+          border-color: var(--form-control-border-color-focus);
+          box-shadow: var(--form-control-box-shadow-focus);
+        }
+      }
+
+      &:hover {
+        background-color: var(--form-control-background);
+        border-color: var(--form-control-border-color);
+      }
+
+    }
+  }
+
+  &hasError {
+
+    :global {
+      .rw-number-picker.rw-widget {
+
+        > .rw-widget-container {
+          border-color: var(--form-control-border-color-error);
+          box-shadow: var(--form-control-box-shadow-error);
+        }
+
+        > .rw-widget-container:hover {
+          border-color: var(--form-control-border-color-error);
+          box-shadow: var(--form-control-box-shadow-error);
+        }
+      }
+    }
+
+  }
+}

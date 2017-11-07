@@ -1,0 +1,18 @@
+@import 'variables.css';
+
+
+.webHookModal {
+
+}
+
+.events {
+  lost-utility: clearfix;
+}
+
+.eventsColumn {
+  lost-column: 6/12;
+}
+
+.hr {
+  margin: 15px 0;
+}

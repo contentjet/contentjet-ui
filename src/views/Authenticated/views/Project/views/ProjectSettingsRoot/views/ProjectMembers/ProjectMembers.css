@@ -1,0 +1,13 @@
+.subHeader {
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.loadingSpinner {
+  margin: 10px auto;
+}
+
+.deleteSelectedInvitesButton {
+  margin-right: 10px;
+}

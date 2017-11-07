@@ -1,0 +1,27 @@
+@import 'variables.css';
+@import 'placeholders.css';
+
+
+.inviteTable {
+  @extend %table;
+  font-size: 12px;
+
+  th,
+  td {
+    &:first-child {
+      padding-left: 0;
+      padding-right: 0;
+      text-align: center;
+      width: 34px;
+    }
+  }
+}
+
+.checkbox {
+  display: inline-block;
+}
+
+.checkboxLabel {
+  text-align: center !important;
+  display: inline-block !important;
+}
