@@ -6,6 +6,7 @@ import WebHookActions from 'actions/WebHookActions';
 import Panel from 'lib/components/Panel';
 import Alert from 'lib/components/Alert';
 import List from 'lib/components/List';
+import {List as IList} from 'immutable';
 import LoadingSpinner from 'lib/components/LoadingSpinner';
 import WebHook from './components/WebHook';
 import WebHookModal from './components/WebHookModal';
@@ -76,7 +77,8 @@ class WebHooks extends Component {
   }
 
   render() {
-    let { isFetching, webHooks } = this.props;
+    const { isFetching } = this.props;
+    const webHooks = this.props.webHooks.toJS();
 
     let panelFooter = (
       <Button
@@ -152,14 +154,14 @@ WebHooks.propTypes = {
   params: PropTypes.object.isRequired,
   listWebHooks: PropTypes.func.isRequired,
   deleteWebHook: PropTypes.func.isRequired,
-  webHooks: PropTypes.array.isRequired,
+  webHooks: PropTypes.instanceOf(IList).isRequired,
   isFetching: PropTypes.bool.isRequired
 };
 
 
 const mapStateToProps = (state) => {
   return {
-    webHooks: WebHookSelectors.listData(state).get('results').toJS(),
+    webHooks: WebHookSelectors.listData(state),
     isFetching: WebHookSelectors.listIsFetching(state)
   };
 };
