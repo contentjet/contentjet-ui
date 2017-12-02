@@ -19,7 +19,7 @@ const WebHook = (props) => {
           URL: { webHook.url }
         </span>
         <span className={s.status}>
-          Status: { webHook.is_active ? 'Active' : 'Inactive' }
+          Status: { webHook.isActive ? 'Active' : 'Inactive' }
         </span>
       </div>
       <div className={s.controlsHolder}>
