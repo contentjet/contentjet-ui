@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { combineReducers } from 'redux-immutable';
-import { createPaginatedListReducer, createDetailReducer, detailStructure } from './lib/utilities';
+import { createListReducer, createDetailReducer, detailStructure } from './lib/utilities';
 
 const initialDetailStructure = detailStructure.set('inviteToken', null);
 
@@ -9,7 +9,7 @@ const extraListReducers = {
   'BULK_DESTROY_INVITE': (state, action) => {
     // Optimistically delete
     let ids = action.meta;
-    let results = state.getIn(['data', 'results']).filter(item => {
+    let results = state.getIn(['data']).filter(item => {
       return !_.includes(ids, item.get('id'));
     });
     let count = results.count();
@@ -49,6 +49,6 @@ const extraDetailReducers = {
 
 
 export default combineReducers({
-  list: createPaginatedListReducer('INVITE', extraListReducers),
+  list: createListReducer('INVITE', extraListReducers),
   detail: createDetailReducer('INVITE', extraDetailReducers, initialDetailStructure)
 });

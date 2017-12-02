@@ -200,7 +200,7 @@ ProjectMembers.propTypes = {
 const mapStateToProps = (state) => {
   return {
     project: ProjectSelectors.detailData(state),
-    invites: InviteSelectors.listDataResults(state),
+    invites: InviteSelectors.listData(state),
     invitesIsFetching: InviteSelectors.listIsFetching(state)
   };
 };
