@@ -1,3 +1,6 @@
+# 0.2.2
+* Removed dist from .gitignore
+
 # 0.2.1
 * Updated `package-lock.json` and `package.json`
 
