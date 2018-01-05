@@ -1,9 +1,9 @@
 {
   "name": "contentjet-ui",
   "version": "0.2.2",
-  "description": "",
-  "repository": "",
-  "private": true,
+  "description": "Headless API-first content management system",
+  "repository": "https://github.com/contentjet/contentjet-ui",
+  "private": false,
   "src": "src",
   "test": "test",
   "dist": "dist",
