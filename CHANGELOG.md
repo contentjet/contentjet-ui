@@ -1,4 +1,4 @@
-# 0.2.1
+# 0.2.4
 * Minor README update
 * Updated `marked` package to latest version due to a securiy alert raised by Github
 
