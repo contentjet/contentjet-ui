@@ -1,3 +1,7 @@
+# 0.2.4
+* Minor README update
+* Updated `marked` package to latest version due to a securiy alert raised by Github
+
 # 0.2.2
 * Removed dist from .gitignore
 
