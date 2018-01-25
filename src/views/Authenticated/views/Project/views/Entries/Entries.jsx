@@ -122,7 +122,7 @@ class Entries extends Component {
   onAcceptModal() {
     this.props.bulkDestroyEntries(
       this.props.params.project_id,
-      this.props.selectedEntries.map(entry => entry.id)
+      this.props.selectedEntries.map(entry => entry.get('id')).toArray()
     );
     this.setState({ modalOpen: false });
   }
