@@ -32,6 +32,7 @@ class ConfirmModal extends Component {
       <Modal
         title="Confirm"
         className={className}
+        bodyClassName={s.body}
         onClickClose={this.props.onCancel}
         footer={footer}
         isOpened={this.props.isOpened}
