@@ -34,7 +34,7 @@ const list = createAction(
 
 const relist = (projectId) => {
   return (dispatch, getState) => {
-    let queryParams = getState().getIn(['media', 'mediaList', 'queryParams']);
+    const queryParams = getState().getIn(['media', 'mediaList', 'queryParams']).toJS();
     dispatch(list(projectId, queryParams));
   };
 };
