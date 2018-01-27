@@ -1,3 +1,10 @@
+# 0.2.5
+* Updated README
+* Increased vertical padding on ConfirmModal component
+* Bug fix in MarkdownInput component
+* Bug fix in Entries component
+* Bug fix in MediaActions
+
 # 0.2.4
 * Minor README update
 * Updated `marked` package to latest version due to a securiy alert raised by Github
