@@ -102,7 +102,7 @@ class MarkdownInput extends Component {
 
   toggleFullscreen() {
     this.setState({ fullscreen: !this.state.fullscreen }, () => {
-      this._textArea.focus();
+      if (this.state.fullscreen) this._textArea.focus();
     });
   }
 

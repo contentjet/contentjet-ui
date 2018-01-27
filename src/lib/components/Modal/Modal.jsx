@@ -10,7 +10,7 @@ import s from './Modal.css';
 class Modal extends Component {
 
   render() {
-    let { className, wide, isOpened } = this.props;
+    let { className, wide, isOpened, bodyClassName } = this.props;
 
     if (!isOpened) return null;
 
@@ -20,6 +20,11 @@ class Modal extends Component {
         [s.wide]: wide
       },
       className
+    );
+
+    bodyClassName = classnames(
+      s.body,
+      bodyClassName
     );
 
     if (this.props.footer) {
@@ -46,7 +51,7 @@ class Modal extends Component {
                       />
                     </div>
                   </div>
-                  <div className={s.body}>
+                  <div className={bodyClassName}>
                     {this.props.children}
                   </div>
                   {modalFooter}
@@ -65,7 +70,8 @@ Modal.propTypes = {
   onClickClose: PropTypes.func.isRequired,
   wide: PropTypes.bool,
   footer: PropTypes.node,
-  isOpened: PropTypes.bool
+  isOpened: PropTypes.bool,
+  bodyClassName: PropTypes.string
 };
 
 
