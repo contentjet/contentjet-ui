@@ -30,6 +30,13 @@ const resultsPerPageChoices = [
 
 const anyEntryType = { name: '--- Any ---', id: '-1' };
 
+const orderByChoices = [
+  { label: 'Created', value: 'createdAt' },
+  { label: 'Created (descending)', value: '-createdAt' },
+  { label: 'Modified', value: 'modifiedAt' },
+  { label: 'Modified (descending)', value: '-modifiedAt' }
+];
+
 
 class Entries extends Component {
 
@@ -54,6 +61,7 @@ class Entries extends Component {
     this.onDeleteSelected = this.onDeleteSelected.bind(this);
     this.onPageSizeChange = this.onPageSizeChange.bind(this);
     this.onEntryTypeFilterChange = this.onEntryTypeFilterChange.bind(this);
+    this.onOrderByChange = this.onOrderByChange.bind(this);
   }
 
   componentDidMount() {
@@ -65,7 +73,8 @@ class Entries extends Component {
         pageSize: q.pageSize || resultsPerPageChoices[0],
         search: q.search || '',
         page: q.page || 1,
-        entryTypeFilter: { name: '', id: q.entryType }
+        entryTypeFilter: { name: '', id: q.entryType },
+        orderBy: q.orderBy || orderByChoices[3].value
       },
       this.listEntries
     );
@@ -85,7 +94,8 @@ class Entries extends Component {
         pageSize: this.state.pageSize,
         entryType: entryTypeId,
         search: _.trim(this.state.search),
-        nonPublished: 1 // We list both published and non-published entries
+        nonPublished: 1, // We list both published and non-published entries
+        orderBy: this.state.orderBy
       }
     );
     // Update browser history
@@ -93,7 +103,8 @@ class Entries extends Component {
       page: this.state.page,
       pageSize: this.state.pageSize,
       entryType: entryTypeId || '',
-      search: _.trim(this.state.search)
+      search: _.trim(this.state.search),
+      orderBy: this.state.orderBy
     });
     browserHistory.replace({
       pathname: this.props.location.pathname,
@@ -141,6 +152,10 @@ class Entries extends Component {
 
   onEntryTypeFilterChange(value) {
     this.setState({ entryTypeFilter: value, page: 1 }, this.listEntries);
+  }
+
+  onOrderByChange(value) {
+    this.setState({ orderBy: value.value }, this.listEntries);
   }
 
   render() {
@@ -257,6 +272,20 @@ class Entries extends Component {
                 textField="name"
                 valueField="id"
                 onChange={this.onEntryTypeFilterChange}
+                disabled={entriesIsFetching || !entryTypes.length}
+              />
+            </div>
+            <div className={s.controlsColumn}>
+              <Input
+                type="select-object"
+                name="pageSize"
+                label="Order by"
+                placeholder="Results per page"
+                choices={orderByChoices}
+                value={this.state.orderBy}
+                textField="label"
+                valueField="value"
+                onChange={this.onOrderByChange}
                 disabled={entriesIsFetching || !entryTypes.length}
               />
             </div>
