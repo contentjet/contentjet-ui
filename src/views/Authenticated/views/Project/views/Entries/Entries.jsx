@@ -31,10 +31,10 @@ const resultsPerPageChoices = [
 const anyEntryType = { name: '--- Any ---', id: '-1' };
 
 const orderByChoices = [
-  { label: 'Created', value: 'createdAt' },
-  { label: 'Created (descending)', value: '-createdAt' },
-  { label: 'Modified', value: 'modifiedAt' },
-  { label: 'Modified (descending)', value: '-modifiedAt' }
+  { label: 'Created (ascending)', value: 'createdAt' },
+  { label: 'Created', value: '-createdAt' },
+  { label: 'Modified (ascending)', value: 'modifiedAt' },
+  { label: 'Modified', value: '-modifiedAt' }
 ];
 
 
