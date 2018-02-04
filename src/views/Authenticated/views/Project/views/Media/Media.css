@@ -38,11 +38,15 @@
   .column {
 
     &:nth-child(1) {
-      lost-column: 9/12;
+      lost-column: 7/12;
     }
 
     &:nth-child(2) {
       lost-column: 3/12;
+    }
+
+    &:nth-child(3) {
+      lost-column: 2/12;
     }
   }
 }

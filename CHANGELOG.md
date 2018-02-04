@@ -1,3 +1,8 @@
+# 0.3.0
+* Added sort controls to entries screen
+* Added sort controls to media screen
+* Optimised 2x contentjet svgs
+
 # 0.2.5
 * Updated README
 * Increased vertical padding on ConfirmModal component
