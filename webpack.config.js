@@ -17,7 +17,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: '[name].js',
+    filename: '[name].[hash].js',
     chunkFilename: '[id].js'
   },
   devServer: {
@@ -151,7 +151,7 @@ if (process.env.npm_lifecycle_event === 'build') {
     });
   });
   config.plugins = config.plugins.concat([
-    new ExtractTextPlugin('[name].css'),
+    new ExtractTextPlugin('[name].[contenthash].css'),
     new CleanWebpackPlugin(['dist']),
     new webpack.DefinePlugin({
       'process.env':{
