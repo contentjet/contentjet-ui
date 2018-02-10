@@ -50,8 +50,10 @@ class MarkdownInput extends Component {
     super(props);
     this.state = {
       fullscreen: false,
-      modalOpen: false
+      modalOpen: false,
+      caretPosition: 0
     };
+    this.onBlur = this.onBlur.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onAcceptModal = this.onAcceptModal.bind(this);
     this.onCancelModal = this.onCancelModal.bind(this);
@@ -60,17 +62,23 @@ class MarkdownInput extends Component {
     this.toggleFullscreen = this.toggleFullscreen.bind(this);
   }
 
+  onBlur(e) {
+    this.setState({'caretPosition': getCaret(e.target)});
+  }
+
   onChange(e) {
-    var value = e.target.value;
+    const value = e.target.value;
+    this.setState({'caretPosition': getCaret(e.target)});
     this.props.onChange(value, this.props.name);
   }
 
   onAcceptModal(selections) {
-    if (!selections.length) return;
-    let imageURL = selections[0].url;
-    let description = selections[0].description;
-    let index = getCaret(this._textArea);
-    let value = insert(this.props.value, index, `![${description}](${imageURL})`);
+    if (selections.isEmpty()) return;
+    const textToInsert = selections.reduce((text, media) => {
+      const {description, file} = media;
+      return text + `![${description}](${file})\n`;
+    }, '');
+    const value = insert(this.props.value, this.state.caretPosition, textToInsert);
     this.props.onChange(value, this.props.name);
     this.setState({ modalOpen: false });
   }
@@ -85,19 +93,12 @@ class MarkdownInput extends Component {
 
   getRenderedMarkdown() {
     if (!this.state.fullscreen) return null;
-    var html = marked(this.props.value || '');
-    // We wrap <img> tags for styling purposes.
-    var regex = /<img .*?>/g;
-    if(regex.test(html)) {
-      var matches = html.match(regex);
-      matches.forEach(match => {
-        html = html.replace(
-          match,
-          `<div class="${s.previewImgHolder}">${match}</div>`
-        );
-      });
-    }
-    return { __html: html };
+    return {
+      __html: marked(this.props.value || '')
+        .replace(
+          /(<img .*?>)/g, `<div class="${s.previewImgHolder}">$1</div>`
+        )
+    };
   }
 
   toggleFullscreen() {
@@ -125,6 +126,7 @@ class MarkdownInput extends Component {
           value={this.props.value || ''}
           className={s.input}
           onChange={this.onChange}
+          onBlur={this.onBlur}
         />
       );
     } else {
@@ -136,6 +138,7 @@ class MarkdownInput extends Component {
           value={this.props.value || ''}
           className={s.input}
           onChange={this.onChange}
+          onBlur={this.onBlur}
         />
       );
     }
