@@ -1,3 +1,6 @@
+# 0.4.0
+* Added Dockerfile and server.js
+
 # 0.3.0
 * Added sort controls to entries screen
 * Added sort controls to media screen
