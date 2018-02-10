@@ -17,7 +17,7 @@ import Immutable from 'immutable';
 
 
 // Set axios defaults
-axios.defaults.baseURL = window.contentjet.BASE_URL;
+axios.defaults.baseURL = window.contentjet.BACKEND_URL;
 axios.interceptors.request.use(
   config => {
     let accessToken = TokenStorage.getToken();
