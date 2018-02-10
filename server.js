@@ -4,10 +4,10 @@ const access = promisify(fs.access);
 const Koa = require('koa');
 const send = require('koa-send');
 
-let {BASE_URL} = process.env;
-if (!BASE_URL) throw new Error('BASE_URL environment variable not set');
-BASE_URL = BASE_URL.trim();
-if (!BASE_URL.endsWith('/')) BASE_URL = BASE_URL + '/';
+let {BACKEND_URL} = process.env;
+if (!BACKEND_URL) throw new Error('BACKEND_URL environment variable not set');
+BACKEND_URL = BACKEND_URL.trim();
+if (!BACKEND_URL.endsWith('/')) BACKEND_URL = BACKEND_URL + '/';
 
 const PORT = parseInt(process.env.PORT || '9000');
 
@@ -16,7 +16,7 @@ const app = new Koa();
 const dist = __dirname + '/dist';
 
 const index = fs.readFileSync(dist + '/index.html').toString();
-const modifiedIndex = index.replace(/BASE_URL:\s+'.*'/g, `BASE_URL: '${BASE_URL}'`);
+const modifiedIndex = index.replace(/BACKEND_URL:\s+'.*'/g, `BACKEND_URL: '${BACKEND_URL}'`);
 
 app.use(async (ctx) => {
   if (ctx.path.endsWith('/')) return ctx.body = modifiedIndex;
