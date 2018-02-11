@@ -2,6 +2,7 @@
 import 'normalize.css';
 import 'react-widgets/dist/css/react-widgets.css';
 import './styles/main.css';
+import './robots.txt';
 import axios from 'axios';
 import _ from 'lodash';
 import TokenStorage from 'services/TokenStorage';
