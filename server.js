@@ -18,14 +18,21 @@ const dist = __dirname + '/dist';
 const index = fs.readFileSync(dist + '/index.html').toString();
 const modifiedIndex = index.replace(/BACKEND_URL:\s+'.*'/g, `BACKEND_URL: '${BACKEND_URL}'`);
 
-app.use(async (ctx) => {
-  if (ctx.path.endsWith('/')) return ctx.body = modifiedIndex;
+app.use(async (ctx, next) => {
+  if (ctx.path === '/index.html' || ctx.path.endsWith('/')) return await next();
   try {
     await access(dist + ctx.path, fs.constants.R_OK);
+    ctx.set('Cache-Control', 'max-age=604800'); // 1 week
     await send(ctx, ctx.path, { root: dist });
   } catch (err) {
-    return ctx.body = modifiedIndex;
+    return await next();
   }
+});
+
+app.use(async (ctx) => {
+  ctx.set('Cache-Control', 'max-age=0');
+  ctx.body = modifiedIndex;
+  return;
 });
 
 app.listen(PORT);

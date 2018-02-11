@@ -1,3 +1,7 @@
+# 0.4.2
+* Now setting cache control header in server.js
+* Now emitting robots.txt
+
 # 0.4.1
 * Fixed issue with images not being inserted into markdown input
 * Webpack now configured to output hash in js and css filenames
