@@ -10,7 +10,7 @@ import App from 'views/App';
 import Login from 'views/Unauthenticated/views/Login';
 
 import RequestResetPassword from 'views/Unauthenticated/views/RequestResetPassword';
-import ChangePassword from 'views/Unauthenticated/views/ChangePassword';
+import SetPassword from 'views/Unauthenticated/views/SetPassword';
 
 import SignUp from 'views/Unauthenticated/views/SignUp';
 import SignUpIndex from 'views/Unauthenticated/views/SignUp/views/SignUpIndex';
@@ -23,6 +23,7 @@ import Authenticated from 'views/Authenticated';
 
 import Settings from 'views/Authenticated/views/Settings';
 import MyProfile from 'views/Authenticated/views/Settings/views/MyProfile';
+import ChangePassword from 'views/Authenticated/views/Settings/views/ChangePassword';
 
 import Projects from 'views/Authenticated/views/Projects';
 import Project from 'views/Authenticated/views/Project';
@@ -63,7 +64,7 @@ const routes = (
     <Redirect from="/project/:project_id/settings" to="/project/:project_id/settings/project" />
     <Route path="login" component={Login} onEnter={redirectIfAuthenticated} />
     <Route path="reset-password" component={RequestResetPassword} />
-    <Route path="change-password/:token" component={ChangePassword} />
+    <Route path="set-password/:token" component={SetPassword} />
     <Route path="sign-up" component={SignUp}>
       <IndexRoute component={SignUpIndex} />
       <Route path="verify/:token" component={SignUpVerify} />
@@ -74,6 +75,7 @@ const routes = (
       <Route path="settings" component={Settings}>
         <IndexRedirect to="profile" />
         <Route path="profile" component={MyProfile} />
+        <Route path="password" component={ChangePassword} />
       </Route>
       <Route path="project/:project_id" component={Project}>
         <Route path="settings" component={ProjectSettingsRoot}>
