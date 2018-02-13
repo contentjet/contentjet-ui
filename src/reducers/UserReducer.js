@@ -2,7 +2,12 @@ import { handleActions } from 'redux-actions';
 import { Map } from 'immutable';
 import { detailStructure, paginatedListStructure } from './lib/utilities';
 import {
-  SIGN_UP, VERIFY_USER, REQUEST_RESET_PASSWORD, SET_PASSWORD, GET_ME,
+  SIGN_UP,
+  VERIFY_USER,
+  REQUEST_RESET_PASSWORD,
+  SET_PASSWORD,
+  CHANGE_PASSWORD,
+  GET_ME,
   SAVE_ME
 } from 'actions/UserActions';
 
@@ -15,6 +20,7 @@ const initialState = Map({
   verification: initialVerification,
   requestPasswordReset: detailStructure,
   setPassword: detailStructure,
+  changePassword: detailStructure,
   me: detailStructure
 });
 
@@ -67,6 +73,18 @@ export default handleActions({
 
   [`${SET_PASSWORD}_FAILED`]: (state, action) => {
     return state.set('setPassword', detailStructure.set('error', action.payload));
+  },
+
+  [CHANGE_PASSWORD]: (state) => {
+    return state.set('changePassword', detailStructure.set('isSending', true));
+  },
+
+  [`${CHANGE_PASSWORD}_COMPLETED`]: (state) => {
+    return state.set('changePassword', detailStructure);
+  },
+
+  [`${CHANGE_PASSWORD}_FAILED`]: (state, action) => {
+    return state.set('changePassword', detailStructure.set('error', action.payload));
   },
 
   [GET_ME]: (state) => {

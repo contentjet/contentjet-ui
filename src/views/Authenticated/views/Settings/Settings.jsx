@@ -38,6 +38,13 @@ class Settings extends Component {
                   >
                     My Profile
                   </Link>
+                  <Link
+                    className={s.link}
+                    activeClassName={s.linkActive}
+                    to={'/settings/password'}
+                  >
+                    Password
+                  </Link>
                 </li>
               </List>
             </nav>

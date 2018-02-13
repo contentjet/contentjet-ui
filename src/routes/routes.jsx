@@ -23,6 +23,7 @@ import Authenticated from 'views/Authenticated';
 
 import Settings from 'views/Authenticated/views/Settings';
 import MyProfile from 'views/Authenticated/views/Settings/views/MyProfile';
+import ChangePassword from 'views/Authenticated/views/Settings/views/ChangePassword';
 
 import Projects from 'views/Authenticated/views/Projects';
 import Project from 'views/Authenticated/views/Project';
@@ -74,6 +75,7 @@ const routes = (
       <Route path="settings" component={Settings}>
         <IndexRedirect to="profile" />
         <Route path="profile" component={MyProfile} />
+        <Route path="password" component={ChangePassword} />
       </Route>
       <Route path="project/:project_id" component={Project}>
         <Route path="settings" component={ProjectSettingsRoot}>
