@@ -6,7 +6,7 @@ import axios from 'axios';
 export const SIGN_UP = 'SIGN_UP';
 export const VERIFY_USER = 'VERIFY_USER';
 export const REQUEST_RESET_PASSWORD = 'REQUEST_RESET_PASSWORD';
-export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
+export const SET_PASSWORD = 'SET_PASSWORD';
 export const SAVE_ME = 'SAVE_ME';
 export const GET_ME = 'GET_ME';
 
@@ -26,7 +26,7 @@ const requestResetPassword = createAction(REQUEST_RESET_PASSWORD, (email) => {
 });
 
 
-const changePassword = createAction(CHANGE_PASSWORD, (token, password) => {
+const setPassword = createAction(SET_PASSWORD, (token, password) => {
   return axios.post('user/set-password/', { token, password });
 });
 
@@ -65,7 +65,7 @@ export default {
   signUp,
   verifyUser,
   requestResetPassword,
-  changePassword,
+  setPassword,
   saveMe,
   getMe
 };

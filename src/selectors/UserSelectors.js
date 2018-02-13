@@ -32,18 +32,18 @@ const signUpIsSending = (state) => {
 };
 
 
-const changePassword = (state) => {
-  return state.getIn(['user', 'changePassword']);
+const setPassword = (state) => {
+  return state.getIn(['user', 'setPassword']);
 };
 
 
-const changePasswordError = (state) => {
-  return state.getIn(['user', 'changePassword', 'error']);
+const setPasswordError = (state) => {
+  return state.getIn(['user', 'setPassword', 'error']);
 };
 
 
-const changePasswordIsSending = (state) => {
-  return state.getIn(['user', 'changePassword', 'isSending']);
+const setPasswordIsSending = (state) => {
+  return state.getIn(['user', 'setPassword', 'isSending']);
 };
 
 
@@ -89,9 +89,9 @@ export default {
   signUp,
   signUpError,
   signUpIsSending,
-  changePassword,
-  changePasswordError,
-  changePasswordIsSending,
+  setPassword,
+  setPasswordError,
+  setPasswordIsSending,
   me,
   meError,
   meIsSending,
