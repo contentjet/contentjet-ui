@@ -1,3 +1,6 @@
+# 0.5.0
+* Added change password screen under user settings
+
 # 0.4.2
 * Now setting cache control header in server.js
 * Now emitting robots.txt
