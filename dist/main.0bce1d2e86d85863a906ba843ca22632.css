@@ -4861,7 +4861,7 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 .RequestResetPasswordForm_requestResetPasswordForm_1Iu-E .RequestResetPasswordForm_submitButton_3Af8B {
     margin-top: 20px;
   }
-.ChangePasswordForm_changePasswordForm_MxpGe .ChangePasswordForm_submitButton_2or1U {
+.SetPasswordForm_setPasswordForm_1QOws .SetPasswordForm_submitButton_3M9-S {
     margin-top: 20px;
   }
 .SignUp_signUp_23WDI {
@@ -5103,6 +5103,13 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
   vertical-align: middle;
 }
 .MyProfileForm_myProfileForm_9X4Z9 .MyProfileForm_footer_IIqOI {
+    text-align: right;
+  }
+.ChangePasswordForm_changePasswordForm_2Mab1 .ChangePasswordForm_alert_137MJ {
+    margin-bottom: 20px;
+  }
+
+  .ChangePasswordForm_changePasswordForm_2Mab1 .ChangePasswordForm_footer_1Rlwh {
     text-align: right;
   }
 .ProjectList_projectList_ijFYZ {
