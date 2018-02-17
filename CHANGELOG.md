@@ -1,3 +1,6 @@
+# 0.5.2
+* No longer get error when deleting invitations
+
 # 0.5.1
 * Fix where error was shown on field editor name field
 
