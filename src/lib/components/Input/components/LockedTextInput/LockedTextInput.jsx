@@ -14,11 +14,18 @@ class LockedTextInput extends Component {
     super(props);
     this.state = { locked: true };
     this.onChange = this.onChange.bind(this);
+    this.onBlur = this.onBlur.bind(this);
     this.onClickLock = this.onClickLock.bind(this);
   }
 
   onChange(e) {
     this.props.onChange(e.target.value, this.props.name);
+  }
+
+  onBlur(e) {
+    this.setState({ locked: true }, () => {
+      if (this.props.onBlur) this.props.onBlur(e);
+    });
   }
 
   onClickLock() {
@@ -58,7 +65,7 @@ class LockedTextInput extends Component {
             className={s.input}
             onChange={this.onChange}
             disabled={this.state.locked}
-            onBlur={() => { this.setState({ locked: true }); }}
+            onBlur={this.onBlur}
           />
         </ToolTip>
       </InputWrapper>
@@ -69,6 +76,7 @@ class LockedTextInput extends Component {
 LockedTextInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
+  onBlur: PropTypes.func,
   lockMessage: PropTypes.node.isRequired
 };
 

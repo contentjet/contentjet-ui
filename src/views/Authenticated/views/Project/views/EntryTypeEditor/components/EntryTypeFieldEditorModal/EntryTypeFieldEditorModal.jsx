@@ -5,7 +5,6 @@ import Input from 'lib/components/Input';
 import Button from 'lib/components/Button';
 import _ from 'lodash';
 import slugify from 'underscore.string/underscored';
-import camelize from 'underscore.string/camelize';
 
 const TEXT = 'TEXT';
 const LONGTEXT = 'LONGTEXT';
@@ -117,7 +116,11 @@ const lockMessage = (
 );
 
 function formatName(value) {
-  return camelize(slugify(value), true).replace(/[^\w\s!?]/g, '');
+  return _.camelCase(
+    slugify(
+      value.replace(/[^0-9a-zA-Z]/g, '')
+    )
+  );
 }
 
 class EntryTypeFieldEditorModal extends Component {
@@ -125,7 +128,8 @@ class EntryTypeFieldEditorModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fieldProperties: this.props.initialFieldProperties || defaultFieldProperties
+      fieldProperties: this.props.initialFieldProperties || defaultFieldProperties,
+      nameErrors: []
     };
     this.close = this.close.bind(this);
     this.onDone = this.onDone.bind(this);
@@ -187,29 +191,32 @@ class EntryTypeFieldEditorModal extends Component {
   onFieldChange(value, name) {
     // When label input changes we update the 'name' field as a slugified
     // version of label. Note we don't do this if mode == 'EDIT' because
-    // changing the field name of an exisint field is dangerous.
+    // changing the field name of an existing field is dangerous.
     let fieldProperties = _.clone(this.state.fieldProperties);
     fieldProperties[name] = value;
+    let nameErrors = [];
     if (name === 'label' && this.props.mode !== 'EDIT') {
       fieldProperties.name = formatName(value);
+      nameErrors = this.getNameErrors(fieldProperties.name);
     }
-    this.setState({ fieldProperties });
+    this.setState({ fieldProperties, nameErrors });
+  }
+
+  getNameErrors(name) {
+    let nameErrors = [];
+    if (_.includes(this.props.existingFieldNames, name)) {
+      nameErrors = ['A field with this name already exists.'];
+    } else if (_.includes(invalidFieldNames, name)) {
+      nameErrors = ['Invalid field name. This name is reserved.'];
+    }
+    return nameErrors;
   }
 
   onFieldNameInputBlur() {
     let fieldProperties = _.clone(this.state.fieldProperties);
     fieldProperties.name = formatName(fieldProperties.name);
-    this.setState({ fieldProperties });
-  }
-
-  getNameErrors() {
-    let name = this.state.fieldProperties.name.trim();
-    if (_.includes(this.props.existingFieldNames, name)) {
-      return ['A field with this name already exists.'];
-    } else if (_.includes(invalidFieldNames, name)) {
-      return ['Invalid field name. This name is reserved.'];
-    }
-    return null;
+    const nameErrors = this.getNameErrors(fieldProperties.name);
+    this.setState({ fieldProperties, nameErrors });
   }
 
   onDone() {
@@ -228,7 +235,7 @@ class EntryTypeFieldEditorModal extends Component {
   render() {
     const {isOpened, mode} = this.props;
     if (!isOpened) return null;
-    const {fieldProperties} = this.state;
+    const {fieldProperties, nameErrors} = this.state;
     const {fieldType} = fieldProperties;
 
     const nameInputProps = {
@@ -239,7 +246,7 @@ class EntryTypeFieldEditorModal extends Component {
       helpText: 'The name of this field when accessed via the API',
       tabIndex: '-1',
       value: fieldProperties.name,
-      errors: this.getNameErrors(),
+      errors: nameErrors,
       onChange: this.onFieldChange,
       onBlur: this.onFieldNameInputBlur,
       required: true

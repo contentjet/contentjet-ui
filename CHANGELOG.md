@@ -1,3 +1,6 @@
+# 0.5.1
+* Fix where error was shown on field editor name field
+
 # 0.5.0
 * Added change password screen under user settings
 

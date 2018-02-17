@@ -18,7 +18,7 @@ class TextInput extends Component {
   }
 
   render() {
-    let className = classnames(
+    const className = classnames(
       s.textInput,
       {
         [s.hasError]: _.get(this.props, 'errors.length')
