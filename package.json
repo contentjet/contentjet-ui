@@ -1,6 +1,6 @@
 {
   "name": "contentjet-ui",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A React based front end for contentjet, a powerful headless API-first CMS.",
   "repository": {
     "type": "git",
