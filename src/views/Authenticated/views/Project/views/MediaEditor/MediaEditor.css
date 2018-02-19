@@ -25,13 +25,22 @@
   text-align: center;
 
   img {
+    width: auto;
+    height: auto;
     max-width: 100%;
+    max-height: 480px;
   }
 }
 
+.mediaMeta {
+  line-height: 5em;
+  font-size: 12px;
+  display: flex;
+  color: var(--grey);
+}
+
 .mediaName {
-  line-height: 2em;
-  text-align: center;
+  flex-grow: 1;
 }
 
 .cancelButton {
