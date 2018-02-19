@@ -1,3 +1,8 @@
+# 0.5.3
+* Improved media editor design
+* Images on media editor now have a max height
+* Now showing file size on media editor
+
 # 0.5.2
 * No longer get error when deleting invitations
 

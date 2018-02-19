@@ -6504,6 +6504,10 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 .MediaImage_mediaImage_NzOOE {
   color: #ccc;
   font-size: 90px;
+  display: block;
+  margin: 0 auto;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEX4+Pj09PQf/c7fAAAAGklEQVR4Xq3MIQEAAADDIPqX/kvMIMEWEm8O7b0/wewc/NcAAAAASUVORK5CYII=);
+  background-size: 16px 16px;
 }
 .MediaEditor_mediaEditor_eLAVu {
   height: 100%;
@@ -6549,13 +6553,25 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 
 
 .MediaEditor_mediaHolder_2Dzeg img {
+    width: auto;
+    height: auto;
     max-width: 100%;
+    max-height: 480px;
   }
 
 
+.MediaEditor_mediaMeta_ESQlp {
+  line-height: 5em;
+  font-size: 12px;
+  display: -webkit-box;
+  display: flex;
+  color: #999;
+}
+
+
 .MediaEditor_mediaName_6OQzE {
-  line-height: 2em;
-  text-align: center;
+  -webkit-box-flex: 1;
+          flex-grow: 1;
 }
 
 
