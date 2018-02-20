@@ -32,6 +32,21 @@ const signUpIsSending = (state) => {
 };
 
 
+const setPassword = (state) => {
+  return state.getIn(['user', 'setPassword']);
+};
+
+
+const setPasswordError = (state) => {
+  return state.getIn(['user', 'setPassword', 'error']);
+};
+
+
+const setPasswordIsSending = (state) => {
+  return state.getIn(['user', 'setPassword', 'isSending']);
+};
+
+
 const changePassword = (state) => {
   return state.getIn(['user', 'changePassword']);
 };
@@ -89,6 +104,9 @@ export default {
   signUp,
   signUpError,
   signUpIsSending,
+  setPassword,
+  setPasswordError,
+  setPasswordIsSending,
   changePassword,
   changePasswordError,
   changePasswordIsSending,

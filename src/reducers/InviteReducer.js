@@ -8,12 +8,11 @@ const extraListReducers = {
 
   'BULK_DESTROY_INVITE': (state, action) => {
     // Optimistically delete
-    let ids = action.meta;
-    let results = state.getIn(['data']).filter(item => {
+    const ids = action.meta;
+    const results = state.get('data').filter(item => {
       return !_.includes(ids, item.get('id'));
     });
-    let count = results.count();
-    return state.mergeIn(['data'], { count, results});
+    return state.set('data', results);
   }
 
 };

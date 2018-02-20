@@ -1,3 +1,33 @@
+# 0.5.3
+* Improved media editor design
+* Images on media editor now have a max height
+* Now showing file size on media editor
+
+# 0.5.2
+* No longer get error when deleting invitations
+
+# 0.5.1
+* Fix where error was shown on field editor name field
+
+# 0.5.0
+* Added change password screen under user settings
+
+# 0.4.2
+* Now setting cache control header in server.js
+* Now emitting robots.txt
+
+# 0.4.1
+* Fixed issue with images not being inserted into markdown input
+* Webpack now configured to output hash in js and css filenames
+
+# 0.4.0
+* Added Dockerfile and server.js
+
+# 0.3.0
+* Added sort controls to entries screen
+* Added sort controls to media screen
+* Optimised 2x contentjet svgs
+
 # 0.2.5
 * Updated README
 * Increased vertical padding on ConfirmModal component

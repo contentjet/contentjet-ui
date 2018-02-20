@@ -6,10 +6,10 @@ import UserActions from 'actions/UserActions';
 import { Map } from 'immutable';
 import Button from 'lib/components/Button';
 import CenteredPanelView from 'lib/components/CenteredPanelView';
-import ChangePasswordForm from './components/ChangePasswordForm';
+import SetPasswordForm from './components/SetPasswordForm';
 
 
-class ChangePassword extends Component {
+class SetPassword extends Component {
 
   constructor(props) {
     super(props);
@@ -47,7 +47,7 @@ class ChangePassword extends Component {
     const { err, isSending } = this.props;
     return (
       <CenteredPanelView>
-        <ChangePasswordForm
+        <SetPasswordForm
           onSubmit={this.onSubmit}
           err={err.toJS()}
           isSending={isSending}
@@ -57,7 +57,7 @@ class ChangePassword extends Component {
   }
 
 }
-ChangePassword.propTypes = {
+SetPassword.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
   err: PropTypes.instanceOf(Map).isRequired,
@@ -67,18 +67,18 @@ ChangePassword.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    err: UserSelectors.changePasswordError(state),
-    isSending: UserSelectors.changePasswordIsSending(state)
+    err: UserSelectors.setPasswordError(state),
+    isSending: UserSelectors.setPasswordIsSending(state)
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onSubmit: (token, data) => {
-      return dispatch(UserActions.changePassword(token, data.password)).payload;
+      return dispatch(UserActions.setPassword(token, data.password)).payload;
     }
   };
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword);
+export default connect(mapStateToProps, mapDispatchToProps)(SetPassword);

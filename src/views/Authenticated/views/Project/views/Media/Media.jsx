@@ -27,6 +27,14 @@ const resultsPerPageChoices = [
 ];
 
 
+const orderByChoices = [
+  { label: 'Created (ascending)', value: 'createdAt'},
+  { label: 'Created', value: '-createdAt'},
+  { label: 'Modified (ascending)', value: 'modifiedAt'},
+  { label: 'Modified', value: '-modifiedAt'}
+];
+
+
 class Media extends Component {
 
   constructor(props) {
@@ -35,7 +43,8 @@ class Media extends Component {
       modalOpen: false,
       page: 1,
       pageSize: resultsPerPageChoices[0],
-      search: ''
+      search: '',
+      orderBy: orderByChoices[1].value
     };
     this.listMedia = this.listMedia.bind(this);
     this.listMediaDebounced = _.debounce(this.listMedia.bind(this), 500);
@@ -46,6 +55,7 @@ class Media extends Component {
     this.onDeleteSelected = this.onDeleteSelected.bind(this);
     this.onSearch = this.onSearch.bind(this);
     this.onPageSizeChange = this.onPageSizeChange.bind(this);
+    this.onOrderByChange = this.onOrderByChange.bind(this);
   }
 
   listMedia() {
@@ -54,14 +64,16 @@ class Media extends Component {
       {
         page: this.state.page,
         pageSize: this.state.pageSize,
-        search: _.trim(this.state.search)
+        search: _.trim(this.state.search),
+        orderBy: this.state.orderBy
       }
     );
     // Update browser history
     const params = queryString.stringify({
       page: this.state.page,
       pageSize: this.state.pageSize,
-      search: _.trim(this.state.search)
+      search: _.trim(this.state.search),
+      orderBy: this.state.orderBy
     });
     browserHistory.replace({
       pathname: this.props.location.pathname,
@@ -76,7 +88,8 @@ class Media extends Component {
       {
         pageSize: q.pageSize || resultsPerPageChoices[0],
         search: q.search || '',
-        page: q.page || 1
+        page: q.page || 1,
+        orderBy: q.orderBy || orderByChoices[1].value
       },
       this.listMedia
     );
@@ -112,6 +125,10 @@ class Media extends Component {
 
   onPageSizeChange(value) {
     this.setState({ pageSize: value, page: 1 }, this.listMedia);
+  }
+
+  onOrderByChange(value) {
+    this.setState({ orderBy: value.value }, this.listMedia);
   }
 
   render() {
@@ -201,6 +218,20 @@ class Media extends Component {
                   label="Search"
                   placeholder="Search"
                   onChange={this.onSearch}
+                />
+              </div>
+              <div className={s.column}>
+                <Input
+                  type="select-object"
+                  name="pageSize"
+                  label="Order by"
+                  placeholder="Results per page"
+                  choices={orderByChoices}
+                  value={this.state.orderBy}
+                  textField="label"
+                  valueField="value"
+                  onChange={this.onOrderByChange}
+                  disabled={isFetching || !media.length}
                 />
               </div>
               <div className={s.column}>

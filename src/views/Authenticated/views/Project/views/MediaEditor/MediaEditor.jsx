@@ -19,6 +19,17 @@ import Notification from 'lib/components/Notification';
 import s from './MediaEditor.css';
 
 
+// Code lifted from here
+// https://stackoverflow.com/questions/15900485/correct-way-to-convert-size-in-bytes-to-kb-mb-gb-in-javascript
+function formatBytes(bytes,decimals) {
+  if (bytes == 0) return '0 Bytes';
+  let k = 1024,
+    dm = decimals || 2,
+    sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+    i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+}
+
 class MediaEditor extends Component {
 
   constructor(props) {
@@ -135,8 +146,9 @@ class MediaEditor extends Component {
             <div className={s.mediaHolder}>
               <MediaImage media={media} />
             </div>
-            <div className={s.mediaName}>
-              {_.get(media, 'name')}
+            <div className={s.mediaMeta}>
+              <div className={s.mediaName}>{_.get(media, 'name')}</div>
+              <div className={s.mediaSize}>{formatBytes(_.get(media, 'size', 0))}</div>
             </div>
             <Input
               name="description"

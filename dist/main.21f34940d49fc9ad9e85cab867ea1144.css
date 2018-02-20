@@ -4861,7 +4861,7 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 .RequestResetPasswordForm_requestResetPasswordForm_1Iu-E .RequestResetPasswordForm_submitButton_3Af8B {
     margin-top: 20px;
   }
-.ChangePasswordForm_changePasswordForm_MxpGe .ChangePasswordForm_submitButton_2or1U {
+.SetPasswordForm_setPasswordForm_1QOws .SetPasswordForm_submitButton_3M9-S {
     margin-top: 20px;
   }
 .SignUp_signUp_23WDI {
@@ -4936,6 +4936,7 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 
 .AppHeader_logo_1ukfY {
   display: block;
+  max-width: 100%;
 }
 
 
@@ -5102,6 +5103,13 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
   vertical-align: middle;
 }
 .MyProfileForm_myProfileForm_9X4Z9 .MyProfileForm_footer_IIqOI {
+    text-align: right;
+  }
+.ChangePasswordForm_changePasswordForm_2Mab1 .ChangePasswordForm_alert_137MJ {
+    margin-bottom: 20px;
+  }
+
+  .ChangePasswordForm_changePasswordForm_2Mab1 .ChangePasswordForm_footer_1Rlwh {
     text-align: right;
   }
 .ProjectList_projectList_ijFYZ {
@@ -5526,9 +5534,10 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 .WebHookModal_hr_13cYd {
   margin: 15px 0;
 }
-.ConfirmModal_confirmModal_2VmOK {
-
-}
+.ConfirmModal_confirmModal_2VmOK .ConfirmModal_body_2ov_H {
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+  }
 .WebHooks_webHookList_1gRPI .WebHooks_item_14YgK {
     margin-bottom: 5px;
   }
@@ -5997,7 +6006,7 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 
 
 .Entries_controlsColumn_3t3gF:nth-child(1) {
-    width: calc(99.9% * 7/12 - (30px - 30px * 7/12));
+    width: calc(99.9% * 6/12 - (30px - 30px * 6/12));
   }
 
 
@@ -6025,7 +6034,7 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 
 
 .Entries_controlsColumn_3t3gF:nth-child(2) {
-    width: calc(99.9% * 3/12 - (30px - 30px * 3/12));
+    width: calc(99.9% * 2/12 - (30px - 30px * 2/12));
   }
 
 
@@ -6076,6 +6085,34 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 
 
 .Entries_controlsColumn_3t3gF:nth-child(3):nth-child(12n + 1) {
+    clear: both;
+  }
+
+
+.Entries_controlsColumn_3t3gF:nth-child(4) {
+    width: calc(99.9% * 2/12 - (30px - 30px * 2/12));
+  }
+
+
+.Entries_controlsColumn_3t3gF:nth-child(4):nth-child(1n) {
+    float: left;
+    margin-right: 30px;
+    clear: none;
+  }
+
+
+.Entries_controlsColumn_3t3gF:nth-child(4):last-child {
+    margin-right: 0;
+  }
+
+
+.Entries_controlsColumn_3t3gF:nth-child(4):nth-child(12n) {
+    margin-right: 0;
+    float: right;
+  }
+
+
+.Entries_controlsColumn_3t3gF:nth-child(4):nth-child(12n + 1) {
     clear: both;
   }
 
@@ -6355,7 +6392,7 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 
 
 .Media_controls_2lKb- .Media_column_JLp3g:nth-child(1) {
-      width: calc(99.9% * 9/12 - (30px - 30px * 9/12));
+      width: calc(99.9% * 7/12 - (30px - 30px * 7/12));
     }
 
 
@@ -6410,6 +6447,34 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
     }
 
 
+.Media_controls_2lKb- .Media_column_JLp3g:nth-child(3) {
+      width: calc(99.9% * 2/12 - (30px - 30px * 2/12));
+    }
+
+
+.Media_controls_2lKb- .Media_column_JLp3g:nth-child(3):nth-child(1n) {
+      float: left;
+      margin-right: 30px;
+      clear: none;
+    }
+
+
+.Media_controls_2lKb- .Media_column_JLp3g:nth-child(3):last-child {
+      margin-right: 0;
+    }
+
+
+.Media_controls_2lKb- .Media_column_JLp3g:nth-child(3):nth-child(12n) {
+      margin-right: 0;
+      float: right;
+    }
+
+
+.Media_controls_2lKb- .Media_column_JLp3g:nth-child(3):nth-child(12n + 1) {
+      clear: both;
+    }
+
+
 .Media_sidebar_1exds {
   background: #f9f9f9;
   bottom: 0;
@@ -6439,6 +6504,10 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 .MediaImage_mediaImage_NzOOE {
   color: #ccc;
   font-size: 90px;
+  display: block;
+  margin: 0 auto;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEX4+Pj09PQf/c7fAAAAGklEQVR4Xq3MIQEAAADDIPqX/kvMIMEWEm8O7b0/wewc/NcAAAAASUVORK5CYII=);
+  background-size: 16px 16px;
 }
 .MediaEditor_mediaEditor_eLAVu {
   height: 100%;
@@ -6484,13 +6553,25 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 
 
 .MediaEditor_mediaHolder_2Dzeg img {
+    width: auto;
+    height: auto;
     max-width: 100%;
+    max-height: 480px;
   }
 
 
+.MediaEditor_mediaMeta_ESQlp {
+  line-height: 5em;
+  font-size: 12px;
+  display: -webkit-box;
+  display: flex;
+  color: #999;
+}
+
+
 .MediaEditor_mediaName_6OQzE {
-  line-height: 2em;
-  text-align: center;
+  -webkit-box-flex: 1;
+          flex-grow: 1;
 }
 
 

@@ -4,10 +4,10 @@ import _ from 'lodash';
 import Input from 'lib/components/Input';
 import Button from 'lib/components/Button';
 import ErrorsListAlert from 'lib/components/ErrorsListAlert';
-import s from './ChangePasswordForm.css';
+import s from './SetPasswordForm.css';
 
 
-class ChangePasswordForm extends Component {
+class SetPasswordForm extends Component {
 
   constructor(props) {
     super(props);
@@ -46,7 +46,7 @@ class ChangePasswordForm extends Component {
     }
     return (
       <form
-        className={s.changePasswordForm}
+        className={s.setPasswordForm}
         onSubmit={this.onSubmitHandler}
         noValidate
       >
@@ -87,11 +87,11 @@ class ChangePasswordForm extends Component {
   }
 
 }
-ChangePasswordForm.propTypes = {
+SetPasswordForm.propTypes = {
   isSending: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
   err: PropTypes.object.isRequired
 };
 
 
-export default ChangePasswordForm;
+export default SetPasswordForm;

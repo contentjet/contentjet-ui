@@ -12,7 +12,15 @@ class MediaImage extends Component {
     let { media, className } = this.props;
     className = classnames(s.mediaImage, className);
     if (_.includes(['image/gif', 'image/png', 'image/jpg', 'image/jpeg'], media.mimeType)) {
-      return <img className={className} src={media.file} />;
+      return (
+        <div className={className}>
+          <img
+            src={media.file}
+            width={media.width}
+            height={media.height}
+          />
+        </div>
+      );
     }
     return <FileIcon className={className} mimeType={media.mimeType} />;
   }

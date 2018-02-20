@@ -2,6 +2,7 @@
 import 'normalize.css';
 import 'react-widgets/dist/css/react-widgets.css';
 import './styles/main.css';
+import './robots.txt';
 import axios from 'axios';
 import _ from 'lodash';
 import TokenStorage from 'services/TokenStorage';
@@ -17,7 +18,7 @@ import Immutable from 'immutable';
 
 
 // Set axios defaults
-axios.defaults.baseURL = window.contentjet.BASE_URL;
+axios.defaults.baseURL = window.contentjet.BACKEND_URL;
 axios.interceptors.request.use(
   config => {
     let accessToken = TokenStorage.getToken();

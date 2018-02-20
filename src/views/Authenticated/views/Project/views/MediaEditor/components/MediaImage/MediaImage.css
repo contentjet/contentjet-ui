@@ -1,4 +1,8 @@
 .mediaImage {
   color: #ccc;
   font-size: 90px;
+  display: block;
+  margin: 0 auto;
+  background: url('./ps_neutral_@2X.png');
+  background-size: 16px 16px;
 }

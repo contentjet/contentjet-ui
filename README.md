@@ -1,5 +1,7 @@
 # contentjet-ui
 
+![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)
+
 A React based front end for contentjet, a powerful headless API-first CMS.
 
 Contentjet is composed of 2 discreet applications, the backend API [contentjet-api][contentjet-api] and the frontend HTML user interface contentjet-ui (this repository).
