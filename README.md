@@ -18,8 +18,8 @@ For more information and hosting documentation please visit **[contentjet.github
 ### Quick start
 
 1. Install dependencies with `npm install`
-2. Make sure you have [contentjet-api][1] running
-3. Edit `src/index.ejs` and change the value of `window.contentjet.BASE_URL` to point to the url serving [contentjet-api][1]
+2. Make sure you have [contentjet-api][contentjet-api] running
+3. Edit `src/index.ejs` and change the value of `window.contentjet.BASE_URL` to point to the url serving [contentjet-api][contentjet-api]
 4. Run development server with `npm start`
 
 [contentjet]: https://contentjet.github.io
