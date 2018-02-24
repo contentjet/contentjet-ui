@@ -479,6 +479,18 @@ class EntryTypeFieldEditorModal extends Component {
       );
     }
 
+    dynamicFields.push(
+      <Input
+        type="checkbox"
+        name="disabled"
+        key="disabled"
+        label="Disabled"
+        placeholder="Disabled"
+        value={fieldProperties.disabled}
+        onChange={this.onFieldChange}
+      />
+    );
+
     const footer = [
       <Button
         btnStyle="link"

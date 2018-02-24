@@ -24,6 +24,13 @@
       }
     }
   }
+
+  &.disabled {
+
+    .itemDetails {
+      opacity: 0.35;
+    }
+  }
 }
 
 .itemDetails {

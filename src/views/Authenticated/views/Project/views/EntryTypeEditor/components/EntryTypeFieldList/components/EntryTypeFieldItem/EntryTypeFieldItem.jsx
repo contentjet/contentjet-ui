@@ -61,7 +61,14 @@ class EntryTypeFieldItem extends Component {
     const style = {
       top: _.get(this.state, 'styleTop', this.props.position * ITEM_HEIGHT)
     };
-    className = classnames(s.item, {[s.required]: entryTypeField.get('required')}, className);
+    className = classnames(
+      s.item,
+      {
+        [s.required]: entryTypeField.get('required'),
+        [s.disabled]: entryTypeField.get('disabled')
+      },
+      className
+    );
     return (
       <li
         className={className}
