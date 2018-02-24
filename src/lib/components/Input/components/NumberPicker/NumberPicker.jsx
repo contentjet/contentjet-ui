@@ -18,8 +18,10 @@ class _NumberPicker extends Component {
   }
 
   onChange(value, name) {
-    if (this.props.positiveOnly) value = Math.abs(value);
-    if (this.props.integerOnly) value = parseInt(value);
+    if (value) {
+      if (this.props.positiveOnly) value = Math.abs(value);
+      if (this.props.integerOnly) value = parseInt(value);
+    }
     this.props.onChange(value, name);
   }
 

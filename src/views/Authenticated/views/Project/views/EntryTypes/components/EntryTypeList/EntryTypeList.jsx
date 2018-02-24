@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import _ from 'lodash';
 import { Link } from 'react-router';
 import FontAwesome from 'lib/components/FontAwesome';
 import List from 'lib/components/List';
@@ -9,6 +10,7 @@ import s from './EntryTypeList.css';
 
 const EntryTypeList = (props) => {
   let { entryTypes, projectId, className } = props;
+  entryTypes = _.orderBy(entryTypes, 'name');
   className = classnames(s.entryTypeList, className);
   return (
     <List className={className}>
@@ -21,7 +23,10 @@ const EntryTypeList = (props) => {
                   name="database"
                   className={s.itemIcon}
                 />
-                {entryType.name}
+                <div className={s.content}>
+                  <h1 className={s.title}>{entryType.name}</h1>
+                  {entryType.description ? (<p className={s.description}>{entryType.description}</p>) : undefined}
+                </div>
               </Link>
             </li>
           );

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { Map } from 'immutable';
 import TweenMax from 'gsap';
+import classnames from 'classnames';
 import IconButton from 'lib/components/IconButton';
 import Button from 'lib/components/Button';
 import s from './EntryTypeFieldItem.css';
@@ -56,21 +57,30 @@ class EntryTypeFieldItem extends Component {
   }
 
   render() {
+    let {entryTypeField, className} = this.props;
     const style = {
       top: _.get(this.state, 'styleTop', this.props.position * ITEM_HEIGHT)
     };
+    className = classnames(
+      s.item,
+      {
+        [s.required]: entryTypeField.get('required'),
+        [s.disabled]: entryTypeField.get('disabled')
+      },
+      className
+    );
     return (
       <li
-        className={s.item}
+        className={className}
         style={style}
-        title={this.props.entryTypeField.get('name')}
+        title={entryTypeField.get('name')}
       >
         <div className={s.itemDetails}>
           <strong title="Field label">
-            {this.props.entryTypeField.get('label')}
+            {entryTypeField.get('label')}
           </strong>
           <span className={s.itemType}>
-            {' - ' + this.props.entryTypeField.get('fieldType')}
+            {' - ' + entryTypeField.get('fieldType')}
           </span>
         </div>
         <div className={s.itemControls}>

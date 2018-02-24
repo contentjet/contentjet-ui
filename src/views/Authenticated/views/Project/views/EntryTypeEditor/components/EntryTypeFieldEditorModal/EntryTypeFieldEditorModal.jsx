@@ -199,6 +199,12 @@ class EntryTypeFieldEditorModal extends Component {
       fieldProperties.name = formatName(value);
       nameErrors = this.getNameErrors(fieldProperties.name);
     }
+    if (name === 'minLength' && value > fieldProperties.maxLength) {
+      fieldProperties.minLength = fieldProperties.maxLength;
+    }
+    if (name === 'minValue' && value > fieldProperties.maxValue) {
+      fieldProperties.minValue = fieldProperties.maxValue;
+    }
     this.setState({ fieldProperties, nameErrors });
   }
 
@@ -226,6 +232,22 @@ class EntryTypeFieldEditorModal extends Component {
 
   isValid() {
     const {fieldProperties} = this.state;
+    if ('minLength' in fieldProperties && _.isNil(fieldProperties.minLength)) return false;
+    if ('maxLength' in fieldProperties && _.isNil(fieldProperties.maxLength)) return false;
+    if (
+      'minLength' in fieldProperties && 'maxLength' in fieldProperties &&
+      fieldProperties.maxLength < fieldProperties.minLength
+    ) {
+      return false;
+    }
+    if ('minValue' in fieldProperties && _.isNil(fieldProperties.minValue)) return false;
+    if ('maxValue' in fieldProperties && _.isNil(fieldProperties.maxValue)) return false;
+    if (
+      'minValue' in fieldProperties && 'maxValue' in fieldProperties &&
+      fieldProperties.maxValue < fieldProperties.minValue
+    ) {
+      return false;
+    }
     return (
       fieldProperties.name &&
       fieldProperties.label
@@ -456,6 +478,18 @@ class EntryTypeFieldEditorModal extends Component {
         />
       );
     }
+
+    dynamicFields.push(
+      <Input
+        type="checkbox"
+        name="disabled"
+        key="disabled"
+        label="Disabled"
+        placeholder="Disabled"
+        value={fieldProperties.disabled}
+        onChange={this.onFieldChange}
+      />
+    );
 
     const footer = [
       <Button

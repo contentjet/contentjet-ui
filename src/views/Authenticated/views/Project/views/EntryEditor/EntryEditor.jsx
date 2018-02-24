@@ -40,6 +40,7 @@ class EntryEditor extends Component {
     this.onFieldChange = this.onFieldChange.bind(this);
     this.onCreateTag = this.onCreateTag.bind(this);
     this.onCustomFieldChange = this.onCustomFieldChange.bind(this);
+    this.onSingleChoiceFieldChange = this.onSingleChoiceFieldChange.bind(this);
   }
 
   routerWillLeave() {
@@ -140,6 +141,10 @@ class EntryEditor extends Component {
     });
   }
 
+  onSingleChoiceFieldChange(value, name) {
+    this.onCustomFieldChange([value], name);
+  }
+
   render() {
     const { isSending } = this.props;
     const err = this.props.err.toJS();
@@ -151,79 +156,84 @@ class EntryEditor extends Component {
 
     var fields = [];
     if (entryType) {
-      fields = entryType.fields.map(entryTypeField => {
-        var fieldProps = {
-          className: s.field,
-          label: entryTypeField.label,
-          helpText: entryTypeField.description,
-          placeholder: entryTypeField.label,
-          name: entryTypeField.name,
-          required: entryTypeField.required,
-          value: _.get(entry.fields, entryTypeField.name, null),
-          errors: _.get(err, `errors.fields.${entryTypeField.name}`),
-          onChange: this.onCustomFieldChange
-        };
-        if (entryTypeField.fieldType === 'TEXT') {
-          fieldProps.type = 'text';
-          fieldProps.value = fieldProps.value || '';
-        } else if (entryTypeField.fieldType === 'COLOR') {
-          fieldProps.type = 'color';
-          if (entryTypeField.format === 'rgba') {
-            fieldProps.disableAlpha = false;
+      fields = entryType.fields
+        .filter(entryTypeField => !entryTypeField.disabled)
+        .map(entryTypeField => {
+          var fieldProps = {
+            className: s.field,
+            label: entryTypeField.label,
+            helpText: entryTypeField.description,
+            placeholder: entryTypeField.label,
+            name: entryTypeField.name,
+            required: entryTypeField.required,
+            value: _.get(entry.fields, entryTypeField.name, null),
+            errors: _.get(err, `errors.fields.${entryTypeField.name}`),
+            onChange: this.onCustomFieldChange
+          };
+          if (entryTypeField.fieldType === 'TEXT') {
+            fieldProps.type = 'text';
+            fieldProps.value = fieldProps.value || '';
+          } else if (entryTypeField.fieldType === 'COLOR') {
+            fieldProps.type = 'color';
+            if (entryTypeField.format === 'rgba') {
+              fieldProps.disableAlpha = false;
+            }
+          } else if (entryTypeField.fieldType === 'LONGTEXT') {
+            if (entryTypeField.format === 'markdown') {
+              fieldProps.type = 'markdown';
+            } else {
+              fieldProps.type = 'textarea';
+            }
+            fieldProps.projectId = this.props.params.project_id;
+          } else if (entryTypeField.fieldType === 'LIST') {
+            fieldProps.type = 'array';
+          } else if (entryTypeField.fieldType === 'BOOLEAN') {
+            fieldProps.value = !!fieldProps.value;
+            fieldProps.type = 'boolean';
+            fieldProps.inline = true;
+            fieldProps.labelTrue = entryTypeField.labelTrue;
+            fieldProps.labelFalse = entryTypeField.labelFalse;
+          } else if (entryTypeField.fieldType === 'NUMBER') {
+            fieldProps.type = 'number';
+            fieldProps.min = entryTypeField.minValue;
+            fieldProps.max = entryTypeField.maxValue;
+            if (entryTypeField.format === 'integer') fieldProps.integerOnly = true;
+          } else if (entryTypeField.fieldType === 'MEDIA') {
+            fieldProps.type = 'media';
+            fieldProps.maxLength = entryTypeField.maxLength;
+            fieldProps.projectId = this.props.params.project_id;
+          } else if (entryTypeField.fieldType === 'DATE') {
+            if (entryTypeField.format === 'date') fieldProps.time = false;
+            fieldProps.type = 'datetime';
+            if (fieldProps.value === '') {
+              fieldProps.value = null;
+            } else if (_.isString(fieldProps.value)) {
+              fieldProps.value = moment(fieldProps.value).toDate();
+            }
+          } else if (entryTypeField.fieldType === 'CHOICE') {
+            if (entryTypeField.format === 'single') {
+              fieldProps.type = 'select';
+              fieldProps.value = _.get(fieldProps.value, '0');
+              fieldProps.choices = entryTypeField.choices;
+              // Note this gets it's own change handler because we need to convert
+              // the value from a string to a single item array
+              fieldProps.onChange = this.onSingleChoiceFieldChange;
+            } else if (entryTypeField.format === 'multiple') {
+              fieldProps.type = 'select-list';
+              fieldProps.data = entryTypeField.choices;
+              fieldProps.multiple = true;
+            } else {
+              throw Error('Invalid CHOICE field format');
+            }
+          } else if (entryTypeField.fieldType === 'LINK') {
+            fieldProps.type = 'entry-input';
+            fieldProps.value = fieldProps.value || [];
+            fieldProps.excludeEntries = [_.get(entry, 'id')];
+            fieldProps.projectId = this.props.params.project_id;
+            fieldProps.maxLength = entryTypeField.maxLength;
           }
-        } else if (entryTypeField.fieldType === 'LONGTEXT') {
-          if (entryTypeField.format === 'markdown') {
-            fieldProps.type = 'markdown';
-          } else {
-            fieldProps.type = 'textarea';
-          }
-          fieldProps.projectId = this.props.params.project_id;
-        } else if (entryTypeField.fieldType === 'LIST') {
-          fieldProps.type = 'array';
-        } else if (entryTypeField.fieldType === 'BOOLEAN') {
-          fieldProps.value = !!fieldProps.value;
-          fieldProps.type = 'boolean';
-          fieldProps.inline = true;
-          fieldProps.labelTrue = entryTypeField.labelTrue;
-          fieldProps.labelFalse = entryTypeField.labelFalse;
-        } else if (entryTypeField.fieldType === 'NUMBER') {
-          fieldProps.type = 'number';
-          fieldProps.min = entryTypeField.minValue;
-          fieldProps.max = entryTypeField.maxValue;
-          if (entryTypeField.format === 'integer') fieldProps.integerOnly = true;
-        } else if (entryTypeField.fieldType === 'MEDIA') {
-          fieldProps.type = 'media';
-          fieldProps.maxLength = entryTypeField.maxLength;
-          fieldProps.projectId = this.props.params.project_id;
-        } else if (entryTypeField.fieldType === 'DATE') {
-          if (entryTypeField.format === 'date') fieldProps.time = false;
-          fieldProps.type = 'datetime';
-          if (fieldProps.value === '') {
-            fieldProps.value = null;
-          } else if (_.isString(fieldProps.value)) {
-            fieldProps.value = moment(fieldProps.value).toDate();
-          }
-        } else if (entryTypeField.fieldType === 'CHOICE') {
-          if (entryTypeField.format === 'single') {
-            fieldProps.type = 'select';
-            fieldProps.value = _.get(fieldProps.value, '0');
-            fieldProps.choices = entryTypeField.choices;
-          } else if (entryTypeField.format === 'multiple') {
-            fieldProps.type = 'select-list';
-            fieldProps.data = entryTypeField.choices;
-            fieldProps.multiple = true;
-          } else {
-            throw Error('Invalid CHOICE field format');
-          }
-        } else if (entryTypeField.fieldType === 'LINK') {
-          fieldProps.type = 'entry-input';
-          fieldProps.value = fieldProps.value || [];
-          fieldProps.excludeEntries = [_.get(entry, 'id')];
-          fieldProps.projectId = this.props.params.project_id;
-          fieldProps.maxLength = entryTypeField.maxLength;
-        }
-        return <Input key={entryTypeField.name} {...fieldProps} />;
-      }, this);
+          return <Input key={entryTypeField.name} {...fieldProps} />;
+        });
     }
 
     // Only render delete and copy buttons if we're editing an existing entry.

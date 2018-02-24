@@ -1,3 +1,9 @@
+# 0.5.4
+* Added description to entry type list screen
+* Added asterisk to denote required fields on EntryType editor
+* Added UI for disabling entry type fields
+* EntryType's now ordered by name
+
 # 0.5.3
 * Improved media editor design
 * Images on media editor now have a max height
