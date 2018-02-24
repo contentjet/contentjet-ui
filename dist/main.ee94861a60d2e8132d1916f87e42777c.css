@@ -4485,7 +4485,7 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
     }
 
 .SelectListInput_selectListInput_ZOZVY .rw-list-option:hover {
-      background: #efefef;
+      background: #e9e9e9;
       border: 1px solid transparent;
     }
 
@@ -4516,7 +4516,7 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
       }
 
 .MultiSelectInput_multiSelectInput_1bWGx .rw-multiselect .rw-list-option:hover {
-        background: #efefef;
+        background: #e9e9e9;
         border: 1px solid transparent;
       }
 .EntryPickerModal_controls_3ono8 {
@@ -4913,7 +4913,7 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
     margin: 0 0 5px;
   }
 .AppHeader_appHeader_1_xyQ {
-  background: #efefef;
+  background: #e9e9e9;
   height: 36px;
   line-height: 36px;
   text-align: right;
@@ -5130,7 +5130,7 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 
 .ProjectList_projectList_ijFYZ .ProjectList_item_oxkRk a {
       background: #fff;
-      border: 1px solid #efefef;
+      border: 1px solid #e9e9e9;
       border-radius: 4px;
       display: block;
       padding: 10px 15px;
@@ -5643,11 +5643,12 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 
 .EntryTypeList_entryTypeList_2b4ED .EntryTypeList_item_2YF1y a {
       background: #fff;
-      border: 1px solid #efefef;
+      border: 1px solid #e9e9e9;
       border-radius: 4px;
-      display: block;
       line-height: 20px;
       padding: 15px;
+      display: -webkit-box;
+      display: flex;
     }
 
 
@@ -5657,9 +5658,30 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
     }
 
 
+.EntryTypeList_entryTypeList_2b4ED .EntryTypeList_content_36kea {
+    -webkit-box-flex: 1;
+            flex-grow: 1;
+  }
+
+
+.EntryTypeList_entryTypeList_2b4ED .EntryTypeList_title_14Uft {
+    margin: 0;
+    line-height: 1em;
+    font-size: 22px;
+  }
+
+
+.EntryTypeList_entryTypeList_2b4ED .EntryTypeList_description_1Toe1 {
+    margin: 0;
+    color: #999;
+    line-height: 1em;
+    margin-top: 8px;
+  }
+
+
 .EntryTypeList_entryTypeList_2b4ED .EntryTypeList_itemIcon_iZM9G {
     font-size: 20px;
-    margin-right: 10px;
+    margin-right: 12px;
     position: relative;
     top: 1px;
   }
@@ -5708,6 +5730,16 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 .EntryTypeFieldItem_item_TylLg p {
     margin: 0;
   }
+
+.EntryTypeFieldItem_item_TylLg.EntryTypeFieldItem_required_2_DuJ .EntryTypeFieldItem_itemDetails_2c_uE::before {
+        color: #d9534f;
+        content: '* ';
+        font-weight: bold;
+      }
+
+.EntryTypeFieldItem_item_TylLg.EntryTypeFieldItem_disabled_dPp_u .EntryTypeFieldItem_itemDetails_2c_uE {
+      opacity: 0.35;
+    }
 
 .EntryTypeFieldItem_itemDetails_2c_uE {
   float: left;
@@ -6309,7 +6341,7 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 
 
 .UploadsList_uploadsList_1o-H7 .UploadsList_item_9IC_T {
-    border: 1px solid #efefef;
+    border: 1px solid #e9e9e9;
     border-radius: 4px;
     margin-bottom: 5px;
     padding: 5px 3px;
