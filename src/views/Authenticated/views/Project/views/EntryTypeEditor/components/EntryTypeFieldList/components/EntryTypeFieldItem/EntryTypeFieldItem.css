@@ -12,6 +12,18 @@
   p {
     margin: 0;
   }
+
+  &.required {
+
+    .itemDetails {
+
+      &::before {
+        color: #d9534f;
+        content: '* ';
+        font-weight: bold;
+      }
+    }
+  }
 }
 
 .itemDetails {

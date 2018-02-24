@@ -1,5 +1,6 @@
 # 0.5.4
 * Added description to entry type list screen
+* Added asterisk to denote required fields on EntryType editor
 
 # 0.5.3
 * Improved media editor design
