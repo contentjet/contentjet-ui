@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import _ from 'lodash';
 import { Link } from 'react-router';
 import FontAwesome from 'lib/components/FontAwesome';
 import List from 'lib/components/List';
@@ -9,6 +10,7 @@ import s from './EntryTypeList.css';
 
 const EntryTypeList = (props) => {
   let { entryTypes, projectId, className } = props;
+  entryTypes = _.orderBy(entryTypes, 'name');
   className = classnames(s.entryTypeList, className);
   return (
     <List className={className}>
