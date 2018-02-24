@@ -1,3 +1,6 @@
+# 0.5.4
+* Added description to entry type list screen
+
 # 0.5.3
 * Improved media editor design
 * Images on media editor now have a max height

@@ -21,7 +21,10 @@ const EntryTypeList = (props) => {
                   name="database"
                   className={s.itemIcon}
                 />
-                {entryType.name}
+                <div className={s.content}>
+                  <h1 className={s.title}>{entryType.name}</h1>
+                  {entryType.description ? (<p className={s.description}>{entryType.description}</p>) : undefined}
+                </div>
               </Link>
             </li>
           );

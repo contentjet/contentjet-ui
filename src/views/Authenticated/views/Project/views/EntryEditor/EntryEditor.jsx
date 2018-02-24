@@ -40,6 +40,7 @@ class EntryEditor extends Component {
     this.onFieldChange = this.onFieldChange.bind(this);
     this.onCreateTag = this.onCreateTag.bind(this);
     this.onCustomFieldChange = this.onCustomFieldChange.bind(this);
+    this.onSingleChoiceFieldChange = this.onSingleChoiceFieldChange.bind(this);
   }
 
   routerWillLeave() {
@@ -140,6 +141,10 @@ class EntryEditor extends Component {
     });
   }
 
+  onSingleChoiceFieldChange(value, name) {
+    this.onCustomFieldChange([value], name);
+  }
+
   render() {
     const { isSending } = this.props;
     const err = this.props.err.toJS();
@@ -208,6 +213,9 @@ class EntryEditor extends Component {
             fieldProps.type = 'select';
             fieldProps.value = _.get(fieldProps.value, '0');
             fieldProps.choices = entryTypeField.choices;
+            // Note this gets it's own change handler because we need to convert
+            // the value from a string to a single item array
+            fieldProps.onChange = this.onSingleChoiceFieldChange;
           } else if (entryTypeField.format === 'multiple') {
             fieldProps.type = 'select-list';
             fieldProps.data = entryTypeField.choices;

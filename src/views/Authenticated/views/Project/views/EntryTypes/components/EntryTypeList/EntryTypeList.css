@@ -12,9 +12,9 @@
       background: #fff;
       border: 1px solid var(--light-grey);
       border-radius: 4px;
-      display: block;
       line-height: 20px;
       padding: 15px;
+      display: flex;
     }
 
     a:hover {
@@ -23,9 +23,26 @@
     }
   }
 
+  .content {
+    flex-grow: 1;
+  }
+
+  .title {
+    margin: 0;
+    line-height: 1em;
+    font-size: 22px;
+  }
+
+  .description {
+    margin: 0;
+    color: var(--grey);
+    line-height: 1em;
+    margin-top: 8px;
+  }
+
   .itemIcon {
     font-size: 20px;
-    margin-right: 10px;
+    margin-right: 12px;
     position: relative;
     top: 1px;
   }
