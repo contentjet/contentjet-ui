@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ArrayInput from './components/ArrayInput';
 import BooleanRadioInput from './components/BooleanRadioInput';
 import DateTimePicker from './components/DateTimePicker';
 import Select from './components/Select';
@@ -40,8 +39,6 @@ class Input extends Component {
       return <EmailInput {...this.props} />;
     } else if (type === 'textarea') {
       return <Textarea {...this.props} />;
-    } else if (type === 'array') {
-      return <ArrayInput {...this.props} />;
     } else if (type === 'markdown') {
       return <MarkdownInput {...this.props} />;
     } else if (type === 'boolean') {
@@ -83,7 +80,6 @@ Input.propTypes = {
     'select-object',
     'password',
     'textarea',
-    'array',
     'markdown',
     'boolean',
     'number',
