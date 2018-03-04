@@ -19,6 +19,7 @@ import Input from 'lib/components/Input';
 import ConfirmModal from 'lib/components/ConfirmModal';
 import ErrorsListAlert from 'lib/components/ErrorsListAlert';
 import Notification from 'lib/components/Notification';
+import LoadingSpinner from 'lib/components/LoadingSpinner';
 import s from './EntryEditor.css';
 
 
@@ -146,9 +147,11 @@ class EntryEditor extends Component {
   }
 
   render() {
-    const { isSending } = this.props;
+    const { isSending, isFetching } = this.props;
     const err = this.props.err.toJS();
     const notification = this.props.notification.toJS();
+
+    if (isFetching) return <LoadingSpinner className={s.loadingSpinner} />;
 
     let entryType = this.state.entryType.toJS();
     let entry = this.state.entry.toJS();
@@ -350,6 +353,7 @@ class EntryEditor extends Component {
 EntryEditor.propTypes = {
   entry: PropTypes.instanceOf(Map).isRequired,
   isSending: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool.isRequired,
   err: PropTypes.instanceOf(Map).isRequired,
   entryTags: PropTypes.instanceOf(List).isRequired,
   entryType: PropTypes.instanceOf(Map).isRequired,
@@ -372,6 +376,7 @@ const mapStateToProps = (state) => {
   return {
     entry: EntrySelectors.detailData(state),
     isSending: EntrySelectors.detailIsSending(state),
+    isFetching: EntrySelectors.detailIsFetching(state),
     err: EntrySelectors.detailError(state),
     entryTags: EntryTagSelectors.listData(state),
     entryType: EntryTypeSelectors.detailData(state),

@@ -4,7 +4,7 @@
 
   a {
     display: block;
-    min-width: 100px;
+    white-space: nowrap;
     padding: 7px 10px;
 
   }

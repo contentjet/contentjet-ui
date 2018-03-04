@@ -1,3 +1,5 @@
+* LoadingSpinner now correctly appears on EntryEditor
+
 # 0.5.4
 * Added description to entry type list screen
 * Added asterisk to denote required fields on EntryType editor
