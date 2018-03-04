@@ -451,12 +451,11 @@ class EntryTypeFieldEditorModal extends Component {
     } else if (fieldType === CHOICE) {
       dynamicFields = dynamicFields.concat([
         <Input
-          type="array"
+          type="list"
           name="choices"
           key="choices"
           label="Choices"
           placeholder="Choices"
-          helpText="Enter one choice per line"
           value={fieldProperties.choices || []}
           onChange={this.onFieldChange}
           required
