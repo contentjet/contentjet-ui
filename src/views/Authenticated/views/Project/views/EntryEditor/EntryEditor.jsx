@@ -189,7 +189,7 @@ class EntryEditor extends Component {
             }
             fieldProps.projectId = this.props.params.project_id;
           } else if (entryTypeField.fieldType === 'LIST') {
-            fieldProps.type = 'array';
+            fieldProps.type = 'list';
           } else if (entryTypeField.fieldType === 'BOOLEAN') {
             fieldProps.value = !!fieldProps.value;
             fieldProps.type = 'boolean';

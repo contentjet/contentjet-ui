@@ -19,6 +19,7 @@ import SearchInput from './components/SearchInput';
 import CheckboxInput from './components/CheckboxInput';
 import LockedTextInput from './components/LockedTextInput';
 import ColorInput from './components/ColorInput';
+import ListInput from './components/ListInput';
 
 
 class Input extends Component {
@@ -63,6 +64,8 @@ class Input extends Component {
       return <LockedTextInput {...this.props} />;
     } else if (type === 'color') {
       return <ColorInput {...this.props} />;
+    } else if (type === 'list') {
+      return <ListInput {...this.props} />;
     }
   }
 
@@ -93,7 +96,8 @@ Input.propTypes = {
     'search',
     'checkbox',
     'locked-text',
-    'color'
+    'color',
+    'list'
   ]).isRequired,
   choices: PropTypes.array
 };
