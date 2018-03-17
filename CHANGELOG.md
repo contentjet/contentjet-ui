@@ -1,3 +1,6 @@
+# 0.5.6
+Added dist
+
 # 0.5.5
 * LoadingSpinner now correctly appears on EntryEditor
 * Added ListInput

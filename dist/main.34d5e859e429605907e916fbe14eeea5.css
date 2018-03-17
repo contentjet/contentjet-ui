@@ -3301,49 +3301,6 @@ hr {
   color: #999;
   color: #999;
 }
-.ArrayInput_textarea_2tLRJ {
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: none;
-  box-sizing: border-box;
-  color: #555;
-  cursor: auto;
-  display: block;
-  font-size: 14px;
-  height: 34px;
-  min-height: 34px;
-  line-height: 20px;
-  margin: 0;
-  padding: 6px 12px;
-  width: 100%;
-}
-
-.ArrayInput_textarea_2tLRJ:focus {
-    border-color: #20cbfd;
-    box-shadow: 0 0 4px rgba(32, 203, 253, 0.6);
-    outline: 0;
-  }
-
-.ArrayInput_textarea_2tLRJ:disabled {
-    border-color: #ddd;
-    color: #888;
-    cursor: not-allowed;
-  }
-
-.ArrayInput_arrayInput_ZZZS-.ArrayInput_hasError_2-I52 .ArrayInput_textarea_2tLRJ {
-  border-color: #d9534f;
-  box-shadow: rgba(217, 83, 79, 0.0745098) 0 1px 1px 0 inset;
-}
-
-.ArrayInput_arrayInput_ZZZS-.ArrayInput_hasError_2-I52 .ArrayInput_textarea_2tLRJ:focus {
-    border-color: #d9534f;
-    box-shadow: 0 0 8px rgba(217, 83, 79, 0.6);
-  }
-
-.ArrayInput_textarea_2tLRJ {
-  resize: vertical;
-}
 .BooleanRadioInput_booleanRadioInput_2afyI .BooleanRadioInput_listItemLabel_3qv4a {
     cursor: pointer;
     display: inline-block;
@@ -4838,6 +4795,73 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 .LockedTextInput_lockedTextInput_2fG6t.LockedTextInput_locked_2ydtt .LockedTextInput_input_BD961 {
       color: rgba(85, 85, 85, 0.6);
     }
+.ListInput_listInput_qf0xm .ListInput_input_33WM1, .ListInput_textarea_1yKZg {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #555;
+  cursor: auto;
+  display: block;
+  font-size: 14px;
+  height: 34px;
+  min-height: 34px;
+  line-height: 20px;
+  margin: 0;
+  padding: 6px 12px;
+  width: 100%;
+}
+
+.ListInput_listInput_qf0xm .ListInput_input_33WM1:focus, .ListInput_textarea_1yKZg:focus {
+    border-color: #20cbfd;
+    box-shadow: 0 0 4px rgba(32, 203, 253, 0.6);
+    outline: 0;
+  }
+
+.ListInput_listInput_qf0xm .ListInput_input_33WM1:disabled, .ListInput_textarea_1yKZg:disabled {
+    border-color: #ddd;
+    color: #888;
+    cursor: not-allowed;
+  }
+
+.ListInput_listInput_qf0xm.ListInput_hasError_lFkV7 .ListInput_textarea_1yKZg {
+  border-color: #d9534f;
+  box-shadow: rgba(217, 83, 79, 0.0745098) 0 1px 1px 0 inset;
+}
+
+.ListInput_listInput_qf0xm.ListInput_hasError_lFkV7 .ListInput_textarea_1yKZg:focus {
+    border-color: #d9534f;
+    box-shadow: 0 0 8px rgba(217, 83, 79, 0.6);
+  }
+
+.ListInput_listInput_qf0xm .ListInput_removeButton_110oC {
+    margin: 0 0 0 5px;
+  }
+
+.ListInput_listInput_qf0xm .ListInput_list_34qod {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+.ListInput_listInput_qf0xm .ListInput_list_34qod + .ListInput_addButton_VL2yo {
+      margin-top: 10px;
+    }
+
+.ListInput_listInput_qf0xm .ListInput_listItem_2SVts {
+    margin-bottom: 5px;
+    display: -webkit-box;
+    display: flex;
+  }
+
+.ListInput_listInput_qf0xm .ListInput_listItem_2SVts:last-child {
+      margin-bottom: 0;
+    }
+
+.ListInput_textarea_1yKZg {
+  resize: vertical;
+}
 .LoginForm_loginForm_4nXmJ .LoginForm_submitButton_2FGCW {
     margin-bottom: 10px;
     margin-top: 20px;
@@ -5924,7 +5948,7 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 }
 .NewEntryDropdownButton_newEntryDropdownButton_2bbub a {
     display: block;
-    min-width: 100px;
+    white-space: nowrap;
     padding: 7px 10px;
 
   }
@@ -6173,11 +6197,14 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 .Entries_pagination_2_hHZ.Entries_re-pagination_MUDrX {
   margin-bottom: 10px;
 }
+.EntryEditor_loadingSpinner_1UFjA {
+  margin: 50px auto;
+}
+
 .EntryEditor_entryEditor_3CRzp {
   height: 100%;
   position: relative;
 }
-
 
 .EntryEditor_body_znbJy {
   bottom: 0;
@@ -6189,14 +6216,12 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
   top: 56px;
 }
 
-
 .EntryEditor_field_2uzng {
   background: #fcfcfc;
   border: 1px solid #eee;
   border-radius: 4px;
   padding: 10px;
 }
-
 
 .EntryEditor_alert_22fCh {
   max-width: 800px;
@@ -6206,19 +6231,16 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
   box-sizing: border-box;
 }
 
-
 .EntryEditor_alert_22fCh:before {
   content: '';
   display: table;
 }
-
 
 .EntryEditor_alert_22fCh:after {
   content: '';
   display: table;
   clear: both;
 }
-
 
 .EntryEditor_standardFields_1Gixm, .EntryEditor_customFields_30jsj {
   max-width: 800px;
@@ -6227,19 +6249,16 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
   padding: 10px 0;
 }
 
-
 .EntryEditor_standardFields_1Gixm:before, .EntryEditor_customFields_30jsj:before {
   content: '';
   display: table;
 }
-
 
 .EntryEditor_standardFields_1Gixm:after, .EntryEditor_customFields_30jsj:after {
   content: '';
   display: table;
   clear: both;
 }
-
 
 .EntryEditor_saveCopyButton_svWDZ, .EntryEditor_deleteEntryButton_-gTOJ {
   margin-right: 10px;
