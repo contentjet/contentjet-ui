@@ -1,0 +1,40 @@
+@import '../input-variables.css';
+
+
+.listInput {
+  &.hasError .textarea {
+    @extend %form-input-error;
+  }
+
+  .input {
+    @extend %form-input;
+  }
+
+  .removeButton {
+    margin: 0 0 0 5px;
+  }
+
+  .list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    & + .addButton {
+      margin-top: 10px;
+    }
+  }
+
+  .listItem {
+    margin-bottom: 5px;
+    display: flex;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.textarea {
+  @extend %form-input;
+  resize: vertical;
+}

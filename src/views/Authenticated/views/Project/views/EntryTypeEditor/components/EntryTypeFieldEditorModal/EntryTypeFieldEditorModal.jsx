@@ -248,6 +248,15 @@ class EntryTypeFieldEditorModal extends Component {
     ) {
       return false;
     }
+    if (
+      'choices' in fieldProperties &&
+      (
+        !fieldProperties.choices.length ||
+        fieldProperties.choices.findIndex(c => c.match(/^\s*$/g)) !== -1
+      )
+    ) {
+      return false;
+    }
     return (
       fieldProperties.name &&
       fieldProperties.label
@@ -451,12 +460,11 @@ class EntryTypeFieldEditorModal extends Component {
     } else if (fieldType === CHOICE) {
       dynamicFields = dynamicFields.concat([
         <Input
-          type="array"
+          type="list"
           name="choices"
           key="choices"
           label="Choices"
           placeholder="Choices"
-          helpText="Enter one choice per line"
           value={fieldProperties.choices || []}
           onChange={this.onFieldChange}
           required

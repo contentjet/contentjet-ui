@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ArrayInput from './components/ArrayInput';
 import BooleanRadioInput from './components/BooleanRadioInput';
 import DateTimePicker from './components/DateTimePicker';
 import Select from './components/Select';
@@ -19,6 +18,7 @@ import SearchInput from './components/SearchInput';
 import CheckboxInput from './components/CheckboxInput';
 import LockedTextInput from './components/LockedTextInput';
 import ColorInput from './components/ColorInput';
+import ListInput from './components/ListInput';
 
 
 class Input extends Component {
@@ -39,8 +39,6 @@ class Input extends Component {
       return <EmailInput {...this.props} />;
     } else if (type === 'textarea') {
       return <Textarea {...this.props} />;
-    } else if (type === 'array') {
-      return <ArrayInput {...this.props} />;
     } else if (type === 'markdown') {
       return <MarkdownInput {...this.props} />;
     } else if (type === 'boolean') {
@@ -63,6 +61,8 @@ class Input extends Component {
       return <LockedTextInput {...this.props} />;
     } else if (type === 'color') {
       return <ColorInput {...this.props} />;
+    } else if (type === 'list') {
+      return <ListInput {...this.props} />;
     }
   }
 
@@ -80,7 +80,6 @@ Input.propTypes = {
     'select-object',
     'password',
     'textarea',
-    'array',
     'markdown',
     'boolean',
     'number',
@@ -93,7 +92,8 @@ Input.propTypes = {
     'search',
     'checkbox',
     'locked-text',
-    'color'
+    'color',
+    'list'
   ]).isRequired,
   choices: PropTypes.array
 };
