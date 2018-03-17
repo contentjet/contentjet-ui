@@ -1,3 +1,6 @@
+# 0.5.7
+Bugfix in ListInput
+
 # 0.5.6
 Added dist
 
