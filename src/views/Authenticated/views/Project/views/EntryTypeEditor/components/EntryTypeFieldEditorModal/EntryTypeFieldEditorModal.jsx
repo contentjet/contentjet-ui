@@ -248,6 +248,15 @@ class EntryTypeFieldEditorModal extends Component {
     ) {
       return false;
     }
+    if (
+      'choices' in fieldProperties &&
+      (
+        !fieldProperties.choices.length ||
+        fieldProperties.choices.findIndex(c => c.match(/^\s*$/g)) !== -1
+      )
+    ) {
+      return false;
+    }
     return (
       fieldProperties.name &&
       fieldProperties.label

@@ -29,7 +29,8 @@ class ListInput extends Component {
   }
 
   onClickRemove(i) {
-    return () => {
+    return (e) => {
+      e.preventDefault();
       const value = _.clone(this.props.value);
       value.splice(i, 1);
       this.props.onChange(value, this.props.name);
@@ -37,9 +38,8 @@ class ListInput extends Component {
   }
 
   render() {
-    let {value} = this.props;
-    value = value || [];
-    let className = classnames(
+    const {value = []} = this.props;
+    const className = classnames(
       s.listInput,
       {
         [s.hasError]: _.get(this.props, 'errors.length')
@@ -66,12 +66,14 @@ class ListInput extends Component {
       );
     });
 
+    const inputsList = inputs.length ? (<ul className={s.list}>{ inputs }</ul>) : null;
+
     return (
       <InputWrapper
         {..._.pick(this.props, inputWrapperProps)}
         className={className}
       >
-        <ul className={s.list}>{ inputs }</ul>
+        { inputsList }
         <IconButton
           className={s.addButton}
           iconName="pencil"
