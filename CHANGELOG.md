@@ -1,3 +1,5 @@
+* Updated moment in response to github security vulnerability alert
+
 # 0.5.8
 * Entry published field now checks for valid date
 
