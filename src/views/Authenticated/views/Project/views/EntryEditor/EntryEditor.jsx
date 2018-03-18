@@ -271,6 +271,9 @@ class EntryEditor extends Component {
       );
     }
 
+    let published = moment(entry.published);
+    published = published.isValid() ? published.toDate() : null;
+
     return (
       <div className={s.entryEditor}>
         <ContentHeader title={_.get(entryType, 'name')}>
@@ -323,7 +326,7 @@ class EntryEditor extends Component {
                   placeholder="Published"
                   type="datetime"
                   errors={_.get(err, 'errors.published')}
-                  value={moment(entry.published).toDate()}
+                  value={published}
                   onChange={this.onFieldChange}
                   required
                 />

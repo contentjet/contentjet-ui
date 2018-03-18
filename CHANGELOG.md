@@ -1,8 +1,11 @@
+# 0.5.8
+* Entry published field now checks for valid date
+
 # 0.5.7
-Bugfix in ListInput
+* Bugfix in ListInput
 
 # 0.5.6
-Added dist
+* Added dist
 
 # 0.5.5
 * LoadingSpinner now correctly appears on EntryEditor
