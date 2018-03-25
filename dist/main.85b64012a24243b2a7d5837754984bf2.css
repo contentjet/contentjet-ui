@@ -4795,6 +4795,27 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 .LockedTextInput_lockedTextInput_2fG6t.LockedTextInput_locked_2ydtt .LockedTextInput_input_BD961 {
       color: rgba(85, 85, 85, 0.6);
     }
+.ColorInput_swatch_2KsY_ {
+  width: 50px;
+  height: 34px;
+  border: 1px solid #e9e9e9;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.ColorInput_cover_320I1 {
+  position: fixed;
+  top: 70px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.ColorInput_popover_sXOdj {
+  position: absolute;
+  z-index: 2;
+}
 .ListInput_listInput_qf0xm .ListInput_input_33WM1, .ListInput_textarea_1yKZg {
   background: #fff;
   border: 1px solid #ccc;

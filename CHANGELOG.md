@@ -1,3 +1,7 @@
+# 0.5.9
+* Updated `moment` in response to github security vulnerability alert
+* Improved color input
+
 # 0.5.8
 * Entry published field now checks for valid date
 
