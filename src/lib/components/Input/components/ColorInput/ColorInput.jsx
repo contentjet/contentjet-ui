@@ -4,13 +4,19 @@ import _ from 'lodash';
 import tinycolor from 'tinycolor2';
 import InputWrapper, { inputWrapperProps } from '../InputWrapper';
 import { ChromePicker } from 'react-color';
+import s from './ColorInput.css';
 
 
 class ColorInput extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      showPicker: false
+    };
+    this.onClick = this.onClick.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onClickCover = this.onClickCover.bind(this);
   }
 
   onChange(color) {
@@ -24,18 +30,41 @@ class ColorInput extends Component {
     this.props.onChange(value, this.props.name);
   }
 
+  onClick() {
+    this.setState({ showPicker: !this.state.showPicker });
+  }
+
+  onClickCover() {
+    this.setState({ showPicker: false });
+  }
+
   render() {
     const {className, value, disableAlpha} = this.props;
+
+    if (this.state.showPicker) {
+      var picker = (
+        <div className={s.popover}>
+          <div className={s.cover} onClick={this.onClickCover} />
+          <ChromePicker
+            color={tinycolor(value || '#fff').toHsv()}
+            onChangeComplete={this.onChange}
+            disableAlpha={disableAlpha}
+          />
+        </div>
+      );
+    }
+
     return (
       <InputWrapper
         {..._.pick(this.props, inputWrapperProps)}
         className={className}
       >
-        <ChromePicker
-          color={tinycolor(value || '#fff').toHsv()}
-          onChangeComplete={this.onChange}
-          disableAlpha={disableAlpha}
+        <div
+          className={s.swatch}
+          style={{background: value || '#fff'}}
+          onClick={this.onClick}
         />
+        { picker }
       </InputWrapper>
     );
   }
