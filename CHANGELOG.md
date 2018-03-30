@@ -1,3 +1,6 @@
+# 0.6.0
+* Only admins can create projects
+
 # 0.5.9
 * Updated `moment` in response to github security vulnerability alert
 * Improved color input
