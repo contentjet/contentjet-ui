@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Map } from 'immutable';
 import ProjectSelectors from 'selectors/ProjectSelectors';
 import InviteSelectors from 'selectors/InviteSelectors';
+import UserSelectors from 'selectors/UserSelectors';
 import ProjectActions from 'actions/ProjectActions';
 import InviteActions from 'actions/InviteActions';
 import AuthenticationActions from 'actions/AuthenticationActions';
+import UserActions from 'actions/UserActions';
 import Button from 'lib/components/Button';
 import CenteredPanelView from 'lib/components/CenteredPanelView';
 import CreateProjectModal from './components/CreateProjectModal';
@@ -26,13 +29,14 @@ class Projects extends Component {
   }
 
   componentDidMount() {
-    const {inviteToken, listProjects, acceptProjectInvite} = this.props;
+    const {inviteToken, listProjects, acceptProjectInvite, getMe} = this.props;
     if (inviteToken) {
       acceptProjectInvite(inviteToken)
         .then(() => listProjects())
         .catch(() => listProjects());
     } else {
       listProjects();
+      getMe();
     }
   }
 
@@ -45,13 +49,13 @@ class Projects extends Component {
   }
 
   render() {
-    const {isFetching, inviteIsSending } = this.props;
+    const {isFetching, inviteIsSending, me} = this.props;
 
-    const panelFooter = (
+    const panelFooter = me.get('isAdmin') ? (
       <Button btnStyle="primary" onClick={this.onNewProjectClick} block>
         New project
       </Button>
-    );
+    ) : null;
 
     let body;
     if (isFetching || inviteIsSending) {
@@ -90,17 +94,20 @@ class Projects extends Component {
 }
 Projects.propTypes = {
   listProjects: PropTypes.func.isRequired,
+  me: PropTypes.instanceOf(Map).isRequired,
   projects: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
   acceptProjectInvite: PropTypes.func.isRequired,
   inviteToken: PropTypes.string,
-  inviteIsSending: PropTypes.bool.isRequired
+  inviteIsSending: PropTypes.bool.isRequired,
+  getMe: PropTypes.func.isRequired
 };
 
 
 const mapStateToProps = (state) => {
   return {
+    me: UserSelectors.me(state),
     projects: ProjectSelectors.listData(state).get('results').toJS(),
     isFetching: ProjectSelectors.listIsFetching(state),
     inviteToken: InviteSelectors.inviteToken(state),
@@ -111,14 +118,17 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logout: () => {
+    logout() {
       dispatch(AuthenticationActions.logout());
     },
-    listProjects: () => {
+    listProjects() {
       dispatch(ProjectActions.list());
     },
     acceptProjectInvite(token) {
       return dispatch(InviteActions.accept(token)).payload;
+    },
+    getMe() {
+      dispatch(UserActions.getMe());
     }
   };
 };
