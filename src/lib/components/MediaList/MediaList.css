@@ -1,13 +1,10 @@
 @import 'variables.css';
 
 .mediaList {
-  lost-utility: clearfix;
-
-  &.tiled .item {
-    lost-column: 1/5;
-    margin-bottom: 7px;
-  }
-
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  grid-gap: 10px;
+  margin-bottom: 15px;
 }
 
 .item {

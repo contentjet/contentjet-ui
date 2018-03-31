@@ -2,6 +2,8 @@
 
 
 .contentHeader {
+  display: flex;
+  justify-content: space-between;
   background: var(--lighter-grey);
   height: var(--header-height);
   line-height: var(--header-height);
@@ -11,7 +13,7 @@
 }
 
 .headingHolder {
-  lost-column: 6/12;
+  margin-right: 15px;
   min-height: 100%;
   padding-left: 15px;
   box-sizing: border-box;
@@ -22,7 +24,6 @@
 }
 
 .controls {
-  lost-column: 6/12;
   padding-right: 15px;
   text-align: right;
   box-sizing: border-box;
