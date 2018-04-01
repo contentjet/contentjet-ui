@@ -1,3 +1,4 @@
+# 0.6.1
 * Media screen layout now uses css grid
 
 # 0.6.0
