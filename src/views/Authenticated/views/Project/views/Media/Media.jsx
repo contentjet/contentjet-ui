@@ -161,7 +161,6 @@ class Media extends Component {
             selectedMedia={selectedMedia}
             projectId={params.project_id}
             onItemClick={toggleSelect}
-            tiled
           />
           <Pagination
             currentPage={page}

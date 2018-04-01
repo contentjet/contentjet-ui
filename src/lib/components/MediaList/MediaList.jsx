@@ -10,16 +10,14 @@ import s from './MediaList.css';
 class MediaList extends Component {
   render() {
     let {
-      media, onItemClick, projectId, editDisabled, selectedMedia,
-      className, tiled
-    } = this.props;
-    className = classnames(
-      s.mediaList,
-      {
-        [s.tiled]: tiled
-      },
+      media,
+      onItemClick,
+      projectId,
+      editDisabled,
+      selectedMedia,
       className
-    );
+    } = this.props;
+    className = classnames(s.mediaList, className);
     return (
       <List className={className}>
         {
@@ -31,9 +29,11 @@ class MediaList extends Component {
                   projectId={projectId}
                   data={mediaItem}
                   editDisabled={editDisabled}
-                  selected={_.includes(
-                    selectedMedia.map(media => media.id),
-                    mediaItem.id)
+                  selected={
+                    _.includes(
+                      selectedMedia.map(media => media.id),
+                      mediaItem.id
+                    )
                   }
                 />
               </li>
@@ -49,8 +49,7 @@ MediaList.propTypes = {
   selectedMedia: PropTypes.array.isRequired,
   media: PropTypes.array.isRequired,
   onItemClick: PropTypes.func.isRequired,
-  editDisabled: PropTypes.bool,
-  tiled: PropTypes.bool
+  editDisabled: PropTypes.bool
 };
 MediaList.defaultProps = {
   editDisabled: false
