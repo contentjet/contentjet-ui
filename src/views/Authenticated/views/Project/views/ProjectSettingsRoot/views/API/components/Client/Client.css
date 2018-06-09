@@ -1,0 +1,26 @@
+@import 'variables.css';
+
+.client {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: var(--lighter-grey);
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.name {
+  font-size: 14px;
+  margin: 0;
+}
+
+.clientId,
+.clientSecret {
+  font-size: 12px;
+  margin: 0;
+  font-weight: normal;
+}

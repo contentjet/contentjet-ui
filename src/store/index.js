@@ -13,6 +13,7 @@ import project from 'reducers/ProjectReducer';
 import invite from 'reducers/InviteReducer';
 import user from 'reducers/UserReducer';
 import webHook from 'reducers/WebHookReducer';
+import client from 'reducers/ClientReducer';
 import notification from 'reducers/NotificationReducer';
 
 
@@ -51,6 +52,7 @@ const rootReducer = combineReducers({
   invite,
   user,
   webHook,
+  client,
   notification
 });
 

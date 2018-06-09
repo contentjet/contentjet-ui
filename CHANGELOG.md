@@ -1,3 +1,7 @@
+# 0.7.0
+* Update authentication endpoints to match changes in contentjet-api
+* Can now create Clients for authenticating via OAuth Client Credentials flow
+
 # 0.6.1
 * Media screen layout now uses css grid
 

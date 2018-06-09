@@ -116,7 +116,7 @@ class WebHookModal extends Component {
         footer={footer}
         isOpened={isOpened}
       >
-        {errorList}
+        { errorList }
         <form noValidate onSubmit={this.onSubmit}>
           <Input
             type="text"

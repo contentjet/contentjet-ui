@@ -20,7 +20,7 @@ const setRedirectPath = createAction(SET_REDIRECT_PATH);
 
 const login = createAction(LOGIN, credentials => {
   credentials.grant_type = 'password';
-  return axios.post('user/authenticate/', credentials).then(
+  return axios.post('authenticate/', credentials).then(
     response => {
       TokenStorage.setToken(response.data.access_token);
       return TokenStorage.hasValidToken();
@@ -40,7 +40,7 @@ const refreshToken = createAction(REFRESH_TOKEN, () => {
     refresh_token: TokenStorage.getToken(),
     grant_type: 'refresh_token'
   };
-  return axios.post('user/token-refresh/', data).then(
+  return axios.post('token-refresh/', data).then(
     response => {
       TokenStorage.setToken(response.data.access_token);
       return TokenStorage.hasValidToken();
