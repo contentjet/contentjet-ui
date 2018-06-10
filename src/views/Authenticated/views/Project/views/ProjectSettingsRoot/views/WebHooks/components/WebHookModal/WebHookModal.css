@@ -6,11 +6,9 @@
 }
 
 .events {
-  lost-utility: clearfix;
-}
-
-.eventsColumn {
-  lost-column: 6/12;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 5px;
 }
 
 .hr {

@@ -1,34 +1,26 @@
 @import 'variables.css';
 
 .webHook {
-  lost-utility: clearfix;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   background: var(--lighter-grey);
   border-radius: 4px;
   padding: 5px 10px;
 }
 
-.name {
-  font-weight: bold;
+.content {
+  flex-grow: 1;
 }
 
-.name,
+.name {
+  font-size: 14px;
+  margin: 0;
+}
+
 .url,
 .status {
-  display: block;
-}
-
-.status,
-.url {
   font-size: 12px;
-}
-
-.contentHolder {
-  lost-column: 9/12 9 0;
-}
-
-.controlsHolder {
-  lost-column: 3/12 3 0;
-  height: 60px;
-  line-height: 60px;
-  text-align: right;
+  margin: 0;
+  font-weight: normal;
 }
