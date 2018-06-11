@@ -1,6 +1,6 @@
 @import 'variables.css';
 
-.webHook {
+.client {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -18,8 +18,8 @@
   margin: 0;
 }
 
-.url,
-.status {
+.clientId,
+.clientSecret {
   font-size: 12px;
   margin: 0;
   font-weight: normal;

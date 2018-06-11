@@ -29,6 +29,7 @@ import Projects from 'views/Authenticated/views/Projects';
 import Project from 'views/Authenticated/views/Project';
 import ProjectSettingsRoot from 'views/Authenticated/views/Project/views/ProjectSettingsRoot';
 import WebHooks from 'views/Authenticated/views/Project/views/ProjectSettingsRoot/views/WebHooks';
+import API from 'views/Authenticated/views/Project/views/ProjectSettingsRoot/views/API';
 import ProjectMembers from 'views/Authenticated/views/Project/views/ProjectSettingsRoot/views/ProjectMembers';
 import ProjectSettings from 'views/Authenticated/views/Project/views/ProjectSettingsRoot/views/ProjectSettings';
 
@@ -82,6 +83,7 @@ const routes = (
           <Route path="project" component={ProjectSettings} />
           <Route path="members" component={ProjectMembers} />
           <Route path="web-hooks" component={WebHooks} />
+          <Route path="api" component={API} />
         </Route>
         <Route path="entry-types">
           <IndexRoute component={EntryTypes} />

@@ -59,6 +59,15 @@ class ProjectSettingsRoot extends Component {
                       Web Hooks
                     </Link>
                   </li>
+                  <li>
+                    <Link
+                      className={s.link}
+                      activeClassName={s.linkActive}
+                      to={`/project/${projectId}/settings/api`}
+                    >
+                      API
+                    </Link>
+                  </li>
                 </List>
               </nav>
             </div>

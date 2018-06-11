@@ -11,18 +11,12 @@ const WebHook = (props) => {
   className = classnames(s.webHook, className);
   return (
     <div className={className}>
-      <div className={s.contentHolder}>
-        <span className={s.name}>
-          { webHook.name }
-        </span>
-        <span className={s.url}>
-          URL: { webHook.url }
-        </span>
-        <span className={s.status}>
-          Status: { webHook.isActive ? 'Active' : 'Inactive' }
-        </span>
+      <div className={s.content}>
+        <h2 className={s.name}>{ webHook.name }</h2>
+        <h3 className={s.url}>URL: { webHook.url }</h3>
+        <h3 className={s.status}>Status: { webHook.isActive ? 'Active' : 'Inactive' }</h3>
       </div>
-      <div className={s.controlsHolder}>
+      <div className={s.controls}>
         <Button
           btnStyle="link"
           onClick={() => onClickEdit(webHook)}

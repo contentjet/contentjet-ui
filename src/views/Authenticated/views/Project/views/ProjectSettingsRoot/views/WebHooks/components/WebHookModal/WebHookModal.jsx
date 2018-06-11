@@ -116,7 +116,7 @@ class WebHookModal extends Component {
         footer={footer}
         isOpened={isOpened}
       >
-        {errorList}
+        { errorList }
         <form noValidate onSubmit={this.onSubmit}>
           <Input
             type="text"
@@ -143,114 +143,110 @@ class WebHookModal extends Component {
           <hr className={s.hr} />
 
           <div className={s.events}>
-            <div className={s.eventsColumn}>
-              <Input
-                type="checkbox"
-                name="projectUpdated"
-                value={this.state.projectUpdated}
-                label="Project updated"
-                onChange={this.onInputChangeHandler}
-                labelWidth={140}
-              />
-              <Input
-                type="checkbox"
-                name="projectDeleted"
-                value={this.state.projectDeleted}
-                label="Project deleted"
-                onChange={this.onInputChangeHandler}
-                labelWidth={140}
-              />
-              <Input
-                type="checkbox"
-                name="entryTypeCreated"
-                value={this.state.entryTypeCreated}
-                label="Entry type created"
-                onChange={this.onInputChangeHandler}
-                labelWidth={140}
-              />
-              <Input
-                type="checkbox"
-                name="entryTypeUpdated"
-                value={this.state.entryTypeUpdated}
-                label="Entry type updated"
-                onChange={this.onInputChangeHandler}
-                labelWidth={140}
-              />
-              <Input
-                type="checkbox"
-                name="entryTypeDeleted"
-                value={this.state.entryTypeDeleted}
-                label="Entry type deleted"
-                onChange={this.onInputChangeHandler}
-                labelWidth={140}
-              />
-              <Input
-                type="checkbox"
-                name="entryCreated"
-                value={this.state.entryCreated}
-                label="Entry created"
-                onChange={this.onInputChangeHandler}
-                labelWidth={140}
-              />
-            </div>
-            <div className={s.eventsColumn}>
-              <Input
-                type="checkbox"
-                name="entryUpdated"
-                value={this.state.entryUpdated}
-                label="Entry updated"
-                onChange={this.onInputChangeHandler}
-                labelWidth={140}
-              />
-              <Input
-                type="checkbox"
-                name="entryDeleted"
-                value={this.state.entryDeleted}
-                label="Entry deleted"
-                onChange={this.onInputChangeHandler}
-                labelWidth={140}
-              />
-              <Input
-                type="checkbox"
-                name="entryDeletedBulk"
-                value={this.state.entryDeletedBulk}
-                label="Entry deleted bulk"
-                onChange={this.onInputChangeHandler}
-                labelWidth={140}
-              />
-              <Input
-                type="checkbox"
-                name="mediaCreated"
-                value={this.state.mediaCreated}
-                label="Media created"
-                onChange={this.onInputChangeHandler}
-                labelWidth={140}
-              />
-              <Input
-                type="checkbox"
-                name="mediaUpdated"
-                value={this.state.mediaUpdated}
-                label="Media updated"
-                onChange={this.onInputChangeHandler}
-                labelWidth={140}
-              />
-              <Input
-                type="checkbox"
-                name="mediaDeleted"
-                value={this.state.mediaDeleted}
-                label="Media deleted"
-                onChange={this.onInputChangeHandler}
-                labelWidth={140}
-              />
-              <Input
-                type="checkbox"
-                name="mediaDeletedBulk"
-                value={this.state.mediaDeletedBulk}
-                label="Media deleted bulk"
-                onChange={this.onInputChangeHandler}
-                labelWidth={140}
-              />
-            </div>
+            <Input
+              type="checkbox"
+              name="projectUpdated"
+              value={this.state.projectUpdated}
+              label="Project updated"
+              onChange={this.onInputChangeHandler}
+              labelWidth={140}
+            />
+            <Input
+              type="checkbox"
+              name="projectDeleted"
+              value={this.state.projectDeleted}
+              label="Project deleted"
+              onChange={this.onInputChangeHandler}
+              labelWidth={140}
+            />
+            <Input
+              type="checkbox"
+              name="entryTypeCreated"
+              value={this.state.entryTypeCreated}
+              label="Entry type created"
+              onChange={this.onInputChangeHandler}
+              labelWidth={140}
+            />
+            <Input
+              type="checkbox"
+              name="entryTypeUpdated"
+              value={this.state.entryTypeUpdated}
+              label="Entry type updated"
+              onChange={this.onInputChangeHandler}
+              labelWidth={140}
+            />
+            <Input
+              type="checkbox"
+              name="entryTypeDeleted"
+              value={this.state.entryTypeDeleted}
+              label="Entry type deleted"
+              onChange={this.onInputChangeHandler}
+              labelWidth={140}
+            />
+            <Input
+              type="checkbox"
+              name="entryCreated"
+              value={this.state.entryCreated}
+              label="Entry created"
+              onChange={this.onInputChangeHandler}
+              labelWidth={140}
+            />
+            <Input
+              type="checkbox"
+              name="entryUpdated"
+              value={this.state.entryUpdated}
+              label="Entry updated"
+              onChange={this.onInputChangeHandler}
+              labelWidth={140}
+            />
+            <Input
+              type="checkbox"
+              name="entryDeleted"
+              value={this.state.entryDeleted}
+              label="Entry deleted"
+              onChange={this.onInputChangeHandler}
+              labelWidth={140}
+            />
+            <Input
+              type="checkbox"
+              name="entryDeletedBulk"
+              value={this.state.entryDeletedBulk}
+              label="Entry deleted bulk"
+              onChange={this.onInputChangeHandler}
+              labelWidth={140}
+            />
+            <Input
+              type="checkbox"
+              name="mediaCreated"
+              value={this.state.mediaCreated}
+              label="Media created"
+              onChange={this.onInputChangeHandler}
+              labelWidth={140}
+            />
+            <Input
+              type="checkbox"
+              name="mediaUpdated"
+              value={this.state.mediaUpdated}
+              label="Media updated"
+              onChange={this.onInputChangeHandler}
+              labelWidth={140}
+            />
+            <Input
+              type="checkbox"
+              name="mediaDeleted"
+              value={this.state.mediaDeleted}
+              label="Media deleted"
+              onChange={this.onInputChangeHandler}
+              labelWidth={140}
+            />
+            <Input
+              type="checkbox"
+              name="mediaDeletedBulk"
+              value={this.state.mediaDeletedBulk}
+              label="Media deleted bulk"
+              onChange={this.onInputChangeHandler}
+              labelWidth={140}
+            />
           </div>
 
           <hr className={s.hr} />
