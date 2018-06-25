@@ -32,9 +32,6 @@ class CheckboxListItem extends Component {
   render() {
     const className = classnames(
       s.checkboxListItem,
-      {
-        [s.moveable]: this.props.onClickUp || this.props.onClickDown
-      },
       this.props.className
     );
     const elementProps = _.omit(

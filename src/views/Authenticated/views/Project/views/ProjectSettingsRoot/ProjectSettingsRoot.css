@@ -1,6 +1,5 @@
 @import 'variables.css';
 
-
 .projectSettingsRoot {
 
 }
@@ -17,12 +16,14 @@
 }
 
 .content {
+  display: flex;
   max-width: 70%;
   margin: 0 auto;
 }
 
 .sidebar {
-  lost-column: 2/9;
+  flex: 0.3;
+  margin-right: 10px;
 }
 
 .link {
@@ -38,5 +39,5 @@
 }
 
 .contentBody {
-  lost-column: 7/9;
+  flex: 1;
 }

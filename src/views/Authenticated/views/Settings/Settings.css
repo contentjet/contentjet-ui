@@ -16,13 +16,15 @@
 }
 
 .content {
+  display: flex;
   max-width: 70%;
   margin: 0 auto;
   padding-top: 40px;
 }
 
 .sidebar {
-  lost-column: 3/12;
+  flex: 0.3;
+  margin-right: 10px;
 }
 
 .link {
@@ -38,5 +40,5 @@
 }
 
 .contentBody {
-  lost-column: 9/12;
+  flex: 1;
 }
