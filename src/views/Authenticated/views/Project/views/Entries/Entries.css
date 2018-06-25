@@ -6,7 +6,7 @@
 }
 
 .body {
-  lost-center: 95%;
+  margin: 0 20px;
 
   .alert {
     margin: 20px auto;
@@ -14,8 +14,8 @@
 }
 
 .controls {
-  lost-center: 95%;
   padding-top: 15px;
+  margin: 0 20px;
 }
 
 .controlsRow {

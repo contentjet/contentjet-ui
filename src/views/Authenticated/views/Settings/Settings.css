@@ -1,6 +1,5 @@
 @import 'variables.css';
 
-
 .settings {
 
 }
@@ -17,7 +16,8 @@
 }
 
 .content {
-  lost-center: 70%;
+  max-width: 70%;
+  margin: 0 auto;
   padding-top: 40px;
 }
 

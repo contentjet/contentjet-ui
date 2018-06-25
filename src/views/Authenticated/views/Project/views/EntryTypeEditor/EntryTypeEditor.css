@@ -1,6 +1,5 @@
 @import 'variables.css';
 
-
 .entryTypeEditor {
   height: 100%;
   position: relative;
@@ -18,7 +17,8 @@
 
 .standardFields,
 .customFields {
-  lost-center: 800px;
+  max-width: 800px;
+  margin: 0 auto;
   padding: 10px 0;
   text-align: center;
 }
@@ -42,7 +42,8 @@
 }
 
 .alert {
-  lost-center: 800px;
+  max-width: 800px;
+  margin: 15px auto 0 auto;
   margin-top: 15px;
   box-sizing: border-box;
 }

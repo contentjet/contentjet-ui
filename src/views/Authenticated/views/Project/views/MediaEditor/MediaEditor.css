@@ -17,7 +17,8 @@
 }
 
 .content {
-  lost-center: 60%;
+  max-width: 60%;
+  margin: 0 auto;
   padding-top: 20px;
 }
 

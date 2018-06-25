@@ -17,7 +17,8 @@
 }
 
 .content {
-  lost-center: 70%;
+  max-width: 70%;
+  margin: 0 auto;
 }
 
 .sidebar {
