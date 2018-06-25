@@ -1,7 +1,8 @@
 @import 'variables.css';
 
-.item {
-  lost-utility: clearfix;
+li.item {
+  display: flex;
+  justify-content: space-between;
   background: var(--lighter-grey);
   left: 0;
   margin-bottom: 3px;
@@ -34,7 +35,6 @@
 }
 
 .itemDetails {
-  float: left;
   line-height: 40px;
 }
 
@@ -44,7 +44,6 @@
 }
 
 .itemControls {
-  float: right;
   line-height: 40px;
 }
 

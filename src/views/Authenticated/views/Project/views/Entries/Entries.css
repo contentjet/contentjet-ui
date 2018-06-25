@@ -19,24 +19,27 @@
 }
 
 .controlsRow {
-  lost-utility: clearfix;
+  display: flex;
 }
 
 .controlsColumn {
+  margin-right: 10px;
+
   &:nth-child(1) {
-    lost-column: 6/12;
+    flex: 0.55;
   }
 
   &:nth-child(2) {
-    lost-column: 2/12;
+    flex: 0.15;
   }
 
   &:nth-child(3) {
-    lost-column: 2/12;
+    flex: 0.15;
   }
 
   &:nth-child(4) {
-    lost-column: 2/12;
+    flex: 0.15;
+    margin-right: 0;
   }
 }
 

@@ -63,7 +63,7 @@ const MediaItem = (props) => {
 
   return (
     <div className={className} title={data.name}>
-      <div onClick={onClickHandler}>
+      <div className={s.inner} onClick={onClickHandler}>
         <div className={imageHolderClassName}>
           {image}
         </div>

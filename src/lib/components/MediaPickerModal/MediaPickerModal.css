@@ -1,22 +1,28 @@
 .controls {
-  lost-utility: clearfix;
   margin-bottom: 15px;
+  display: flex;
 
   .column {
-    lost-column: 1/2;
+    flex: 0.5;
+    margin-right: 10px;
   }
 }
 
 .listHolder {
-  lost-utility: clearfix;
   height: 400px;
+  display: flex;
 
   .column {
-    lost-column: 1/2;
+    flex: 1;
+    margin-right: 10px;
     height: 100%;
     border: 1px solid #ccc;
     box-sizing: border-box;
     padding: 3px;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
 

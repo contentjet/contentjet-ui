@@ -26,11 +26,14 @@
       left: 10px;
 
       .column {
-        lost-column: 1/2;
+        flex: 1;
         height: 100%;
+        margin-right: 10px;
 
         &:nth-child(2) {
           display: block;
+          flex: 1;
+          margin-right: 0;
         }
       }
     }
@@ -44,18 +47,21 @@
   }
 
   .controls {
-    lost-utility: clearfix;
+    display: flex;
+    justify-content: space-between;
     margin: 3px 0 8px;
   }
 
   .fullscreenButton {
-    float: right;
+    /* float: right; */
   }
 
   .row {
-    lost-utility: clearfix;
+    display: flex;
 
     .column {
+      flex: 1;
+
       &:nth-child(2) {
         display: none;
       }

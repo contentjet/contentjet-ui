@@ -33,20 +33,22 @@
 }
 
 .controls {
-  lost-utility: clearfix;
+  display: flex;
 
   .column {
+    margin-right: 10px;
 
     &:nth-child(1) {
-      lost-column: 7/12;
+      flex: 0.65;
     }
 
     &:nth-child(2) {
-      lost-column: 3/12;
+      flex: 0.2;
     }
 
     &:nth-child(3) {
-      lost-column: 2/12;
+      flex: 0.15;
+      margin-right: 0;
     }
   }
 }
