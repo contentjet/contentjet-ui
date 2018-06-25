@@ -157,7 +157,6 @@ class MarkdownInput extends Component {
             title="Insert image"
           />
           <IconButton
-            className={s.fullscreenButton}
             iconName="arrows-alt"
             tabIndex="-1"
             onClick={this.toggleFullscreen}

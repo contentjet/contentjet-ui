@@ -16,14 +16,16 @@ const AppHeader = (props) => {
       <Link className={s.logoLink} to="/projects">
         <Logo className={s.logo} white />
       </Link>
-      <Link className={s.profileLink} to="/settings/profile">
-        <FontAwesome name="user" />
-        <span className={s.profileLinkText}>{ userName }</span>
-      </Link>
-      <LogoutButton
-        className={s.logoutButton}
-        onClick={onClickLogout}
-      />
+      <div>
+        <Link className={s.profileLink} to="/settings/profile">
+          <FontAwesome name="user" />
+          <span className={s.profileLinkText}>{ userName }</span>
+        </Link>
+        <LogoutButton
+          className={s.logoutButton}
+          onClick={onClickLogout}
+        />
+      </div>
     </div>
   );
 };
