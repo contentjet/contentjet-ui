@@ -8,7 +8,6 @@ module.exports = {
     },
     'postcss-nested': {},
     'postcss-extend': {},
-    'postcss-cssnext': {},
-    'lost': {}
+    'postcss-cssnext': {}
   }
 };
