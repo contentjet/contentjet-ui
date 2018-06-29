@@ -7,38 +7,38 @@ import AuthenticationActions from 'actions/AuthenticationActions';
 
 import App from 'views/App';
 
-import Login from 'views/Unauthenticated/views/Login';
+import Login from 'views/Login';
 
-import RequestResetPassword from 'views/Unauthenticated/views/RequestResetPassword';
-import SetPassword from 'views/Unauthenticated/views/SetPassword';
+import RequestResetPassword from 'views/RequestResetPassword';
+import SetPassword from 'views/SetPassword';
 
-import SignUp from 'views/Unauthenticated/views/SignUp';
-import SignUpIndex from 'views/Unauthenticated/views/SignUp/views/SignUpIndex';
-import SignUpVerify from 'views/Unauthenticated/views/SignUp/views/SignUpVerify';
-import AcceptInvite from 'views/Unauthenticated/views/AcceptInvite';
+import SignUp from 'views/SignUp';
+import SignUpIndex from 'views/SignUpIndex';
+import SignUpVerify from 'views/SignUpVerify';
+import AcceptInvite from 'views/AcceptInvite';
 
 import NotFound from 'views/NotFound';
 
 import Authenticated from 'views/Authenticated';
 
-import Settings from 'views/Authenticated/views/Settings';
-import MyProfile from 'views/Authenticated/views/Settings/views/MyProfile';
-import ChangePassword from 'views/Authenticated/views/Settings/views/ChangePassword';
+import Settings from 'views/Settings';
+import MyProfile from 'views/MyProfile';
+import ChangePassword from 'views/ChangePassword';
 
-import Projects from 'views/Authenticated/views/Projects';
-import Project from 'views/Authenticated/views/Project';
-import ProjectSettingsRoot from 'views/Authenticated/views/Project/views/ProjectSettingsRoot';
-import WebHooks from 'views/Authenticated/views/Project/views/ProjectSettingsRoot/views/WebHooks';
-import API from 'views/Authenticated/views/Project/views/ProjectSettingsRoot/views/API';
-import ProjectMembers from 'views/Authenticated/views/Project/views/ProjectSettingsRoot/views/ProjectMembers';
-import ProjectSettings from 'views/Authenticated/views/Project/views/ProjectSettingsRoot/views/ProjectSettings';
+import Projects from 'views/Projects';
+import Project from 'views/Project';
+import ProjectSettingsRoot from 'views/ProjectSettingsRoot';
+import WebHooks from 'views/WebHooks';
+import API from 'views/API';
+import ProjectMembers from 'views/ProjectMembers';
+import ProjectSettings from 'views/ProjectSettings';
 
-import EntryTypes from 'views/Authenticated/views/Project/views/EntryTypes';
-import EntryTypeEditor from 'views/Authenticated/views/Project/views/EntryTypeEditor';
-import Entries from 'views/Authenticated/views/Project/views/Entries';
-import EntryEditor from 'views/Authenticated/views/Project/views/EntryEditor';
-import Media from 'views/Authenticated/views/Project/views/Media';
-import MediaEditor from 'views/Authenticated/views/Project/views/MediaEditor';
+import EntryTypes from 'views/EntryTypes';
+import EntryTypeEditor from 'views/EntryTypeEditor';
+import Entries from 'views/Entries';
+import EntryEditor from 'views/EntryEditor';
+import Media from 'views/Media';
+import MediaEditor from 'views/MediaEditor';
 
 
 function requireAuth(nextState, replace) {

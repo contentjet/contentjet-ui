@@ -13,7 +13,7 @@ import Pagination from 'lib/components/Pagination';
 import IconButton from 'lib/components/IconButton';
 import Button from 'lib/components/Button';
 import ConfirmModal from 'lib/components/ConfirmModal';
-import ContentHeader from '../components/ContentHeader';
+import ContentHeader from 'lib/components/ContentHeader';
 import MediaList from 'lib/components/MediaList';
 import UploadsList from './components/UploadsList';
 import LoadingSpinner from 'lib/components/LoadingSpinner';

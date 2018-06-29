@@ -9,7 +9,7 @@ import Immutable, { Map } from 'immutable';
 import { immutableMove } from 'lib/utils/ImmutableUtils';
 import EntryTypeActions from 'actions/EntryTypeActions';
 import UserSelectors from 'selectors/UserSelectors';
-import ContentHeader from '../components/ContentHeader';
+import ContentHeader from 'lib/components/ContentHeader';
 import Button from 'lib/components/Button';
 import Input from 'lib/components/Input';
 import IconButton from 'lib/components/IconButton';

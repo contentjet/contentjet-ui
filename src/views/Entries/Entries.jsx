@@ -11,7 +11,7 @@ import EntryActions from 'actions/EntryActions';
 import EntryTypeActions from 'actions/EntryTypeActions';
 import Input from 'lib/components/Input';
 import Alert from 'lib/components/Alert';
-import ContentHeader from '../components/ContentHeader';
+import ContentHeader from 'lib/components/ContentHeader';
 import EntriesTable from 'lib/components/EntriesTable';
 import NewEntryDropdownButton from './components/NewEntryDropdownButton';
 import IconButton from 'lib/components/IconButton';

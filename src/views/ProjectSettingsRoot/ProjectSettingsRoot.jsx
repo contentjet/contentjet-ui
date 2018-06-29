@@ -7,7 +7,7 @@ import { Map } from 'immutable';
 import UserSelectors from 'selectors/UserSelectors';
 import ProjectSelectors from 'selectors/ProjectSelectors';
 import List from 'lib/components/List';
-import ContentHeader from '../components/ContentHeader';
+import ContentHeader from 'lib/components/ContentHeader';
 import s from './ProjectSettingsRoot.css';
 
 

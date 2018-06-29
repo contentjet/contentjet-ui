@@ -13,7 +13,7 @@ import { Link } from 'react-router';
 import Input from 'lib/components/Input';
 import ConfirmModal from 'lib/components/ConfirmModal';
 import Button from 'lib/components/Button';
-import ContentHeader from '../components/ContentHeader';
+import ContentHeader from 'lib/components/ContentHeader';
 import MediaImage from './components/MediaImage';
 import Notification from 'lib/components/Notification';
 import s from './MediaEditor.css';

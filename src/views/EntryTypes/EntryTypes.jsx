@@ -8,7 +8,7 @@ import EntryTypeActions from 'actions/EntryTypeActions';
 import Button from 'lib/components/Button';
 import LoadingSpinner from 'lib/components/LoadingSpinner';
 import Alert from 'lib/components/Alert';
-import ContentHeader from '../components/ContentHeader';
+import ContentHeader from 'lib/components/ContentHeader';
 import EntryTypeList from './components/EntryTypeList';
 import s from './EntryTypes.css';
 

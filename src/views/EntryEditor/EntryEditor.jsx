@@ -12,7 +12,7 @@ import moment from 'moment';
 import EntryActions from 'actions/EntryActions';
 import EntryTagActions from 'actions/EntryTagActions';
 import EntryTypeActions from 'actions/EntryTypeActions';
-import ContentHeader from '../components/ContentHeader';
+import ContentHeader from 'lib/components/ContentHeader';
 import Button from 'lib/components/Button';
 import IconButton from 'lib/components/IconButton';
 import Input from 'lib/components/Input';
