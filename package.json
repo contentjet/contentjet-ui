@@ -70,7 +70,7 @@
     "react-motion": "^0.5.2",
     "react-portal": "^3.0.0",
     "react-redux": "^5.0.7",
-    "react-router": "^2.4.1",
+    "react-router-dom": "^4.3.1",
     "react-textarea-autosize": "^5.2.1",
     "react-widgets": "^4.0.3",
     "react-widgets-moment": "^4.0.3",

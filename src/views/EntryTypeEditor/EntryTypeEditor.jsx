@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import EntryTypeSelectors from 'selectors/EntryTypeSelectors';
 import NotificationSelectors from 'selectors/NotificationSelectors';
-import { browserHistory } from 'react-router';
+// import { browserHistory } from 'react-router';
 import _ from 'lodash';
 import Immutable, { Map } from 'immutable';
 import { immutableMove } from 'lib/utils/ImmutableUtils';
@@ -62,7 +62,8 @@ class EntryTypeEditor extends Component {
   componentWillMount() {
     const { params, userIsProjectAdmin } = this.props;
     if (!userIsProjectAdmin) {
-      browserHistory.replace(`/project/${params.projectId}/entries`);
+      // FIXME
+      // browserHistory.replace(`/project/${params.projectId}/entries`);
     }
   }
 

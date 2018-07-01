@@ -1,6 +1,7 @@
 import { createAction } from 'redux-actions';
 import axios from 'axios';
-import { browserHistory } from 'react-router';
+// FIXME
+// import { browserHistory } from 'react-router';
 import NotificationActions from 'actions/NotificationActions';
 
 
@@ -38,9 +39,9 @@ const save = (projectId, data) => {
     saveAction.payload.then(
       response => {
         dispatch(NotificationActions.show('Entry saved'));
-        browserHistory.replace(
-          `/project/${projectId}/entries/${response.data.entryTypeId}/${response.data.id}`
-        );
+        // browserHistory.replace(
+        //   `/project/${projectId}/entries/${response.data.entryTypeId}/${response.data.id}`
+        // );
         return response;
       },
       response => {

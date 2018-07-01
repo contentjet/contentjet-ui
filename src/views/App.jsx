@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import Helmet from 'react-helmet';
+import { Route, Redirect, Switch } from 'react-router-dom';
+import Login from './Login';
+import RequestResetPassword from './RequestResetPassword';
+import SetPassword from './SetPassword';
+import SignUp from './SignUp';
+import AcceptInvite from './AcceptInvite';
+import Authenticated from './Authenticated';
+import NotFound from './NotFound';
 import s from './App.css';
 
 import appleTouchIcon57x57 from 'meta/apple-touch-icon-57x57.png';
@@ -66,7 +74,18 @@ class App extends Component {
           ]}
         />
         <div className={s.content}>
-          {this.props.children}
+          <Switch>
+            <Route exact path="/" render={() => <Redirect to="/login" />} />
+            <Route path="/project/:project_id" render={() => <Redirect to="/project/:project_id/entries" />} />
+            <Route path="/project/:project_id/settings" render={() => <Redirect to="/project/:project_id/settings/project" />} />
+            <Route path="/login" component={Login} />
+            <Route path="/reset-password" component={RequestResetPassword} />
+            <Route path="/set-password/:token" component={SetPassword} />
+            <Route path="/sign-up" component={SignUp} />
+            <Route path="/accept-invite/:invite_token" component={AcceptInvite} />
+            <Route path="/" component={Authenticated} />
+            <Route path="*" component={NotFound} />
+          </Switch>
         </div>
       </div>
     );

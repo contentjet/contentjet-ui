@@ -9,7 +9,7 @@ import _ from 'lodash';
 import slugify from 'underscore.string/slugify';
 import MediaActions from 'actions/MediaActions';
 import MediaTagActions from 'actions/MediaTagActions';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Input from 'lib/components/Input';
 import ConfirmModal from 'lib/components/ConfirmModal';
 import Button from 'lib/components/Button';

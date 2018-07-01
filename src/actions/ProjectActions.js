@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
-import { browserHistory } from 'react-router';
+// FIXME
+// import { browserHistory } from 'react-router';
 import NotificationActions from 'actions/NotificationActions';
 import axios from 'axios';
 
@@ -27,7 +28,7 @@ const save = (data, redirectOnSuccess) => {
       response => {
         if (redirectOnSuccess) {
           const projectId = response.data.id;
-          browserHistory.push(`/project/${projectId}/entry-types`);
+          // browserHistory.push(`/project/${projectId}/entry-types`);
         } else {
           dispatch(NotificationActions.show('Project saved'));
         }
@@ -57,7 +58,7 @@ const get = createAction(GET_PROJECT, id => {
 
 const destroy = createAction(DESTROY_PROJECT, (id) => {
   return axios.delete(`project/${id}/`).then(response => {
-    browserHistory.replace('/projects/');
+    // browserHistory.replace('/projects/');
     return response;
   });
 });

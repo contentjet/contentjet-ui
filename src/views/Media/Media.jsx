@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+// import { browserHistory } from 'react-router';
 import { List } from 'immutable';
 import queryString from 'query-string';
 import MediaSelectors from 'selectors/MediaSelectors';
@@ -73,10 +73,11 @@ class Media extends Component {
       search: _.trim(this.state.search),
       orderBy: this.state.orderBy
     });
-    browserHistory.replace({
-      pathname: this.props.location.pathname,
-      search: `?${params}`
-    });
+    // FIXME
+    // browserHistory.replace({
+    //   pathname: this.props.location.pathname,
+    //   search: `?${params}`
+    // });
   }
 
   componentDidMount() {

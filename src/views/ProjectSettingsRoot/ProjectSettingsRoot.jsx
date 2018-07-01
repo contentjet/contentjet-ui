@@ -1,27 +1,32 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
-import { Link } from 'react-router';
+import { Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Map } from 'immutable';
 import UserSelectors from 'selectors/UserSelectors';
 import ProjectSelectors from 'selectors/ProjectSelectors';
 import List from 'lib/components/List';
 import ContentHeader from 'lib/components/ContentHeader';
+import ProjectSettings from '../ProjectSettings';
+import ProjectMembers from '../ProjectMembers';
+import WebHooks from '../WebHooks';
+import API from '../API';
 import s from './ProjectSettingsRoot.css';
 
 
 class ProjectSettingsRoot extends Component {
 
   componentWillMount() {
-    const {params, userIsProjectAdmin} = this.props;
+    const { params, userIsProjectAdmin } = this.props;
     if (!userIsProjectAdmin) {
-      browserHistory.replace(`/project/${params.projectId}/entries`);
+      // FIXME
+      // browserHistory.replace(`/project/${params.projectId}/entries`);
     }
   }
 
   render() {
-    const {project, children} = this.props;
+    const { project, match } = this.props;
     const projectId = project.get('id');
 
     return (
@@ -72,7 +77,10 @@ class ProjectSettingsRoot extends Component {
               </nav>
             </div>
             <div className={s.contentBody}>
-              {children}
+              <Route path={`${match.path}project`} component={ProjectSettings} />
+              <Route path={`${match.path}members`} component={ProjectMembers} />
+              <Route path={`${match.path}web-hooks`} component={WebHooks} />
+              <Route path={`${match.path}api`} component={API} />
             </div>
           </div>
         </div>
@@ -85,7 +93,10 @@ class ProjectSettingsRoot extends Component {
 ProjectSettingsRoot.propTypes = {
   project: PropTypes.instanceOf(Map).isRequired,
   userIsProjectAdmin: PropTypes.bool.isRequired,
-  params: PropTypes.object.isRequired
+  params: PropTypes.object.isRequired,
+  match: PropTypes.shape({
+    path: PropTypes.string
+  }).isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -95,6 +106,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(
-  mapStateToProps
-)(ProjectSettingsRoot);
+export default connect(mapStateToProps)(ProjectSettingsRoot);

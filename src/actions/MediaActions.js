@@ -2,7 +2,8 @@ import { createAction } from 'redux-actions';
 import axios from 'axios';
 import _ from 'lodash';
 import queryString from 'query-string';
-import { browserHistory } from 'react-router';
+// FIXME
+// import { browserHistory } from 'react-router';
 import NotificationActions from 'actions/NotificationActions';
 import MediaTagActions from 'actions/MediaTagActions';
 
@@ -80,7 +81,7 @@ const destroy = createAction(DESTROY_MEDIA,
   (projectId, mediaAsset) => {
     return axios.delete(`project/${projectId}/media/${mediaAsset.id}/`).then(
       response => {
-        browserHistory.replace(`/project/${projectId}/media`);
+        // browserHistory.replace(`/project/${projectId}/media`);
         return response;
       }
     );

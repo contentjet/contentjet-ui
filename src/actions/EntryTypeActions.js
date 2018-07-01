@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 import axios from 'axios';
-import { browserHistory } from 'react-router';
+// import { browserHistory } from 'react-router';
 import NotificationActions from 'actions/NotificationActions';
 
 
@@ -9,7 +9,6 @@ export const GET_ENTRY_TYPE_LIST = 'GET_ENTRY_TYPE_LIST';
 export const GET_ENTRY_TYPE = 'GET_ENTRY_TYPE';
 export const DESTROY_ENTRY_TYPE = 'DESTROY_ENTRY_TYPE';
 export const CLEAR_ENTRY_TYPE = 'CLEAR_ENTRY_TYPE';
-
 
 const _save = createAction(
   SAVE_ENTRY_TYPE,
@@ -22,7 +21,6 @@ const _save = createAction(
   (projectId, data) => data
 );
 
-
 const save = (projectId, data) => {
   return (dispatch) => {
     const saveAction = _save(projectId, data);
@@ -31,9 +29,10 @@ const save = (projectId, data) => {
     saveAction.payload.then(
       response => {
         dispatch(NotificationActions.show('Entry type saved'));
-        browserHistory.replace(
-          `/project/${projectId}/entry-types/edit/${response.data.id}`
-        );
+        // FIXME
+        // browserHistory.replace(
+        //   `/project/${projectId}/entry-types/edit/${response.data.id}`
+        // );
         return response;
       },
       response => {
@@ -46,27 +45,23 @@ const save = (projectId, data) => {
   };
 };
 
-
 const list = createAction(GET_ENTRY_TYPE_LIST, projectId => {
   return axios.get(`project/${projectId}/entry-type/`);
 });
-
 
 const get = createAction(GET_ENTRY_TYPE, (projectId, entryTypeId) => {
   return axios.get(`project/${projectId}/entry-type/${entryTypeId}/`);
 });
 
-
 const destroy = createAction(DESTROY_ENTRY_TYPE, (projectId, entryTypeId) => {
   return axios.delete(`project/${projectId}/entry-type/${entryTypeId}/`).then(response => {
-    browserHistory.replace(`/project/${projectId}/entry-types/`);
+    // FIXME
+    // browserHistory.replace(`/project/${projectId}/entry-types/`);
     return response;
   });
 });
 
-
 const clear = createAction(CLEAR_ENTRY_TYPE);
-
 
 export default {
   save,

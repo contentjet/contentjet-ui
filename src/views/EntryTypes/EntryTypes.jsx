@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+// import { browserHistory } from 'react-router';
 import EntryTypeSelectors from 'selectors/EntryTypeSelectors';
 import UserSelectors from 'selectors/UserSelectors';
 import EntryTypeActions from 'actions/EntryTypeActions';
@@ -23,7 +23,8 @@ class EntryTypes extends Component {
   componentWillMount() {
     const { params, userIsProjectAdmin } = this.props;
     if (!userIsProjectAdmin) {
-      browserHistory.replace(`/project/${params.projectId}/entries`);
+      // FIXME
+      // browserHistory.replace(`/project/${params.projectId}/entries`);
     }
   }
 

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Route, Link, Redirect } from 'react-router-dom';
 import { Map } from 'immutable';
 import UserActions from 'actions/UserActions';
 import UserSelectors from 'selectors/UserSelectors';
 import List from 'lib/components/List';
 import AppHeader from 'lib/components/AppHeader';
 import AuthenticationActions from 'actions/AuthenticationActions';
+import MyProfile from '../MyProfile';
+import ChangePassword from '../ChangePassword';
 import s from './Settings.css';
 
 
@@ -18,7 +20,7 @@ class Settings extends Component {
   }
 
   render() {
-    const { logout, me, children } = this.props;
+    const { logout, me, match } = this.props;
 
     return (
       <div className={s.settings}>
@@ -50,7 +52,9 @@ class Settings extends Component {
             </nav>
           </div>
           <div className={s.contentBody}>
-            { children }
+            <Route exact path={match.path} render={() => <Redirect to={`${match.path}profile`} />} />
+            <Route path={`${match.path}profile`} component={MyProfile} />
+            <Route path={`${match.path}password`} component={ChangePassword} />
           </div>
         </div>
       </div>
@@ -62,7 +66,10 @@ class Settings extends Component {
 Settings.propTypes = {
   getMe: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
-  me: PropTypes.instanceOf(Map).isRequired
+  me: PropTypes.instanceOf(Map).isRequired,
+  match: PropTypes.shape({
+    path: PropTypes.string
+  }).isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -82,7 +89,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Settings);
+export default connect(mapStateToProps, mapDispatchToProps)(Settings);

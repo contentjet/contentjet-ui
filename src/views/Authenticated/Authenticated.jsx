@@ -1,29 +1,44 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 import AuthenticationSelectors from 'selectors/AuthenticationSelectors';
+import Projects from '../Projects';
+import Settings from '../Settings';
+import Project from '../Project';
 
 
 class Authenticated extends Component {
 
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.isAuthenticated) {
-      this.context.router.replace('/login');
-    }
-  }
+  // FIXME
+  // componentWillReceiveProps(nextProps) {
+  //   if (!nextProps.isAuthenticated) {
+  //     this.context.router.replace('/login');
+  //   }
+  // }
 
   shouldComponentUpdate() {
     return this.props.isAuthenticated;
   }
 
   render() {
-    return this.props.children;
+    const { match } = this.props;
+    return (
+      <div>
+        <Route path={`${match.path}projects`} component={Projects} />
+        <Route path={`${match.path}settings`} component={Settings} />
+        <Route path={`${match.path}project/:project_id`} component={Project} />
+      </div>
+    );
   }
 
 }
 
 Authenticated.propTypes = {
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
+  match: PropTypes.shape({
+    path: PropTypes.string
+  }).isRequired
 };
 
 Authenticated.contextTypes = {
@@ -36,6 +51,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(
-  mapStateToProps
-)(Authenticated);
+export default connect(mapStateToProps)(Authenticated);

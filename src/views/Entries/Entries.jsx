@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { browserHistory } from 'react-router';
+// import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 import _ from 'lodash';
@@ -105,10 +105,11 @@ class Entries extends Component {
       search: _.trim(this.state.search),
       orderBy: this.state.orderBy
     });
-    browserHistory.replace({
-      pathname: this.props.location.pathname,
-      search: `?${params}`
-    });
+    // FIXME
+    // browserHistory.replace({
+    //   pathname: this.props.location.pathname,
+    //   search: `?${params}`
+    // });
   }
 
   onSearchChange(value) {
@@ -378,7 +379,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Entries);
+export default connect(mapStateToProps, mapDispatchToProps)(Entries);

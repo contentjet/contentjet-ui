@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Panel from 'lib/components/Panel';
 import LogoutButton from 'lib/components/LogoutButton';
 import classnames from 'classnames';
