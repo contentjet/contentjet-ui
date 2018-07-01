@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Map } from 'immutable';
 import UserSelectors from 'selectors/UserSelectors';
 import ProjectSelectors from 'selectors/ProjectSelectors';
@@ -38,40 +38,40 @@ class ProjectSettingsRoot extends Component {
               <nav>
                 <List>
                   <li>
-                    <Link
+                    <NavLink
                       className={s.link}
                       activeClassName={s.linkActive}
                       to={`/project/${projectId}/settings/project`}
                     >
                       Project
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
-                    <Link
+                    <NavLink
                       className={s.link}
                       activeClassName={s.linkActive}
                       to={`/project/${projectId}/settings/members`}
                     >
                       Members
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
-                    <Link
+                    <NavLink
                       className={s.link}
                       activeClassName={s.linkActive}
                       to={`/project/${projectId}/settings/web-hooks`}
                     >
                       Web Hooks
-                    </Link>
+                    </NavLink>
                   </li>
                   <li>
-                    <Link
+                    <NavLink
                       className={s.link}
                       activeClassName={s.linkActive}
                       to={`/project/${projectId}/settings/api`}
                     >
                       API
-                    </Link>
+                    </NavLink>
                   </li>
                 </List>
               </nav>

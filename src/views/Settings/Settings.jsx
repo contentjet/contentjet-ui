@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Route, Link, Redirect } from 'react-router-dom';
+import { Route, NavLink, Redirect } from 'react-router-dom';
 import { Map } from 'immutable';
 import UserActions from 'actions/UserActions';
 import UserSelectors from 'selectors/UserSelectors';
@@ -33,20 +33,20 @@ class Settings extends Component {
             <nav>
               <List>
                 <li>
-                  <Link
+                  <NavLink
                     className={s.link}
                     activeClassName={s.linkActive}
                     to={'/settings/profile'}
                   >
                     My Profile
-                  </Link>
-                  <Link
+                  </NavLink>
+                  <NavLink
                     className={s.link}
                     activeClassName={s.linkActive}
                     to={'/settings/password'}
                   >
                     Password
-                  </Link>
+                  </NavLink>
                 </li>
               </List>
             </nav>

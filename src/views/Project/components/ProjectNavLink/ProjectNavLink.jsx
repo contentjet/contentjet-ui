@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import FontAwesome from 'lib/components/FontAwesome';
 import s from './ProjectNavLink.css';
 
@@ -9,7 +9,7 @@ class ProjectNavLink extends Component {
 
   render() {
     return (
-      <Link
+      <NavLink
         to={this.props.path}
         className={s.link}
         activeClassName={s.active}
@@ -19,7 +19,7 @@ class ProjectNavLink extends Component {
           className={s.icon}
         />
         <span>{this.props.label}</span>
-      </Link>
+      </NavLink>
     );
   }
 
