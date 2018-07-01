@@ -53,7 +53,7 @@
     "moment": "^2.22.2",
     "node-libs-browser": "^0.5.2",
     "node-sass": "^4.9.0",
-    "normalize.css": "^7.0.0",
+    "normalize.css": "^8.0.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-extend": "^1.0.5",
     "postcss-import": "^11.1.0",
