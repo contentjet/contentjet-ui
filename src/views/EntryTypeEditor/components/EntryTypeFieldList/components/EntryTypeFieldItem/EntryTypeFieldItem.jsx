@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
 import { Map } from 'immutable';
-import TweenMax from 'gsap';
+import { Motion, spring } from 'react-motion';
 import classnames from 'classnames';
 import IconButton from 'lib/components/IconButton';
 import Button from 'lib/components/Button';
@@ -11,6 +10,7 @@ import s from './EntryTypeFieldItem.css';
 
 const ITEM_HEIGHT = 54;
 
+const springConfig = { stiffness: 160, damping: 15 };
 
 class EntryTypeFieldItem extends Component {
 
@@ -20,24 +20,6 @@ class EntryTypeFieldItem extends Component {
     this.onClickDelete = this.onClickDelete.bind(this);
     this.onClickMoveUp = this.onClickMoveUp.bind(this);
     this.onClickMoveDown = this.onClickMoveDown.bind(this);
-  }
-
-  componentWillReceiveProps(props) {
-    const s = {
-      styleTop: _.get(
-        this.state, 'styleTop', this.props.position * ITEM_HEIGHT
-      )
-    };
-    TweenMax.to(
-      s,
-      0.35,
-      {
-        styleTop: props.position * ITEM_HEIGHT,
-        onUpdate: () => { this.setState(s); },
-        // eslint-disable-next-line no-undef
-        ease: Back.easeOut // Back is a global introduced by TweenMax >:(
-      }
-    );
   }
 
   onClickEdit() {
@@ -57,10 +39,7 @@ class EntryTypeFieldItem extends Component {
   }
 
   render() {
-    let {entryTypeField, className} = this.props;
-    const style = {
-      top: _.get(this.state, 'styleTop', this.props.position * ITEM_HEIGHT)
-    };
+    let {entryTypeField, className, position} = this.props;
     className = classnames(
       s.item,
       {
@@ -70,51 +49,57 @@ class EntryTypeFieldItem extends Component {
       className
     );
     return (
-      <li
-        className={className}
-        style={style}
-        title={entryTypeField.get('name')}
-      >
-        <div className={s.itemDetails}>
-          <strong title="Field label">
-            {entryTypeField.get('label')}
-          </strong>
-          <span className={s.itemType}>
-            {' - ' + entryTypeField.get('fieldType')}
-          </span>
-        </div>
-        <div className={s.itemControls}>
-          <Button
-            btnStyle="link"
-            onClick={this.onClickEdit}
-          >
-            Edit
-          </Button>
-          <IconButton
-            iconName="trash-o"
-            btnStyle="link"
-            onClick={this.onClickDelete}
-          />
-          <div className={s.reorderButtonsHolder}>
-            <IconButton
-              className={s.reorderButton}
-              title="Move field up"
-              iconName="arrow-up"
-              btnStyle="link"
-              onClick={this.onClickMoveUp}
-              disabled={!this.props.canMoveUp}
-            />
-            <IconButton
-              className={s.reorderButton}
-              title="Move field down"
-              iconName="arrow-down"
-              btnStyle="link"
-              onClick={this.onClickMoveDown}
-              disabled={!this.props.canMoveDown}
-            />
-          </div>
-        </div>
-      </li>
+      <Motion style={{ top: spring(position * ITEM_HEIGHT, springConfig) }}>
+        {
+          interpolatingStyle => (
+            <li
+              className={className}
+              style={interpolatingStyle}
+              title={entryTypeField.get('name')}
+            >
+              <div className={s.itemDetails}>
+                <strong title="Field label">
+                  {entryTypeField.get('label')}
+                </strong>
+                <span className={s.itemType}>
+                  {' - ' + entryTypeField.get('fieldType')}
+                </span>
+              </div>
+              <div className={s.itemControls}>
+                <Button
+                  btnStyle="link"
+                  onClick={this.onClickEdit}
+                >
+                  Edit
+                </Button>
+                <IconButton
+                  iconName="trash-o"
+                  btnStyle="link"
+                  onClick={this.onClickDelete}
+                />
+                <div className={s.reorderButtonsHolder}>
+                  <IconButton
+                    className={s.reorderButton}
+                    title="Move field up"
+                    iconName="arrow-up"
+                    btnStyle="link"
+                    onClick={this.onClickMoveUp}
+                    disabled={!this.props.canMoveUp}
+                  />
+                  <IconButton
+                    className={s.reorderButton}
+                    title="Move field down"
+                    iconName="arrow-down"
+                    btnStyle="link"
+                    onClick={this.onClickMoveDown}
+                    disabled={!this.props.canMoveDown}
+                  />
+                </div>
+              </div>
+            </li>
+          )
+        }
+      </Motion>
     );
   }
 
