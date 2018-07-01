@@ -27,6 +27,7 @@ function LoadingSpinner(props) {
   );
 
 }
+
 LoadingSpinner.propTypes = {
   mini: PropTypes.bool,
   slow: PropTypes.bool,
@@ -34,7 +35,5 @@ LoadingSpinner.propTypes = {
   color: PropTypes.string,
   backgroundColor: PropTypes.string
 };
-
-
 
 export default LoadingSpinner;

@@ -186,6 +186,7 @@ class ProjectMembers extends Component {
   }
 
 }
+
 ProjectMembers.propTypes = {
   project: PropTypes.instanceOf(Map).isRequired,
   invites: PropTypes.instanceOf(List).isRequired,
@@ -195,7 +196,6 @@ ProjectMembers.propTypes = {
   params: PropTypes.object.isRequired,
   getProject: PropTypes.func.isRequired
 };
-
 
 const mapStateToProps = (state) => {
   return {
@@ -219,7 +219,5 @@ const mapDispatchToProps = (dispatch, props) => {
     },
   };
 };
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectMembers);

@@ -108,6 +108,7 @@ class ToolTip extends Component {
     );
   }
 }
+
 ToolTip.propTypes = {
   children: PropTypes.node.isRequired,
   content: PropTypes.node.isRequired,
@@ -116,12 +117,11 @@ ToolTip.propTypes = {
   yOffset: PropTypes.number,
   disabled: PropTypes.bool
 };
+
 ToolTip.defaultProps = {
   position: 'top',
   xOffset: 0,
   yOffset: 0
 };
-
-
 
 export default ToolTip;

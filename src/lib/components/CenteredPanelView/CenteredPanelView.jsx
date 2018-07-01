@@ -8,8 +8,6 @@ import logo from 'images/contentjet-logo.svg';
 import s from './CenteredPanelView.css';
 
 
-
-
 class CenteredPanelView extends Component {
 
   render() {
@@ -43,10 +41,10 @@ class CenteredPanelView extends Component {
   }
 
 }
+
 CenteredPanelView.propTypes = {
   onClickLogout: PropTypes.func,
   footer: PropTypes.element
 };
-
 
 export default CenteredPanelView;

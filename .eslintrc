@@ -49,6 +49,7 @@
             "error"
         ],
         "prefer-const": "error",
+        "no-multiple-empty-lines": "error",
         "react/prop-types": [
             "error", {
                 "ignore": ["children", "className", "style", "params", "location"]
