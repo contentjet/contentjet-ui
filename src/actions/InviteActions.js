@@ -18,7 +18,7 @@ const _save = createAction(SAVE_INVITE, (projectId, data) => {
 
 const save = (projectId, data) => {
   return (dispatch) => {
-    let action = _save(projectId, data);
+    const action = _save(projectId, data);
     dispatch(action);
     action.payload.then(response => {
       dispatch(list(projectId));
@@ -61,7 +61,7 @@ const _bulkDestroy = createAction(
 
 const bulkDestroy = (projectId, inviteIds) => {
   return (dispatch) => {
-    let action = _bulkDestroy(projectId, inviteIds);
+    const action = _bulkDestroy(projectId, inviteIds);
     dispatch(action);
     action.payload.then(response => {
       dispatch(list(projectId));

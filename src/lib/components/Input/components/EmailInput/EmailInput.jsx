@@ -18,7 +18,7 @@ class EmailInput extends Component {
   }
 
   render() {
-    let className = classnames(
+    const className = classnames(
       s.emailInput,
       {
         [s.hasError]: _.get(this.props, 'errors.length')
@@ -41,10 +41,10 @@ class EmailInput extends Component {
   }
 
 }
+
 EmailInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func
 };
-
 
 export default EmailInput;

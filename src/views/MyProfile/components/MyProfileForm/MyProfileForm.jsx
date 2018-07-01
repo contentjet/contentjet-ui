@@ -20,7 +20,7 @@ class MyProfileForm extends Component {
   }
 
   render() {
-    let { err, onInputChange, isSending, formData } = this.props;
+    const { err, onInputChange, isSending, formData } = this.props;
     if (err.message) {
       var alert = (
         <ErrorsListAlert

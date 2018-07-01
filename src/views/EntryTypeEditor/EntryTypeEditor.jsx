@@ -81,7 +81,7 @@ class EntryTypeEditor extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let newState = {};
+    const newState = {};
     if ((nextProps.entryType !== this.props.entryType) && !nextProps.isSending) {
       newState.entryType = nextProps.entryType;
     }
@@ -121,7 +121,7 @@ class EntryTypeEditor extends Component {
   }
 
   onConfirmRemoveField() {
-    let fields = this.state.entryType.get('fields').filter(
+    const fields = this.state.entryType.get('fields').filter(
       field => field !== this.state.entryTypeFieldToRemove
     );
     this.setState({
@@ -139,7 +139,7 @@ class EntryTypeEditor extends Component {
   }
 
   onAcceptAddField(fieldData) {
-    let fields = this.state.entryType.get('fields').push(Immutable.fromJS(fieldData));
+    const fields = this.state.entryType.get('fields').push(Immutable.fromJS(fieldData));
     this.setState({
       entryType: this.state.entryType.set('fields', fields),
       addFieldModalOpen: false
@@ -153,7 +153,7 @@ class EntryTypeEditor extends Component {
 
   onClickMoveUp(fieldData) {
     let fields = this.state.entryType.get('fields');
-    let index = fields.indexOf(fieldData);
+    const index = fields.indexOf(fieldData);
     fields = immutableMove(fields, index, index - 1);
     this.setState({
       entryType: this.state.entryType.set('fields', fields)
@@ -162,7 +162,7 @@ class EntryTypeEditor extends Component {
 
   onClickMoveDown(fieldData) {
     let fields = this.state.entryType.get('fields');
-    let index = fields.indexOf(fieldData);
+    const index = fields.indexOf(fieldData);
     fields = immutableMove(fields, index, index + 1);
     this.setState({
       entryType: this.state.entryType.set('fields', fields)
@@ -198,22 +198,22 @@ class EntryTypeEditor extends Component {
   }
 
   render() {
-    let {
+    const {
       entryType,
       confirmRemoveFieldModalOpen,
       addFieldModalOpen,
       entryTypeList,
       confirmDeleteModalOpen,
-      editFieldModalOpen,
-      fieldToEdit
+      editFieldModalOpen
     } = this.state;
+    let { fieldToEdit } = this.state;
 
     const {isSending, isFetching, params} = this.props;
     const notification = this.props.notification.toJS();
     const err = this.props.err.toJS();
 
     fieldToEdit = fieldToEdit ? fieldToEdit.toJS() : null;
-    let entryTypes = entryTypeList.get('results').toJS();
+    const entryTypes = entryTypeList.get('results').toJS();
 
     // Only render delete button if we're editing an existing entry type.
     if (params.entry_type_id) {

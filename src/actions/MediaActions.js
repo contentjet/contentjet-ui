@@ -25,7 +25,7 @@ export const CLEAR_COMPLETED_UPLOADS = 'CLEAR_COMPLETED_UPLOADS';
 const list = createAction(
   GET_MEDIA_LIST,
   (projectId, queryParams) => {
-    let query = queryString.stringify(queryParams);
+    const query = queryString.stringify(queryParams);
     return axios.get(`project/${projectId}/media/?${query}`);
   },
   (projectId, queryParams) => ({ queryParams })
@@ -56,7 +56,7 @@ const _save = createAction(
 
 const save = (projectId, data) => {
   return (dispatch) => {
-    let saveAction = _save(projectId, data);
+    const saveAction = _save(projectId, data);
     dispatch(saveAction);
     saveAction.payload.then(
       response => {
@@ -102,7 +102,7 @@ const _bulkDestroy = createAction(
 
 const bulkDestroy = (projectId, mediaAssetIds) => {
   return (dispatch) => {
-    let action = _bulkDestroy(projectId, mediaAssetIds);
+    const action = _bulkDestroy(projectId, mediaAssetIds);
     dispatch(action);
     action.payload.then(response => {
       dispatch(relist(projectId));
@@ -135,30 +135,30 @@ const _upload = createAction(UPLOAD);
 
 const upload = (projectId, files) => {
   return (dispatch) => {
-    let url = `project/${projectId}/media/upload`;
-    let uploads = [];
-    let promises = [];
+    const url = `project/${projectId}/media/upload`;
+    const uploads = [];
+    const promises = [];
 
     files.forEach(file => {
       // Create upload state object
-      let uploadState = {
+      const uploadState = {
         uploadId: _.uniqueId('upload_'),
         progress: 0,
         filename: file.name,
         status: 'UPLOADING'
       };
       // Create formData and attach file to it.
-      let data = new FormData();
+      const data = new FormData();
       data.append('name', file.name);
       data.append('file', file);
       // Post
-      let promise = axios.post(
+      const promise = axios.post(
         url,
         data,
         {
           onUploadProgress: (e) => {
-            let done = e.position || e.loaded;
-            let total = e.totalSize || e.total;
+            const done = e.position || e.loaded;
+            const total = e.totalSize || e.total;
             uploadState.progress = (done / total) * 0.95;
             dispatch(uploadProgress(uploadState));
           }

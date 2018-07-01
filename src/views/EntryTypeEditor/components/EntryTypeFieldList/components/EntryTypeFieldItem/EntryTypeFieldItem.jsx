@@ -39,7 +39,8 @@ class EntryTypeFieldItem extends Component {
   }
 
   render() {
-    let {entryTypeField, className, position} = this.props;
+    const {entryTypeField, position} = this.props;
+    let { className } = this.props;
     className = classnames(
       s.item,
       {

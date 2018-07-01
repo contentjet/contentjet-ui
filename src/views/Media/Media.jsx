@@ -132,7 +132,7 @@ class Media extends Component {
   }
 
   render() {
-    let {
+    const {
       isFetching,
       params,
       toggleSelect,

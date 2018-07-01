@@ -27,22 +27,20 @@ const MAP = {
   'audio/wav': 'file-audio-o'
 };
 
-
-
 class FileIcon extends Component {
 
   render() {
-    let { className } = this.props;
-    let name = _.get(MAP, this.props.mimeType, 'file-o');
+    const { className } = this.props;
+    const name = _.get(MAP, this.props.mimeType, 'file-o');
     return (
       <FontAwesome className={className} name={name} />
     );
   }
 
 }
+
 FileIcon.propTypes = {
   mimeType: PropTypes.string
 };
-
 
 export default FileIcon;

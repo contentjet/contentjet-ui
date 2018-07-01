@@ -26,7 +26,8 @@ class _NumberPicker extends Component {
   }
 
   render() {
-    let { name, className } = this.props;
+    const { name } = this.props;
+    let { className } = this.props;
     className = classnames(
       s.numberPicker,
       {

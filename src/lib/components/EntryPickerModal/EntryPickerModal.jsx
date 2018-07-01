@@ -19,7 +19,6 @@ import s from './EntryPickerModal.css';
 
 const springConfig = { stiffness: 160, damping: 15 };
 
-
 class EntryPickerModal extends Component {
 
   constructor(props) {
@@ -38,7 +37,7 @@ class EntryPickerModal extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let state = {};
+    const state = {};
     if (nextProps.entries !== this.state.entries) {
       state.entries = nextProps.entries;
     }
@@ -78,23 +77,23 @@ class EntryPickerModal extends Component {
   }
 
   entryIsSelected(entry) {
-    let selectedEntryIds = this.state.selectedEntries.map(item => item.id);
+    const selectedEntryIds = this.state.selectedEntries.map(item => item.id);
     return selectedEntryIds.includes(entry.id);
   }
 
   onMove(fromIndex, toIndex) {
-    let selectedEntries = immutableMove(this.state.selectedEntries, fromIndex, toIndex);
+    const selectedEntries = immutableMove(this.state.selectedEntries, fromIndex, toIndex);
     this.setState({ selectedEntries });
   }
 
   render() {
     let { entries } = this.state;
-    let selectedEntries = this.state.selectedEntries.toJS();
-    let {
+    const selectedEntries = this.state.selectedEntries.toJS();
+    const {
       excludedEntryIds, onCancel, isOpened, isFetching, page, totalPages
     } = this.props;
 
-    let footer = [
+    const footer = [
       <Button
         key="cancel-button"
         btnStyle="link"
@@ -121,7 +120,7 @@ class EntryPickerModal extends Component {
         <LoadingSpinner className={s.loadingSpinner} />
       );
     } else {
-      let items = entries.map(entry => {
+      const items = entries.map(entry => {
         return (
           <CheckboxListItem
             key={entry.id}
@@ -233,6 +232,7 @@ class EntryPickerModal extends Component {
   }
 
 }
+
 EntryPickerModal.propTypes = {
   entries: PropTypes.instanceOf(IList).isRequired,
   isFetching: PropTypes.bool,
@@ -247,7 +247,6 @@ EntryPickerModal.propTypes = {
   isOpened: PropTypes.bool
 };
 
-
 const mapStateToProps = (state) => {
   return {
     entries: EntrySelectors.listDataResults(state),
@@ -257,7 +256,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-
 const mapDispatchToProps = (dispatch) => {
   return {
     listEntries: (projectId, queryParams) => {
@@ -265,6 +263,5 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(EntryPickerModal);

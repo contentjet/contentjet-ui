@@ -6,9 +6,9 @@ import s from './ProgressBar.css';
 
 function ProgressBar(props) {
 
-  let percentage = props.progress * 100;
-  let innerStyle = { width: `${percentage}%` };
-  let className = classnames(
+  const percentage = props.progress * 100;
+  const innerStyle = { width: `${percentage}%` };
+  const className = classnames(
     s.progressBar,
     props.className,
     {

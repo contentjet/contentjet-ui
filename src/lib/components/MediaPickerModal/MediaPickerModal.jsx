@@ -39,7 +39,7 @@ class MediaPickerModal extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let state = {};
+    const state = {};
     if (nextProps.media !== this.state.media) {
       state.media = nextProps.media;
     }
@@ -79,24 +79,24 @@ class MediaPickerModal extends Component {
   }
 
   mediaIsSelected(mediaItem) {
-    let selectedMediaIds = this.state.selectedMedia.map(item => item.id);
+    const selectedMediaIds = this.state.selectedMedia.map(item => item.id);
     return selectedMediaIds.includes(mediaItem.id);
   }
 
   onMove(fromIndex, toIndex) {
-    let selectedMedia = immutableMove(this.state.selectedMedia, fromIndex, toIndex);
+    const selectedMedia = immutableMove(this.state.selectedMedia, fromIndex, toIndex);
     this.setState({ selectedMedia });
   }
 
   render() {
     let { media } = this.state;
-    let selectedMedia = this.state.selectedMedia.toJS();
-    let {
+    const selectedMedia = this.state.selectedMedia.toJS();
+    const {
       excludedMediaIds, onCancel, isOpened, isFetching,
       page, totalPages, projectId
     } = this.props;
 
-    let footer = [
+    const footer = [
       <Button
         key="cancel-button"
         btnStyle="link"
@@ -123,7 +123,7 @@ class MediaPickerModal extends Component {
         <LoadingSpinner className={s.loadingSpinner} />
       );
     } else {
-      let items = media.map(mediaItem => {
+      const items = media.map(mediaItem => {
         return (
           <CheckboxListItem
             key={mediaItem.id}

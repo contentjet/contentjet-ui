@@ -28,7 +28,7 @@ class SetPasswordForm extends Component {
   }
 
   onInputChange(value, name) {
-    let formData = this.state.formData;
+    const { formData } = this.state;
     formData[name] = value;
     this.setState(formData);
   }

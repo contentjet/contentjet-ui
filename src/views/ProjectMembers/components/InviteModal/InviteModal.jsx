@@ -42,7 +42,7 @@ class InviteModal extends Component {
   render() {
     const { isSending } = this.props;
 
-    let footer = [
+    const footer = [
       <Button
         btnStyle="link"
         key="cancel-button"

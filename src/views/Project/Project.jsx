@@ -20,14 +20,14 @@ class Project extends Component {
   }
 
   render() {
-    let {
+    const {
       params,
       project,
       userIsProjectAdmin,
       me,
-      logout,
-      children
+      logout
     } = this.props;
+    let { children } = this.props;
     // NOTE: We don't render children until the project and authenticated
     // user is loaded.
     const projectId = project.get('id');

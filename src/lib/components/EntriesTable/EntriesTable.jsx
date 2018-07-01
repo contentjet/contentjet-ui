@@ -16,7 +16,7 @@ class EntriesTable extends Component {
   }
 
   entryIsSelected(entry) {
-    let selectedEntry = _.find(
+    const selectedEntry = _.find(
       this.props.selectedEntries, _entry => _entry.id === entry.id
     );
     return !_.isUndefined(selectedEntry);
@@ -83,12 +83,12 @@ class EntriesTable extends Component {
   }
 
 }
+
 EntriesTable.propTypes = {
   entries: PropTypes.array.isRequired,
   selectedEntries: PropTypes.array.isRequired,
   toggleSelect: PropTypes.func.isRequired,
   projectId: PropTypes.string.isRequired
 };
-
 
 export default EntriesTable;

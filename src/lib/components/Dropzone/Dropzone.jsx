@@ -7,7 +7,7 @@ import s from './Dropzone.css';
 
 
 function _Dropzone(props) {
-  let className = classnames(s.dropzone, props.className);
+  const className = classnames(s.dropzone, props.className);
   return (
     <Dropzone
       {...props}
@@ -21,9 +21,9 @@ function _Dropzone(props) {
     </Dropzone>
   );
 }
+
 _Dropzone.propTypes = {
   onDrop: PropTypes.func.isRequired
 };
-
 
 export default _Dropzone;

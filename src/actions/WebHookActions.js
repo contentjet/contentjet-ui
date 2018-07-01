@@ -22,7 +22,7 @@ const _save = createAction(SAVE_WEB_HOOK, (projectId, data) => {
 
 const save = (projectId, data) => {
   return (dispatch) => {
-    let action = _save(projectId, data);
+    const action = _save(projectId, data);
     dispatch(action);
     action.payload.then(response => {
       dispatch(list(projectId));
@@ -43,7 +43,7 @@ const _destroy = createAction(
 
 const destroy = (projectId, webHookId) => {
   return (dispatch) => {
-    let action = _destroy(projectId, webHookId);
+    const action = _destroy(projectId, webHookId);
     dispatch(action);
     action.payload.then(response => {
       dispatch(list(projectId));

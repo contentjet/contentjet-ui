@@ -21,12 +21,12 @@ const _save = createAction(SAVE_PROJECT, (data) => {
 
 const save = (data, redirectOnSuccess) => {
   return (dispatch) => {
-    let action = _save(data);
+    const action = _save(data);
     dispatch(action);
     action.payload.then(
       response => {
         if (redirectOnSuccess) {
-          let projectId = response.data.id;
+          const projectId = response.data.id;
           browserHistory.push(`/project/${projectId}/entry-types`);
         } else {
           dispatch(NotificationActions.show('Project saved'));

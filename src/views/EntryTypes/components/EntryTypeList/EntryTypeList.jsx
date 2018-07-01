@@ -9,7 +9,8 @@ import s from './EntryTypeList.css';
 
 
 const EntryTypeList = (props) => {
-  let { entryTypes, projectId, className } = props;
+  const { projectId } = props;
+  let { entryTypes, className } = props;
   entryTypes = _.orderBy(entryTypes, 'name');
   className = classnames(s.entryTypeList, className);
   return (

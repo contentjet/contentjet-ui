@@ -34,7 +34,7 @@ import 'meta/mstile-310x310.png';
 class App extends Component {
 
   render() {
-    let className = classnames(s.app, this.props.className);
+    const className = classnames(s.app, this.props.className);
     return (
       <div className={className}>
         <Helmet

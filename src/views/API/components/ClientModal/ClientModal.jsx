@@ -33,7 +33,7 @@ class ClientModal extends Component {
   }
 
   onInputChangeHandler(value, name) {
-    let obj = {};
+    const obj = {};
     obj[name] = value;
     this.setState(obj);
   }

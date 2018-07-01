@@ -12,7 +12,7 @@ function PaginationItem(props) {
     props.onClick(props.value);
   };
 
-  let className = classnames(
+  const className = classnames(
     s.paginationItem,
     {
       [s.active]: props.active
@@ -58,9 +58,9 @@ class Pagination extends Component {
   render() {
     if (this.props.totalPages === 0 || this.props.totalPages === 1) return null;
 
-    let lastPageNumber = this.props.totalPages + 1;
+    const lastPageNumber = this.props.totalPages + 1;
     let pageNumbers = _.range(1, lastPageNumber);
-    let maxSize = 12; // Must not be < 12.
+    const maxSize = 12; // Must not be < 12.
     if (this.props.totalPages > maxSize) {
       // Last, Second-last, Third-last or Forth-last page selected
       if (this.props.currentPage >= lastPageNumber - 6) {
@@ -88,7 +88,7 @@ class Pagination extends Component {
       }
     }
 
-    let items = pageNumbers.map((value) => {
+    const items = pageNumbers.map((value) => {
       return (
         <PaginationItem
           value={value}
@@ -118,7 +118,7 @@ class Pagination extends Component {
       );
     }
 
-    let className = classnames(s.pagination, this.props.className);
+    const className = classnames(s.pagination, this.props.className);
     return (
       <ul className={className}>
         {items}

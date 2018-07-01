@@ -32,7 +32,7 @@ const _save = createAction(
 
 const save = (projectId, data) => {
   return (dispatch) => {
-    let saveAction = _save(projectId, data);
+    const saveAction = _save(projectId, data);
     dispatch(saveAction);
 
     saveAction.payload.then(
@@ -65,7 +65,7 @@ const list = createAction(
 
 const relist = (projectId) => {
   return (dispatch, getState) => {
-    let queryParams = getState().getIn(['entry', 'entryList', 'queryParams']);
+    const queryParams = getState().getIn(['entry', 'entryList', 'queryParams']);
     dispatch(list(projectId, queryParams));
   };
 };
@@ -100,7 +100,7 @@ const _bulkDestroy = createAction(
 
 const bulkDestroy = (projectId, entryIds) => {
   return (dispatch) => {
-    let action = _bulkDestroy(projectId, entryIds);
+    const action = _bulkDestroy(projectId, entryIds);
     dispatch(action);
     action.payload.then(response => {
       dispatch(relist(projectId));

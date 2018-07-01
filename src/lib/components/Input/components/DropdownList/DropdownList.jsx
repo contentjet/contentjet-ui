@@ -18,7 +18,7 @@ class _DropdownList extends Component {
   }
 
   render() {
-    let { className } = this.props;
+    const { className } = this.props;
     return (
       <InputWrapper
         {..._.pick(this.props, inputWrapperProps)} className={className}
@@ -31,10 +31,10 @@ class _DropdownList extends Component {
   }
 
 }
+
 _DropdownList.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func
 };
-
 
 export default _DropdownList;

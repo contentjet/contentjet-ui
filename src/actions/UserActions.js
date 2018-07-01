@@ -68,7 +68,7 @@ const _saveMe = createAction(SAVE_ME, (data) => {
 
 const saveMe = (data) => {
   return (dispatch) => {
-    let saveMeAction = _saveMe(data);
+    const saveMeAction = _saveMe(data);
     dispatch(saveMeAction);
     saveMeAction.payload.then(
       response => {

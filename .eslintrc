@@ -48,6 +48,7 @@
         "jsx-quotes": [
             "error"
         ],
+        "prefer-const": "error",
         "react/prop-types": [
             "error", {
                 "ignore": ["children", "className", "style", "params", "location"]

@@ -20,7 +20,7 @@ class ChangePasswordForm extends Component {
   }
 
   render() {
-    let { err, onInputChange, isSending, formData } = this.props;
+    const { err, onInputChange, isSending, formData } = this.props;
     if (err.message) {
       var alert = (
         <ErrorsListAlert
@@ -35,7 +35,7 @@ class ChangePasswordForm extends Component {
         onSubmit={this.onSubmit}
         noValidate
       >
-        {alert}
+        { alert }
         <Input
           type="password"
           label="Current password"

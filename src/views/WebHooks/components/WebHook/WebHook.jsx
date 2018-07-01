@@ -7,7 +7,8 @@ import s from './WebHook.css';
 
 
 const WebHook = (props) => {
-  let { className, webHook, onClickEdit, onClickDelete } = props;
+  let { className } = props;
+  const { webHook, onClickEdit, onClickDelete } = props;
   className = classnames(s.webHook, className);
   return (
     <div className={className}>

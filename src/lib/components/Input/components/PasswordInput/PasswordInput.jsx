@@ -18,7 +18,7 @@ class PasswordInput extends Component {
   }
 
   render() {
-    let className = classnames(
+    const className = classnames(
       [s.passwordInput],
       {
         [s.hasError]: _.get(this.props, 'errors.length')

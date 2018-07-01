@@ -10,7 +10,8 @@ import s from './Modal.css';
 class Modal extends Component {
 
   render() {
-    let { className, wide, isOpened, bodyClassName } = this.props;
+    let { className, bodyClassName } = this.props;
+    const { wide, isOpened } = this.props;
 
     if (!isOpened) return null;
 

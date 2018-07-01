@@ -5,15 +5,15 @@ import logoWhite from 'images/contentjet-logo-white.svg';
 
 
 const Logo = (props) => {
-  let { className, white } = props;
-  let src = white ? logoWhite : logo;
+  const { className, white } = props;
+  const src = white ? logoWhite : logo;
   return (
     <img className={className} src={src} title="contentjet" alt="logo" />
   );
 };
+
 Logo.propTypes = {
   white: PropTypes.bool
 };
-
 
 export default Logo;

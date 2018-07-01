@@ -45,7 +45,7 @@ class MyProfile extends Component {
   }
 
   onInputChange(value, name) {
-    let formData = _.clone(this.state.formData);
+    const formData = _.clone(this.state.formData);
     formData[name] = value;
     this.setState({ formData });
   }

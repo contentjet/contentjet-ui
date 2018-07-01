@@ -99,7 +99,7 @@ class Entries extends Component {
       }
     );
     // Update browser history
-    let params = queryString.stringify({
+    const params = queryString.stringify({
       page: this.state.page,
       pageSize: this.state.pageSize,
       entryType: entryTypeId || '',

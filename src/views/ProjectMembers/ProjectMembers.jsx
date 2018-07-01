@@ -83,7 +83,7 @@ class ProjectMembers extends Component {
   }
 
   onConfirmDeleteSelected() {
-    let inviteIds = this.state.selectedInvites.map(invite => invite.id);
+    const inviteIds = this.state.selectedInvites.map(invite => invite.id);
     this.props.bulkDestroy(inviteIds);
     this.setState({ deleteInvitesModalOpen: false });
   }

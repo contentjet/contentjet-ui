@@ -38,8 +38,8 @@ class EntryTypeFieldList extends Component {
       }, this).toJS();
     }
 
-    let className = classnames(s.entryTypeFieldList, this.props.className);
-    let style = {
+    const className = classnames(s.entryTypeFieldList, this.props.className);
+    const style = {
       height: entryTypeFieldItems ? entryTypeFieldItems.length * ITEM_HEIGHT : 0
     };
     return (

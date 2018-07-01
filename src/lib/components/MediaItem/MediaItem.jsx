@@ -33,12 +33,12 @@ const MediaItem = (props) => {
     e.preventDefault();
   };
 
-  let tagsString = _.get(data, 'tags', []).join(', ');
-  let tags = (
+  const tagsString = _.get(data, 'tags', []).join(', ');
+  const tags = (
     <span><FontAwesome name="tag" /> {tagsString}</span>
   );
 
-  let className = classnames(
+  const className = classnames(
     s.mediaItem,
     {
       [s.selectable]: onClick,
@@ -59,7 +59,7 @@ const MediaItem = (props) => {
     );
   }
 
-  let imageHolderClassName = classnames(s.imageHolder, props.imageHolderClassName);
+  const imageHolderClassName = classnames(s.imageHolder, props.imageHolderClassName);
 
   return (
     <div className={className} title={data.name}>

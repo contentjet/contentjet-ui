@@ -14,14 +14,15 @@ class InviteTable extends Component {
   }
 
   inviteIsSelected(invite) {
-    let selectedEntry = _.find(
+    const selectedEntry = _.find(
       this.props.selectedInvites, _invite => _invite.id === invite.id
     );
     return !_.isUndefined(selectedEntry);
   }
 
   render() {
-    let { className, invites } = this.props;
+    const { invites } = this.props;
+    let { className } = this.props;
     className = classnames(s.inviteTable, className);
     return (
       <table className={className}>

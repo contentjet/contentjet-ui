@@ -7,7 +7,8 @@ import s from './UserTable.css';
 
 
 const UserTable = (props) => {
-  let { className, users, onClickEditUser } = props;
+  const { users, onClickEditUser } = props;
+  let { className } = props;
   className = classnames(s.userTable, className);
   return (
     <table className={className}>

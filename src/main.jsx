@@ -21,7 +21,7 @@ import Immutable from 'immutable';
 axios.defaults.baseURL = window.contentjet.BACKEND_URL;
 axios.interceptors.request.use(
   config => {
-    let accessToken = TokenStorage.getToken();
+    const accessToken = TokenStorage.getToken();
     if (accessToken) {
       config.headers = _.assign({}, config.headers, { 'Authorization': `Bearer ${accessToken}` });
     }

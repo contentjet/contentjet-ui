@@ -8,10 +8,10 @@ import momentLocalizer from 'react-widgets-moment';
 import DateTimePicker from 'react-widgets/lib/DateTimePicker';
 import s from './DateTimePicker.css';
 
+
 // See https://jquense.github.io/react-widgets/localization/
 Moment.locale('en');
 momentLocalizer();
-
 
 class _DateTimePicker extends Component {
 
@@ -25,7 +25,7 @@ class _DateTimePicker extends Component {
   }
 
   render() {
-    let className = classnames(
+    const className = classnames(
       s.datetimePicker,
       {
         [s.hasError]: _.get(this.props, 'errors.length')
@@ -46,10 +46,10 @@ class _DateTimePicker extends Component {
   }
 
 }
+
 _DateTimePicker.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func
 };
-
 
 export default _DateTimePicker;

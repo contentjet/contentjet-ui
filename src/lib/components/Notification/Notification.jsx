@@ -14,7 +14,8 @@ const ICON_FOR_STATUS = {
 
 
 function Notification(props) {
-  let { className, status, message, show } = props;
+  const { status, message, show } = props;
+  let { className } = props;
   className = classnames(
     s.notification,
     {

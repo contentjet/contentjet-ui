@@ -19,7 +19,7 @@ class SearchInput extends Component {
   }
 
   render() {
-    let className = classnames(
+    const className = classnames(
       s.searchInput,
       {
         [s.disabled]: this.props.disabled,

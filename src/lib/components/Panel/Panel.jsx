@@ -13,7 +13,7 @@ function PanelHeader(props) {
       <h3 className={s.headerHeading}>{ children }</h3>
     );
   }
-  let className = classnames(
+  const className = classnames(
     s.panelHeader,
     {
       [s.textLeft]: props.textAlign === 'left',
@@ -36,7 +36,7 @@ PanelHeader.propTypes = {
 
 function PanelFooter(props) {
 
-  let className = classnames(
+  const className = classnames(
     s.panelFooter,
     {
       [s.textLeft]: props.textAlign === 'left',
@@ -59,7 +59,7 @@ PanelFooter.propTypes = {
 
 function Panel(props) {
 
-  let className = classnames(s.panel, props.className);
+  const className = classnames(s.panel, props.className);
 
   if (props.header) {
     var header = (

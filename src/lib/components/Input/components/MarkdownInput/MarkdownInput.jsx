@@ -108,7 +108,7 @@ class MarkdownInput extends Component {
   }
 
   render() {
-    let className = classnames(
+    const className = classnames(
       s.markdownInput,
       {
         [s.hasError]: _.get(this.props, 'errors.length'),
@@ -204,6 +204,7 @@ class MarkdownInput extends Component {
   }
 
 }
+
 MarkdownInput.propTypes = {
   name: PropTypes.string.isRequired,
   projectId: PropTypes.string.isRequired,

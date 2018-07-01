@@ -4,7 +4,8 @@ import Alert from 'lib/components/Alert';
 
 
 const ErrorsListAlert = (props) => {
-  let { errors, message, className } = props;
+  const { errors, className } = props;
+  let { message } = props;
   if (!message) {
     message = (
       <span><strong>Whoops!</strong> The following errors occurred:</span>
@@ -25,10 +26,10 @@ const ErrorsListAlert = (props) => {
     </Alert>
   );
 };
+
 ErrorsListAlert.propTypes = {
   errors: PropTypes.array.isRequired,
   message: PropTypes.string
 };
-
 
 export default ErrorsListAlert;

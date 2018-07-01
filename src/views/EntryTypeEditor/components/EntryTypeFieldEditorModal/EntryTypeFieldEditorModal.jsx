@@ -141,7 +141,7 @@ class EntryTypeFieldEditorModal extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let newState = {};
+    const newState = {};
     if (this.props.isOpened && !nextProps.isOpened) {
       newState.page = this.props.mode === 'CREATE' ? 0 : 1;
       newState.fieldProperties = nextProps.initialFieldProperties || defaultFieldProperties;
@@ -192,7 +192,7 @@ class EntryTypeFieldEditorModal extends Component {
     // When label input changes we update the 'name' field as a slugified
     // version of label. Note we don't do this if mode == 'EDIT' because
     // changing the field name of an existing field is dangerous.
-    let fieldProperties = _.clone(this.state.fieldProperties);
+    const fieldProperties = _.clone(this.state.fieldProperties);
     fieldProperties[name] = value;
     let nameErrors = [];
     if (name === 'label' && this.props.mode !== 'EDIT') {
@@ -219,7 +219,7 @@ class EntryTypeFieldEditorModal extends Component {
   }
 
   onFieldNameInputBlur() {
-    let fieldProperties = _.clone(this.state.fieldProperties);
+    const fieldProperties = _.clone(this.state.fieldProperties);
     fieldProperties.name = formatName(fieldProperties.name);
     const nameErrors = this.getNameErrors(fieldProperties.name);
     this.setState({ fieldProperties, nameErrors });
@@ -287,7 +287,7 @@ class EntryTypeFieldEditorModal extends Component {
       nameInputProps.lockMessage = lockMessage;
     }
 
-    let fields = [
+    const fields = [
       <Input
         type="select-object"
         name="fieldType"

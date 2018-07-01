@@ -25,7 +25,7 @@ const _save = createAction(
 
 const save = (projectId, data) => {
   return (dispatch) => {
-    let saveAction = _save(projectId, data);
+    const saveAction = _save(projectId, data);
     dispatch(saveAction);
 
     saveAction.payload.then(

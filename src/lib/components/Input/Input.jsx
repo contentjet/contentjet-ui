@@ -24,7 +24,7 @@ import ListInput from './components/ListInput';
 class Input extends Component {
 
   render() {
-    let type = this.props.type;
+    const type = this.props.type;
     if (type === 'text') {
       return <TextInput {...this.props} />;
     } else if (type === 'select') {

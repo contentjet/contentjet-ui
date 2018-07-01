@@ -9,7 +9,8 @@ import s from './MediaImage.css';
 class MediaImage extends Component {
 
   render() {
-    let { media, className } = this.props;
+    const { media } = this.props;
+    let { className } = this.props;
     className = classnames(s.mediaImage, className);
     if (_.includes(['image/gif', 'image/png', 'image/jpg', 'image/jpeg'], media.mimeType)) {
       return (

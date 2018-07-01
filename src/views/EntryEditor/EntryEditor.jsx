@@ -51,7 +51,7 @@ class EntryEditor extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let newState = {};
+    const newState = {};
     if (nextProps.entry !== this.props.entry) {
       newState.entry = nextProps.entry;
     }
@@ -86,7 +86,7 @@ class EntryEditor extends Component {
   }
 
   onSaveClick() {
-    let data = _.merge(
+    const data = _.merge(
       this.state.entry.toJS(),
       { entryTypeId: this.state.entryType.get('id') }
     );
@@ -94,7 +94,7 @@ class EntryEditor extends Component {
   }
 
   onSaveCopyClick() {
-    let data = _.merge(
+    const data = _.merge(
       this.state.entry.toJS(),
       { entryTypeId: this.state.entryType.get('id') }
     );
@@ -126,7 +126,7 @@ class EntryEditor extends Component {
   }
 
   onCreateTag(name) {
-    let newTag = slugify(name);
+    const newTag = slugify(name);
     let tags = this.state.entry.get('tags');
     if (!tags.contains(newTag)) {
       tags = tags.push(newTag);
@@ -153,9 +153,9 @@ class EntryEditor extends Component {
 
     if (isFetching) return <LoadingSpinner className={s.loadingSpinner} />;
 
-    let entryType = this.state.entryType.toJS();
-    let entry = this.state.entry.toJS();
-    let entryTags = this.state.entryTags.toJS();
+    const entryType = this.state.entryType.toJS();
+    const entry = this.state.entry.toJS();
+    const entryTags = this.state.entryTags.toJS();
 
     var fields = [];
     if (entryType) {

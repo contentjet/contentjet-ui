@@ -56,7 +56,7 @@ class WebHookModal extends Component {
   }
 
   onInputChangeHandler(value, name) {
-    let obj = {};
+    const obj = {};
     obj[name] = value;
     this.setState(obj);
   }
@@ -81,7 +81,7 @@ class WebHookModal extends Component {
     const {isSending, closeModal, isOpened} = this.props;
     const err = this.props.err.toJS();
 
-    let footer = [
+    const footer = [
       <Button
         btnStyle="link"
         key="cancel-button"

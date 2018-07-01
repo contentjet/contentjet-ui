@@ -8,7 +8,8 @@ import s from './ProjectList.css';
 
 
 const ProjectList = (props) => {
-  let { projects, className } = props;
+  const { projects } = props;
+  let { className } = props;
   className = classnames(s.projectList, className);
   return (
     <List className={className}>

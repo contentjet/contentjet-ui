@@ -9,7 +9,7 @@ import s from './NewEntryDropdownButton.css';
 class NewEntryDropdownButton extends Component {
 
   render() {
-    let entryTypes = this.props.entryTypes.map(entryType => {
+    const entryTypes = this.props.entryTypes.map(entryType => {
       return (
         <li key={entryType.id}>
           <Link to={`/project/${this.props.projectId}/entries/${entryType.id}`}>

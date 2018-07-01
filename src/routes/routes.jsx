@@ -42,7 +42,7 @@ import MediaEditor from 'views/MediaEditor';
 
 
 function requireAuth(nextState, replace) {
-  let state = store.getState();
+  const state = store.getState();
   if (!AuthenticationSelectors.isAuthenticated(state)) {
     store.dispatch(
       AuthenticationActions.setRedirectPath(nextState.location.pathname)
@@ -52,7 +52,7 @@ function requireAuth(nextState, replace) {
 }
 
 function redirectIfAuthenticated(nextState, replace) {
-  let state = store.getState();
+  const state = store.getState();
   if (AuthenticationSelectors.isAuthenticated(state)) {
     replace('/projects');
   }

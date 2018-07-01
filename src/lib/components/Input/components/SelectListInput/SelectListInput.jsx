@@ -19,7 +19,7 @@ class SelectListInput extends Component {
   }
 
   render() {
-    let className = classnames(
+    const className = classnames(
       s.selectListInput,
       {
         [s.hasError]: _.get(this.props, 'errors.length')

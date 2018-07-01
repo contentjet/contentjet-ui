@@ -80,7 +80,7 @@ class WebHooks extends Component {
     const { isFetching } = this.props;
     const webHooks = this.props.webHooks.toJS();
 
-    let panelFooter = (
+    const panelFooter = (
       <Button
         btnStyle="primary"
         onClick={this.onNewWebHookClick}

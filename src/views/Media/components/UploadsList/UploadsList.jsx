@@ -10,13 +10,13 @@ import s from './UploadsList.css';
 
 function UploadsListItem(props) {
 
-  let icon = (
+  const icon = (
     <FontAwesome
       className={s.itemProgressIcon}
       name={props.uploadState.progress < 1 ? 'arrow-circle-up' : 'check-circle'}
     />
   );
-  let className = classnames(
+  const className = classnames(
     s.item,
     {
       [s.complete]: props.uploadState.progress === 1
@@ -48,7 +48,7 @@ UploadsListItem.propTypes = {
 
 function UploadsList(props) {
 
-  let className = classnames(s.uploadsList, props.className);
+  const className = classnames(s.uploadsList, props.className);
   let items = props.uploads.map(uploadState => {
     return (
       <UploadsListItem

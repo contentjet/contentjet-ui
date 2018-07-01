@@ -36,7 +36,7 @@ class MediaInput extends Component {
   }
 
   render() {
-    let value = this.props.value || [];
+    const value = this.props.value || [];
     let items;
     if (value.length) {
       items = (
@@ -56,7 +56,7 @@ class MediaInput extends Component {
         </List>
       );
     }
-    let className = classnames(s.mediaInput, this.props.className);
+    const className = classnames(s.mediaInput, this.props.className);
     return (
       <InputWrapper
         {..._.pick(this.props, inputWrapperProps)}
@@ -85,6 +85,7 @@ class MediaInput extends Component {
     );
   }
 }
+
 MediaInput.propTypes = {
   value: PropTypes.array,
   name: PropTypes.string.isRequired,
@@ -92,6 +93,5 @@ MediaInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   maxLength: PropTypes.number.isRequired
 };
-
 
 export default MediaInput;

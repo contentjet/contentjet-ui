@@ -18,7 +18,7 @@ const _save = createAction(SAVE_CLIENT, (projectId, data) => {
 
 const save = (projectId, data) => {
   return (dispatch) => {
-    let action = _save(projectId, data);
+    const action = _save(projectId, data);
     dispatch(action);
     action.payload.then(response => {
       dispatch(list(projectId));
@@ -37,7 +37,7 @@ const _destroy = createAction(
 
 const destroy = (projectId, clientId) => {
   return (dispatch) => {
-    let action = _destroy(projectId, clientId);
+    const action = _destroy(projectId, clientId);
     dispatch(action);
     action.payload.then(response => {
       dispatch(list(projectId));

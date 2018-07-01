@@ -35,7 +35,7 @@ class LockedTextInput extends Component {
   }
 
   render() {
-    let className = classnames(
+    const className = classnames(
       s.lockedTextInput,
       {
         [s.hasError]: _.get(this.props, 'errors.length'),
@@ -73,12 +73,12 @@ class LockedTextInput extends Component {
   }
 
 }
+
 LockedTextInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
   lockMessage: PropTypes.node.isRequired
 };
-
 
 export default LockedTextInput;

@@ -25,7 +25,7 @@ class MimeTypesInput extends Component {
   }
 
   render() {
-    let props = _.omit(this.props, ['type', 'onChange', 'value']);
+    const props = _.omit(this.props, ['type', 'onChange', 'value']);
     let value;
     // FIXME: This is a very crude check.
     if (_.includes(this.props.value, 'image/gif')) {

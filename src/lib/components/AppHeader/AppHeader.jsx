@@ -9,7 +9,8 @@ import s from './AppHeader.css';
 
 
 const AppHeader = (props) => {
-  let { className, onClickLogout, userName } = props;
+  const { onClickLogout, userName } = props;
+  let { className } = props;
   className = classnames(s.appHeader, className);
   return (
     <div className={className}>
@@ -29,10 +30,10 @@ const AppHeader = (props) => {
     </div>
   );
 };
+
 AppHeader.propTypes = {
   onClickLogout: PropTypes.func.isRequired,
   userName: PropTypes.string.isRequired
 };
-
 
 export default AppHeader;

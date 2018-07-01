@@ -43,14 +43,14 @@ class DropdownButton extends Component {
   }
 
   render() {
-    let className = classnames(
+    const className = classnames(
       s.dropdownButton,
       {
         [s.open]: this.state.isOpen
       },
       this.props.className
     );
-    let btnProps = _.omit(this.props, ['className', 'children']);
+    const btnProps = _.omit(this.props, ['className', 'children']);
     return (
       <div className={className}>
         <Button {...btnProps} onClick={this.onClickHandler}>
@@ -68,10 +68,10 @@ class DropdownButton extends Component {
   }
 
 }
+
 DropdownButton.propTypes = {
   onClick: PropTypes.func,
   label: PropTypes.string
 };
-
 
 export default DropdownButton;

@@ -47,7 +47,7 @@ class ToolTip extends Component {
   }
 
   onWindowScroll() {
-    let rect = this._wrapper.getBoundingClientRect();
+    const rect = this._wrapper.getBoundingClientRect();
     this.setState(
       {
         mouseIsOver: false,
@@ -93,7 +93,8 @@ class ToolTip extends Component {
   }
 
   render() {
-    let { children, className } = this.props;
+    const { children } = this.props;
+    let { className } = this.props;
     className = classnames(s.wrapper, className);
     return (
       <div
