@@ -17,7 +17,7 @@ class ProjectNavLink extends Component {
         activeClassName={s.active}
       >
         <FontAwesome
-          name={this.props.iconName}
+          icon={this.props.icon}
           className={s.icon}
         />
         <span>{this.props.label}</span>
@@ -26,11 +26,11 @@ class ProjectNavLink extends Component {
   }
 
 }
+
 ProjectNavLink.propTypes = {
   path: PropTypes.string.isRequired,
-  iconName: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired
 };
-
 
 export default ProjectNavLink;

@@ -12,7 +12,7 @@ const Client = ({ client, onClickDelete }) => (
     </div>
     <div>
       <IconButton
-        iconName="trash-o"
+        icon="trash-alt"
         btnStyle="link"
         onClick={() => onClickDelete(client)}
       />

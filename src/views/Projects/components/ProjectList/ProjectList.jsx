@@ -20,7 +20,7 @@ const ProjectList = (props) => {
               <Link to={`/project/${project.id}/entries`}>
                 <FontAwesome
                   className={s.itemIcon}
-                  name="chevron-right"
+                  icon="chevron-right"
                 />
                 {project.name}
               </Link>
@@ -31,9 +31,9 @@ const ProjectList = (props) => {
     </List>
   );
 };
+
 ProjectList.propTypes = {
   projects: PropTypes.array.isRequired
 };
-
 
 export default ProjectList;

@@ -25,7 +25,7 @@ const WebHook = (props) => {
           Edit
         </Button>
         <IconButton
-          iconName="trash-o"
+          icon="trash-alt"
           btnStyle="link"
           onClick={() => onClickDelete(webHook)}
         />

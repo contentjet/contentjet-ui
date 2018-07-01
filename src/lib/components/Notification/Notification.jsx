@@ -40,7 +40,7 @@ function Notification(props) {
         {
           interpolatingStyle => (
             <div className={className} style={interpolatingStyle}>
-              <FontAwesome className={s.icon} name={ICON_FOR_STATUS[status]} />
+              <FontAwesome className={s.icon} icon={ICON_FOR_STATUS[status]} />
               <span className={s.message}>{message}</span>
             </div>
           )

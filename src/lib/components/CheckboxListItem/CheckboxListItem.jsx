@@ -48,14 +48,14 @@ class CheckboxListItem extends Component {
         <div className={s.column}>
           <IconButton
             className={s.arrowButton}
-            iconName="arrow-up"
+            icon="arrow-up"
             btnStyle="link"
             onClick={this.onClickUp}
             disabled={this.props.upButtonDisabled}
           />
           <IconButton
             className={s.arrowButton}
-            iconName="arrow-down"
+            icon="arrow-down"
             btnStyle="link"
             onClick={this.onClickDown}
             disabled={this.props.downButtonDisabled}

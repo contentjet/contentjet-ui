@@ -14,7 +14,7 @@ class ProjectNav extends Component {
       projectSettings = (
         <li>
           <ProjectNavLink
-            iconName="cog"
+            icon="cog"
             path={`/project/${this.props.projectId}/settings`}
             label="Project Settings"
           />
@@ -23,7 +23,7 @@ class ProjectNav extends Component {
       entryTypes = (
         <li>
           <ProjectNavLink
-            iconName="database"
+            icon="database"
             path={`/project/${this.props.projectId}/entry-types`}
             label="Entry Types"
           />
@@ -36,14 +36,14 @@ class ProjectNav extends Component {
         <List>
           <li>
             <ProjectNavLink
-              iconName="file-text-o"
+              icon="file-alt"
               path={`/project/${this.props.projectId}/entries`}
               label="Entries"
             />
           </li>
           <li>
             <ProjectNavLink
-              iconName="file-image-o"
+              icon="file-image"
               path={`/project/${this.props.projectId}/media`}
               label="Media"
             />
@@ -56,10 +56,10 @@ class ProjectNav extends Component {
   }
 
 }
+
 ProjectNav.propTypes = {
   projectId: PropTypes.string.isRequired,
   userIsProjectAdmin: PropTypes.bool.isRequired
 };
-
 
 export default ProjectNav;

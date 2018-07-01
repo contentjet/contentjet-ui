@@ -174,7 +174,7 @@ class Media extends Component {
         <ContentHeader title="Media">
           <IconButton
             className={s.reloadButton}
-            iconName="refresh"
+            icon="sync-alt"
             onClick={this.listMedia}
             disabled={isFetching}
           />
@@ -195,7 +195,7 @@ class Media extends Component {
             </Button>
           </div>
           <IconButton
-            iconName="trash-o"
+            icon="trash-alt"
             onClick={this.onDeleteSelected}
             disabled={!selectedMedia.length}
           >

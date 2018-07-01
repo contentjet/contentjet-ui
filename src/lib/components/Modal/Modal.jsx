@@ -47,7 +47,7 @@ class Modal extends Component {
                       <IconButton
                         className={s.closeButton}
                         btnStyle="link"
-                        iconName="close"
+                        icon="times"
                         onClick={this.props.onClickClose}
                       />
                     </div>

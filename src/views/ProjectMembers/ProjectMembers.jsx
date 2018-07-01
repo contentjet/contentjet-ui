@@ -110,7 +110,7 @@ class ProjectMembers extends Component {
     const invitesPanelFooter = (
       <div>
         <IconButton
-          iconName="trash-o"
+          icon="trash-alt"
           className={s.deleteSelectedInvitesButton}
           btnStyle="default"
           disabled={!selectedInvites.length}

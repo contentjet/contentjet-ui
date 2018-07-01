@@ -60,7 +60,7 @@ class ListInput extends Component {
           />
           <IconButton
             className={s.removeButton}
-            iconName="times"
+            icon="times"
             onClick={this.onClickRemove(i)}
           />
         </li>
@@ -77,7 +77,7 @@ class ListInput extends Component {
         { inputsList }
         <IconButton
           className={s.addButton}
-          iconName="pencil"
+          icon="pencil-alt"
           onClick={this.onClickAdd}
           block
         >

@@ -55,7 +55,7 @@ class DropdownButton extends Component {
       <div className={className}>
         <Button {...btnProps} onClick={this.onClickHandler}>
           {this.props.label}
-          <FontAwesome className={s.icon} name="caret-down" />
+          <FontAwesome className={s.icon} icon="caret-down" />
         </Button>
         <div
           className={s.panel}

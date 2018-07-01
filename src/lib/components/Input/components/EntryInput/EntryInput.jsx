@@ -77,7 +77,7 @@ class EntryInput extends Component {
         {items}
         <IconButton
           className={s.editButton}
-          iconName="pencil"
+          icon="pencil-alt"
           onClick={this.onClickEdit}
           block
         >

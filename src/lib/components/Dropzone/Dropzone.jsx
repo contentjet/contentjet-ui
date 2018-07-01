@@ -15,7 +15,7 @@ function _Dropzone(props) {
       activeClassName={s.active}
       onDrop={props.onDrop}
     >
-      <FontAwesome className={s.icon} name="cloud-upload" />
+      <FontAwesome className={s.icon} icon="cloud-upload-alt" />
       <p>Drop files here to upload.</p>
       <p><small>(or click to select)</small></p>
     </Dropzone>

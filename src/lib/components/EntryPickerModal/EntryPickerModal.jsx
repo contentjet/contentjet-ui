@@ -138,7 +138,7 @@ class EntryPickerModal extends Component {
         if (page > 1) {
           previousButton = (
             <IconButton
-              iconName="arrow-left"
+              icon="arrow-left"
               onClick={_.partial(this.listEntries, page - 1)}
               buttonGroup
             >
@@ -149,7 +149,7 @@ class EntryPickerModal extends Component {
         if (page < totalPages) {
           nextButton = (
             <IconButton
-              iconName="arrow-right"
+              icon="arrow-right"
               onClick={_.partial(this.listEntries, page + 1)}
               buttonGroup
               alignIconRight

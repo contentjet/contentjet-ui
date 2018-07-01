@@ -35,7 +35,7 @@ const MediaItem = (props) => {
 
   const tagsString = _.get(data, 'tags', []).join(', ');
   const tags = (
-    <span><FontAwesome name="tag" /> {tagsString}</span>
+    <span><FontAwesome icon="tag" /> {tagsString}</span>
   );
 
   const className = classnames(
@@ -54,7 +54,7 @@ const MediaItem = (props) => {
         className={s.editButton}
         to={`/project/${projectId}/media/${data.id}`}
         title="Edit"
-        iconName="pencil"
+        icon="pencil-alt"
       />
     );
   }

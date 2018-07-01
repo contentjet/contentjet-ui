@@ -19,7 +19,7 @@ const AppHeader = (props) => {
       </Link>
       <div>
         <Link className={s.profileLink} to="/settings/profile">
-          <FontAwesome name="user" />
+          <FontAwesome icon="user" />
           <span className={s.profileLinkText}>{ userName }</span>
         </Link>
         <LogoutButton

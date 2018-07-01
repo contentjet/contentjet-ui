@@ -55,7 +55,7 @@ class LockedTextInput extends Component {
         >
           <FontAwesome
             className={s.icon}
-            name={this.state.locked ? 'lock' : 'unlock-alt'}
+            icon={this.state.locked ? 'lock' : 'unlock-alt'}
             onClick={this.onClickLock}
           />
           <input

@@ -252,7 +252,7 @@ class EntryEditor extends Component {
       );
       var deleteEntryButton = (
         <IconButton
-          iconName="trash-o"
+          icon="trash-alt"
           className={s.deleteEntryButton}
           onClick={this.onDeleteClick}
           disabled={isSending}

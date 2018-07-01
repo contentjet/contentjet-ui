@@ -213,7 +213,7 @@ class Entries extends Component {
         <ContentHeader title="Entries">
           <IconButton
             className={s.reloadButton}
-            iconName="refresh"
+            icon="sync-alt"
             onClick={this.listEntries}
             disabled={entriesIsFetching}
           />
@@ -235,7 +235,7 @@ class Entries extends Component {
           </div>
           <IconButton
             className={s.deleteSelectedButton}
-            iconName="trash-o"
+            icon="trash-alt"
             onClick={this.onDeleteSelected}
             disabled={!selectedEntries.length || entriesIsFetching}
           >

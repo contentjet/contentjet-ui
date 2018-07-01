@@ -38,7 +38,7 @@ class SearchInput extends Component {
           className={s.input}
           onChange={this.onChange}
         />
-        <FontAwesome className={s.searchIcon} name="search" />
+        <FontAwesome className={s.searchIcon} icon="search" />
       </InputWrapper>
     );
   }

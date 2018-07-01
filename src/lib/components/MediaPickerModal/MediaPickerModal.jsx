@@ -147,7 +147,7 @@ class MediaPickerModal extends Component {
         if (page > 1) {
           previousButton = (
             <IconButton
-              iconName="arrow-left"
+              icon="arrow-left"
               onClick={_.partial(this.listMedia, page - 1)}
               buttonGroup
             >
@@ -158,7 +158,7 @@ class MediaPickerModal extends Component {
         if (page < totalPages) {
           nextButton = (
             <IconButton
-              iconName="arrow-right"
+              icon="arrow-right"
               onClick={_.partial(this.listMedia, page + 1)}
               buttonGroup
               alignIconRight

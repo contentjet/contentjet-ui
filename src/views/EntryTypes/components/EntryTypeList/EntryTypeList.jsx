@@ -21,7 +21,7 @@ const EntryTypeList = (props) => {
             <li className={s.item} key={entryType.id}>
               <Link to={`/project/${projectId}/entry-types/edit/${entryType.id}`}>
                 <FontAwesome
-                  name="database"
+                  icon="database"
                   className={s.itemIcon}
                 />
                 <div className={s.content}>

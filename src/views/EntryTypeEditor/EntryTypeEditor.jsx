@@ -220,7 +220,7 @@ class EntryTypeEditor extends Component {
       var deleteEntryTypeButton = (
         <IconButton
           className={s.deleteButton}
-          iconName="trash-o"
+          icon="trash-alt"
           onClick={this.onDeleteClick}
           disabled={isSending || isFetching}
         >
@@ -291,7 +291,7 @@ class EntryTypeEditor extends Component {
             />
             <IconButton
               className={s.addFieldButton}
-              iconName="plus"
+              icon="plus"
               onClick={this.onClickAddField}
             >
               Add field

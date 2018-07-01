@@ -18,7 +18,7 @@ class IconButton extends Component {
       },
       this.props.className
     );
-    const props = _.omit(this.props, ['children', 'iconName', 'alignIconRight']);
+    const props = _.omit(this.props, ['children', 'icon', 'alignIconRight']);
 
     if (this.props.children) {
       var children = (
@@ -30,14 +30,14 @@ class IconButton extends Component {
       return (
         <Button {...props} className={className}>
           {children}
-          <FontAwesome name={this.props.iconName} />
+          <FontAwesome icon={this.props.icon} />
         </Button>
       );
     }
 
     return (
       <Button {...props} className={className}>
-        <FontAwesome name={this.props.iconName} />
+        <FontAwesome icon={this.props.icon} />
         {children}
       </Button>
     );
@@ -46,7 +46,7 @@ class IconButton extends Component {
 }
 
 IconButton.propTypes = {
-  iconName: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
   alignIconRight: PropTypes.bool
 };
 

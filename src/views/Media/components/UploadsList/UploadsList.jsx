@@ -13,7 +13,7 @@ function UploadsListItem(props) {
   const icon = (
     <FontAwesome
       className={s.itemProgressIcon}
-      name={props.uploadState.progress < 1 ? 'arrow-circle-up' : 'check-circle'}
+      icon={props.uploadState.progress < 1 ? 'arrow-circle-up' : 'check-circle'}
     />
   );
   const className = classnames(

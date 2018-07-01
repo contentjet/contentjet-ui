@@ -65,7 +65,7 @@ class MediaInput extends Component {
       >
         {items}
         <IconButton
-          iconName="pencil"
+          icon="pencil-alt"
           className={s.editButton}
           onClick={this.onClickEdit}
           block

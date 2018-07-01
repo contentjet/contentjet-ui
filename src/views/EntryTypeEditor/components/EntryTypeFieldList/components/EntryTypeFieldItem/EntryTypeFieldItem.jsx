@@ -74,7 +74,7 @@ class EntryTypeFieldItem extends Component {
                   Edit
                 </Button>
                 <IconButton
-                  iconName="trash-o"
+                  icon="trash-alt"
                   btnStyle="link"
                   onClick={this.onClickDelete}
                 />
@@ -82,7 +82,7 @@ class EntryTypeFieldItem extends Component {
                   <IconButton
                     className={s.reorderButton}
                     title="Move field up"
-                    iconName="arrow-up"
+                    icon="arrow-up"
                     btnStyle="link"
                     onClick={this.onClickMoveUp}
                     disabled={!this.props.canMoveUp}
@@ -90,7 +90,7 @@ class EntryTypeFieldItem extends Component {
                   <IconButton
                     className={s.reorderButton}
                     title="Move field down"
-                    iconName="arrow-down"
+                    icon="arrow-down"
                     btnStyle="link"
                     onClick={this.onClickMoveDown}
                     disabled={!this.props.canMoveDown}

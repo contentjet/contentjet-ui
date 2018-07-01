@@ -150,13 +150,13 @@ class MarkdownInput extends Component {
       >
         <div className={s.controls}>
           <IconButton
-            iconName="picture-o"
+            icon="picture"
             tabIndex="-1"
             onClick={this.onImageButtonClick}
             title="Insert image"
           />
           <IconButton
-            iconName="arrows-alt"
+            icon="expand-arrows-alt"
             tabIndex="-1"
             onClick={this.toggleFullscreen}
             title="Toggle fullscreen"

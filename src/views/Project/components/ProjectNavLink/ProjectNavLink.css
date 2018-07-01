@@ -11,7 +11,9 @@
   border-right-style: solid;
   border-right-width: 4px;
   color: #fff;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 12px;
   padding: 15px 10px;
   text-align: center;
