@@ -21,10 +21,10 @@ class SignUp extends Component {
   }
 
 }
+
 SignUp.propTypes = {
   logout: PropTypes.func.isRequired
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {

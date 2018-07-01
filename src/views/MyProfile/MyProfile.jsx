@@ -16,7 +16,6 @@ const defaultFormData = {
   name: ''
 };
 
-
 class MyProfile extends Component {
 
   constructor(props) {
@@ -68,6 +67,7 @@ class MyProfile extends Component {
     );
   }
 }
+
 MyProfile.propTypes = {
   getMe: PropTypes.func.isRequired,
   me: PropTypes.instanceOf(Map).isRequired,
@@ -77,7 +77,6 @@ MyProfile.propTypes = {
   notification: PropTypes.instanceOf(Map).isRequired
 };
 
-
 const mapStateToProps = (state) => {
   return {
     me: UserSelectors.me(state),
@@ -86,7 +85,6 @@ const mapStateToProps = (state) => {
     notification: NotificationSelectors.getNotification(state)
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -98,6 +96,5 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(MyProfile);

@@ -88,6 +88,7 @@ class ListInput extends Component {
   }
 
 }
+
 ListInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,

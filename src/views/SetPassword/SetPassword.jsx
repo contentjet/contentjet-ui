@@ -57,13 +57,13 @@ class SetPassword extends Component {
   }
 
 }
+
 SetPassword.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
   err: PropTypes.instanceOf(Map).isRequired,
   isSending: PropTypes.bool.isRequired
 };
-
 
 const mapStateToProps = (state) => {
   return {
@@ -79,6 +79,5 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(SetPassword);

@@ -17,7 +17,6 @@ const defaultFormData = {
   newPasswordConfirm: ''
 };
 
-
 class ChangePassword extends Component {
 
   constructor(props) {
@@ -74,13 +73,13 @@ class ChangePassword extends Component {
     );
   }
 }
+
 ChangePassword.propTypes = {
   err: PropTypes.instanceOf(Map).isRequired,
   isSending: PropTypes.bool.isRequired,
   save: PropTypes.func.isRequired,
   notification: PropTypes.instanceOf(Map).isRequired
 };
-
 
 const mapStateToProps = (state) => {
   return {
@@ -90,7 +89,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-
 const mapDispatchToProps = (dispatch) => {
   return {
     save: (formData) => {
@@ -98,6 +96,5 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChangePassword);

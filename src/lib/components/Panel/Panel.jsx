@@ -29,6 +29,7 @@ function PanelHeader(props) {
   );
 
 }
+
 PanelHeader.propTypes = {
   textAlign: PropTypes.oneOf(['left', 'center', 'right'])
 };
@@ -52,6 +53,7 @@ function PanelFooter(props) {
   );
 
 }
+
 PanelFooter.propTypes = {
   textAlign: PropTypes.oneOf(['left', 'center', 'right'])
 };
@@ -94,6 +96,7 @@ function Panel(props) {
   );
 
 }
+
 Panel.propTypes = {
   header: PropTypes.node,
   headerClassName: PropTypes.string,
@@ -102,6 +105,5 @@ Panel.propTypes = {
   footerClassName: PropTypes.string,
   footerTextAlign: PropTypes.oneOf(['left', 'center', 'right'])
 };
-
 
 export default Panel;

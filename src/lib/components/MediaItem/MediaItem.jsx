@@ -80,6 +80,7 @@ const MediaItem = (props) => {
     </div>
   );
 };
+
 MediaItem.propTypes = {
   onClick: PropTypes.func,
   data: PropTypes.object.isRequired,
@@ -89,6 +90,5 @@ MediaItem.propTypes = {
   projectId: PropTypes.string.isRequired,
   imageHolderClassName: PropTypes.string
 };
-
 
 export default MediaItem;

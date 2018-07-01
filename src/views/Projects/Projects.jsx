@@ -92,6 +92,7 @@ class Projects extends Component {
     );
   }
 }
+
 Projects.propTypes = {
   listProjects: PropTypes.func.isRequired,
   me: PropTypes.instanceOf(Map).isRequired,
@@ -104,7 +105,6 @@ Projects.propTypes = {
   getMe: PropTypes.func.isRequired
 };
 
-
 const mapStateToProps = (state) => {
   return {
     me: UserSelectors.me(state),
@@ -114,7 +114,6 @@ const mapStateToProps = (state) => {
     inviteIsSending: InviteSelectors.detailIsSending(state)
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -132,7 +131,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(
   mapStateToProps,

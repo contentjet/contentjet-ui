@@ -83,6 +83,7 @@ class CheckboxListItem extends Component {
   }
 
 }
+
 CheckboxListItem.propTypes = {
   checked: PropTypes.bool,
   onChange: PropTypes.func,
@@ -91,6 +92,5 @@ CheckboxListItem.propTypes = {
   upButtonDisabled: PropTypes.bool,
   downButtonDisabled: PropTypes.bool
 };
-
 
 export default CheckboxListItem;

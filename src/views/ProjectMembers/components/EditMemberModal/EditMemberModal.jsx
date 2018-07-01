@@ -129,6 +129,7 @@ class EditMemberModal extends Component {
   }
 
 }
+
 EditMemberModal.propTypes = {
   projectId: PropTypes.string.isRequired,
   updateMember: PropTypes.func.isRequired,
@@ -139,13 +140,11 @@ EditMemberModal.propTypes = {
   member: PropTypes.object
 };
 
-
 const mapStateToProps = (state) => {
   return {
     isSending: ProjectSelectors.updateMemberIsSending(state)
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -154,6 +153,5 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditMemberModal);

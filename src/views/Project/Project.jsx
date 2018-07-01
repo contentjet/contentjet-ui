@@ -55,6 +55,7 @@ class Project extends Component {
     );
   }
 }
+
 Project.propTypes = {
   params: PropTypes.object.isRequired,
   getProject: PropTypes.func.isRequired,
@@ -65,7 +66,6 @@ Project.propTypes = {
   logout: PropTypes.func.isRequired
 };
 
-
 const mapStateToProps = (state) => {
   return {
     project: ProjectSelectors.detailData(state),
@@ -73,7 +73,6 @@ const mapStateToProps = (state) => {
     userIsProjectAdmin: UserSelectors.userIsProjectAdmin(state)
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -88,7 +87,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(
   mapStateToProps,

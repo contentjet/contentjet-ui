@@ -26,14 +26,12 @@ const resultsPerPageChoices = [
   '100'
 ];
 
-
 const orderByChoices = [
   { label: 'Created (ascending)', value: 'createdAt'},
   { label: 'Created', value: '-createdAt'},
   { label: 'Modified (ascending)', value: 'modifiedAt'},
   { label: 'Modified', value: '-modifiedAt'}
 ];
-
 
 class Media extends Component {
 
@@ -284,6 +282,7 @@ class Media extends Component {
   }
 
 }
+
 Media.propTypes = {
   listMedia: PropTypes.func.isRequired,
   upload: PropTypes.func.isRequired,
@@ -303,7 +302,6 @@ Media.propTypes = {
   uploads: PropTypes.instanceOf(List).isRequired
 };
 
-
 const mapStateToProps = (state) => {
   return {
     media: MediaSelectors.listResults(state),
@@ -316,7 +314,6 @@ const mapStateToProps = (state) => {
     hasCompletedUploads: MediaSelectors.numCompletedUploads(state) > 0
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -343,7 +340,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(
   mapStateToProps,

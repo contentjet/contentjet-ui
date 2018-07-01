@@ -32,6 +32,7 @@ function PaginationItem(props) {
   );
 
 }
+
 PaginationItem.propTypes = {
   onClick: PropTypes.func.isRequired,
   value: PropTypes.node,
@@ -127,6 +128,7 @@ class Pagination extends Component {
   }
 
 }
+
 Pagination.propTypes = {
   totalPages: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
@@ -134,6 +136,5 @@ Pagination.propTypes = {
   onNext: PropTypes.func,
   onPrevious: PropTypes.func
 };
-
 
 export default Pagination;

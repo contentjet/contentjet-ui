@@ -12,7 +12,6 @@ const ICON_FOR_STATUS = {
   'error': 'exclamation-circle'
 };
 
-
 function Notification(props) {
   const { status, message, show } = props;
   let { className } = props;
@@ -50,11 +49,11 @@ function Notification(props) {
     </Portal>
   );
 }
+
 Notification.propTypes = {
   status: PropTypes.oneOf(['success', 'error']).isRequired,
   message: PropTypes.string,
   show: PropTypes.bool
 };
-
 
 export default Notification;

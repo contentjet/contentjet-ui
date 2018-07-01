@@ -188,6 +188,7 @@ class MediaEditor extends Component {
   }
 
 }
+
 MediaEditor.propTypes = {
   media: PropTypes.instanceOf(Map).isRequired,
   err: PropTypes.instanceOf(Map).isRequired,
@@ -202,7 +203,6 @@ MediaEditor.propTypes = {
   params: PropTypes.object.isRequired
 };
 
-
 const mapStateToProps = (state) => {
   return {
     media: MediaSelectors.detailData(state),
@@ -213,7 +213,6 @@ const mapStateToProps = (state) => {
     notification: NotificationSelectors.getNotification(state)
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -231,7 +230,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(
   mapStateToProps,

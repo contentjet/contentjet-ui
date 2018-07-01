@@ -62,6 +62,7 @@ class ConfirmDeleteEntryTypeModal extends Component {
   }
 
 }
+
 ConfirmDeleteEntryTypeModal.propTypes = {
   closeModal: PropTypes.func.isRequired,
   deleteEntryType: PropTypes.func.isRequired,
@@ -71,14 +72,12 @@ ConfirmDeleteEntryTypeModal.propTypes = {
   err: PropTypes.instanceOf(Map).isRequired
 };
 
-
 const mapStateToProps = (state) => {
   return {
     entryTypeId: EntryTypeSelectors.detailData(state).get('id'),
     err: EntryTypeSelectors.detailError(state)
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {

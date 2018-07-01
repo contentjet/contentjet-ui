@@ -33,16 +33,17 @@ class Login extends Component {
   }
 
 }
+
 Login.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   isSending: PropTypes.bool.isRequired,
   err: PropTypes.instanceOf(Map).isRequired,
   login: PropTypes.func.isRequired
 };
+
 Login.contextTypes = {
   router: PropTypes.object.isRequired
 };
-
 
 const mapStateToProps = (state) => {
   return {

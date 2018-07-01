@@ -45,6 +45,7 @@ class _Textarea extends Component {
   }
 
 }
+
 _Textarea.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
@@ -52,9 +53,9 @@ _Textarea.propTypes = {
   value: PropTypes.string,
   inputClassName: PropTypes.string
 };
+
 _Textarea.defaultProps = {
   minRows: 3
 };
-
 
 export default _Textarea;

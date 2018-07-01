@@ -56,12 +56,12 @@ class RequestResetPassword extends Component {
   }
 
 }
+
 RequestResetPassword.propTypes = {
   err: PropTypes.instanceOf(Map).isRequired,
   isSending: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired
 };
-
 
 const mapStateToProps = (state) => {
   return {
@@ -77,7 +77,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(
   mapStateToProps,

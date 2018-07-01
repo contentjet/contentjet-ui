@@ -58,19 +58,18 @@ class Settings extends Component {
   }
 
 }
+
 Settings.propTypes = {
   getMe: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   me: PropTypes.instanceOf(Map).isRequired
 };
 
-
 const mapStateToProps = (state) => {
   return {
     me: UserSelectors.me(state)
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -82,7 +81,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(
   mapStateToProps,

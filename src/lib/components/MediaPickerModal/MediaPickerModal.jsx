@@ -20,7 +20,6 @@ import s from './MediaPickerModal.css';
 
 const springConfig = { stiffness: 180, damping: 18 };
 
-
 class MediaPickerModal extends Component {
 
   constructor(props) {
@@ -247,6 +246,7 @@ class MediaPickerModal extends Component {
     );
   }
 }
+
 MediaPickerModal.propTypes = {
   media: PropTypes.instanceOf(IList).isRequired,
   isFetching: PropTypes.bool,
@@ -262,7 +262,6 @@ MediaPickerModal.propTypes = {
   isOpened: PropTypes.bool
 };
 
-
 const mapStateToProps = (state) => {
   return {
     media: MediaSelectors.listResults(state),
@@ -271,7 +270,6 @@ const mapStateToProps = (state) => {
     totalPages: MediaSelectors.listData(state).get('totalPages')
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {

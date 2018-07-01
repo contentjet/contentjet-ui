@@ -44,6 +44,7 @@ class MediaList extends Component {
     );
   }
 }
+
 MediaList.propTypes = {
   projectId: PropTypes.string.isRequired,
   selectedMedia: PropTypes.array.isRequired,
@@ -51,9 +52,9 @@ MediaList.propTypes = {
   onItemClick: PropTypes.func.isRequired,
   editDisabled: PropTypes.bool
 };
+
 MediaList.defaultProps = {
   editDisabled: false
 };
-
 
 export default MediaList;

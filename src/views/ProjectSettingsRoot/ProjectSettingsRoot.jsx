@@ -81,12 +81,12 @@ class ProjectSettingsRoot extends Component {
   }
 
 }
+
 ProjectSettingsRoot.propTypes = {
   project: PropTypes.instanceOf(Map).isRequired,
   userIsProjectAdmin: PropTypes.bool.isRequired,
   params: PropTypes.object.isRequired
 };
-
 
 const mapStateToProps = (state) => {
   return {
@@ -94,7 +94,6 @@ const mapStateToProps = (state) => {
     userIsProjectAdmin: UserSelectors.userIsProjectAdmin(state)
   };
 };
-
 
 export default connect(
   mapStateToProps

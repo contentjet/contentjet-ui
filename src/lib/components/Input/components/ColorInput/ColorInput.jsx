@@ -70,15 +70,16 @@ class ColorInput extends Component {
   }
 
 }
+
 ColorInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   value: PropTypes.string,
   disableAlpha: PropTypes.bool
 };
+
 ColorInput.defaultProps = {
   disableAlpha: true
 };
-
 
 export default ColorInput;

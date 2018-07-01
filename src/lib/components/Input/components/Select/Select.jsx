@@ -59,12 +59,12 @@ class Select extends Component {
   }
 
 }
+
 Select.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
   onChange: PropTypes.func,
   choices: PropTypes.arrayOf(PropTypes.string).isRequired
 };
-
 
 export default Select;

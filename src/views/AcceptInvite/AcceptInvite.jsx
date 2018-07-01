@@ -74,11 +74,11 @@ class AcceptInvite extends Component {
   }
 
 }
+
 AcceptInvite.propTypes = {
   logout: PropTypes.func.isRequired,
   setInviteToken: PropTypes.func.isRequired
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -90,6 +90,5 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(null, mapDispatchToProps)(AcceptInvite);

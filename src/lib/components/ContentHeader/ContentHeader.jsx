@@ -17,9 +17,9 @@ const ContentHeader = (props) => {
     </header>
   );
 };
+
 ContentHeader.propTypes = {
   title: PropTypes.string
 };
-
 
 export default ContentHeader;

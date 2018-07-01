@@ -348,6 +348,7 @@ class EntryTypeEditor extends Component {
   }
 
 }
+
 EntryTypeEditor.propTypes = {
   entryType: PropTypes.instanceOf(Map).isRequired,
   err: PropTypes.instanceOf(Map).isRequired,
@@ -363,10 +364,10 @@ EntryTypeEditor.propTypes = {
   userIsProjectAdmin: PropTypes.bool.isRequired,
   notification: PropTypes.instanceOf(Map).isRequired
 };
+
 EntryTypeEditor.contextTypes = {
   router: PropTypes.object.isRequired
 };
-
 
 const mapStateToProps = (state) => {
   return {
@@ -379,7 +380,6 @@ const mapStateToProps = (state) => {
     notification: NotificationSelectors.getNotification(state)
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {

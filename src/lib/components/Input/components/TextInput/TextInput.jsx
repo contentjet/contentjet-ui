@@ -41,10 +41,10 @@ class TextInput extends Component {
   }
 
 }
+
 TextInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func
 };
-
 
 export default TextInput;

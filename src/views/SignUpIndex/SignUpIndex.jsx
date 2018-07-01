@@ -50,16 +50,17 @@ class SignUpIndex extends Component {
   }
 
 }
+
 SignUpIndex.propTypes = {
   err: PropTypes.instanceOf(Map).isRequired,
   isSending: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
   inviteToken: PropTypes.string
 };
+
 SignUpIndex.contextTypes = {
   router: PropTypes.object.isRequired
 };
-
 
 const mapStateToProps = (state) => {
   return {
@@ -76,6 +77,5 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpIndex);

@@ -76,6 +76,7 @@ class CreateProjectModal extends Component {
   }
 
 }
+
 CreateProjectModal.propTypes = {
   onCancel: PropTypes.func.isRequired,
   save: PropTypes.func.isRequired,
@@ -83,13 +84,11 @@ CreateProjectModal.propTypes = {
   isOpened: PropTypes.bool
 };
 
-
 const mapStateToProps = (state) => {
   return {
     isSending: ProjectSelectors.detailIsSending(state)
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -98,7 +97,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(
   mapStateToProps,

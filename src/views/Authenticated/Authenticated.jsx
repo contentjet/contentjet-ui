@@ -21,13 +21,14 @@ class Authenticated extends Component {
   }
 
 }
+
 Authenticated.propTypes = {
   isAuthenticated: PropTypes.bool
 };
+
 Authenticated.contextTypes = {
   router: PropTypes.object
 };
-
 
 const mapStateToProps = (state) => {
   return {

@@ -54,13 +54,13 @@ class SignUpVerify extends Component {
   }
 
 }
+
 SignUpVerify.propTypes = {
   verifyUser: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
   verified: PropTypes.bool.isRequired,
   err: PropTypes.instanceOf(Map).isRequired
 };
-
 
 const mapStateToProps = (state) => {
   const verification = state.getIn(['user', 'verification']);
@@ -70,7 +70,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-
 const mapDispatchToProps = (dispatch) => {
   return {
     verifyUser: (token) => {
@@ -78,7 +77,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(
   mapStateToProps,

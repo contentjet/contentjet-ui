@@ -31,7 +31,6 @@ const defaultState = {
   isActive: true
 };
 
-
 class WebHookModal extends Component {
 
   constructor(props) {
@@ -266,6 +265,7 @@ class WebHookModal extends Component {
   }
 
 }
+
 WebHookModal.propTypes = {
   projectId: PropTypes.string.isRequired,
   saveWebHook: PropTypes.func.isRequired,
@@ -277,7 +277,6 @@ WebHookModal.propTypes = {
   isOpened: PropTypes.bool
 };
 
-
 const mapStateToProps = (state) => {
   return {
     webHookDetail: WebHookSelectors.detailData(state),
@@ -286,7 +285,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-
 const mapDispatchToProps = (dispatch) => {
   return {
     saveWebHook: (projectId, data) => {
@@ -294,7 +292,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(
   mapStateToProps,

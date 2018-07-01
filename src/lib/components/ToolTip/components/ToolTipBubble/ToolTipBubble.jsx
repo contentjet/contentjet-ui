@@ -6,7 +6,6 @@ import s from './ToolTipBubble.css';
 
 const ARROW_SIZE = 8;
 
-
 class ToolTipBubble extends Component {
 
   constructor(props) {
@@ -81,6 +80,7 @@ class ToolTipBubble extends Component {
   }
 
 }
+
 ToolTipBubble.propTypes = {
   wrapperLeft: PropTypes.number.isRequired,
   wrapperTop: PropTypes.number.isRequired,
@@ -90,11 +90,11 @@ ToolTipBubble.propTypes = {
   xOffset: PropTypes.number,
   yOffset: PropTypes.number,
 };
+
 ToolTipBubble.defaultProps = {
   position: 'top',
   xOffset: 0,
   yOffset: 0
 };
-
 
 export default ToolTipBubble;

@@ -7,6 +7,7 @@ import simpleNumberLocalizer from 'react-widgets-simple-number';
 import NumberPicker from 'react-widgets/lib/NumberPicker';
 import s from './NumberPicker.css';
 
+
 // See https://jquense.github.io/react-widgets/localization/
 simpleNumberLocalizer();
 
@@ -51,12 +52,12 @@ class _NumberPicker extends Component {
   }
 
 }
+
 _NumberPicker.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   integerOnly: PropTypes.bool,
   positiveOnly: PropTypes.bool
 };
-
 
 export default _NumberPicker;

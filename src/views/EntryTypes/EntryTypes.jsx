@@ -77,6 +77,7 @@ class EntryTypes extends Component {
   }
 
 }
+
 EntryTypes.propTypes = {
   listEntryTypes: PropTypes.func.isRequired,
   params: PropTypes.object.isRequired,
@@ -84,10 +85,10 @@ EntryTypes.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   userIsProjectAdmin: PropTypes.bool.isRequired
 };
+
 EntryTypes.contextTypes = {
   router: PropTypes.object
 };
-
 
 const mapStateToProps = (state) => {
   return {
@@ -97,7 +98,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-
 const mapDispatchToProps = (dispatch) => {
   return {
     listEntryTypes: (projectId) => {
@@ -105,7 +105,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(
   mapStateToProps,

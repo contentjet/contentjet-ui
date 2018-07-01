@@ -97,6 +97,7 @@ class InviteModal extends Component {
   }
 
 }
+
 InviteModal.propTypes = {
   projectId: PropTypes.string.isRequired,
   invite: PropTypes.func.isRequired,
@@ -106,13 +107,11 @@ InviteModal.propTypes = {
   isOpened: PropTypes.bool
 };
 
-
 const mapStateToProps = (state) => {
   return {
     isSending: InviteSelectors.detailIsSending(state)
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -121,6 +120,5 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(InviteModal);

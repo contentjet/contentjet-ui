@@ -83,6 +83,7 @@ function Button(props) {
     </button>
   );
 }
+
 Button.propTypes = {
   btnStyle: PropTypes.string,
   block: PropTypes.bool,
@@ -93,6 +94,5 @@ Button.propTypes = {
   hide: PropTypes.bool,
   buttonGroup: PropTypes.bool
 };
-
 
 export default Button;

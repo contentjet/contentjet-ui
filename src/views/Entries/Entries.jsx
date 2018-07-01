@@ -37,7 +37,6 @@ const orderByChoices = [
   { label: 'Modified', value: '-modifiedAt' }
 ];
 
-
 class Entries extends Component {
 
   constructor(props) {
@@ -321,6 +320,7 @@ class Entries extends Component {
   }
 
 }
+
 Entries.propTypes = {
   listEntryTypes: PropTypes.func.isRequired,
   listEntries: PropTypes.func.isRequired,
@@ -339,7 +339,6 @@ Entries.propTypes = {
   totalRecords: PropTypes.number.isRequired
 };
 
-
 const mapStateToProps = (state) => {
   const entryListData = EntrySelectors.listData(state);
   return {
@@ -352,7 +351,6 @@ const mapStateToProps = (state) => {
     totalRecords: entryListData.get('totalRecords')
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -379,7 +377,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(
   mapStateToProps,

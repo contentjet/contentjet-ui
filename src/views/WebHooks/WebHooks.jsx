@@ -150,6 +150,7 @@ class WebHooks extends Component {
   }
 
 }
+
 WebHooks.propTypes = {
   params: PropTypes.object.isRequired,
   listWebHooks: PropTypes.func.isRequired,
@@ -158,14 +159,12 @@ WebHooks.propTypes = {
   isFetching: PropTypes.bool.isRequired
 };
 
-
 const mapStateToProps = (state) => {
   return {
     webHooks: WebHookSelectors.listData(state),
     isFetching: WebHookSelectors.listIsFetching(state)
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -177,7 +176,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(
   mapStateToProps,

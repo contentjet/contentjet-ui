@@ -353,6 +353,7 @@ class EntryEditor extends Component {
   }
 
 }
+
 EntryEditor.propTypes = {
   entry: PropTypes.instanceOf(Map).isRequired,
   isSending: PropTypes.bool.isRequired,
@@ -370,6 +371,7 @@ EntryEditor.propTypes = {
   params: PropTypes.object.isRequired,
   route: PropTypes.object.isRequired
 };
+
 EntryEditor.contextTypes = {
   router: PropTypes.object.isRequired
 };

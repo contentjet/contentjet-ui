@@ -67,6 +67,7 @@ class ProjectSettings extends Component {
   }
 
 }
+
 ProjectSettings.propTypes = {
   delete: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
@@ -77,7 +78,6 @@ ProjectSettings.propTypes = {
   notification: PropTypes.instanceOf(Map).isRequired
 };
 
-
 const mapStateToProps = (state) => {
   return {
     project: ProjectSelectors.detailData(state),
@@ -86,7 +86,6 @@ const mapStateToProps = (state) => {
     notification: NotificationSelectors.getNotification(state)
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -98,7 +97,6 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(
   mapStateToProps,

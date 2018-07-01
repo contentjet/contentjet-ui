@@ -40,10 +40,10 @@ class PasswordInput extends Component {
   }
 
 }
+
 PasswordInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func
 };
-
 
 export default PasswordInput;

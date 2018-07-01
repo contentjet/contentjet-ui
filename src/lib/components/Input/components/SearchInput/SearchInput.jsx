@@ -44,11 +44,11 @@ class SearchInput extends Component {
   }
 
 }
+
 SearchInput.propTypes = {
   name: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   onChange: PropTypes.func
 };
-
 
 export default SearchInput;

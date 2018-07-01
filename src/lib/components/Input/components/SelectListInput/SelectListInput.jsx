@@ -42,6 +42,7 @@ class SelectListInput extends Component {
   }
 
 }
+
 SelectListInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func

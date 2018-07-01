@@ -22,9 +22,9 @@ function ProgressBar(props) {
   );
 
 }
+
 ProgressBar.propTypes = {
   progress: PropTypes.number.isRequired
 };
-
 
 export default ProgressBar;

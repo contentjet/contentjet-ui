@@ -43,7 +43,6 @@ function getCaret(el) {
   return 0;
 }
 
-
 class MarkdownInput extends Component {
 
   constructor(props) {

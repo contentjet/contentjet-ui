@@ -66,6 +66,7 @@ class Modal extends Component {
   }
 
 }
+
 Modal.propTypes = {
   title: PropTypes.string.isRequired,
   onClickClose: PropTypes.func.isRequired,
@@ -74,6 +75,5 @@ Modal.propTypes = {
   isOpened: PropTypes.bool,
   bodyClassName: PropTypes.string
 };
-
 
 export default Modal;

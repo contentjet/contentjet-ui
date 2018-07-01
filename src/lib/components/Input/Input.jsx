@@ -67,6 +67,7 @@ class Input extends Component {
   }
 
 }
+
 Input.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
@@ -97,6 +98,5 @@ Input.propTypes = {
   ]).isRequired,
   choices: PropTypes.array
 };
-
 
 export default Input;
