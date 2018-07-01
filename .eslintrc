@@ -96,9 +96,7 @@
         "react/jsx-pascal-case": [
             "error"
         ],
-        "react/jsx-space-before-closing": [
-            "error"
-        ],
+        "react/jsx-tag-spacing": "error",
         "react/jsx-wrap-multilines": [
             "error"
         ],
