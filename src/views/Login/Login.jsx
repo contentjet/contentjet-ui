@@ -11,15 +11,15 @@ import s from './Login.css';
 
 class Login extends Component {
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     // If we're already authenticated we navigate away.
     if (nextProps.isAuthenticated) {
-      this.context.router.replace('/projects');
+      this.props.history.replace('/projects');
     }
   }
 
   render() {
-    const {isSending, login} = this.props;
+    const { isSending, login } = this.props;
     const err = this.props.err.toJS();
     return (
       <CenteredPanelView className={s.login}>
@@ -38,11 +38,10 @@ Login.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   isSending: PropTypes.bool.isRequired,
   err: PropTypes.instanceOf(Map).isRequired,
-  login: PropTypes.func.isRequired
-};
-
-Login.contextTypes = {
-  router: PropTypes.object.isRequired
+  login: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    replace: PropTypes.func
+  }).isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -61,7 +60,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

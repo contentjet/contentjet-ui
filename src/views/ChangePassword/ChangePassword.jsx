@@ -45,7 +45,7 @@ class ChangePassword extends Component {
   }
 
   render() {
-    const {err, isSending, notification} = this.props;
+    const { err, isSending, notification } = this.props;
 
     let error = err.toJS();
     if (!this.state.passwordsMatch) {

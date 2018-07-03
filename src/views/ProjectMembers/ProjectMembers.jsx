@@ -43,7 +43,7 @@ class ProjectMembers extends Component {
     this.props.listInvites();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.invites !== nextProps.invites) {
       this.setState({ selectedInvites: [] });
     }
@@ -59,7 +59,7 @@ class ProjectMembers extends Component {
 
   closeEditMemberModal() {
     this.closeModals();
-    this.props.getProject(this.props.params.project_id);
+    this.props.getProject(this.props.match.params.project_id);
   }
 
   onInviteClick() {
@@ -96,8 +96,8 @@ class ProjectMembers extends Component {
   }
 
   render() {
-    const {invitesIsFetching, params} = this.props;
-    const {memberToEdit} = this.state;
+    const { invitesIsFetching, match } = this.props;
+    const { memberToEdit } = this.state;
     const project = this.props.project.toJS();
     const invites = this.props.invites.toJS();
     const {
@@ -159,13 +159,13 @@ class ProjectMembers extends Component {
         </Panel>
 
         <InviteModal
-          projectId={params.project_id}
+          projectId={match.params.project_id}
           onCancel={this.closeModals}
           closeModal={this.closeModals}
           isOpened={inviteModalOpen}
         />
         <EditMemberModal
-          projectId={params.project_id}
+          projectId={match.params.project_id}
           onCancel={this.closeModals}
           closeModal={this.closeEditMemberModal}
           isOpened={editMemberModalOpen}
@@ -193,8 +193,10 @@ ProjectMembers.propTypes = {
   invitesIsFetching: PropTypes.bool.isRequired,
   listInvites: PropTypes.func.isRequired,
   bulkDestroy: PropTypes.func.isRequired,
-  params: PropTypes.object.isRequired,
-  getProject: PropTypes.func.isRequired
+  getProject: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape()
+  }).isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -206,7 +208,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch, props) => {
-  const { project_id } = props.params;
+  const { project_id } = props.match.params;
   return {
     listInvites: () => {
       dispatch(InviteActions.list(project_id));

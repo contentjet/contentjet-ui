@@ -39,7 +39,7 @@ class ColorInput extends Component {
   }
 
   render() {
-    const {className, value, disableAlpha} = this.props;
+    const { className, value, disableAlpha } = this.props;
 
     if (this.state.showPicker) {
       var picker = (

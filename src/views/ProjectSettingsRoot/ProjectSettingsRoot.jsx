@@ -17,11 +17,10 @@ import s from './ProjectSettingsRoot.css';
 
 class ProjectSettingsRoot extends Component {
 
-  componentWillMount() {
-    const { params, userIsProjectAdmin } = this.props;
+  UNSAFE_componentWillMount() {
+    const { match, history, userIsProjectAdmin } = this.props;
     if (!userIsProjectAdmin) {
-      // FIXME
-      // browserHistory.replace(`/project/${params.projectId}/entries`);
+      history.replace(`/project/${match.params.projectId}/entries`);
     }
   }
 
@@ -93,9 +92,11 @@ class ProjectSettingsRoot extends Component {
 ProjectSettingsRoot.propTypes = {
   project: PropTypes.instanceOf(Map).isRequired,
   userIsProjectAdmin: PropTypes.bool.isRequired,
-  params: PropTypes.object.isRequired,
   match: PropTypes.shape({
     path: PropTypes.string
+  }).isRequired,
+  history: PropTypes.shape({
+    replace: PropTypes.func.isRequired
   }).isRequired
 };
 

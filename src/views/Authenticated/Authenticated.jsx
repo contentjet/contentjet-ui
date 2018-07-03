@@ -10,12 +10,11 @@ import Project from '../Project';
 
 class Authenticated extends Component {
 
-  // FIXME
-  // componentWillReceiveProps(nextProps) {
-  //   if (!nextProps.isAuthenticated) {
-  //     this.context.router.replace('/login');
-  //   }
-  // }
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (!nextProps.isAuthenticated) {
+      this.props.history.replace('/login');
+    }
+  }
 
   shouldComponentUpdate() {
     return this.props.isAuthenticated;
@@ -38,11 +37,10 @@ Authenticated.propTypes = {
   isAuthenticated: PropTypes.bool,
   match: PropTypes.shape({
     path: PropTypes.string
+  }).isRequired,
+  history: PropTypes.shape({
+    replace: PropTypes.func
   }).isRequired
-};
-
-Authenticated.contextTypes = {
-  router: PropTypes.object
 };
 
 const mapStateToProps = (state) => {

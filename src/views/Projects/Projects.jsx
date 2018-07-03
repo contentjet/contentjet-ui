@@ -29,7 +29,7 @@ class Projects extends Component {
   }
 
   componentDidMount() {
-    const {inviteToken, listProjects, acceptProjectInvite, getMe} = this.props;
+    const { inviteToken, listProjects, acceptProjectInvite, getMe } = this.props;
     if (inviteToken) {
       acceptProjectInvite(inviteToken)
         .then(() => listProjects())
@@ -49,7 +49,7 @@ class Projects extends Component {
   }
 
   render() {
-    const {isFetching, inviteIsSending, me} = this.props;
+    const { isFetching, inviteIsSending, me } = this.props;
 
     const panelFooter = me.get('isAdmin') ? (
       <Button btnStyle="primary" onClick={this.onNewProjectClick} block>
@@ -132,7 +132,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Projects);
+export default connect(mapStateToProps, mapDispatchToProps)(Projects);

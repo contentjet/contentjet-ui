@@ -38,7 +38,7 @@ class ListInput extends Component {
   }
 
   render() {
-    let {value} = this.props;
+    let { value } = this.props;
     value = value || [];
     const className = classnames(
       s.listInput,

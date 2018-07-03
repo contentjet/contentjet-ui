@@ -11,11 +11,11 @@ import s from './SignUpVerify.css';
 class SignUpVerify extends Component {
 
   componentDidMount() {
-    this.props.verifyUser(this.props.params.token.replace(/~/g, '.'));
+    this.props.verifyUser(this.props.match.params.token.replace(/~/g, '.'));
   }
 
   render() {
-    const {verified} = this.props;
+    const { verified } = this.props;
     const err = this.props.err.toJS();
     let content;
     if (verified) {
@@ -57,9 +57,11 @@ class SignUpVerify extends Component {
 
 SignUpVerify.propTypes = {
   verifyUser: PropTypes.func.isRequired,
-  params: PropTypes.object.isRequired,
   verified: PropTypes.bool.isRequired,
-  err: PropTypes.instanceOf(Map).isRequired
+  err: PropTypes.instanceOf(Map).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape()
+  }).isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -78,7 +80,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignUpVerify);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpVerify);

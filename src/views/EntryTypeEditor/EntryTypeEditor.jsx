@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import EntryTypeSelectors from 'selectors/EntryTypeSelectors';
 import NotificationSelectors from 'selectors/NotificationSelectors';
-// import { browserHistory } from 'react-router';
 import _ from 'lodash';
 import Immutable, { Map } from 'immutable';
 import { immutableMove } from 'lib/utils/ImmutableUtils';
 import EntryTypeActions from 'actions/EntryTypeActions';
 import UserSelectors from 'selectors/UserSelectors';
+import { Prompt } from 'react-router-dom';
 import ContentHeader from 'lib/components/ContentHeader';
 import Button from 'lib/components/Button';
 import Input from 'lib/components/Input';
@@ -38,7 +38,6 @@ class EntryTypeEditor extends Component {
       fieldToEdit: null
     };
     this.getExistingFieldNames = this.getExistingFieldNames.bind(this);
-    this.routerWillLeave = this.routerWillLeave.bind(this);
     this.onSaveClick = this.onSaveClick.bind(this);
     this.onCloseModal = this.onCloseModal.bind(this);
     this.onConfirmRemoveField = this.onConfirmRemoveField.bind(this);
@@ -53,35 +52,28 @@ class EntryTypeEditor extends Component {
     this.onClickEditField = this.onClickEditField.bind(this);
   }
 
-  routerWillLeave() {
-    if (this.state.entryType !== this.props.entryType) {
-      return 'Your work is not saved! Are you sure you want to leave?';
-    }
-  }
-
-  componentWillMount() {
-    const { params, userIsProjectAdmin } = this.props;
+  UNSAFE_componentWillMount() {
+    const { match, history, userIsProjectAdmin } = this.props;
     if (!userIsProjectAdmin) {
-      // FIXME
-      // browserHistory.replace(`/project/${params.projectId}/entries`);
+      history.replace(`/project/${match.params.projectId}/entries`);
     }
   }
 
   componentDidMount() {
-    this.context.router.setRouteLeaveHook(this.props.route, this.routerWillLeave);
-    this.props.listEntryTypes(this.props.params.project_id);
+    const { match } = this.props;
+    this.props.listEntryTypes(match.params.project_id);
     // entry_type_id will only be present if we're editing an
     // existing entry type.
-    if (this.props.params.entry_type_id) {
+    if (match.params.entry_type_id) {
       this.props.getEntryType(
-        this.props.params.project_id, this.props.params.entry_type_id
+        match.params.project_id, match.params.entry_type_id
       );
     } else {
       this.props.clearEntryType();
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const newState = {};
     if ((nextProps.entryType !== this.props.entryType) && !nextProps.isSending) {
       newState.entryType = nextProps.entryType;
@@ -98,8 +90,9 @@ class EntryTypeEditor extends Component {
 
   onSaveClick() {
     this.props.saveEntryType(
-      this.props.params.project_id,
-      this.state.entryType.toJS()
+      this.props.match.params.project_id,
+      this.state.entryType.toJS(),
+      this.props.history
     );
   }
 
@@ -209,7 +202,7 @@ class EntryTypeEditor extends Component {
     } = this.state;
     let { fieldToEdit } = this.state;
 
-    const {isSending, isFetching, params} = this.props;
+    const { isSending, isFetching, match } = this.props;
     const notification = this.props.notification.toJS();
     const err = this.props.err.toJS();
 
@@ -217,7 +210,7 @@ class EntryTypeEditor extends Component {
     const entryTypes = entryTypeList.get('results').toJS();
 
     // Only render delete button if we're editing an existing entry type.
-    if (params.entry_type_id) {
+    if (match.params.entry_type_id) {
       var deleteEntryTypeButton = (
         <IconButton
           className={s.deleteButton}
@@ -304,6 +297,11 @@ class EntryTypeEditor extends Component {
 
     return (
       <div className={s.entryTypeEditor}>
+        <Prompt
+          when={this.state.entryType !== this.props.entryType}
+          message="Your work is not saved! Are you sure you want to leave?"
+        />
+
         <ContentHeader title="Entry type">
           { deleteEntryTypeButton }
           <Button
@@ -331,7 +329,7 @@ class EntryTypeEditor extends Component {
           isOpened={addFieldModalOpen}
         />
         <ConfirmDeleteEntryTypeModal
-          projectId={params.project_id}
+          projectId={match.params.project_id}
           closeModal={this.onCloseModal}
           isOpened={confirmDeleteModalOpen}
         />
@@ -355,19 +353,19 @@ EntryTypeEditor.propTypes = {
   err: PropTypes.instanceOf(Map).isRequired,
   isSending: PropTypes.bool.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  params: PropTypes.object.isRequired,
   entryTypeList: PropTypes.instanceOf(Map).isRequired,
   listEntryTypes: PropTypes.func.isRequired,
   saveEntryType: PropTypes.func.isRequired,
   clearEntryType: PropTypes.func.isRequired,
   getEntryType: PropTypes.func.isRequired,
-  route: PropTypes.object.isRequired,
   userIsProjectAdmin: PropTypes.bool.isRequired,
-  notification: PropTypes.instanceOf(Map).isRequired
-};
-
-EntryTypeEditor.contextTypes = {
-  router: PropTypes.object.isRequired
+  notification: PropTypes.instanceOf(Map).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape()
+  }).isRequired,
+  history: PropTypes.shape({
+    replace: PropTypes.func
+  }).isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -390,8 +388,8 @@ const mapDispatchToProps = (dispatch) => {
     getEntryType: (projectId, entryTypeId) => {
       dispatch(EntryTypeActions.get(projectId, entryTypeId));
     },
-    saveEntryType: (projectId, data) => {
-      dispatch(EntryTypeActions.save(projectId, data));
+    saveEntryType: (projectId, data, history) => {
+      dispatch(EntryTypeActions.save(projectId, data, history));
     },
     clearEntryType: () => {
       dispatch(EntryTypeActions.clear());
@@ -399,7 +397,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EntryTypeEditor);
+export default connect(mapStateToProps, mapDispatchToProps)(EntryTypeEditor);

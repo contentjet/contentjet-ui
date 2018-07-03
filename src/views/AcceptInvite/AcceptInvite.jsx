@@ -22,21 +22,21 @@ class AcceptInvite extends Component {
   }
 
   componentDidMount() {
-    const inviteToken = this.props.params.invite_token.replace(/~/g, '.');
+    const inviteToken = this.props.match.params.invite_token.replace(/~/g, '.');
     // Check the inviteToken is a valid JWT
     const decodedToken = jwt.decode(inviteToken);
     if (!decodedToken) {
       this.setState({tokenError: true});
       return;
     }
-    const {projectName} = decodedToken;
+    const { projectName } = decodedToken;
     this.setState({ projectName });
     this.props.logout();
     this.props.setInviteToken(inviteToken);
   }
 
   render() {
-    const {tokenError, projectName} = this.state;
+    const { tokenError, projectName } = this.state;
     let content;
     if (tokenError) {
       content = (
@@ -77,7 +77,10 @@ class AcceptInvite extends Component {
 
 AcceptInvite.propTypes = {
   logout: PropTypes.func.isRequired,
-  setInviteToken: PropTypes.func.isRequired
+  setInviteToken: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape()
+  }).isRequired
 };
 
 const mapDispatchToProps = (dispatch) => {

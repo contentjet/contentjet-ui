@@ -2,8 +2,6 @@ import { createAction } from 'redux-actions';
 import axios from 'axios';
 import _ from 'lodash';
 import queryString from 'query-string';
-// FIXME
-// import { browserHistory } from 'react-router';
 import NotificationActions from 'actions/NotificationActions';
 import MediaTagActions from 'actions/MediaTagActions';
 
@@ -22,7 +20,6 @@ export const SELECT_ALL = 'SELECT_ALL';
 export const SELECT_NONE = 'SELECT_NONE';
 export const CLEAR_COMPLETED_UPLOADS = 'CLEAR_COMPLETED_UPLOADS';
 
-
 const list = createAction(
   GET_MEDIA_LIST,
   (projectId, queryParams) => {
@@ -32,7 +29,6 @@ const list = createAction(
   (projectId, queryParams) => ({ queryParams })
 );
 
-
 const relist = (projectId) => {
   return (dispatch, getState) => {
     const queryParams = getState().getIn(['media', 'mediaList', 'queryParams']).toJS();
@@ -40,11 +36,9 @@ const relist = (projectId) => {
   };
 };
 
-
 const get = createAction(GET_MEDIA, (projectId, mediaId) => {
   return axios.get(`project/${projectId}/media/${mediaId}/`);
 });
-
 
 const _save = createAction(
   SAVE_MEDIA,
@@ -53,7 +47,6 @@ const _save = createAction(
   },
   (projectId, data) => data
 );
-
 
 const save = (projectId, data) => {
   return (dispatch) => {
@@ -76,19 +69,17 @@ const save = (projectId, data) => {
   };
 };
 
-
 const destroy = createAction(DESTROY_MEDIA,
-  (projectId, mediaAsset) => {
+  (projectId, mediaAsset, history) => {
     return axios.delete(`project/${projectId}/media/${mediaAsset.id}/`).then(
       response => {
-        // browserHistory.replace(`/project/${projectId}/media`);
+        history.replace(`/project/${projectId}/media`);
         return response;
       }
     );
   },
   (projectId, mediaAsset) => mediaAsset
 );
-
 
 const _bulkDestroy = createAction(
   BULK_DESTROY_MEDIA,
@@ -99,7 +90,6 @@ const _bulkDestroy = createAction(
   },
   (projectId, mediaAssetIds) => mediaAssetIds
 );
-
 
 const bulkDestroy = (projectId, mediaAssetIds) => {
   return (dispatch) => {
@@ -112,27 +102,19 @@ const bulkDestroy = (projectId, mediaAssetIds) => {
   };
 };
 
-
 const toggleSelect = createAction(TOGGLE_SELECT);
-
 
 const selectAll = createAction(SELECT_ALL);
 
-
 const selectNone = createAction(SELECT_NONE);
-
 
 const uploadProgress = createAction(UPLOAD_PROGRESS);
 
-
 const uploadCompleted = createAction(UPLOAD_COMPLETED);
-
 
 const uploadFailed = createAction(UPLOAD_FAILED);
 
-
 const _upload = createAction(UPLOAD);
-
 
 const upload = (projectId, files) => {
   return (dispatch) => {
@@ -181,9 +163,7 @@ const upload = (projectId, files) => {
   };
 };
 
-
 const clearCompletedUploads = createAction(CLEAR_COMPLETED_UPLOADS);
-
 
 export default {
   list,

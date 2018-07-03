@@ -17,8 +17,11 @@ class SignUpIndex extends Component {
       success: false
     };
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  UNSAFE_componentWillReceiveProps(nextProps) {
     // The screen is only accessible if an invite token exists in the store.
-    if (!this.props.inviteToken) context.router.replace('/login');
+    if (!nextProps.inviteToken) this.props.history.replace('/login');
   }
 
   onSubmit(data) {
@@ -28,7 +31,7 @@ class SignUpIndex extends Component {
   }
 
   render() {
-    const {isSending, inviteToken} = this.props;
+    const { isSending, inviteToken } = this.props;
     if (this.state.success) {
       return (
         <div className={s.success}>
@@ -55,11 +58,8 @@ SignUpIndex.propTypes = {
   err: PropTypes.instanceOf(Map).isRequired,
   isSending: PropTypes.bool.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  inviteToken: PropTypes.string
-};
-
-SignUpIndex.contextTypes = {
-  router: PropTypes.object.isRequired
+  inviteToken: PropTypes.string,
+  history: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => {

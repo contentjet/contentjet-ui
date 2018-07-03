@@ -23,42 +23,26 @@ import s from './Project.css';
 class Project extends Component {
 
   componentDidMount() {
-    this.props.getProject(this.props.params.project_id);
+    this.props.getProject(this.props.match.params.project_id);
     this.props.getMe();
   }
 
   render() {
     const {
-      params,
-      // project,
+      project,
       userIsProjectAdmin,
       me,
       logout,
       match
     } = this.props;
 
-    // FIXME
-    // let { children } = this.props;
-    // // NOTE: We don't render children until the project and authenticated
-    // // user is loaded.
-    // const projectId = project.get('id');
-    // const meId = me.get('id');
-    // children = (
-    //   (projectId && meId) ? children : null
-    // );
-
-    return (
-      <div className={s.project}>
-        <AppHeader
-          onClickLogout={logout}
-          userName={me.get('name', '')}
-        />
-        <div className={s.sidebar}>
-          <ProjectNav
-            projectId={params.project_id}
-            userIsProjectAdmin={userIsProjectAdmin}
-          />
-        </div>
+    // NOTE: We don't render child routes until the project and authenticated
+    // user is loaded.
+    const projectId = project.get('id');
+    const meId = me.get('id');
+    let content;
+    if (projectId && meId) {
+      content = (
         <div className={s.content}>
           <Route path={`${match.path}settings`} component={ProjectSettingsRoot} />
           <Route exact path={`${match.path}entry-types`} component={EntryTypes} />
@@ -68,13 +52,28 @@ class Project extends Component {
           <Route exact path={`${match.path}media`} component={Media} />
           <Route path={`${match.path}media/:media_id`} component={MediaEditor} />
         </div>
+      );
+    }
+
+    return (
+      <div className={s.project}>
+        <AppHeader
+          onClickLogout={logout}
+          userName={me.get('name', '')}
+        />
+        <div className={s.sidebar}>
+          <ProjectNav
+            projectId={match.params.project_id}
+            userIsProjectAdmin={userIsProjectAdmin}
+          />
+        </div>
+        { content }
       </div>
     );
   }
 }
 
 Project.propTypes = {
-  params: PropTypes.object.isRequired,
   getProject: PropTypes.func.isRequired,
   getMe: PropTypes.func.isRequired,
   project: PropTypes.instanceOf(Map).isRequired,
@@ -82,7 +81,8 @@ Project.propTypes = {
   me: PropTypes.instanceOf(Map).isRequired,
   logout: PropTypes.func.isRequired,
   match: PropTypes.shape({
-    path: PropTypes.string
+    path: PropTypes.string,
+    params: PropTypes.shape()
   }).isRequired
 };
 

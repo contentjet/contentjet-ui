@@ -74,7 +74,7 @@ class MarkdownInput extends Component {
   onAcceptModal(selections) {
     if (selections.isEmpty()) return;
     const textToInsert = selections.reduce((text, media) => {
-      const {description, file} = media;
+      const { description, file } = media;
       return text + `![${description}](${file})\n`;
     }, '');
     const value = insert(this.props.value, this.state.caretPosition, textToInsert);

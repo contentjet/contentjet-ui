@@ -19,12 +19,14 @@ class ConfirmDeleteEntryTypeModal extends Component {
 
   onAccept() {
     this.props.deleteEntryType(
-      this.props.projectId, this.props.entryTypeId
+      this.props.projectId,
+      this.props.entryTypeId,
+      this.props.history
     );
   }
 
   render() {
-    const {closeModal, isOpened} = this.props;
+    const { closeModal, isOpened } = this.props;
     const err = this.props.err.toJS();
     if (err.message) {
       const footer = (
@@ -69,7 +71,8 @@ ConfirmDeleteEntryTypeModal.propTypes = {
   entryTypeId: PropTypes.number,
   projectId: PropTypes.string.isRequired,
   isOpened: PropTypes.bool,
-  err: PropTypes.instanceOf(Map).isRequired
+  err: PropTypes.instanceOf(Map).isRequired,
+  history: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -81,13 +84,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteEntryType: (projectId, entryTypeId) => {
-      dispatch(EntryTypeActions.destroy(projectId, entryTypeId));
+    deleteEntryType: (projectId, entryTypeId, history) => {
+      dispatch(EntryTypeActions.destroy(projectId, entryTypeId, history));
     }
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ConfirmDeleteEntryTypeModal);
+export default connect(mapStateToProps, mapDispatchToProps)(ConfirmDeleteEntryTypeModal);

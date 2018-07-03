@@ -23,7 +23,7 @@ class EntriesTable extends Component {
   }
 
   render() {
-    const {entries, toggleSelect, projectId} = this.props;
+    const { entries, toggleSelect, projectId } = this.props;
     if (!entries.length) return null;
     const rows = entries.map(entry => {
       return (

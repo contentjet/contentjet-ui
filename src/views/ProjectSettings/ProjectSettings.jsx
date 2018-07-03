@@ -28,7 +28,10 @@ class ProjectSettings extends Component {
   }
 
   onAcceptModal() {
-    this.props.delete(this.props.params.project_id);
+    this.props.delete(
+      this.props.match.params.project_id,
+      this.props.history
+    );
     this.setState({ modalOpen: false });
   }
 
@@ -37,7 +40,7 @@ class ProjectSettings extends Component {
   }
 
   render() {
-    const {onSubmit, isSending} = this.props;
+    const { onSubmit, isSending } = this.props;
     const err = this.props.err.toJS();
     const project = this.props.project.toJS();
     const notification = this.props.notification.toJS();
@@ -71,11 +74,14 @@ class ProjectSettings extends Component {
 ProjectSettings.propTypes = {
   delete: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  params: PropTypes.object.isRequired,
   err: PropTypes.instanceOf(Map).isRequired,
   isSending: PropTypes.bool.isRequired,
   project: PropTypes.instanceOf(Map).isRequired,
-  notification: PropTypes.instanceOf(Map).isRequired
+  notification: PropTypes.instanceOf(Map).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape()
+  }).isRequired,
+  history: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -89,8 +95,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    delete: (projectId) => {
-      dispatch(ProjectActions.destroy(projectId));
+    delete: (projectId, history) => {
+      dispatch(ProjectActions.destroy(projectId, history));
     },
     onSubmit: (data) => {
       dispatch(ProjectActions.save(data));
@@ -98,7 +104,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ProjectSettings);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectSettings);

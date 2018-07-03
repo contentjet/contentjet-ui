@@ -20,7 +20,7 @@ class SignUpForm extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const {inviteToken} = this.props;
+    const { inviteToken } = this.props;
     this.props.onSubmit(
       Object.assign({inviteToken}, this.state.formData)
     );
@@ -33,7 +33,7 @@ class SignUpForm extends Component {
   }
 
   render() {
-    const {error, isSending} = this.props;
+    const { error, isSending } = this.props;
     const formError = _.get(error, 'message');
     if (formError) {
       var formErrors = (

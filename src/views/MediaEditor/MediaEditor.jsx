@@ -47,7 +47,7 @@ class MediaEditor extends Component {
     this.onCreateTag = this.onCreateTag.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const newState = {};
     if (nextProps.media !== this.state.media) {
       newState.media = nextProps.media;
@@ -59,16 +59,16 @@ class MediaEditor extends Component {
   }
 
   componentDidMount() {
-    this.props.listMediaTags(this.props.params.project_id);
+    this.props.listMediaTags(this.props.match.params.project_id);
     this.props.getMedia(
-      this.props.params.project_id,
-      this.props.params.media_id
+      this.props.match.params.project_id,
+      this.props.match.params.media_id
     );
   }
 
   onSaveClick() {
     this.props.saveMedia(
-      this.props.params.project_id,
+      this.props.match.params.project_id,
       this.state.media.toJS()
     );
   }
@@ -79,8 +79,9 @@ class MediaEditor extends Component {
 
   onConfirmDelete() {
     this.props.deleteMedia(
-      this.props.params.project_id,
-      this.state.media.toJS()
+      this.props.match.params.project_id,
+      this.state.media.toJS(),
+      this.props.history
     );
     this.setState({ confirmDeleteModalOpen: false });
   }
@@ -120,7 +121,7 @@ class MediaEditor extends Component {
         <ContentHeader title="Media editor">
           <Link
             className={s.cancelButton}
-            to={`/project/${this.props.params.project_id}/media/`}
+            to={`/project/${this.props.match.params.project_id}/media/`}
           >
             Cancel
           </Link>
@@ -200,7 +201,10 @@ MediaEditor.propTypes = {
   getMedia: PropTypes.func.isRequired,
   saveMedia: PropTypes.func.isRequired,
   deleteMedia: PropTypes.func.isRequired,
-  params: PropTypes.object.isRequired
+  match: PropTypes.shape({
+    params: PropTypes.shape()
+  }).isRequired,
+  history: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -225,13 +229,10 @@ const mapDispatchToProps = (dispatch) => {
     saveMedia: (projectId, data) => {
       dispatch(MediaActions.save(projectId, data));
     },
-    deleteMedia: (projectId, data) => {
-      dispatch(MediaActions.destroy(projectId, data));
+    deleteMedia: (projectId, data, history) => {
+      dispatch(MediaActions.destroy(projectId, data, history));
     }
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MediaEditor);
+export default connect(mapStateToProps, mapDispatchToProps)(MediaEditor);

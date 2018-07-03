@@ -28,7 +28,7 @@ class MyProfile extends Component {
     this.props.getMe();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.me !== this.props.me) {
       let formData;
       if (nextProps.me.isEmpty()) {
@@ -50,7 +50,7 @@ class MyProfile extends Component {
   }
 
   render() {
-    const {save, err, isSending, notification} = this.props;
+    const { save, err, isSending, notification } = this.props;
 
     return (
       <Panel header="My Profile">

@@ -6,7 +6,7 @@ import WebHookActions from 'actions/WebHookActions';
 import Panel from 'lib/components/Panel';
 import Alert from 'lib/components/Alert';
 import List from 'lib/components/List';
-import {List as IList} from 'immutable';
+import { List as IList } from 'immutable';
 import LoadingSpinner from 'lib/components/LoadingSpinner';
 import WebHook from './components/WebHook';
 import WebHookModal from './components/WebHookModal';
@@ -33,8 +33,8 @@ class WebHooks extends Component {
     this.onClickEditWebHook = this.onClickEditWebHook.bind(this);
   }
 
-  componentWillMount() {
-    this.props.listWebHooks(this.props.params.project_id);
+  UNSAFE_componentWillMount() {
+    this.props.listWebHooks(this.props.match.params.project_id);
   }
 
   onNewWebHookClick() {
@@ -43,7 +43,7 @@ class WebHooks extends Component {
 
   onConfirmDelete() {
     this.props.deleteWebHook(
-      this.props.params.project_id,
+      this.props.match.params.project_id,
       this.state.webHookToDelete.id
     );
     this.setState({
@@ -128,13 +128,13 @@ class WebHooks extends Component {
         </Panel>
 
         <WebHookModal
-          projectId={this.props.params.project_id}
+          projectId={this.props.match.params.project_id}
           closeModal={this.onCancelModal}
           isOpened={this.state.newWebHookModalOpen}
         />
         <WebHookModal
           webHook={this.state.webHookToEdit}
-          projectId={this.props.params.project_id}
+          projectId={this.props.match.params.project_id}
           closeModal={this.onCancelModal}
           isOpened={this.state.editWebHookModalOpen}
         />
@@ -152,11 +152,13 @@ class WebHooks extends Component {
 }
 
 WebHooks.propTypes = {
-  params: PropTypes.object.isRequired,
   listWebHooks: PropTypes.func.isRequired,
   deleteWebHook: PropTypes.func.isRequired,
   webHooks: PropTypes.instanceOf(IList).isRequired,
-  isFetching: PropTypes.bool.isRequired
+  isFetching: PropTypes.bool.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape()
+  }).isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -177,7 +179,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(WebHooks);
+export default connect(mapStateToProps, mapDispatchToProps)(WebHooks);

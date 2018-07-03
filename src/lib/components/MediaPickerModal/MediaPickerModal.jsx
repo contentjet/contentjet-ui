@@ -37,7 +37,7 @@ class MediaPickerModal extends Component {
     this.onMove = this.onMove.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const state = {};
     if (nextProps.media !== this.state.media) {
       state.media = nextProps.media;

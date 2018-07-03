@@ -40,7 +40,7 @@ class ToolTip extends Component {
     this._bubbleRoot.remove();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.disabled) {
       this.setState({ mouseIsOver: false }, this.renderBubble);
     }

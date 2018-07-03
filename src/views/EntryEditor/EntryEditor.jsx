@@ -12,6 +12,7 @@ import moment from 'moment';
 import EntryActions from 'actions/EntryActions';
 import EntryTagActions from 'actions/EntryTagActions';
 import EntryTypeActions from 'actions/EntryTypeActions';
+import { Prompt } from 'react-router-dom';
 import ContentHeader from 'lib/components/ContentHeader';
 import Button from 'lib/components/Button';
 import IconButton from 'lib/components/IconButton';
@@ -32,7 +33,6 @@ class EntryEditor extends Component {
       entryType: this.props.entryType,
       entryTags: this.props.entryTags
     };
-    this.routerWillLeave = this.routerWillLeave.bind(this);
     this.onSaveClick = this.onSaveClick.bind(this);
     this.onSaveCopyClick = this.onSaveCopyClick.bind(this);
     this.onAcceptModal = this.onAcceptModal.bind(this);
@@ -44,13 +44,7 @@ class EntryEditor extends Component {
     this.onSingleChoiceFieldChange = this.onSingleChoiceFieldChange.bind(this);
   }
 
-  routerWillLeave() {
-    if (this.state.entry !== this.props.entry) {
-      return 'Your work is not saved! Are you sure you want to leave?';
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const newState = {};
     if (nextProps.entry !== this.props.entry) {
       newState.entry = nextProps.entry;
@@ -70,17 +64,16 @@ class EntryEditor extends Component {
   }
 
   componentDidMount() {
-    this.context.router.setRouteLeaveHook(this.props.route, this.routerWillLeave);
     this.props.getEntryType(
-      this.props.params.project_id,
-      this.props.params.entry_type_id
+      this.props.match.params.project_id,
+      this.props.match.params.entry_type_id
     );
-    this.props.listEntryTags(this.props.params.project_id);
+    this.props.listEntryTags(this.props.match.params.project_id);
     // If entry_id is present in params we want to edit an existing entry.
-    if (this.props.params.entry_id) {
+    if (this.props.match.params.entry_id) {
       this.props.getEntry(
-        this.props.params.project_id,
-        this.props.params.entry_id
+        this.props.match.params.project_id,
+        this.props.match.params.entry_id
       );
     }
   }
@@ -90,7 +83,7 @@ class EntryEditor extends Component {
       this.state.entry.toJS(),
       { entryTypeId: this.state.entryType.get('id') }
     );
-    this.props.saveEntry(this.props.params.project_id, data);
+    this.props.saveEntry(this.props.match.params.project_id, data, this.props.history);
   }
 
   onSaveCopyClick() {
@@ -99,13 +92,14 @@ class EntryEditor extends Component {
       { entryTypeId: this.state.entryType.get('id') }
     );
     delete data.id;
-    this.props.saveEntry(this.props.params.project_id, data);
+    this.props.saveEntry(this.props.match.params.project_id, data, this.props.history);
   }
 
   onAcceptModal() {
     this.props.deleteEntry(
-      this.props.params.project_id,
-      this.state.entry.toJS()
+      this.props.match.params.project_id,
+      this.state.entry.toJS(),
+      this.props.history
     );
     this.setState({ modalOpen: false });
   }
@@ -187,7 +181,7 @@ class EntryEditor extends Component {
             } else {
               fieldProps.type = 'textarea';
             }
-            fieldProps.projectId = this.props.params.project_id;
+            fieldProps.projectId = this.props.match.params.project_id;
           } else if (entryTypeField.fieldType === 'LIST') {
             fieldProps.type = 'list';
           } else if (entryTypeField.fieldType === 'BOOLEAN') {
@@ -204,7 +198,7 @@ class EntryEditor extends Component {
           } else if (entryTypeField.fieldType === 'MEDIA') {
             fieldProps.type = 'media';
             fieldProps.maxLength = entryTypeField.maxLength;
-            fieldProps.projectId = this.props.params.project_id;
+            fieldProps.projectId = this.props.match.params.project_id;
           } else if (entryTypeField.fieldType === 'DATE') {
             if (entryTypeField.format === 'date') fieldProps.time = false;
             fieldProps.type = 'datetime';
@@ -232,7 +226,7 @@ class EntryEditor extends Component {
             fieldProps.type = 'entry-input';
             fieldProps.value = fieldProps.value || [];
             fieldProps.excludeEntries = [_.get(entry, 'id')];
-            fieldProps.projectId = this.props.params.project_id;
+            fieldProps.projectId = this.props.match.params.project_id;
             fieldProps.maxLength = entryTypeField.maxLength;
           }
           return <Input key={entryTypeField.name} {...fieldProps} />;
@@ -240,7 +234,7 @@ class EntryEditor extends Component {
     }
 
     // Only render delete and copy buttons if we're editing an existing entry.
-    if (this.props.params.entry_id) {
+    if (this.props.match.params.entry_id) {
       var saveCopyButton = (
         <Button
           className={s.saveCopyButton}
@@ -276,6 +270,11 @@ class EntryEditor extends Component {
 
     return (
       <div className={s.entryEditor}>
+        <Prompt
+          when={this.state.entry !== this.props.entry}
+          message="Your work is not saved! Are you sure you want to leave?"
+        />
+
         <ContentHeader title={_.get(entryType, 'name')}>
           { deleteEntryButton }
           { saveCopyButton }
@@ -368,14 +367,11 @@ EntryEditor.propTypes = {
   saveEntry: PropTypes.func.isRequired,
   clearActiveEntry: PropTypes.func.isRequired,
   deleteEntry: PropTypes.func.isRequired,
-  params: PropTypes.object.isRequired,
-  route: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape()
+  }).isRequired
 };
-
-EntryEditor.contextTypes = {
-  router: PropTypes.object.isRequired
-};
-
 
 const mapStateToProps = (state) => {
   return {
@@ -400,19 +396,16 @@ const mapDispatchToProps = (dispatch) => {
     getEntry: (projectId, entryId) => {
       dispatch(EntryActions.get(projectId, entryId));
     },
-    saveEntry: (projectId, data) => {
-      dispatch(EntryActions.save(projectId, data));
+    saveEntry: (projectId, data, history) => {
+      dispatch(EntryActions.save(projectId, data, history));
     },
     clearActiveEntry: () => {
       dispatch(EntryActions.clearActiveEntry());
     },
-    deleteEntry: (projectId, data) => {
-      dispatch(EntryActions.destroy(projectId, data));
+    deleteEntry: (projectId, data, history) => {
+      dispatch(EntryActions.destroy(projectId, data, history));
     }
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EntryEditor);
+export default connect(mapStateToProps, mapDispatchToProps)(EntryEditor);

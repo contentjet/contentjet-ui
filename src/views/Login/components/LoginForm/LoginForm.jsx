@@ -29,7 +29,7 @@ class LoginForm extends Component {
   }
 
   render() {
-    const {error} = this.props;
+    const { error } = this.props;
     if (error.message) {
       var alert = (
         <ErrorsListAlert
