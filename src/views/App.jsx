@@ -76,15 +76,13 @@ class App extends Component {
         <div className={s.content}>
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/login" />} />
-            <Route path="/project/:project_id" render={() => <Redirect to="/project/:project_id/entries" />} />
-            <Route path="/project/:project_id/settings" render={() => <Redirect to="/project/:project_id/settings/project" />} />
             <Route path="/login" component={Login} />
             <Route path="/reset-password" component={RequestResetPassword} />
             <Route path="/set-password/:token" component={SetPassword} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/accept-invite/:invite_token" component={AcceptInvite} />
             <Route path="/" component={Authenticated} />
-            <Route path="*" component={NotFound} />
+            <Route component={NotFound} />
           </Switch>
         </div>
       </div>

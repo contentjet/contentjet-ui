@@ -10,12 +10,15 @@ import s from './Login.css';
 
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    // If we're already authenticated we navigate away.
+    if (props.isAuthenticated) props.history.replace('/projects');
+  }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    // If we're already authenticated we navigate away.
-    if (nextProps.isAuthenticated) {
-      this.props.history.replace('/projects');
-    }
+    // Once authenticated we navigate away.
+    if (nextProps.isAuthenticated) this.props.history.replace('/projects');
   }
 
   render() {

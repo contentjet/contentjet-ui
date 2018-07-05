@@ -52,7 +52,7 @@ class Settings extends Component {
             </nav>
           </div>
           <div className={s.contentBody}>
-            <Route exact path={match.path} render={() => <Redirect to={`${match.path}profile`} />} />
+            <Route exact path={match.path} render={() => <Redirect to={'/settings/profile'} />} />
             <Route path={`${match.path}profile`} component={MyProfile} />
             <Route path={`${match.path}password`} component={ChangePassword} />
           </div>

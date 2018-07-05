@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { Map } from 'immutable';
 import UserSelectors from 'selectors/UserSelectors';
@@ -76,10 +76,15 @@ class ProjectSettingsRoot extends Component {
               </nav>
             </div>
             <div className={s.contentBody}>
-              <Route path={`${match.path}project`} component={ProjectSettings} />
-              <Route path={`${match.path}members`} component={ProjectMembers} />
-              <Route path={`${match.path}web-hooks`} component={WebHooks} />
-              <Route path={`${match.path}api`} component={API} />
+              <Route
+                exact
+                path={match.path}
+                render={() => <Redirect to={`/project/${match.params.project_id}/settings/project`} />}
+              />
+              <Route path={`${match.path}/project`} component={ProjectSettings} />
+              <Route path={`${match.path}/members`} component={ProjectMembers} />
+              <Route path={`${match.path}/web-hooks`} component={WebHooks} />
+              <Route path={`${match.path}/api`} component={API} />
             </div>
           </div>
         </div>

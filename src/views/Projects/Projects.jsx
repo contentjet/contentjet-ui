@@ -49,7 +49,7 @@ class Projects extends Component {
   }
 
   render() {
-    const { isFetching, inviteIsSending, me } = this.props;
+    const { isFetching, inviteIsSending, me, history } = this.props;
 
     const panelFooter = me.get('isAdmin') ? (
       <Button btnStyle="primary" onClick={this.onNewProjectClick} block>
@@ -87,6 +87,7 @@ class Projects extends Component {
         <CreateProjectModal
           onCancel={this.onCancelModal}
           isOpened={this.state.modalOpen}
+          history={history}
         />
       </CenteredPanelView>
     );

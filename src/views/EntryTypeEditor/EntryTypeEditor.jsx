@@ -202,7 +202,7 @@ class EntryTypeEditor extends Component {
     } = this.state;
     let { fieldToEdit } = this.state;
 
-    const { isSending, isFetching, match } = this.props;
+    const { isSending, isFetching, match, history } = this.props;
     const notification = this.props.notification.toJS();
     const err = this.props.err.toJS();
 
@@ -332,6 +332,7 @@ class EntryTypeEditor extends Component {
           projectId={match.params.project_id}
           closeModal={this.onCloseModal}
           isOpened={confirmDeleteModalOpen}
+          history={history}
         />
         <EntryTypeFieldEditorModal
           mode="EDIT"

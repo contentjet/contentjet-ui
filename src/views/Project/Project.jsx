@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import ProjectSelectors from 'selectors/ProjectSelectors';
 import UserSelectors from 'selectors/UserSelectors';
 import ProjectActions from 'actions/ProjectActions';
@@ -44,13 +44,14 @@ class Project extends Component {
     if (projectId && meId) {
       content = (
         <div className={s.content}>
-          <Route path={`${match.path}settings`} component={ProjectSettingsRoot} />
-          <Route exact path={`${match.path}entry-types`} component={EntryTypes} />
-          <Route path={`${match.path}entry-types/edit/:entry_type_id?`} component={EntryTypeEditor} />
-          <Route exact path={`${match.path}entries`} component={Entries} />
-          <Route path={`${match.path}entries/:entry_type_id/:entry_id?`} component={EntryEditor} />
-          <Route exact path={`${match.path}media`} component={Media} />
-          <Route path={`${match.path}media/:media_id`} component={MediaEditor} />
+          <Route exact path={match.path} render={() => <Redirect to={`/project/${match.params.project_id}/entries`} />} />
+          <Route path={`${match.path}/settings`} component={ProjectSettingsRoot} />
+          <Route exact path={`${match.path}/entry-types`} component={EntryTypes} />
+          <Route path={`${match.path}/entry-types/edit/:entry_type_id?`} component={EntryTypeEditor} />
+          <Route exact path={`${match.path}/entries`} component={Entries} />
+          <Route path={`${match.path}/entries/:entry_type_id/:entry_id?`} component={EntryEditor} />
+          <Route exact path={`${match.path}/media`} component={Media} />
+          <Route path={`${match.path}/media/:media_id`} component={MediaEditor} />
         </div>
       );
     }
