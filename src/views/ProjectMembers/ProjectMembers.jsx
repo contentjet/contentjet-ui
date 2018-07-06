@@ -109,15 +109,14 @@ class ProjectMembers extends Component {
 
     const invitesPanelFooter = (
       <div>
-        <IconButton
-          icon="trash-alt"
+        <Button
           className={s.deleteSelectedInvitesButton}
-          btnStyle="default"
+          btnStyle="link"
           disabled={!selectedInvites.length}
           onClick={this.onDeleteSelectedClick}
         >
           Delete selected
-        </IconButton>
+        </Button>
         <Button
           btnStyle="primary"
           onClick={this.onInviteClick}
