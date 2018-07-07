@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import EntryTypeSelectors from 'selectors/EntryTypeSelectors';
-import NotificationSelectors from 'selectors/NotificationSelectors';
 import _ from 'lodash';
 import Immutable, { Map } from 'immutable';
 import { immutableMove } from 'lib/utils/ImmutableUtils';
@@ -13,7 +12,6 @@ import ContentHeader from 'lib/components/ContentHeader';
 import Button from 'lib/components/Button';
 import Input from 'lib/components/Input';
 import IconButton from 'lib/components/IconButton';
-import Notification from 'lib/components/Notification';
 import LoadingSpinner from 'lib/components/LoadingSpinner';
 import ErrorsListAlert from 'lib/components/ErrorsListAlert';
 import EntryTypeFieldList from './components/EntryTypeFieldList';
@@ -203,7 +201,6 @@ class EntryTypeEditor extends Component {
     let { fieldToEdit } = this.state;
 
     const { isSending, isFetching, match, history } = this.props;
-    const notification = this.props.notification.toJS();
     const err = this.props.err.toJS();
 
     fieldToEdit = fieldToEdit ? fieldToEdit.toJS() : null;
@@ -314,7 +311,6 @@ class EntryTypeEditor extends Component {
           </Button>
         </ContentHeader>
         { body }
-        <Notification {...notification} />
         <ConfirmRemoveEntryTypeFieldModal
           closeModal={this.onCloseModal}
           onConfirm={this.onConfirmRemoveField}
@@ -360,7 +356,6 @@ EntryTypeEditor.propTypes = {
   clearEntryType: PropTypes.func.isRequired,
   getEntryType: PropTypes.func.isRequired,
   userIsProjectAdmin: PropTypes.bool.isRequired,
-  notification: PropTypes.instanceOf(Map).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape()
   }).isRequired,
@@ -376,8 +371,7 @@ const mapStateToProps = (state) => {
     isSending: EntryTypeSelectors.detailIsSending(state),
     isFetching: EntryTypeSelectors.detailIsFetching(state),
     entryTypeList: EntryTypeSelectors.listData(state),
-    userIsProjectAdmin: UserSelectors.userIsProjectAdmin(state),
-    notification: NotificationSelectors.getNotification(state)
+    userIsProjectAdmin: UserSelectors.userIsProjectAdmin(state)
   };
 };
 

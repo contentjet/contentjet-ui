@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import EntrySelectors from 'selectors/EntrySelectors';
 import EntryTypeSelectors from 'selectors/EntryTypeSelectors';
-import NotificationSelectors from 'selectors/NotificationSelectors';
 import EntryTagSelectors from 'selectors/EntryTagSelectors';
 import { Map, List } from 'immutable';
 import _ from 'lodash';
@@ -19,7 +18,6 @@ import IconButton from 'lib/components/IconButton';
 import Input from 'lib/components/Input';
 import ConfirmModal from 'lib/components/ConfirmModal';
 import ErrorsListAlert from 'lib/components/ErrorsListAlert';
-import Notification from 'lib/components/Notification';
 import LoadingSpinner from 'lib/components/LoadingSpinner';
 import s from './EntryEditor.css';
 
@@ -143,7 +141,6 @@ class EntryEditor extends Component {
   render() {
     const { isSending, isFetching } = this.props;
     const err = this.props.err.toJS();
-    const notification = this.props.notification.toJS();
 
     if (isFetching) return <LoadingSpinner className={s.loadingSpinner} />;
 
@@ -339,7 +336,6 @@ class EntryEditor extends Component {
           </div>
         </div>
 
-        <Notification {...notification} />
         <ConfirmModal
           onAccept={this.onAcceptModal}
           onCancel={this.onCancelModal}
@@ -360,7 +356,6 @@ EntryEditor.propTypes = {
   err: PropTypes.instanceOf(Map).isRequired,
   entryTags: PropTypes.instanceOf(List).isRequired,
   entryType: PropTypes.instanceOf(Map).isRequired,
-  notification: PropTypes.instanceOf(Map).isRequired,
   listEntryTags: PropTypes.func.isRequired,
   getEntryType: PropTypes.func.isRequired,
   getEntry: PropTypes.func.isRequired,
@@ -380,8 +375,7 @@ const mapStateToProps = (state) => {
     isFetching: EntrySelectors.detailIsFetching(state),
     err: EntrySelectors.detailError(state),
     entryTags: EntryTagSelectors.listData(state),
-    entryType: EntryTypeSelectors.detailData(state),
-    notification: NotificationSelectors.getNotification(state)
+    entryType: EntryTypeSelectors.detailData(state)
   };
 };
 

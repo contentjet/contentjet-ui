@@ -4,10 +4,8 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import Panel from 'lib/components/Panel';
-import Notification from 'lib/components/Notification';
 import UserActions from 'actions/UserActions';
 import UserSelectors from 'selectors/UserSelectors';
-import NotificationSelectors from 'selectors/NotificationSelectors';
 import ChangePasswordForm from './components/ChangePasswordForm';
 
 
@@ -45,7 +43,7 @@ class ChangePassword extends Component {
   }
 
   render() {
-    const { err, isSending, notification } = this.props;
+    const { err, isSending } = this.props;
 
     let error = err.toJS();
     if (!this.state.passwordsMatch) {
@@ -67,8 +65,6 @@ class ChangePassword extends Component {
           err={error}
           isSending={isSending}
         />
-
-        <Notification {...notification.toJS()} />
       </Panel>
     );
   }
@@ -77,15 +73,13 @@ class ChangePassword extends Component {
 ChangePassword.propTypes = {
   err: PropTypes.instanceOf(Map).isRequired,
   isSending: PropTypes.bool.isRequired,
-  save: PropTypes.func.isRequired,
-  notification: PropTypes.instanceOf(Map).isRequired
+  save: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
   return {
     err: UserSelectors.changePasswordError(state),
-    isSending: UserSelectors.changePasswordIsSending(state),
-    notification: NotificationSelectors.getNotification(state)
+    isSending: UserSelectors.changePasswordIsSending(state)
   };
 };
 

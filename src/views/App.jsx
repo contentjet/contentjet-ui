@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
 import Helmet from 'react-helmet';
 import { Route, Redirect, Switch } from 'react-router-dom';
@@ -9,6 +11,8 @@ import SignUp from './SignUp';
 import AcceptInvite from './AcceptInvite';
 import Authenticated from './Authenticated';
 import NotFound from './NotFound';
+import Notification from 'lib/components/Notification';
+import { Map } from 'immutable';
 import s from './App.css';
 
 import appleTouchIcon57x57 from 'meta/apple-touch-icon-57x57.png';
@@ -37,6 +41,7 @@ import mstile144x144 from 'meta/mstile-144x144.png';
 import 'meta/mstile-150x150.png';
 import 'meta/mstile-310x150.png';
 import 'meta/mstile-310x310.png';
+import NotificationSelectors from '../selectors/NotificationSelectors';
 
 
 class App extends Component {
@@ -74,6 +79,7 @@ class App extends Component {
           ]}
         />
         <div className={s.content}>
+          <Notification {...this.props.notification.toJS()} />
           <Switch>
             <Route exact path="/" render={() => <Redirect to="/login" />} />
             <Route path="/login" component={Login} />
@@ -90,4 +96,14 @@ class App extends Component {
   }
 }
 
-export default App;
+App.propTypes = {
+  notification: PropTypes.instanceOf(Map).isRequired,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    notification: NotificationSelectors.getNotification(state)
+  };
+};
+
+export default connect(mapStateToProps)(App);

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import MediaSelectors from 'selectors/MediaSelectors';
 import MediaTagSelectors from 'selectors/MediaTagSelectors';
-import NotificationSelectors from 'selectors/NotificationSelectors';
 import { List, Map, fromJS } from 'immutable';
 import _ from 'lodash';
 import slugify from 'underscore.string/slugify';
@@ -15,7 +14,6 @@ import ConfirmModal from 'lib/components/ConfirmModal';
 import Button from 'lib/components/Button';
 import ContentHeader from 'lib/components/ContentHeader';
 import MediaImage from './components/MediaImage';
-import Notification from 'lib/components/Notification';
 import s from './MediaEditor.css';
 
 
@@ -174,7 +172,6 @@ class MediaEditor extends Component {
           </div>
         </div>
 
-        <Notification {...this.props.notification.toJS()} />
         <ConfirmModal
           onAccept={this.onConfirmDelete}
           onCancel={this.onCancelModal}
@@ -196,7 +193,6 @@ MediaEditor.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   isSending: PropTypes.bool.isRequired,
   mediaTags: PropTypes.instanceOf(List).isRequired,
-  notification: PropTypes.instanceOf(Map).isRequired,
   listMediaTags: PropTypes.func.isRequired,
   getMedia: PropTypes.func.isRequired,
   saveMedia: PropTypes.func.isRequired,
@@ -213,8 +209,7 @@ const mapStateToProps = (state) => {
     err: MediaSelectors.detailError(state),
     isFetching: MediaSelectors.detailIsFetching(state),
     isSending: MediaSelectors.detailIsSending(state),
-    mediaTags: MediaTagSelectors.listData(state),
-    notification: NotificationSelectors.getNotification(state)
+    mediaTags: MediaTagSelectors.listData(state)
   };
 };
 

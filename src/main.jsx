@@ -9,7 +9,7 @@ import TokenStorage from 'services/TokenStorage';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import App from './views/App';
 import store from 'store';
 import AuthenticationActions from 'actions/AuthenticationActions';
@@ -53,7 +53,7 @@ queryTokenStatus();
 const router = (
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <Route component={App} />
     </BrowserRouter>
   </Provider>
 );

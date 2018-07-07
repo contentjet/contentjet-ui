@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Map } from 'immutable';
 import ProjectSelectors from 'selectors/ProjectSelectors';
-import NotificationSelectors from 'selectors/NotificationSelectors';
 import ProjectActions from 'actions/ProjectActions';
 import Panel from 'lib/components/Panel';
-import Notification from 'lib/components/Notification';
 import ProjectSettingsForm from './components/ProjectSettingsForm';
 import GuardedConfirmModal from 'lib/components/GuardedConfirmModal';
 
@@ -43,7 +41,6 @@ class ProjectSettings extends Component {
     const { onSubmit, isSending } = this.props;
     const err = this.props.err.toJS();
     const project = this.props.project.toJS();
-    const notification = this.props.notification.toJS();
     return (
       <div>
         <Panel header="Project">
@@ -56,7 +53,6 @@ class ProjectSettings extends Component {
           />
         </Panel>
 
-        <Notification {...notification} />
         <GuardedConfirmModal
           closeModal={this.onCloseModal}
           onAccept={this.onAcceptModal}
@@ -77,7 +73,6 @@ ProjectSettings.propTypes = {
   err: PropTypes.instanceOf(Map).isRequired,
   isSending: PropTypes.bool.isRequired,
   project: PropTypes.instanceOf(Map).isRequired,
-  notification: PropTypes.instanceOf(Map).isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape()
   }).isRequired,
@@ -88,8 +83,7 @@ const mapStateToProps = (state) => {
   return {
     project: ProjectSelectors.detailData(state),
     err: ProjectSelectors.detailError(state),
-    isSending: ProjectSelectors.detailIsSending(state),
-    notification: NotificationSelectors.getNotification(state)
+    isSending: ProjectSelectors.detailIsSending(state)
   };
 };
 
