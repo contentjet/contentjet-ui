@@ -1,20 +1,83 @@
-import React from 'react'; 
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import 'font-awesome/css/font-awesome.css';
+import React from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faArrowCircleUp,
+  faArrowDown,
+  faArrowLeft,
+  faArrowRight,
+  faArrowUp,
+  faCaretDown,
+  faCheckCircle,
+  faChevronRight,
+  faCloudUploadAlt,
+  faCog,
+  faDatabase,
+  faExclamationCircle,
+  faExpandArrowsAlt,
+  faFile,
+  faFileAlt,
+  faFileArchive,
+  faFileAudio,
+  faFileExcel,
+  faFileImage,
+  faFilePdf,
+  faFileVideo,
+  faFileWord,
+  faImage,
+  faLock,
+  faPencilAlt,
+  faPlus,
+  faPowerOff,
+  faSearch,
+  faSyncAlt,
+  faTag,
+  faTimes,
+  faTrashAlt,
+  faUnlockAlt,
+  faUser
+} from '@fortawesome/free-solid-svg-icons';
 
 
-const FontAwesome = (props) => {
-  let className = classnames(
-    'fa', `fa-${props.name}`, props.className
-  );
-  return (
-    <i {...props} className={className} />
-  );
-};
-FontAwesome.propTypes = {
-  name: PropTypes.string
-};
+library.add(
+  faArrowCircleUp,
+  faArrowDown,
+  faArrowLeft,
+  faArrowRight,
+  faArrowUp,
+  faCaretDown,
+  faCheckCircle,
+  faChevronRight,
+  faCloudUploadAlt,
+  faCog,
+  faDatabase,
+  faExclamationCircle,
+  faExpandArrowsAlt,
+  faFile,
+  faFileAlt,
+  faFileArchive,
+  faFileAudio,
+  faFileExcel,
+  faFileImage,
+  faFilePdf,
+  faFileVideo,
+  faFileWord,
+  faImage,
+  faLock,
+  faPencilAlt,
+  faPlus,
+  faPowerOff,
+  faSearch,
+  faSyncAlt,
+  faTag,
+  faTimes,
+  faTrashAlt,
+  faUnlockAlt,
+  faUser
+);
 
+const FontAwesome = (props) => (
+  <FontAwesomeIcon {...props} />
+);
 
 export default FontAwesome;

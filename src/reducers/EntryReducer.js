@@ -81,21 +81,21 @@ export default handleActions({
 
   [BULK_DESTROY_ENTRIES]: (state, action) => {
     // Optimistically delete
-    let ids = action.meta;
-    let results = state.getIn(['entryList', 'data', 'results']).filter(item => {
+    const ids = action.meta;
+    const results = state.getIn(['entryList', 'data', 'results']).filter(item => {
       return !_.includes(ids, item.get('id'));
     });
-    let count = results.count();
+    const count = results.count();
     return state.mergeIn(['entryList', 'data'], { count, results});
   },
 
   [DESTROY_ENTRY]: (state, action) => {
     // Optimistic delete
-    let entry = action.meta;
-    let results = state.getIn(['entryList', 'data', 'results']).filter(item => {
+    const entry = action.meta;
+    const results = state.getIn(['entryList', 'data', 'results']).filter(item => {
       return entry.id !== item.get('id');
     });
-    let count = results.count();
+    const count = results.count();
     let newState = state.mergeIn(['entryList', 'data'], { count, results });
     if (newState.getIn(['entryDetail', 'data']).id === entry.id) {
       newState = newState.set('entryDetail', initialEntryDetail);
@@ -115,9 +115,9 @@ export default handleActions({
   },
 
   [TOGGLE_SELECT_ENTRY]: (state, action) => {
-    let entry = Immutable.fromJS(action.payload);
-    let selectedEntries = state.get('selectedEntries');
-    let index = selectedEntries.findIndex(
+    const entry = Immutable.fromJS(action.payload);
+    const selectedEntries = state.get('selectedEntries');
+    const index = selectedEntries.findIndex(
       _media => _media.get('id') === entry.get('id')
     );
     if (index === -1) {

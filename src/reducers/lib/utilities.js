@@ -203,14 +203,14 @@ export const createUploadReducer = (TYPE, extraReducers, struct = uploadStructur
   let reducerMap = {
 
     [`${TYPE}_UPLOAD`]: (state, action) => {
-      let uploads = state.get('uploads').concat(Immutable.fromJS(action.payload));
+      const uploads = state.get('uploads').concat(Immutable.fromJS(action.payload));
       return state.set('uploads', uploads);
     },
 
     [`${TYPE}_UPLOAD_PROGRESS`]: (state, action) => {
-      let uploadState = Immutable.fromJS(action.payload);
+      const uploadState = Immutable.fromJS(action.payload);
       let uploads = state.get('uploads');
-      let index = uploads.findIndex(
+      const index = uploads.findIndex(
         _uploadedState => _uploadedState.get('uploadId') === uploadState.get('uploadId')
       );
       uploads = uploads.set(index, uploadState);
@@ -218,9 +218,9 @@ export const createUploadReducer = (TYPE, extraReducers, struct = uploadStructur
     },
 
     [`${TYPE}_UPLOAD_COMPLETE`]: (state, action) => {
-      let uploadState = Immutable.fromJS(action.payload);
+      const uploadState = Immutable.fromJS(action.payload);
       let uploads = state.get('uploads');
-      let index = uploads.findIndex(
+      const index = uploads.findIndex(
         _uploadedState => _uploadedState.get('uploadId') === uploadState.get('uploadId')
       );
       uploads = uploads.set(index, uploadState);
@@ -228,9 +228,9 @@ export const createUploadReducer = (TYPE, extraReducers, struct = uploadStructur
     },
 
     [`${TYPE}_UPLOAD_FAILED`]: (state, action) => {
-      let uploadState = Immutable.fromJS(action.payload);
+      const uploadState = Immutable.fromJS(action.payload);
       let uploads = state.get('uploads');
-      let index = uploads.findIndex(
+      const index = uploads.findIndex(
         _uploadedState => _uploadedState.get('uploadId') === uploadState.get('uploadId')
       );
       uploads = uploads.set(index, uploadState);

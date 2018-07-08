@@ -33,12 +33,12 @@ const MediaItem = (props) => {
     e.preventDefault();
   };
 
-  let tagsString = _.get(data, 'tags', []).join(', ');
-  let tags = (
-    <span><FontAwesome name="tag" /> {tagsString}</span>
+  const tagsString = _.get(data, 'tags', []).join(', ');
+  const tags = (
+    <span><FontAwesome icon="tag" /> {tagsString}</span>
   );
 
-  let className = classnames(
+  const className = classnames(
     s.mediaItem,
     {
       [s.selectable]: onClick,
@@ -54,16 +54,16 @@ const MediaItem = (props) => {
         className={s.editButton}
         to={`/project/${projectId}/media/${data.id}`}
         title="Edit"
-        iconName="pencil"
+        icon="pencil-alt"
       />
     );
   }
 
-  let imageHolderClassName = classnames(s.imageHolder, props.imageHolderClassName);
+  const imageHolderClassName = classnames(s.imageHolder, props.imageHolderClassName);
 
   return (
     <div className={className} title={data.name}>
-      <div onClick={onClickHandler}>
+      <div className={s.inner} onClick={onClickHandler}>
         <div className={imageHolderClassName}>
           {image}
         </div>
@@ -80,6 +80,7 @@ const MediaItem = (props) => {
     </div>
   );
 };
+
 MediaItem.propTypes = {
   onClick: PropTypes.func,
   data: PropTypes.object.isRequired,
@@ -89,6 +90,5 @@ MediaItem.propTypes = {
   projectId: PropTypes.string.isRequired,
   imageHolderClassName: PropTypes.string
 };
-
 
 export default MediaItem;

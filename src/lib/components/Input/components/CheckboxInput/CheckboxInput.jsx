@@ -18,7 +18,7 @@ class CheckboxInput extends Component {
   }
 
   render() {
-    let className = classnames(s.checkboxInput, this.props.className);
+    const className = classnames(s.checkboxInput, this.props.className);
     return (
       <InputWrapper
         {..._.pick(this.props, inputWrapperProps)}
@@ -38,11 +38,11 @@ class CheckboxInput extends Component {
   }
 
 }
+
 CheckboxInput.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.bool,
   onChange: PropTypes.func
 };
-
 
 export default CheckboxInput;

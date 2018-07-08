@@ -9,14 +9,14 @@ import s from './MediaList.css';
 
 class MediaList extends Component {
   render() {
-    let {
+    const {
       media,
       onItemClick,
       projectId,
       editDisabled,
-      selectedMedia,
-      className
+      selectedMedia
     } = this.props;
+    let { className } = this.props;
     className = classnames(s.mediaList, className);
     return (
       <List className={className}>
@@ -44,6 +44,7 @@ class MediaList extends Component {
     );
   }
 }
+
 MediaList.propTypes = {
   projectId: PropTypes.string.isRequired,
   selectedMedia: PropTypes.array.isRequired,
@@ -51,9 +52,9 @@ MediaList.propTypes = {
   onItemClick: PropTypes.func.isRequired,
   editDisabled: PropTypes.bool
 };
+
 MediaList.defaultProps = {
   editDisabled: false
 };
-
 
 export default MediaList;

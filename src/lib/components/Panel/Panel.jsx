@@ -13,7 +13,7 @@ function PanelHeader(props) {
       <h3 className={s.headerHeading}>{ children }</h3>
     );
   }
-  let className = classnames(
+  const className = classnames(
     s.panelHeader,
     {
       [s.textLeft]: props.textAlign === 'left',
@@ -29,6 +29,7 @@ function PanelHeader(props) {
   );
 
 }
+
 PanelHeader.propTypes = {
   textAlign: PropTypes.oneOf(['left', 'center', 'right'])
 };
@@ -36,7 +37,7 @@ PanelHeader.propTypes = {
 
 function PanelFooter(props) {
 
-  let className = classnames(
+  const className = classnames(
     s.panelFooter,
     {
       [s.textLeft]: props.textAlign === 'left',
@@ -52,6 +53,7 @@ function PanelFooter(props) {
   );
 
 }
+
 PanelFooter.propTypes = {
   textAlign: PropTypes.oneOf(['left', 'center', 'right'])
 };
@@ -59,7 +61,7 @@ PanelFooter.propTypes = {
 
 function Panel(props) {
 
-  let className = classnames(s.panel, props.className);
+  const className = classnames(s.panel, props.className);
 
   if (props.header) {
     var header = (
@@ -94,6 +96,7 @@ function Panel(props) {
   );
 
 }
+
 Panel.propTypes = {
   header: PropTypes.node,
   headerClassName: PropTypes.string,
@@ -102,6 +105,5 @@ Panel.propTypes = {
   footerClassName: PropTypes.string,
   footerTextAlign: PropTypes.oneOf(['left', 'center', 'right'])
 };
-
 
 export default Panel;

@@ -1,18 +1,18 @@
 @import 'variables.css';
 
-
 .appHeader {
   background: var(--light-grey);
   height: 36px;
   line-height: 36px;
   text-align: right;
+  display: flex;
+  justify-content: space-between;
 }
 
 .logoLink {
   background: var(--brand-primary);
   color: #fff;
   display: block;
-  float: left;
   height: 36px;
   line-height: 36px;
   padding: 9px 10px;

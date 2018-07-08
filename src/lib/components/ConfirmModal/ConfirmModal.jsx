@@ -9,7 +9,7 @@ import s from './ConfirmModal.css';
 class ConfirmModal extends Component {
 
   render() {
-    let footer = [
+    const footer = [
       <Button
         key="cancel-button"
         btnStyle="link"
@@ -26,7 +26,7 @@ class ConfirmModal extends Component {
       </Button>
     ];
 
-    let className = classnames(s.confirmModal, this.props.className);
+    const className = classnames(s.confirmModal, this.props.className);
 
     return (
       <Modal
@@ -43,11 +43,11 @@ class ConfirmModal extends Component {
   }
 
 }
+
 ConfirmModal.propTypes = {
   onAccept: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   isOpened: PropTypes.bool
 };
-
 
 export default ConfirmModal;

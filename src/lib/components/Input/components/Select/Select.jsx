@@ -18,7 +18,7 @@ class Select extends Component {
   }
 
   render() {
-    let selectChoices = this.props.choices.map((choice, i) => {
+    const selectChoices = this.props.choices.map((choice, i) => {
       return (
         <option
           value={choice}
@@ -34,7 +34,7 @@ class Select extends Component {
         <option value={null} key="null-choice">--- Select ---</option>
       );
     }
-    let className = classnames(
+    const className = classnames(
       s.select,
       {
         [s.hasError]: _.get(this.props, 'errors.length')
@@ -59,12 +59,12 @@ class Select extends Component {
   }
 
 }
+
 Select.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
   onChange: PropTypes.func,
   choices: PropTypes.arrayOf(PropTypes.string).isRequired
 };
-
 
 export default Select;

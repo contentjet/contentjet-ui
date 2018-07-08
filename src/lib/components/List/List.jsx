@@ -6,8 +6,9 @@ import s from './List.css';
 
 
 const List = (props) => {
-  let { children, inline, emptyMessage, style } = props;
-  let className = classnames(
+  const { inline, emptyMessage, style } = props;
+  let { children } = props;
+  const className = classnames(
     s.list,
     {
       [s.inline]: inline
@@ -21,10 +22,10 @@ const List = (props) => {
     <ul className={className} style={style}>{children}</ul>
   );
 };
+
 List.propTypes = {
   emptyMessage: PropTypes.node,
   inline: PropTypes.bool
 };
-
 
 export default List;

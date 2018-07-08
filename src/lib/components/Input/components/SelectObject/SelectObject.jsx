@@ -22,8 +22,9 @@ class SelectObject extends Component {
   }
 
   render() {
-    let {value, choices, valueField, textField} = this.props;
-    let selectChoices = choices.map((choice, i) => {
+    const { choices, valueField, textField } = this.props;
+    let { value } = this.props;
+    const selectChoices = choices.map((choice, i) => {
       return (
         <option
           value={choice[valueField]}
@@ -39,7 +40,7 @@ class SelectObject extends Component {
         <option value={null} key="null-choice">--- Select ---</option>
       );
     }
-    let className = classnames(
+    const className = classnames(
       s.selectObject,
       {
         [s.hasError]: _.get(this.props, 'errors.length')
@@ -67,6 +68,7 @@ class SelectObject extends Component {
   }
 
 }
+
 SelectObject.propTypes = {
   name: PropTypes.string,
   value: PropTypes.oneOfType([
@@ -78,6 +80,5 @@ SelectObject.propTypes = {
   onChange: PropTypes.func,
   choices: PropTypes.arrayOf(PropTypes.object).isRequired
 };
-
 
 export default SelectObject;

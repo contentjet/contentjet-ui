@@ -10,15 +10,15 @@ import s from './IconButton.css';
 class IconButton extends Component {
 
   render() {
-    let { alignIconRight } = this.props;
-    let className = classnames(
+    const { alignIconRight } = this.props;
+    const className = classnames(
       s.iconButton,
       {
         [s.right]: alignIconRight
       },
       this.props.className
     );
-    let props = _.omit(this.props, ['children', 'iconName', 'alignIconRight']);
+    const props = _.omit(this.props, ['children', 'icon', 'alignIconRight']);
 
     if (this.props.children) {
       var children = (
@@ -30,24 +30,24 @@ class IconButton extends Component {
       return (
         <Button {...props} className={className}>
           {children}
-          <FontAwesome name={this.props.iconName} />
+          <FontAwesome icon={this.props.icon} />
         </Button>
       );
     }
 
     return (
       <Button {...props} className={className}>
-        <FontAwesome name={this.props.iconName} />
+        <FontAwesome icon={this.props.icon} />
         {children}
       </Button>
     );
   }
 
 }
+
 IconButton.propTypes = {
-  iconName: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
   alignIconRight: PropTypes.bool
 };
-
 
 export default IconButton;

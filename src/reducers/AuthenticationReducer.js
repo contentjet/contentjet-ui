@@ -8,7 +8,6 @@ import {
 
 const initialState = detailStructure.set('data', Map({ isAuthenticated: false, redirectPath: '/' }));
 
-
 export default handleActions({
 
   [INIT_AUTHENTICATION]: (state, action) => {
@@ -56,6 +55,5 @@ export default handleActions({
   [LOGOUT]: () => {
     return initialState;
   }
-
 
 }, initialState);

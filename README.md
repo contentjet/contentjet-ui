@@ -6,7 +6,7 @@ A React based front end for contentjet, a powerful headless API-first CMS.
 
 Contentjet is composed of 2 discreet applications, the backend API [contentjet-api][contentjet-api] and the frontend HTML user interface contentjet-ui (this repository).
 
-For more information and hosting documentation please visit **[contentjet.github.io](contentjet)**.
+For more information and hosting documentation please visit **[contentjet.github.io][contentjet]**.
 
 ## Development
 

@@ -7,7 +7,7 @@ import s from './InputWrapper.css';
 
 
 function InputWrapperLabel(props) {
-  let style = {
+  const style = {
     width: props.width
   };
   if (props.text) {
@@ -21,13 +21,14 @@ function InputWrapperLabel(props) {
       </span>
     );
   }
-  let className = classnames(s.label, props.className);
+  const className = classnames(s.label, props.className);
   if (props.asSpan) {
     return <span className={className}>{labelText}{props.children}</span>;
   }
   return <label className={className}>{labelText}{props.children}</label>;
 
 }
+
 InputWrapperLabel.propTypes = {
   text: PropTypes.string,
   asSpan: PropTypes.bool,
@@ -55,7 +56,7 @@ class InputWrapper extends Component {
   render() {
     if (this.props.hide) return null;
 
-    let className = classnames(
+    const className = classnames(
       s.inputWrapper,
       {
         [s.hasError]: _.get(this.props, 'errors.length'),
@@ -100,7 +101,7 @@ class InputWrapper extends Component {
   }
 
 }
-InputWrapper.propTypes = inputWrapperPropTypes;
 
+InputWrapper.propTypes = inputWrapperPropTypes;
 
 export default InputWrapper;

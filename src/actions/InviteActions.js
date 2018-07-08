@@ -10,15 +10,13 @@ export const ACCEPT_INVITE = 'ACCEPT_INVITE';
 export const SET_INVITE_TOKEN = 'SET_INVITE_TOKEN';
 export const BULK_DESTROY_INVITE = 'BULK_DESTROY_INVITE';
 
-
 const _save = createAction(SAVE_INVITE, (projectId, data) => {
   return axios.post(`project/${projectId}/invite/`, data);
 });
 
-
 const save = (projectId, data) => {
   return (dispatch) => {
-    let action = _save(projectId, data);
+    const action = _save(projectId, data);
     dispatch(action);
     action.payload.then(response => {
       dispatch(list(projectId));
@@ -27,26 +25,21 @@ const save = (projectId, data) => {
   };
 };
 
-
 const list = createAction(GET_INVITE_LIST, (projectId) => {
   return axios.get(`project/${projectId}/invite/`);
 });
-
 
 const get = createAction(GET_INVITE, (projectId, inviteId) => {
   return axios.get(`project/${projectId}/invite/${inviteId}/`);
 });
 
-
 const setInviteToken = createAction(SET_INVITE_TOKEN);
-
 
 const accept = createAction(ACCEPT_INVITE, (token) => {
   const decodedToken = jwt.decode(token);
-  const {projectId} = decodedToken;
+  const { projectId } = decodedToken;
   return axios.put(`project/${projectId}/invite/accept/`, { token });
 });
-
 
 const _bulkDestroy = createAction(
   BULK_DESTROY_INVITE,
@@ -58,10 +51,9 @@ const _bulkDestroy = createAction(
   (projectId, inviteIds) => inviteIds
 );
 
-
 const bulkDestroy = (projectId, inviteIds) => {
   return (dispatch) => {
-    let action = _bulkDestroy(projectId, inviteIds);
+    const action = _bulkDestroy(projectId, inviteIds);
     dispatch(action);
     action.payload.then(response => {
       dispatch(list(projectId));
@@ -69,7 +61,6 @@ const bulkDestroy = (projectId, inviteIds) => {
     });
   };
 };
-
 
 export default {
   save,

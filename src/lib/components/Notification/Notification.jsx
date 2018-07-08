@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Motion, spring } from 'react-motion';
-import Portal from 'react-portal';
 import FontAwesome from 'lib/components/FontAwesome';
 import s from './Notification.css';
 
@@ -12,9 +11,9 @@ const ICON_FOR_STATUS = {
   'error': 'exclamation-circle'
 };
 
-
 function Notification(props) {
-  let { className, status, message, show } = props;
+  const { status, message, show } = props;
+  let { className } = props;
   className = classnames(
     s.notification,
     {
@@ -32,28 +31,26 @@ function Notification(props) {
   }
 
   return (
-    <Portal isOpened>
-      <Motion
-        defaultStyle={{top: -50}}
-        style={style}
-      >
-        {
-          interpolatingStyle => (
-            <div className={className} style={interpolatingStyle}>
-              <FontAwesome className={s.icon} name={ICON_FOR_STATUS[status]} />
-              <span className={s.message}>{message}</span>
-            </div>
-          )
-        }
-      </Motion>
-    </Portal>
+    <Motion
+      defaultStyle={{ top: -50 }}
+      style={style}
+    >
+      {
+        interpolatingStyle => (
+          <div className={className} style={interpolatingStyle}>
+            <FontAwesome className={s.icon} icon={ICON_FOR_STATUS[status]} />
+            <span className={s.message}>{message}</span>
+          </div>
+        )
+      }
+    </Motion>
   );
 }
+
 Notification.propTypes = {
   status: PropTypes.oneOf(['success', 'error']).isRequired,
   message: PropTypes.string,
   show: PropTypes.bool
 };
-
 
 export default Notification;

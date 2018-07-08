@@ -20,7 +20,6 @@ import s from './MediaPickerModal.css';
 
 const springConfig = { stiffness: 180, damping: 18 };
 
-
 class MediaPickerModal extends Component {
 
   constructor(props) {
@@ -38,8 +37,8 @@ class MediaPickerModal extends Component {
     this.onMove = this.onMove.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    let state = {};
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    const state = {};
     if (nextProps.media !== this.state.media) {
       state.media = nextProps.media;
     }
@@ -79,24 +78,24 @@ class MediaPickerModal extends Component {
   }
 
   mediaIsSelected(mediaItem) {
-    let selectedMediaIds = this.state.selectedMedia.map(item => item.id);
+    const selectedMediaIds = this.state.selectedMedia.map(item => item.id);
     return selectedMediaIds.includes(mediaItem.id);
   }
 
   onMove(fromIndex, toIndex) {
-    let selectedMedia = immutableMove(this.state.selectedMedia, fromIndex, toIndex);
+    const selectedMedia = immutableMove(this.state.selectedMedia, fromIndex, toIndex);
     this.setState({ selectedMedia });
   }
 
   render() {
     let { media } = this.state;
-    let selectedMedia = this.state.selectedMedia.toJS();
-    let {
+    const selectedMedia = this.state.selectedMedia.toJS();
+    const {
       excludedMediaIds, onCancel, isOpened, isFetching,
       page, totalPages, projectId
     } = this.props;
 
-    let footer = [
+    const footer = [
       <Button
         key="cancel-button"
         btnStyle="link"
@@ -123,7 +122,7 @@ class MediaPickerModal extends Component {
         <LoadingSpinner className={s.loadingSpinner} />
       );
     } else {
-      let items = media.map(mediaItem => {
+      const items = media.map(mediaItem => {
         return (
           <CheckboxListItem
             key={mediaItem.id}
@@ -148,7 +147,7 @@ class MediaPickerModal extends Component {
         if (page > 1) {
           previousButton = (
             <IconButton
-              iconName="arrow-left"
+              icon="arrow-left"
               onClick={_.partial(this.listMedia, page - 1)}
               buttonGroup
             >
@@ -159,7 +158,7 @@ class MediaPickerModal extends Component {
         if (page < totalPages) {
           nextButton = (
             <IconButton
-              iconName="arrow-right"
+              icon="arrow-right"
               onClick={_.partial(this.listMedia, page + 1)}
               buttonGroup
               alignIconRight
@@ -215,7 +214,7 @@ class MediaPickerModal extends Component {
                         interpolatingStyle => {
                           return (
                             <CheckboxListItem
-                              style={{transform: `translateY(${interpolatingStyle.y}px)`}}
+                              style={{ transform: `translateY(${interpolatingStyle.y}px)` }}
                               className={s.listItem}
                               onChange={_.partial(this.onSelectToggle, mediaItem)}
                               checked={this.mediaIsSelected(mediaItem)}
@@ -247,6 +246,7 @@ class MediaPickerModal extends Component {
     );
   }
 }
+
 MediaPickerModal.propTypes = {
   media: PropTypes.instanceOf(IList).isRequired,
   isFetching: PropTypes.bool,
@@ -262,7 +262,6 @@ MediaPickerModal.propTypes = {
   isOpened: PropTypes.bool
 };
 
-
 const mapStateToProps = (state) => {
   return {
     media: MediaSelectors.listResults(state),
@@ -271,7 +270,6 @@ const mapStateToProps = (state) => {
     totalPages: MediaSelectors.listData(state).get('totalPages')
   };
 };
-
 
 const mapDispatchToProps = (dispatch) => {
   return {

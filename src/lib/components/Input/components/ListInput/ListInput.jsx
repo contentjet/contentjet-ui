@@ -38,7 +38,7 @@ class ListInput extends Component {
   }
 
   render() {
-    let {value} = this.props;
+    let { value } = this.props;
     value = value || [];
     const className = classnames(
       s.listInput,
@@ -60,7 +60,7 @@ class ListInput extends Component {
           />
           <IconButton
             className={s.removeButton}
-            iconName="times"
+            icon="times"
             onClick={this.onClickRemove(i)}
           />
         </li>
@@ -77,7 +77,7 @@ class ListInput extends Component {
         { inputsList }
         <IconButton
           className={s.addButton}
-          iconName="pencil"
+          icon="pencil-alt"
           onClick={this.onClickAdd}
           block
         >
@@ -88,6 +88,7 @@ class ListInput extends Component {
   }
 
 }
+
 ListInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,

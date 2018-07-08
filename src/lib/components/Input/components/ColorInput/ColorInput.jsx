@@ -39,7 +39,7 @@ class ColorInput extends Component {
   }
 
   render() {
-    const {className, value, disableAlpha} = this.props;
+    const { className, value, disableAlpha } = this.props;
 
     if (this.state.showPicker) {
       var picker = (
@@ -61,7 +61,7 @@ class ColorInput extends Component {
       >
         <div
           className={s.swatch}
-          style={{background: value || '#fff'}}
+          style={{ background: value || '#fff' }}
           onClick={this.onClick}
         />
         { picker }
@@ -70,15 +70,16 @@ class ColorInput extends Component {
   }
 
 }
+
 ColorInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   value: PropTypes.string,
   disableAlpha: PropTypes.bool
 };
+
 ColorInput.defaultProps = {
   disableAlpha: true
 };
-
 
 export default ColorInput;

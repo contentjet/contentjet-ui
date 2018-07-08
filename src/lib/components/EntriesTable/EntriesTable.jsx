@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import classnames from 'classnames';
 import moment from 'moment';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Input from 'lib/components/Input';
 import s from './EntriesTable.css';
 
@@ -16,14 +16,14 @@ class EntriesTable extends Component {
   }
 
   entryIsSelected(entry) {
-    let selectedEntry = _.find(
+    const selectedEntry = _.find(
       this.props.selectedEntries, _entry => _entry.id === entry.id
     );
     return !_.isUndefined(selectedEntry);
   }
 
   render() {
-    const {entries, toggleSelect, projectId} = this.props;
+    const { entries, toggleSelect, projectId } = this.props;
     if (!entries.length) return null;
     const rows = entries.map(entry => {
       return (
@@ -83,12 +83,12 @@ class EntriesTable extends Component {
   }
 
 }
+
 EntriesTable.propTypes = {
   entries: PropTypes.array.isRequired,
   selectedEntries: PropTypes.array.isRequired,
   toggleSelect: PropTypes.func.isRequired,
   projectId: PropTypes.string.isRequired
 };
-
 
 export default EntriesTable;

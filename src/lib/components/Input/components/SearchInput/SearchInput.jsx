@@ -19,7 +19,7 @@ class SearchInput extends Component {
   }
 
   render() {
-    let className = classnames(
+    const className = classnames(
       s.searchInput,
       {
         [s.disabled]: this.props.disabled,
@@ -38,17 +38,17 @@ class SearchInput extends Component {
           className={s.input}
           onChange={this.onChange}
         />
-        <FontAwesome className={s.searchIcon} name="search" />
+        <FontAwesome className={s.searchIcon} icon="search" />
       </InputWrapper>
     );
   }
 
 }
+
 SearchInput.propTypes = {
   name: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   onChange: PropTypes.func
 };
-
 
 export default SearchInput;

@@ -1,0 +1,45 @@
+@import 'variables.css';
+
+:root {
+  --background: #222;
+  --active-background: color(var(--background) lightness(+10%));
+  --active-background-hover: var(--active-background);
+}
+
+.link {
+  border-right-color: transparent;
+  border-right-style: solid;
+  border-right-width: 4px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  padding: 15px 10px;
+  text-align: center;
+
+  &:hover,
+  &:focus {
+    background: color(var(--background) lightness(-3%));
+    color: #fff;
+    outline: none;
+    text-decoration: none;
+  }
+
+  &.active {
+    background: var(--active-background);
+    border-right-color: var(--brand-primary);
+
+    &:hover,
+    &:focus {
+      background: var(--active-background)-hover;
+    }
+  }
+
+  .icon {
+    display: block;
+    font-size: 22px;
+    margin: 0 0 5px 0;
+  }
+
+}

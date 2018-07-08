@@ -1,5 +1,4 @@
 import { createAction } from 'redux-actions';
-import { browserHistory } from 'react-router';
 import NotificationActions from 'actions/NotificationActions';
 import axios from 'axios';
 
@@ -10,7 +9,6 @@ export const GET_PROJECT = 'GET_PROJECT';
 export const DESTROY_PROJECT = 'DESTROY_PROJECT';
 export const UPDATE_MEMBER = 'UPDATE_MEMBER';
 
-
 const _save = createAction(SAVE_PROJECT, (data) => {
   if (data.id) {
     return axios.put(`project/${data.id}/`, data);
@@ -18,20 +16,18 @@ const _save = createAction(SAVE_PROJECT, (data) => {
   return axios.post('project/', data);
 });
 
-
-const save = (data, redirectOnSuccess) => {
+const save = (data, redirectOnSuccess, history) => {
   return (dispatch) => {
-    let action = _save(data);
+    const action = _save(data);
     dispatch(action);
     action.payload.then(
       response => {
         if (redirectOnSuccess) {
-          let projectId = response.data.id;
-          browserHistory.push(`/project/${projectId}/entry-types`);
+          const projectId = response.data.id;
+          history.push(`/project/${projectId}/entry-types`);
         } else {
           dispatch(NotificationActions.show('Project saved'));
         }
-
         return response;
       },
       response => {
@@ -44,20 +40,17 @@ const save = (data, redirectOnSuccess) => {
   };
 };
 
-
 const list = createAction(GET_PROJECT_LIST, () => {
   return axios.get('project/');
 });
-
 
 const get = createAction(GET_PROJECT, id => {
   return axios.get(`project/${id}/`);
 });
 
-
-const destroy = createAction(DESTROY_PROJECT, (id) => {
+const destroy = createAction(DESTROY_PROJECT, (id, history) => {
   return axios.delete(`project/${id}/`).then(response => {
-    browserHistory.replace('/projects/');
+    history.replace('/projects/');
     return response;
   });
 });
@@ -65,7 +58,6 @@ const destroy = createAction(DESTROY_PROJECT, (id) => {
 const updateMember = createAction(UPDATE_MEMBER, (projectId, data) => {
   return axios.post(`project/${projectId}/update-member`, data);
 });
-
 
 export default {
   save,

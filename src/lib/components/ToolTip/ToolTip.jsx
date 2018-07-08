@@ -40,14 +40,14 @@ class ToolTip extends Component {
     this._bubbleRoot.remove();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.disabled) {
       this.setState({ mouseIsOver: false }, this.renderBubble);
     }
   }
 
   onWindowScroll() {
-    let rect = this._wrapper.getBoundingClientRect();
+    const rect = this._wrapper.getBoundingClientRect();
     this.setState(
       {
         mouseIsOver: false,
@@ -93,7 +93,8 @@ class ToolTip extends Component {
   }
 
   render() {
-    let { children, className } = this.props;
+    const { children } = this.props;
+    let { className } = this.props;
     className = classnames(s.wrapper, className);
     return (
       <div
@@ -107,6 +108,7 @@ class ToolTip extends Component {
     );
   }
 }
+
 ToolTip.propTypes = {
   children: PropTypes.node.isRequired,
   content: PropTypes.node.isRequired,
@@ -115,12 +117,11 @@ ToolTip.propTypes = {
   yOffset: PropTypes.number,
   disabled: PropTypes.bool
 };
+
 ToolTip.defaultProps = {
   position: 'top',
   xOffset: 0,
   yOffset: 0
 };
-
-
 
 export default ToolTip;

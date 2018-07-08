@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import classnames from 'classnames';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import LoadingSpinner from 'lib/components/LoadingSpinner';
 import s from './Button.css';
 
@@ -83,6 +83,7 @@ function Button(props) {
     </button>
   );
 }
+
 Button.propTypes = {
   btnStyle: PropTypes.string,
   block: PropTypes.bool,
@@ -93,6 +94,5 @@ Button.propTypes = {
   hide: PropTypes.bool,
   buttonGroup: PropTypes.bool
 };
-
 
 export default Button;

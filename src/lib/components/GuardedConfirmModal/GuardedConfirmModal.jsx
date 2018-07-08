@@ -27,7 +27,7 @@ class GuardedConfirmModal extends Component {
   }
 
   render() {
-    let footer = [
+    const footer = [
       <Button
         key="cancel-button"
         btnStyle="link"
@@ -67,12 +67,12 @@ class GuardedConfirmModal extends Component {
   }
 
 }
+
 GuardedConfirmModal.propTypes = {
   onAccept: PropTypes.func.isRequired,
   onDecline: PropTypes.func,
   closeModal: PropTypes.func.isRequired,
   isOpened: PropTypes.bool
 };
-
 
 export default GuardedConfirmModal;

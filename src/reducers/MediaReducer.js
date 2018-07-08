@@ -76,12 +76,12 @@ export default handleActions({
 
   [DESTROY_MEDIA]: (state, action) => {
     // Optimistically delete
-    let mediaAsset = action.meta;
-    let results = state.getIn(['mediaList', 'data', 'results']).filter(item => {
+    const mediaAsset = action.meta;
+    const results = state.getIn(['mediaList', 'data', 'results']).filter(item => {
       return mediaAsset.id !== item.get('id');
     });
-    let count = results.count();
-    let newState = state.mergeIn(['mediaList', 'data'], { count, results });
+    const count = results.count();
+    const newState = state.mergeIn(['mediaList', 'data'], { count, results });
     if (mediaAsset.id === state.getIn(['mediaDetail', 'data']).id) {
       newState.set('mediaDetail', detailStructure);
     }
@@ -90,23 +90,23 @@ export default handleActions({
 
   [BULK_DESTROY_MEDIA]: (state, action) => {
     // Optimistically delete
-    let ids = action.meta;
-    let results = state.getIn(['mediaList', 'data', 'results']).filter(item => {
+    const ids = action.meta;
+    const results = state.getIn(['mediaList', 'data', 'results']).filter(item => {
       return !_.includes(ids, item.get('id'));
     });
-    let count = results.count();
+    const count = results.count();
     return state.mergeIn(['mediaList', 'data'], { count, results});
   },
 
   [UPLOAD]: (state, action) => {
-    let uploads = state.get('uploads').concat(Immutable.fromJS(action.payload));
+    const uploads = state.get('uploads').concat(Immutable.fromJS(action.payload));
     return state.set('uploads', uploads);
   },
 
   [UPLOAD_PROGRESS]: (state, action) => {
-    let uploadState = Immutable.fromJS(action.payload);
+    const uploadState = Immutable.fromJS(action.payload);
     let uploads = state.get('uploads');
-    let index = uploads.findIndex(
+    const index = uploads.findIndex(
       _uploadState => _uploadState.get('uploadId') === uploadState.get('uploadId')
     );
     uploads = uploads.set(index, uploadState);
@@ -114,9 +114,9 @@ export default handleActions({
   },
 
   [UPLOAD_COMPLETED]: (state, action) => {
-    let uploadState = Immutable.fromJS(action.payload);
+    const uploadState = Immutable.fromJS(action.payload);
     let uploads = state.get('uploads');
-    let index = uploads.findIndex(
+    const index = uploads.findIndex(
       _uploadState => _uploadState.get('uploadId') === uploadState.get('uploadId')
     );
     uploads = uploads.set(index, uploadState);
@@ -124,9 +124,9 @@ export default handleActions({
   },
 
   [UPLOAD_FAILED]: (state, action) => {
-    let uploadState = Immutable.fromJS(action.payload);
+    const uploadState = Immutable.fromJS(action.payload);
     let uploads = state.get('uploads');
-    let index = uploads.findIndex(
+    const index = uploads.findIndex(
       _uploadState => _uploadState.get('uploadId') === uploadState.get('uploadId')
     );
     uploads = uploads.set(index, uploadState);
@@ -134,16 +134,16 @@ export default handleActions({
   },
 
   [CLEAR_COMPLETED_UPLOADS]: (state) => {
-    let uploads = state.get('uploads').filter((upload) => {
+    const uploads = state.get('uploads').filter((upload) => {
       return upload.get('status') === 'UPLOADING';
     });
     return state.set('uploads', uploads);
   },
 
   [TOGGLE_SELECT]: (state, action) => {
-    let media = Immutable.fromJS(action.payload);
-    let selectedMedia = state.get('selectedMedia');
-    let index = selectedMedia.findIndex(
+    const media = Immutable.fromJS(action.payload);
+    const selectedMedia = state.get('selectedMedia');
+    const index = selectedMedia.findIndex(
       _media => _media.get('id') === media.get('id')
     );
     if (index === -1) {

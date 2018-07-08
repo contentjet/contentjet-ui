@@ -19,7 +19,7 @@ class MultiSelectInput extends Component {
   }
 
   render() {
-    let className = classnames(s.multiSelectInput, this.props.className);
+    const className = classnames(s.multiSelectInput, this.props.className);
     return (
       <InputWrapper
         {..._.pick(this.props, inputWrapperProps)}
@@ -35,10 +35,10 @@ class MultiSelectInput extends Component {
   }
 
 }
+
 MultiSelectInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func
 };
-
 
 export default MultiSelectInput;

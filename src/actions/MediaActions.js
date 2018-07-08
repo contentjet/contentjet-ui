@@ -2,7 +2,6 @@ import { createAction } from 'redux-actions';
 import axios from 'axios';
 import _ from 'lodash';
 import queryString from 'query-string';
-import { browserHistory } from 'react-router';
 import NotificationActions from 'actions/NotificationActions';
 import MediaTagActions from 'actions/MediaTagActions';
 
@@ -21,16 +20,14 @@ export const SELECT_ALL = 'SELECT_ALL';
 export const SELECT_NONE = 'SELECT_NONE';
 export const CLEAR_COMPLETED_UPLOADS = 'CLEAR_COMPLETED_UPLOADS';
 
-
 const list = createAction(
   GET_MEDIA_LIST,
   (projectId, queryParams) => {
-    let query = queryString.stringify(queryParams);
+    const query = queryString.stringify(queryParams);
     return axios.get(`project/${projectId}/media/?${query}`);
   },
   (projectId, queryParams) => ({ queryParams })
 );
-
 
 const relist = (projectId) => {
   return (dispatch, getState) => {
@@ -39,11 +36,9 @@ const relist = (projectId) => {
   };
 };
 
-
 const get = createAction(GET_MEDIA, (projectId, mediaId) => {
   return axios.get(`project/${projectId}/media/${mediaId}/`);
 });
-
 
 const _save = createAction(
   SAVE_MEDIA,
@@ -53,10 +48,9 @@ const _save = createAction(
   (projectId, data) => data
 );
 
-
 const save = (projectId, data) => {
   return (dispatch) => {
-    let saveAction = _save(projectId, data);
+    const saveAction = _save(projectId, data);
     dispatch(saveAction);
     saveAction.payload.then(
       response => {
@@ -75,19 +69,17 @@ const save = (projectId, data) => {
   };
 };
 
-
 const destroy = createAction(DESTROY_MEDIA,
-  (projectId, mediaAsset) => {
+  (projectId, mediaAsset, history) => {
     return axios.delete(`project/${projectId}/media/${mediaAsset.id}/`).then(
       response => {
-        browserHistory.replace(`/project/${projectId}/media`);
+        history.replace(`/project/${projectId}/media`);
         return response;
       }
     );
   },
   (projectId, mediaAsset) => mediaAsset
 );
-
 
 const _bulkDestroy = createAction(
   BULK_DESTROY_MEDIA,
@@ -99,10 +91,9 @@ const _bulkDestroy = createAction(
   (projectId, mediaAssetIds) => mediaAssetIds
 );
 
-
 const bulkDestroy = (projectId, mediaAssetIds) => {
   return (dispatch) => {
-    let action = _bulkDestroy(projectId, mediaAssetIds);
+    const action = _bulkDestroy(projectId, mediaAssetIds);
     dispatch(action);
     action.payload.then(response => {
       dispatch(relist(projectId));
@@ -111,54 +102,46 @@ const bulkDestroy = (projectId, mediaAssetIds) => {
   };
 };
 
-
 const toggleSelect = createAction(TOGGLE_SELECT);
-
 
 const selectAll = createAction(SELECT_ALL);
 
-
 const selectNone = createAction(SELECT_NONE);
-
 
 const uploadProgress = createAction(UPLOAD_PROGRESS);
 
-
 const uploadCompleted = createAction(UPLOAD_COMPLETED);
-
 
 const uploadFailed = createAction(UPLOAD_FAILED);
 
-
 const _upload = createAction(UPLOAD);
-
 
 const upload = (projectId, files) => {
   return (dispatch) => {
-    let url = `project/${projectId}/media/upload`;
-    let uploads = [];
-    let promises = [];
+    const url = `project/${projectId}/media/upload`;
+    const uploads = [];
+    const promises = [];
 
     files.forEach(file => {
       // Create upload state object
-      let uploadState = {
+      const uploadState = {
         uploadId: _.uniqueId('upload_'),
         progress: 0,
         filename: file.name,
         status: 'UPLOADING'
       };
       // Create formData and attach file to it.
-      let data = new FormData();
+      const data = new FormData();
       data.append('name', file.name);
       data.append('file', file);
       // Post
-      let promise = axios.post(
+      const promise = axios.post(
         url,
         data,
         {
           onUploadProgress: (e) => {
-            let done = e.position || e.loaded;
-            let total = e.totalSize || e.total;
+            const done = e.position || e.loaded;
+            const total = e.totalSize || e.total;
             uploadState.progress = (done / total) * 0.95;
             dispatch(uploadProgress(uploadState));
           }
@@ -180,9 +163,7 @@ const upload = (projectId, files) => {
   };
 };
 
-
 const clearCompletedUploads = createAction(CLEAR_COMPLETED_UPLOADS);
-
 
 export default {
   list,

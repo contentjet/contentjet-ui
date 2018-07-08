@@ -1,0 +1,53 @@
+@import 'variables.css';
+
+
+.mediaEditor {
+  height: 100%;
+  position: relative;
+}
+
+.body {
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  padding-bottom: 290px;
+  position: absolute;
+  right: 0;
+  top: var(--header-height);
+}
+
+.content {
+  max-width: 60%;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.mediaHolder {
+  text-align: center;
+
+  img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 480px;
+  }
+}
+
+.mediaMeta {
+  line-height: 5em;
+  font-size: 12px;
+  display: flex;
+  color: var(--grey);
+}
+
+.mediaName {
+  flex-grow: 1;
+}
+
+.cancelButton {
+  border: 1px solid transparent;
+  display: inline-block;
+  line-height: 1.42857143;
+  padding: 6px 12px;
+  vertical-align: middle;
+}

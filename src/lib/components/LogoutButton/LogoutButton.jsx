@@ -6,13 +6,12 @@ function LogoutButton(props) {
   return (
     <IconButton
       btnStyle="link"
-      iconName="power-off"
+      icon="power-off"
       {...props}
     >
       Logout
     </IconButton>
   );
 }
-
 
 export default LogoutButton;

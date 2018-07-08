@@ -6,7 +6,6 @@ import s from './ToolTipBubble.css';
 
 const ARROW_SIZE = 8;
 
-
 class ToolTipBubble extends Component {
 
   constructor(props) {
@@ -25,13 +24,13 @@ class ToolTipBubble extends Component {
   }
 
   calculateStyle() {
-    let {
+    const {
       wrapperWidth, wrapperHeight, wrapperLeft, wrapperTop,
       position, xOffset, yOffset
     } = this.props;
 
-    let rect = this._bubble.getBoundingClientRect();
-    let style = {};
+    const rect = this._bubble.getBoundingClientRect();
+    const style = {};
     // Calculate the left and top position.
     if (position === 'top' || position === 'bottom') {
       if (position === 'top') {
@@ -55,7 +54,8 @@ class ToolTipBubble extends Component {
   }
 
   render() {
-    let { className, position, children } = this.props;
+    const { position, children } = this.props;
+    let { className } = this.props;
 
     className = classnames(
       s.bubble,
@@ -80,6 +80,7 @@ class ToolTipBubble extends Component {
   }
 
 }
+
 ToolTipBubble.propTypes = {
   wrapperLeft: PropTypes.number.isRequired,
   wrapperTop: PropTypes.number.isRequired,
@@ -89,11 +90,11 @@ ToolTipBubble.propTypes = {
   xOffset: PropTypes.number,
   yOffset: PropTypes.number,
 };
+
 ToolTipBubble.defaultProps = {
   position: 'top',
   xOffset: 0,
   yOffset: 0
 };
-
 
 export default ToolTipBubble;

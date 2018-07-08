@@ -19,7 +19,6 @@ import s from './EntryPickerModal.css';
 
 const springConfig = { stiffness: 160, damping: 15 };
 
-
 class EntryPickerModal extends Component {
 
   constructor(props) {
@@ -37,8 +36,8 @@ class EntryPickerModal extends Component {
     this.onMove = this.onMove.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    let state = {};
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    const state = {};
     if (nextProps.entries !== this.state.entries) {
       state.entries = nextProps.entries;
     }
@@ -78,23 +77,23 @@ class EntryPickerModal extends Component {
   }
 
   entryIsSelected(entry) {
-    let selectedEntryIds = this.state.selectedEntries.map(item => item.id);
+    const selectedEntryIds = this.state.selectedEntries.map(item => item.id);
     return selectedEntryIds.includes(entry.id);
   }
 
   onMove(fromIndex, toIndex) {
-    let selectedEntries = immutableMove(this.state.selectedEntries, fromIndex, toIndex);
+    const selectedEntries = immutableMove(this.state.selectedEntries, fromIndex, toIndex);
     this.setState({ selectedEntries });
   }
 
   render() {
     let { entries } = this.state;
-    let selectedEntries = this.state.selectedEntries.toJS();
-    let {
+    const selectedEntries = this.state.selectedEntries.toJS();
+    const {
       excludedEntryIds, onCancel, isOpened, isFetching, page, totalPages
     } = this.props;
 
-    let footer = [
+    const footer = [
       <Button
         key="cancel-button"
         btnStyle="link"
@@ -121,7 +120,7 @@ class EntryPickerModal extends Component {
         <LoadingSpinner className={s.loadingSpinner} />
       );
     } else {
-      let items = entries.map(entry => {
+      const items = entries.map(entry => {
         return (
           <CheckboxListItem
             key={entry.id}
@@ -139,7 +138,7 @@ class EntryPickerModal extends Component {
         if (page > 1) {
           previousButton = (
             <IconButton
-              iconName="arrow-left"
+              icon="arrow-left"
               onClick={_.partial(this.listEntries, page - 1)}
               buttonGroup
             >
@@ -150,7 +149,7 @@ class EntryPickerModal extends Component {
         if (page < totalPages) {
           nextButton = (
             <IconButton
-              iconName="arrow-right"
+              icon="arrow-right"
               onClick={_.partial(this.listEntries, page + 1)}
               buttonGroup
               alignIconRight
@@ -206,7 +205,7 @@ class EntryPickerModal extends Component {
                         interpolatingStyle => {
                           return (
                             <CheckboxListItem
-                              style={{transform: `translateY(${interpolatingStyle.y}px)`}}
+                              style={{ transform: `translateY(${interpolatingStyle.y}px)` }}
                               className={s.listItem}
                               onChange={_.partial(this.onSelectToggle, entry)}
                               checked={this.entryIsSelected(entry)}
@@ -233,6 +232,7 @@ class EntryPickerModal extends Component {
   }
 
 }
+
 EntryPickerModal.propTypes = {
   entries: PropTypes.instanceOf(IList).isRequired,
   isFetching: PropTypes.bool,
@@ -247,7 +247,6 @@ EntryPickerModal.propTypes = {
   isOpened: PropTypes.bool
 };
 
-
 const mapStateToProps = (state) => {
   return {
     entries: EntrySelectors.listDataResults(state),
@@ -257,7 +256,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-
 const mapDispatchToProps = (dispatch) => {
   return {
     listEntries: (projectId, queryParams) => {
@@ -265,6 +263,5 @@ const mapDispatchToProps = (dispatch) => {
     }
   };
 };
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(EntryPickerModal);

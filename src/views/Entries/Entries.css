@@ -1,0 +1,66 @@
+@import 'variables.css';
+
+
+.entries {
+  padding-bottom: 100px;
+}
+
+.body {
+  margin: 0 20px;
+
+  .alert {
+    margin: 20px auto;
+  }
+}
+
+.controls {
+  padding-top: 15px;
+  margin: 0 20px;
+}
+
+.controlsRow {
+  display: flex;
+}
+
+.controlsColumn {
+  margin-right: 10px;
+
+  &:nth-child(1) {
+    flex: 0.55;
+  }
+
+  &:nth-child(2) {
+    flex: 0.15;
+  }
+
+  &:nth-child(3) {
+    flex: 0.15;
+  }
+
+  &:nth-child(4) {
+    flex: 0.15;
+    margin-right: 0;
+  }
+}
+
+.btnGroup {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.reloadButton,
+.deleteSelectedButton {
+  margin-right: 10px;
+}
+
+.loadingSpinner {
+  margin: 50px auto;
+}
+
+.entriesTable {
+  margin-bottom: 10px;
+}
+
+.pagination.re-pagination {
+  margin-bottom: 10px;
+}

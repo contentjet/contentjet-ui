@@ -19,7 +19,8 @@ class _Textarea extends Component {
   }
 
   render() {
-    let {inputClassName, className, placeholder, value} = this.props;
+    const { placeholder, value } = this.props;
+    let { inputClassName, className } = this.props;
     className = classnames(
       s.textarea,
       {
@@ -44,6 +45,7 @@ class _Textarea extends Component {
   }
 
 }
+
 _Textarea.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
@@ -51,9 +53,9 @@ _Textarea.propTypes = {
   value: PropTypes.string,
   inputClassName: PropTypes.string
 };
+
 _Textarea.defaultProps = {
   minRows: 3
 };
-
 
 export default _Textarea;

@@ -43,7 +43,6 @@ function getCaret(el) {
   return 0;
 }
 
-
 class MarkdownInput extends Component {
 
   constructor(props) {
@@ -75,7 +74,7 @@ class MarkdownInput extends Component {
   onAcceptModal(selections) {
     if (selections.isEmpty()) return;
     const textToInsert = selections.reduce((text, media) => {
-      const {description, file} = media;
+      const { description, file } = media;
       return text + `![${description}](${file})\n`;
     }, '');
     const value = insert(this.props.value, this.state.caretPosition, textToInsert);
@@ -108,7 +107,7 @@ class MarkdownInput extends Component {
   }
 
   render() {
-    let className = classnames(
+    const className = classnames(
       s.markdownInput,
       {
         [s.hasError]: _.get(this.props, 'errors.length'),
@@ -151,14 +150,13 @@ class MarkdownInput extends Component {
       >
         <div className={s.controls}>
           <IconButton
-            iconName="picture-o"
+            icon="image"
             tabIndex="-1"
             onClick={this.onImageButtonClick}
             title="Insert image"
           />
           <IconButton
-            className={s.fullscreenButton}
-            iconName="arrows-alt"
+            icon="expand-arrows-alt"
             tabIndex="-1"
             onClick={this.toggleFullscreen}
             title="Toggle fullscreen"
@@ -205,6 +203,7 @@ class MarkdownInput extends Component {
   }
 
 }
+
 MarkdownInput.propTypes = {
   name: PropTypes.string.isRequired,
   projectId: PropTypes.string.isRequired,

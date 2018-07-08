@@ -19,7 +19,7 @@ class BooleanRadioInput extends Component {
   }
 
   render() {
-    let className = classnames(
+    const className = classnames(
       s.booleanRadioInput,
       {
         [s.inline]: this.props.inline
@@ -64,6 +64,7 @@ class BooleanRadioInput extends Component {
   }
 
 }
+
 BooleanRadioInput.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.bool,
@@ -72,11 +73,10 @@ BooleanRadioInput.propTypes = {
   labelTrue: PropTypes.string,
   labelFalse: PropTypes.string
 };
+
 BooleanRadioInput.defaultProps = {
   labelTrue: 'Yes',
   labelFalse: 'No'
 };
-
-
 
 export default BooleanRadioInput;

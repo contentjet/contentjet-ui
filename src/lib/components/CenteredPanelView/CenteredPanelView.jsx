@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Panel from 'lib/components/Panel';
 import LogoutButton from 'lib/components/LogoutButton';
 import classnames from 'classnames';
 import logo from 'images/contentjet-logo.svg';
 import s from './CenteredPanelView.css';
-
-
 
 
 class CenteredPanelView extends Component {
@@ -43,10 +41,10 @@ class CenteredPanelView extends Component {
   }
 
 }
+
 CenteredPanelView.propTypes = {
   onClickLogout: PropTypes.func,
   footer: PropTypes.element
 };
-
 
 export default CenteredPanelView;

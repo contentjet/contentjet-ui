@@ -5,44 +5,42 @@ import FontAwesome from 'lib/components/FontAwesome';
 
 
 const MAP = {
-  'text/plain': 'file-text-o',
+  'text/plain': 'file-alt',
 
-  'application/pdf': 'file-pdf-o',
+  'application/pdf': 'file-pdf',
 
-  'application/x-compressed': 'file-archive-o',
-  'application/x-zip-compressed': 'file-archive-o',
-  'application/zip': 'file-archive-o',
-  'multipart/x-zip': 'file-archive-o',
+  'application/x-compressed': 'file-archive',
+  'application/x-zip-compressed': 'file-archive',
+  'application/zip': 'file-archive',
+  'multipart/x-zip': 'file-archive',
 
-  'video/mp4': 'file-video-o',
-  'video/flv': 'file-video-o',
-  'video/webm': 'file-video-o',
+  'video/mp4': 'file-video',
+  'video/flv': 'file-video',
+  'video/webm': 'file-video',
 
-  'application/msword': 'file-word-o',
+  'application/msword': 'file-word',
 
-  'application/excel': 'file-excel-o',
-  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'file-excel-o',
+  'application/excel': 'file-excel',
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': 'file-excel',
 
-  'audio/mpeg': 'file-audio-o',
-  'audio/wav': 'file-audio-o'
+  'audio/mpeg': 'file-audio',
+  'audio/wav': 'file-audio'
 };
-
-
 
 class FileIcon extends Component {
 
   render() {
-    let { className } = this.props;
-    let name = _.get(MAP, this.props.mimeType, 'file-o');
+    const { className } = this.props;
+    const name = _.get(MAP, this.props.mimeType, 'file');
     return (
-      <FontAwesome className={className} name={name} />
+      <FontAwesome className={className} icon={name} />
     );
   }
 
 }
+
 FileIcon.propTypes = {
   mimeType: PropTypes.string
 };
-
 
 export default FileIcon;

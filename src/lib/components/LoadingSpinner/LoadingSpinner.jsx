@@ -6,7 +6,7 @@ import s from './LoadingSpinner.css';
 
 function LoadingSpinner(props) {
 
-  let className = classnames(
+  const className = classnames(
     s.loadingSpinner,
     {
       [s.mini]: props.mini,
@@ -15,7 +15,7 @@ function LoadingSpinner(props) {
     },
     props.className
   );
-  let style = {};
+  const style = {};
   if (props.color) style.borderLeftColor = props.color;
   if (props.backgroundColor) {
     style.borderBottomColor = props.backgroundColor;
@@ -27,6 +27,7 @@ function LoadingSpinner(props) {
   );
 
 }
+
 LoadingSpinner.propTypes = {
   mini: PropTypes.bool,
   slow: PropTypes.bool,
@@ -34,7 +35,5 @@ LoadingSpinner.propTypes = {
   color: PropTypes.string,
   backgroundColor: PropTypes.string
 };
-
-
 
 export default LoadingSpinner;

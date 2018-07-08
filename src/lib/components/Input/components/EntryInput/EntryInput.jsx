@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import classnames from 'classnames';
 import { List as IList } from 'immutable';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import IconButton from 'lib/components/IconButton';
 import List from 'lib/components/List';
 import EntryPickerModal from 'lib/components/EntryPickerModal';
@@ -38,7 +38,7 @@ class EntryInput extends Component {
   }
 
   onRemoveClick(entry) {
-    let value = _.without(this.props.value, entry);
+    const value = _.without(this.props.value, entry);
     this.props.onChange(value, this.props.name);
   }
 
@@ -67,7 +67,7 @@ class EntryInput extends Component {
       );
     }
 
-    let className = classnames(s.entryInput, this.props.className);
+    const className = classnames(s.entryInput, this.props.className);
     return (
       <InputWrapper
         {..._.pick(this.props, inputWrapperProps)}
@@ -77,7 +77,7 @@ class EntryInput extends Component {
         {items}
         <IconButton
           className={s.editButton}
-          iconName="pencil"
+          icon="pencil-alt"
           onClick={this.onClickEdit}
           block
         >
@@ -97,6 +97,7 @@ class EntryInput extends Component {
   }
 
 }
+
 EntryInput.propTypes = {
   value: PropTypes.array,
   excludeEntries: PropTypes.array,
@@ -105,6 +106,5 @@ EntryInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   maxLength: PropTypes.number.isRequired
 };
-
 
 export default EntryInput;

@@ -6,11 +6,9 @@ export const GET_WEB_HOOK_LIST = 'GET_WEB_HOOK_LIST';
 export const SAVE_WEB_HOOK = 'SAVE_WEB_HOOK';
 export const DESTROY_WEB_HOOK = 'DESTROY_WEB_HOOK';
 
-
 const list = createAction(GET_WEB_HOOK_LIST, projectId => {
   return axios.get(`project/${projectId}/web-hook/`);
 });
-
 
 const _save = createAction(SAVE_WEB_HOOK, (projectId, data) => {
   if (data.id) {
@@ -19,10 +17,9 @@ const _save = createAction(SAVE_WEB_HOOK, (projectId, data) => {
   return axios.post(`project/${projectId}/web-hook/`, data);
 });
 
-
 const save = (projectId, data) => {
   return (dispatch) => {
-    let action = _save(projectId, data);
+    const action = _save(projectId, data);
     dispatch(action);
     action.payload.then(response => {
       dispatch(list(projectId));
@@ -30,7 +27,6 @@ const save = (projectId, data) => {
     });
   };
 };
-
 
 const _destroy = createAction(
   DESTROY_WEB_HOOK,
@@ -40,10 +36,9 @@ const _destroy = createAction(
   (projectId, webHookId) => webHookId
 );
 
-
 const destroy = (projectId, webHookId) => {
   return (dispatch) => {
-    let action = _destroy(projectId, webHookId);
+    const action = _destroy(projectId, webHookId);
     dispatch(action);
     action.payload.then(response => {
       dispatch(list(projectId));
@@ -51,7 +46,6 @@ const destroy = (projectId, webHookId) => {
     });
   };
 };
-
 
 export default {
   list,

@@ -32,9 +32,6 @@ class CheckboxListItem extends Component {
   render() {
     const className = classnames(
       s.checkboxListItem,
-      {
-        [s.moveable]: this.props.onClickUp || this.props.onClickDown
-      },
       this.props.className
     );
     const elementProps = _.omit(
@@ -51,14 +48,14 @@ class CheckboxListItem extends Component {
         <div className={s.column}>
           <IconButton
             className={s.arrowButton}
-            iconName="arrow-up"
+            icon="arrow-up"
             btnStyle="link"
             onClick={this.onClickUp}
             disabled={this.props.upButtonDisabled}
           />
           <IconButton
             className={s.arrowButton}
-            iconName="arrow-down"
+            icon="arrow-down"
             btnStyle="link"
             onClick={this.onClickDown}
             disabled={this.props.downButtonDisabled}
@@ -86,6 +83,7 @@ class CheckboxListItem extends Component {
   }
 
 }
+
 CheckboxListItem.propTypes = {
   checked: PropTypes.bool,
   onChange: PropTypes.func,
@@ -94,6 +92,5 @@ CheckboxListItem.propTypes = {
   upButtonDisabled: PropTypes.bool,
   downButtonDisabled: PropTypes.bool
 };
-
 
 export default CheckboxListItem;

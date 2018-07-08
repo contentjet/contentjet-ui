@@ -1,0 +1,49 @@
+@import 'variables.css';
+
+.entryTypeEditor {
+  height: 100%;
+  position: relative;
+}
+
+.body {
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  padding-bottom: 50px;
+  position: absolute;
+  right: 0;
+  top: var(--header-height);
+}
+
+.standardFields,
+.customFields {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.addFieldButton {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.deleteButton {
+  margin-right: 10px;
+}
+
+.loadingSpinner {
+  margin: 50px auto;
+}
+
+.metadataInput {
+  font-family: monospace;
+}
+
+.alert {
+  max-width: 800px;
+  margin: 15px auto 0 auto;
+  margin-top: 15px;
+  box-sizing: border-box;
+}

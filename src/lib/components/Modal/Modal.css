@@ -19,13 +19,13 @@
     width: 600px;
 
     .header {
-      lost-utility: clearfix;
+      display: flex;
       background: var(--brand-primary);
       border-bottom: var(--modal-dialog-header-border-bottom, 1px solid #999);
       padding: 10px 0;
 
       .heading {
-        lost-column: 10/12;
+        flex: 1;
         color: white;
         font-size: var(--modal-dialog-header-font-size, 18px);
         height: 39px;
@@ -37,7 +37,7 @@
       }
 
       .controls {
-        lost-column: 2/12;
+        flex: 0.2;
         text-align: right;
       }
     }

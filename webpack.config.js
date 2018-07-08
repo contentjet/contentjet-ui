@@ -1,11 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+
+const devMode = process.env.NODE_ENV !== 'production';
 
 const config = {
   entry: {
@@ -75,7 +76,7 @@ const config = {
         exclude: [/\.x\.css$/, /node_modules/],
         use: [
           {
-            loader: 'style-loader'
+            loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader
           },
           {
             loader: 'css-loader',
@@ -96,7 +97,7 @@ const config = {
         include: [/node_modules/],
         use: [
           {
-            loader: 'style-loader'
+            loader: devMode ? 'style-loader' : MiniCssExtractPlugin.loader
           },
           {
             loader: 'css-loader'
@@ -104,7 +105,15 @@ const config = {
         ]
       },
       {
-        test: /meta\/.+\.(ico|png|json|txt|svg|xml)?$/,
+        test: /meta\/.+\.(ico|png|txt|svg|xml)?$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]'
+        }
+      },
+      {
+        type: 'javascript/auto',
+        test: /meta\/.+\.json$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]'
@@ -138,49 +147,22 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.ejs'
+    }),
+    new MiniCssExtractPlugin({
+      filename: devMode ? '[name].css' : '[name].[hash].css',
+      chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
+    }),
+    new webpack.DefinePlugin({
+      'process.env':{
+        'NODE_ENV': `"${process.env.NODE_ENV}"`
+      }
     })
   ]
 };
 
-
-if (process.env.npm_lifecycle_event === 'build') {
-  [1, 2].forEach(i => {
-    config.module.rules[i].use = ExtractTextPlugin.extract({
-      fallback: 'style-loader',
-      use: config.module.rules[i].use.slice(1)
-    });
-  });
+if (!devMode) {
   config.plugins = config.plugins.concat([
-    new ExtractTextPlugin('[name].[contenthash].css'),
-    new CleanWebpackPlugin(['dist']),
-    new webpack.DefinePlugin({
-      'process.env':{
-        'NODE_ENV': JSON.stringify('production')
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true
-    }),
-    new webpack.optimize.AggressiveMergingPlugin()
-  ]);
-} else {
-  config.plugins = config.plugins.concat([
-    new BrowserSyncPlugin(
-      {
-        host: 'localhost',
-        port: 9000,
-        // proxy the Webpack Dev Server endpoint
-        // (which should be serving on http://localhost:8080/)
-        // through BrowserSync
-        proxy: 'http://localhost:8080/'
-      },
-      // plugin options
-      {
-        // prevent BrowserSync from reloading the page
-        // and let Webpack Dev Server take care of this
-        reload: false
-      }
-    )
+    new CleanWebpackPlugin(['dist'])
   ]);
 }
 

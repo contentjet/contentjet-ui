@@ -1,0 +1,44 @@
+@import 'variables.css';
+
+.settings {
+
+}
+
+.body {
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  padding-bottom: 50px;
+  padding-top: 15px;
+  position: absolute;
+  right: 0;
+  top: var(--header-height);
+}
+
+.content {
+  display: flex;
+  max-width: 70%;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+
+.sidebar {
+  flex: 0.3;
+  margin-right: 10px;
+}
+
+.link {
+  border-radius: 4px;
+  display: block;
+  margin-bottom: 5px;
+  padding: 5px 10px;
+}
+
+.linkActive {
+  background: var(--brand-secondary);
+  color: #fff;
+}
+
+.contentBody {
+  flex: 1;
+}

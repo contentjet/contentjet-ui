@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Motion, spring } from 'react-motion';
 import IconButton from 'lib/components/IconButton';
-import Portal from 'react-portal';
+import { Portal } from 'react-portal';
 import s from './Modal.css';
 
 
 class Modal extends Component {
 
   render() {
-    let { className, wide, isOpened, bodyClassName } = this.props;
+    let { className, bodyClassName } = this.props;
+    const { wide, isOpened } = this.props;
 
     if (!isOpened) return null;
 
@@ -34,8 +35,8 @@ class Modal extends Component {
     }
 
     return (
-      <Portal isOpened={isOpened}>
-        <Motion defaultStyle={{opacity: 0}} style={{opacity: spring(1)}}>
+      <Portal>
+        <Motion defaultStyle={{ opacity: 0 }} style={{ opacity: spring(1) }}>
           {
             interpolatingStyle => (
               <div className={className} style={interpolatingStyle}>
@@ -46,7 +47,7 @@ class Modal extends Component {
                       <IconButton
                         className={s.closeButton}
                         btnStyle="link"
-                        iconName="close"
+                        icon="times"
                         onClick={this.props.onClickClose}
                       />
                     </div>
@@ -65,6 +66,7 @@ class Modal extends Component {
   }
 
 }
+
 Modal.propTypes = {
   title: PropTypes.string.isRequired,
   onClickClose: PropTypes.func.isRequired,
@@ -73,6 +75,5 @@ Modal.propTypes = {
   isOpened: PropTypes.bool,
   bodyClassName: PropTypes.string
 };
-
 
 export default Modal;

@@ -1,0 +1,68 @@
+@import 'variables.css';
+
+li.item {
+  display: flex;
+  justify-content: space-between;
+  background: var(--lighter-grey);
+  left: 0;
+  margin-bottom: 3px;
+  padding: 5px 0 5px 15px;
+  position: absolute;
+  right: 0;
+
+  p {
+    margin: 0;
+  }
+
+  &.required {
+
+    .itemDetails {
+
+      &::before {
+        color: #d9534f;
+        content: '* ';
+        font-weight: bold;
+      }
+    }
+  }
+
+  &.disabled {
+
+    .itemDetails {
+      opacity: 0.35;
+    }
+  }
+}
+
+.itemDetails {
+  line-height: 40px;
+}
+
+.itemType {
+  color: color(var(--color) lightness(30%));
+  font-size: .7em;
+}
+
+.itemControls {
+  line-height: 40px;
+}
+
+.reorderButtonsHolder {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.reorderButton.btn {
+  color: var(--grey);
+  display: block;
+  line-height: 1.1em;
+  padding: 0 10px;
+
+  &[disabled] {
+    color: color(var(--grey) a(.35));
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

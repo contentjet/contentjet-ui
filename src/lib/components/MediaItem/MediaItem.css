@@ -77,16 +77,20 @@
     height: 90px;
     line-height: 90px;
     padding: 0;
-    lost-utility: clearfix;
 
-    .imageHolder {
-      lost-column: 5/12 2 10px;
+    .inner {
+      display: flex;
+
+      .imageHolder {
+        flex: 0.4;
+      }
+
+      .metaHolder {
+        flex: 0.6;
+        padding-left: 10px;
+      }
     }
 
-    .metaHolder {
-      display: inline-block;
-      lost-column: 7/12 2 10px;
-    }
   }
 
 }

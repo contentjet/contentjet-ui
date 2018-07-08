@@ -24,7 +24,7 @@ import ListInput from './components/ListInput';
 class Input extends Component {
 
   render() {
-    let type = this.props.type;
+    const type = this.props.type;
     if (type === 'text') {
       return <TextInput {...this.props} />;
     } else if (type === 'select') {
@@ -67,6 +67,7 @@ class Input extends Component {
   }
 
 }
+
 Input.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
@@ -97,6 +98,5 @@ Input.propTypes = {
   ]).isRequired,
   choices: PropTypes.array
 };
-
 
 export default Input;

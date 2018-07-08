@@ -7,7 +7,7 @@ import s from './Dropzone.css';
 
 
 function _Dropzone(props) {
-  let className = classnames(s.dropzone, props.className);
+  const className = classnames(s.dropzone, props.className);
   return (
     <Dropzone
       {...props}
@@ -15,15 +15,15 @@ function _Dropzone(props) {
       activeClassName={s.active}
       onDrop={props.onDrop}
     >
-      <FontAwesome className={s.icon} name="cloud-upload" />
+      <FontAwesome className={s.icon} icon="cloud-upload-alt" />
       <p>Drop files here to upload.</p>
       <p><small>(or click to select)</small></p>
     </Dropzone>
   );
 }
+
 _Dropzone.propTypes = {
   onDrop: PropTypes.func.isRequired
 };
-
 
 export default _Dropzone;
