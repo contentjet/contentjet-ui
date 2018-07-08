@@ -31,7 +31,7 @@ class FileIcon extends Component {
 
   render() {
     const { className } = this.props;
-    const name = _.get(MAP, this.props.mimeType, 'file-o');
+    const name = _.get(MAP, this.props.mimeType, 'file');
     return (
       <FontAwesome className={className} icon={name} />
     );

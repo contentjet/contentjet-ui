@@ -13,7 +13,6 @@ import InviteModal from './components/InviteModal';
 import EditMemberModal from './components/EditMemberModal';
 import Panel from 'lib/components/Panel';
 import Button from 'lib/components/Button';
-import IconButton from 'lib/components/IconButton';
 import LoadingSpinner from 'lib/components/LoadingSpinner';
 import ConfirmModal from 'lib/components/ConfirmModal';
 import s from './ProjectMembers.css';

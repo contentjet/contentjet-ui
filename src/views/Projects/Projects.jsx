@@ -103,7 +103,8 @@ Projects.propTypes = {
   acceptProjectInvite: PropTypes.func.isRequired,
   inviteToken: PropTypes.string,
   inviteIsSending: PropTypes.bool.isRequired,
-  getMe: PropTypes.func.isRequired
+  getMe: PropTypes.func.isRequired,
+  history: PropTypes.shape().isRequired
 };
 
 const mapStateToProps = (state) => {
