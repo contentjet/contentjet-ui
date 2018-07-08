@@ -21,11 +21,15 @@
   },
   "author": "Will Dady",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "koa": "^2.5.1",
+    "koa-send": "^5.0.0"
+  },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.0",
     "@fortawesome/free-solid-svg-icons": "^5.1.0",
     "@fortawesome/react-fontawesome": "^0.1.0",
+    "ajv": "^6.5.2",
     "axios": "^0.18.0",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
