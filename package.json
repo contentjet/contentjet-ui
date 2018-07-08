@@ -75,7 +75,7 @@
     "react-widgets": "^4.3.2",
     "react-widgets-moment": "^4.0.15",
     "react-widgets-simple-number": "^4.1.11",
-    "redux": "^3.5.2",
+    "redux": "^4.0.0",
     "redux-actions": "^2.4.0",
     "redux-immutable": "^4.0.0",
     "redux-thunk": "^2.3.0",
