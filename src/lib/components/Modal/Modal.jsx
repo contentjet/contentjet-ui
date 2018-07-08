@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Motion, spring } from 'react-motion';
 import IconButton from 'lib/components/IconButton';
-import Portal from 'react-portal';
+import { Portal } from 'react-portal';
 import s from './Modal.css';
 
 
@@ -35,7 +35,7 @@ class Modal extends Component {
     }
 
     return (
-      <Portal isOpened={isOpened}>
+      <Portal>
         <Motion defaultStyle={{opacity: 0}} style={{opacity: spring(1)}}>
           {
             interpolatingStyle => (

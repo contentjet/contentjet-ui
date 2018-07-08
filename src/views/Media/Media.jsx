@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
 import { List } from 'immutable';
 import queryString from 'query-string';
 import MediaSelectors from 'selectors/MediaSelectors';
@@ -58,7 +57,7 @@ class Media extends Component {
 
   listMedia() {
     this.props.listMedia(
-      this.props.params.project_id,
+      this.props.match.params.project_id,
       {
         page: this.state.page,
         pageSize: this.state.pageSize,
@@ -73,7 +72,7 @@ class Media extends Component {
       search: _.trim(this.state.search),
       orderBy: this.state.orderBy
     });
-    browserHistory.replace({
+    this.props.history.replace({
       pathname: this.props.location.pathname,
       search: `?${params}`
     });
@@ -81,7 +80,7 @@ class Media extends Component {
 
   componentDidMount() {
     // Restore our search state from the url
-    const q = this.props.location.query;
+    const q = queryString.parse(this.props.location.search);
     this.setState(
       {
         pageSize: q.pageSize || resultsPerPageChoices[0],
@@ -94,7 +93,7 @@ class Media extends Component {
   }
 
   onDrop(files) {
-    this.props.upload(this.props.params.project_id, files);
+    this.props.upload(this.props.match.params.project_id, files);
   }
 
   onPaginationClick(page) {
@@ -103,7 +102,7 @@ class Media extends Component {
 
   onAcceptModal() {
     this.props.bulkDestroyMedia(
-      this.props.params.project_id,
+      this.props.match.params.project_id,
       this.props.selectedMedia.map(mediaAsset => mediaAsset.get('id'))
     );
     this.setState({ modalOpen: false });
@@ -132,7 +131,7 @@ class Media extends Component {
   render() {
     const {
       isFetching,
-      params,
+      match,
       toggleSelect,
       selectAll,
       selectNone,
@@ -157,7 +156,7 @@ class Media extends Component {
           <MediaList
             media={media}
             selectedMedia={selectedMedia}
-            projectId={params.project_id}
+            projectId={match.params.project_id}
             onItemClick={toggleSelect}
           />
           <Pagination
@@ -293,13 +292,21 @@ Media.propTypes = {
   clearCompletedUploads: PropTypes.func.isRequired,
   hasCompletedUploads: PropTypes.bool.isRequired,
   selectedMedia: PropTypes.instanceOf(List).isRequired,
-  params: PropTypes.object.isRequired,
   media: PropTypes.instanceOf(List).isRequired,
   totalRecords: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
   totalPages: PropTypes.number.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  uploads: PropTypes.instanceOf(List).isRequired
+  uploads: PropTypes.instanceOf(List).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape()
+  }).isRequired,
+  history: PropTypes.shape({
+    replace: PropTypes.func
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string
+  }).isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -341,7 +348,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Media);
+export default connect(mapStateToProps, mapDispatchToProps)(Media);

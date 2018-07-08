@@ -4,7 +4,7 @@ import _ from 'lodash';
 import Input from 'lib/components/Input';
 import Button from 'lib/components/Button';
 import ErrorsListAlert from 'lib/components/ErrorsListAlert';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import s from './LoginForm.css';
 
 
@@ -29,7 +29,7 @@ class LoginForm extends Component {
   }
 
   render() {
-    const {error} = this.props;
+    const { error } = this.props;
     if (error.message) {
       var alert = (
         <ErrorsListAlert

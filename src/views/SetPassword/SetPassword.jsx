@@ -20,7 +20,7 @@ class SetPassword extends Component {
   }
 
   onSubmit(data) {
-    const token = this.props.params.token.replace(/~/g, '.');
+    const token = this.props.match.params.token.replace(/~/g, '.');
     this.props.onSubmit(token, data)
       .then(() => {
         this.setState({success: true});
@@ -60,9 +60,11 @@ class SetPassword extends Component {
 
 SetPassword.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  params: PropTypes.object.isRequired,
   err: PropTypes.instanceOf(Map).isRequired,
-  isSending: PropTypes.bool.isRequired
+  isSending: PropTypes.bool.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape()
+  }).isRequired
 };
 
 const mapStateToProps = (state) => {

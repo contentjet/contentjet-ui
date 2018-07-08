@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Logo from 'lib/components/Logo';
 import FontAwesome from 'lib/components/FontAwesome';
 import LogoutButton from 'lib/components/LogoutButton';

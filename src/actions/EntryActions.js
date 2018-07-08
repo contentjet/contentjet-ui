@@ -1,6 +1,5 @@
 import { createAction } from 'redux-actions';
 import axios from 'axios';
-import { browserHistory } from 'react-router';
 import NotificationActions from 'actions/NotificationActions';
 
 
@@ -15,7 +14,6 @@ export const TOGGLE_SELECT_ENTRY = 'TOGGLE_SELECT_ENTRY';
 export const SELECT_ALL_ENTRIES = 'SELECT_ALL_ENTRIES';
 export const SELECT_NONE_ENTRIES = 'SELECT_NONE_ENTRIES';
 
-
 const _save = createAction(
   SAVE_ENTRY,
   (projectId, data) => {
@@ -29,8 +27,7 @@ const _save = createAction(
   }
 );
 
-
-const save = (projectId, data) => {
+const save = (projectId, data, history) => {
   return (dispatch) => {
     const saveAction = _save(projectId, data);
     dispatch(saveAction);
@@ -38,7 +35,7 @@ const save = (projectId, data) => {
     saveAction.payload.then(
       response => {
         dispatch(NotificationActions.show('Entry saved'));
-        browserHistory.replace(
+        history.replace(
           `/project/${projectId}/entries/${response.data.entryTypeId}/${response.data.id}`
         );
         return response;
@@ -53,7 +50,6 @@ const save = (projectId, data) => {
   };
 };
 
-
 const list = createAction(
   GET_ENTRY_LIST,
   (projectId, params) => {
@@ -62,7 +58,6 @@ const list = createAction(
   (projectId, params) => ({ queryParams: params })
 );
 
-
 const relist = (projectId) => {
   return (dispatch, getState) => {
     const queryParams = getState().getIn(['entry', 'entryList', 'queryParams']);
@@ -70,22 +65,19 @@ const relist = (projectId) => {
   };
 };
 
-
 const get = createAction(GET_ENTRY, (projectId, entryId) => {
   return axios.get(`project/${projectId}/entry/${entryId}/`);
 });
 
-
 const destroy = createAction(DESTROY_ENTRY,
-  (projectId, entry) => {
+  (projectId, entry, history) => {
     return axios.delete(`project/${projectId}/entry/${entry.id}/`).then(response => {
-      browserHistory.replace(`/project/${projectId}/entries`);
+      history.replace(`/project/${projectId}/entries`);
       return response;
     });
   },
   (projectId, entry) => entry
 );
-
 
 const _bulkDestroy = createAction(
   BULK_DESTROY_ENTRIES,
@@ -96,7 +88,6 @@ const _bulkDestroy = createAction(
   },
   (projectId, entryIds) => entryIds
 );
-
 
 const bulkDestroy = (projectId, entryIds) => {
   return (dispatch) => {
@@ -109,21 +100,15 @@ const bulkDestroy = (projectId, entryIds) => {
   };
 };
 
-
 const clearActiveEntry = createAction(CLEAR_ACTIVE_ENTRY);
-
 
 const clearEntries = createAction(CLEAR_ENTRIES);
 
-
 const toggleSelect = createAction(TOGGLE_SELECT_ENTRY);
-
 
 const selectAll = createAction(SELECT_ALL_ENTRIES);
 
-
 const selectNone = createAction(SELECT_NONE_ENTRIES);
-
 
 export default {
   save,

@@ -1,10 +1,10 @@
-const {promisify} = require('util');
+const { promisify } = require('util');
 const fs = require('fs');
 const access = promisify(fs.access);
 const Koa = require('koa');
 const send = require('koa-send');
 
-let {BACKEND_URL} = process.env;
+let { BACKEND_URL } = process.env;
 if (!BACKEND_URL) throw new Error('BACKEND_URL environment variable not set');
 BACKEND_URL = BACKEND_URL.trim();
 if (!BACKEND_URL.endsWith('/')) BACKEND_URL = BACKEND_URL + '/';

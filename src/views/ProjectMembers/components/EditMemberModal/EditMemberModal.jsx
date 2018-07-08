@@ -23,7 +23,7 @@ class EditMemberModal extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.isOpened && this.props.isSending && !nextProps.isSending) {
       this.props.closeModal();
     }
@@ -38,7 +38,7 @@ class EditMemberModal extends Component {
   }
 
   onInputChangeHandler(value, name) {
-    const {formData} = this.state;
+    const { formData } = this.state;
     value = value.value;
     if (name === 'membershipIsActive') value = value === 'active';
     formData[name] = value;
@@ -47,7 +47,7 @@ class EditMemberModal extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const {membershipType, membershipIsActive} = this.state.formData;
+    const { membershipType, membershipIsActive } = this.state.formData;
     const data = {
       userId: _.get(this.props.member, 'id'),
       membershipType,
@@ -58,8 +58,8 @@ class EditMemberModal extends Component {
   }
 
   render() {
-    const {isSending, onCancel} = this.props;
-    const {formData} = this.state;
+    const { isSending, onCancel } = this.props;
+    const { formData } = this.state;
 
     const footer = [
       <Button

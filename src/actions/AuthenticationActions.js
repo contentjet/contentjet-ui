@@ -9,14 +9,11 @@ export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 export const REFRESH_TOKEN = 'REFRESH_TOKEN';
 
-
 const initAuthentication = createAction(INIT_AUTHENTICATION, () => {
   return TokenStorage.hasValidToken();
 });
 
-
 const setRedirectPath = createAction(SET_REDIRECT_PATH);
-
 
 const login = createAction(LOGIN, credentials => {
   credentials.grant_type = 'password';
@@ -34,7 +31,6 @@ const login = createAction(LOGIN, credentials => {
   );
 });
 
-
 const refreshToken = createAction(REFRESH_TOKEN, () => {
   const data = {
     refresh_token: TokenStorage.getToken(),
@@ -48,9 +44,7 @@ const refreshToken = createAction(REFRESH_TOKEN, () => {
   );
 });
 
-
 const _logout = createAction(LOGOUT);
-
 
 const logout = () => {
   return (dispatch) => {

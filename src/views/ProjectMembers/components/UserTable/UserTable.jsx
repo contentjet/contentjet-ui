@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {capitalize} from 'underscore.string';
+import { capitalize } from 'underscore.string';
 import classnames from 'classnames';
 import Button from 'lib/components/Button';
 import s from './UserTable.css';

@@ -140,7 +140,7 @@ class EntryTypeFieldEditorModal extends Component {
     this.getNameErrors = this.getNameErrors.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const newState = {};
     if (this.props.isOpened && !nextProps.isOpened) {
       newState.page = this.props.mode === 'CREATE' ? 0 : 1;
@@ -231,7 +231,7 @@ class EntryTypeFieldEditorModal extends Component {
   }
 
   isValid() {
-    const {fieldProperties} = this.state;
+    const { fieldProperties } = this.state;
     if ('minLength' in fieldProperties && _.isNil(fieldProperties.minLength)) return false;
     if ('maxLength' in fieldProperties && _.isNil(fieldProperties.maxLength)) return false;
     if (
@@ -264,10 +264,10 @@ class EntryTypeFieldEditorModal extends Component {
   }
 
   render() {
-    const {isOpened, mode} = this.props;
+    const { isOpened, mode } = this.props;
     if (!isOpened) return null;
-    const {fieldProperties, nameErrors} = this.state;
-    const {fieldType} = fieldProperties;
+    const { fieldProperties, nameErrors } = this.state;
+    const { fieldType } = fieldProperties;
 
     const nameInputProps = {
       name: 'name',

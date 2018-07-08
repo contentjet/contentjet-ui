@@ -24,14 +24,14 @@ class ProjectSettingsForm extends Component {
   }
 
   onInputChange(value, name) {
-    const {formData} = this.state;
+    const { formData } = this.state;
     formData[name] = value;
     this.setState({ formData: formData });
   }
 
   render() {
-    const {err, isSending, onClickDelete} = this.props;
-    const {formData} = this.state;
+    const { err, isSending, onClickDelete } = this.props;
+    const { formData } = this.state;
     if (err.message) {
       var alert = (
         <ErrorsListAlert errors={[err.message]} />

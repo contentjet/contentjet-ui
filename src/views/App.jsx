@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
 import Helmet from 'react-helmet';
+import { Route, Redirect, Switch } from 'react-router-dom';
+import Login from './Login';
+import RequestResetPassword from './RequestResetPassword';
+import SetPassword from './SetPassword';
+import SignUp from './SignUp';
+import AcceptInvite from './AcceptInvite';
+import Authenticated from './Authenticated';
+import NotFound from './NotFound';
+import Notification from 'lib/components/Notification';
+import { Map } from 'immutable';
 import s from './App.css';
 
 import appleTouchIcon57x57 from 'meta/apple-touch-icon-57x57.png';
@@ -29,6 +41,7 @@ import mstile144x144 from 'meta/mstile-144x144.png';
 import 'meta/mstile-150x150.png';
 import 'meta/mstile-310x150.png';
 import 'meta/mstile-310x310.png';
+import NotificationSelectors from '../selectors/NotificationSelectors';
 
 
 class App extends Component {
@@ -66,11 +79,31 @@ class App extends Component {
           ]}
         />
         <div className={s.content}>
-          {this.props.children}
+          <Notification {...this.props.notification.toJS()} />
+          <Switch>
+            <Route exact path="/" render={() => <Redirect to="/login" />} />
+            <Route path="/login" component={Login} />
+            <Route path="/reset-password" component={RequestResetPassword} />
+            <Route path="/set-password/:token" component={SetPassword} />
+            <Route path="/sign-up" component={SignUp} />
+            <Route path="/accept-invite/:invite_token" component={AcceptInvite} />
+            <Route path="/" component={Authenticated} />
+            <Route component={NotFound} />
+          </Switch>
         </div>
       </div>
     );
   }
 }
 
-export default App;
+App.propTypes = {
+  notification: PropTypes.instanceOf(Map).isRequired,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    notification: NotificationSelectors.getNotification(state)
+  };
+};
+
+export default connect(mapStateToProps)(App);

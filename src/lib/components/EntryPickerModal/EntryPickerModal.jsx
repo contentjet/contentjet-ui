@@ -36,7 +36,7 @@ class EntryPickerModal extends Component {
     this.onMove = this.onMove.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const state = {};
     if (nextProps.entries !== this.state.entries) {
       state.entries = nextProps.entries;

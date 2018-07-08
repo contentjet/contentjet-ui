@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import classnames from 'classnames';
 import { List as IList } from 'immutable';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import IconButton from 'lib/components/IconButton';
 import List from 'lib/components/List';
 import EntryPickerModal from 'lib/components/EntryPickerModal';

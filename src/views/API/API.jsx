@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {List as IList} from 'immutable';
+import { List as IList } from 'immutable';
 import ClientSelectors from 'selectors/ClientSelectors';
 import ClientActions from 'actions/ClientActions';
 import Panel from 'lib/components/Panel';
@@ -30,8 +30,8 @@ class API extends Component {
     this.onCancelModal = this.onCancelModal.bind(this);
   }
 
-  componentWillMount() {
-    this.props.listClients(this.props.params.project_id);
+  UNSAFE_componentWillMount() {
+    this.props.listClients(this.props.match.params.project_id);
   }
 
   onNewClientClick() {
@@ -47,7 +47,7 @@ class API extends Component {
 
   onConfirmDelete() {
     this.props.deleteClient(
-      this.props.params.project_id,
+      this.props.match.params.project_id,
       this.state.clientToDelete.id
     );
     this.setState({
@@ -65,7 +65,7 @@ class API extends Component {
   }
 
   render() {
-    const { isFetching } = this.props;
+    const { isFetching, match } = this.props;
     const clients = this.props.clients.toJS();
 
     const panelFooter = (
@@ -115,7 +115,7 @@ class API extends Component {
         </Panel>
 
         <ClientModal
-          projectId={this.props.params.project_id}
+          projectId={match.params.project_id}
           closeModal={this.onCancelModal}
           isOpened={this.state.newClientModalOpen}
         />
@@ -134,11 +134,13 @@ class API extends Component {
 }
 
 API.propTypes = {
-  params: PropTypes.object.isRequired,
   listClients: PropTypes.func.isRequired,
   deleteClient: PropTypes.func.isRequired,
   clients: PropTypes.instanceOf(IList).isRequired,
-  isFetching: PropTypes.bool.isRequired
+  isFetching: PropTypes.bool.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape()
+  }).isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -159,7 +161,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(API);
+export default connect(mapStateToProps, mapDispatchToProps)(API);

@@ -45,7 +45,7 @@ class WebHookModal extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.webHook) {
       this.setState(_.cloneDeep(nextProps.webHook));
     }
@@ -77,7 +77,7 @@ class WebHookModal extends Component {
   }
 
   render() {
-    const {isSending, closeModal, isOpened} = this.props;
+    const { isSending, closeModal, isOpened } = this.props;
     const err = this.props.err.toJS();
 
     const footer = [
@@ -293,7 +293,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(WebHookModal);
+export default connect(mapStateToProps, mapDispatchToProps)(WebHookModal);

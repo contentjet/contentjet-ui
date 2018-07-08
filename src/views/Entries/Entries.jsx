@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import queryString from 'query-string';
 import _ from 'lodash';
@@ -64,9 +63,10 @@ class Entries extends Component {
   }
 
   componentDidMount() {
-    this.props.listEntryTypes(this.props.params.project_id);
+    const { match, location } = this.props;
+    this.props.listEntryTypes(match.params.project_id);
     // Restore our search state from the url
-    const q = this.props.location.query;
+    const q = queryString.parse(location.search);
     this.setState(
       {
         pageSize: q.pageSize || resultsPerPageChoices[0],
@@ -87,7 +87,7 @@ class Entries extends Component {
     let entryTypeId = _.get(this.state.entryTypeFilter, 'id');
     if (entryTypeId === '-1') entryTypeId = null;
     this.props.listEntries(
-      this.props.params.project_id,
+      this.props.match.params.project_id,
       {
         page: this.state.page,
         pageSize: this.state.pageSize,
@@ -105,7 +105,7 @@ class Entries extends Component {
       search: _.trim(this.state.search),
       orderBy: this.state.orderBy
     });
-    browserHistory.replace({
+    this.props.history.replace({
       pathname: this.props.location.pathname,
       search: `?${params}`
     });
@@ -131,7 +131,7 @@ class Entries extends Component {
 
   onAcceptModal() {
     this.props.bulkDestroyEntries(
-      this.props.params.project_id,
+      this.props.match.params.project_id,
       this.props.selectedEntries.map(entry => entry.get('id')).toArray()
     );
     this.setState({ modalOpen: false });
@@ -161,7 +161,7 @@ class Entries extends Component {
     const {
       entriesIsFetching,
       toggleSelect,
-      params,
+      match,
       currentPage,
       totalPages,
       totalRecords,
@@ -187,7 +187,7 @@ class Entries extends Component {
             entries={entries}
             selectedEntries={selectedEntries}
             toggleSelect={toggleSelect}
-            projectId={params.project_id}
+            projectId={match.params.project_id}
           />
           <Pagination
             className={s.pagination}
@@ -243,7 +243,7 @@ class Entries extends Component {
           </IconButton>
           <NewEntryDropdownButton
             entryTypes={entryTypes}
-            projectId={params.project_id}
+            projectId={match.params.project_id}
           />
         </ContentHeader>
 
@@ -326,7 +326,6 @@ Entries.propTypes = {
   listEntries: PropTypes.func.isRequired,
   clearEntries: PropTypes.func.isRequired,
   bulkDestroyEntries: PropTypes.func.isRequired,
-  params: PropTypes.object.isRequired,
   entryTypes: PropTypes.instanceOf(List).isRequired,
   entries: PropTypes.instanceOf(List).isRequired,
   entriesIsFetching: PropTypes.bool.isRequired,
@@ -336,7 +335,16 @@ Entries.propTypes = {
   selectNone: PropTypes.func.isRequired,
   currentPage: PropTypes.number.isRequired,
   totalPages: PropTypes.number.isRequired,
-  totalRecords: PropTypes.number.isRequired
+  totalRecords: PropTypes.number.isRequired,
+  history: PropTypes.shape({
+    replace: PropTypes.func
+  }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape()
+  }).isRequired,
+  location: PropTypes.shape({
+    search: PropTypes.string
+  }).isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -378,7 +386,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Entries);
+export default connect(mapStateToProps, mapDispatchToProps)(Entries);

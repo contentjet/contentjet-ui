@@ -27,7 +27,7 @@ class RequestResetPassword extends Component {
   }
 
   render() {
-    const {success} = this.state;
+    const { success } = this.state;
     if (success) {
       return (
         <CenteredPanelView>
@@ -43,7 +43,7 @@ class RequestResetPassword extends Component {
         </CenteredPanelView>
       );
     }
-    const {err, isSending} = this.props;
+    const { err, isSending } = this.props;
     return (
       <CenteredPanelView>
         <RequestResetPasswordForm
@@ -78,7 +78,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RequestResetPassword);
+export default connect(mapStateToProps, mapDispatchToProps)(RequestResetPassword);

@@ -24,7 +24,7 @@ class CreateProjectModal extends Component {
   onSubmit(e) {
     e.preventDefault();
     if (!this.state.projectName.length) return;
-    this.props.save({ name: this.state.projectName });
+    this.props.save({ name: this.state.projectName }, this.props.history);
   }
 
   render() {
@@ -81,7 +81,8 @@ CreateProjectModal.propTypes = {
   onCancel: PropTypes.func.isRequired,
   save: PropTypes.func.isRequired,
   isSending: PropTypes.bool.isRequired,
-  isOpened: PropTypes.bool
+  isOpened: PropTypes.bool,
+  history: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -92,13 +93,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    save: (data) => {
-      dispatch(ProjectActions.save(data, true));
+    save: (data, history) => {
+      dispatch(ProjectActions.save(data, true, history));
     }
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CreateProjectModal);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProjectModal);

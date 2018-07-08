@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
-import { Link, IndexLink } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import FontAwesome from 'lib/components/FontAwesome';
 import s from './ProjectNavLink.css';
 
@@ -9,9 +8,8 @@ import s from './ProjectNavLink.css';
 class ProjectNavLink extends Component {
 
   render() {
-    var L = _.get(this.props, 'indexLink') ? IndexLink : Link;
     return (
-      <L
+      <NavLink
         to={this.props.path}
         className={s.link}
         activeClassName={s.active}
@@ -21,7 +19,7 @@ class ProjectNavLink extends Component {
           className={s.icon}
         />
         <span>{this.props.label}</span>
-      </L>
+      </NavLink>
     );
   }
 

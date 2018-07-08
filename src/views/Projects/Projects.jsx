@@ -29,7 +29,7 @@ class Projects extends Component {
   }
 
   componentDidMount() {
-    const {inviteToken, listProjects, acceptProjectInvite, getMe} = this.props;
+    const { inviteToken, listProjects, acceptProjectInvite, getMe } = this.props;
     if (inviteToken) {
       acceptProjectInvite(inviteToken)
         .then(() => listProjects())
@@ -49,7 +49,7 @@ class Projects extends Component {
   }
 
   render() {
-    const {isFetching, inviteIsSending, me} = this.props;
+    const { isFetching, inviteIsSending, me, history } = this.props;
 
     const panelFooter = me.get('isAdmin') ? (
       <Button btnStyle="primary" onClick={this.onNewProjectClick} block>
@@ -87,6 +87,7 @@ class Projects extends Component {
         <CreateProjectModal
           onCancel={this.onCancelModal}
           isOpened={this.state.modalOpen}
+          history={history}
         />
       </CenteredPanelView>
     );
@@ -102,7 +103,8 @@ Projects.propTypes = {
   acceptProjectInvite: PropTypes.func.isRequired,
   inviteToken: PropTypes.string,
   inviteIsSending: PropTypes.bool.isRequired,
-  getMe: PropTypes.func.isRequired
+  getMe: PropTypes.func.isRequired,
+  history: PropTypes.shape().isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -132,7 +134,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Projects);
+export default connect(mapStateToProps, mapDispatchToProps)(Projects);

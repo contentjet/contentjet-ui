@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import _ from 'lodash';
 import classnames from 'classnames';
 import moment from 'moment';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Input from 'lib/components/Input';
 import s from './EntriesTable.css';
 
@@ -23,7 +23,7 @@ class EntriesTable extends Component {
   }
 
   render() {
-    const {entries, toggleSelect, projectId} = this.props;
+    const { entries, toggleSelect, projectId } = this.props;
     if (!entries.length) return null;
     const rows = entries.map(entry => {
       return (

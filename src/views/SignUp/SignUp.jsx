@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AuthenticationActions from 'actions/AuthenticationActions';
 import CenteredPanelView from 'lib/components/CenteredPanelView';
+import SignUpIndex from '../SignUpIndex';
+import SignUpVerify from '../SignUpVerify';
 import s from './SignUp.css';
 
 
@@ -15,7 +18,8 @@ class SignUp extends Component {
   render() {
     return (
       <CenteredPanelView className={s.signUp}>
-        {this.props.children}
+        <Route exact path={this.props.match.path} component={SignUpIndex} />
+        <Route path={`${this.props.match.path}verify/:token`} component={SignUpVerify} />
       </CenteredPanelView>
     );
   }
@@ -23,7 +27,10 @@ class SignUp extends Component {
 }
 
 SignUp.propTypes = {
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    path: PropTypes.string
+  }).isRequired
 };
 
 const mapDispatchToProps = (dispatch) => {

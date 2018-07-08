@@ -34,8 +34,8 @@ class SetPasswordForm extends Component {
   }
 
   render() {
-    const {err, isSending} = this.props;
-    const {password, passwordConfirm} = this.state.formData;
+    const { err, isSending } = this.props;
+    const { password, passwordConfirm } = this.state.formData;
     if (err.message) {
       var formErrors = (
         <ErrorsListAlert errors={[err.message]} />

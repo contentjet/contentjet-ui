@@ -29,7 +29,7 @@ class RequestResetPasswordForm extends Component {
   }
 
   render() {
-    const {err, isSending} = this.props;
+    const { err, isSending } = this.props;
     if (err.message) {
       var formErrors = (
         <ErrorsListAlert errors={[err.message]} />

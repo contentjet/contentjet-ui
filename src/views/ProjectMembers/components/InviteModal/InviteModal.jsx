@@ -21,7 +21,7 @@ class InviteModal extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.props.isOpened && this.props.isSending && !nextProps.isSending) {
       this.props.closeModal();
     }

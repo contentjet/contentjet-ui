@@ -9,11 +9,10 @@ import TokenStorage from 'services/TokenStorage';
 import { Provider } from 'react-redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from 'react-router';
-import routes from 'routes/routes';
+import { BrowserRouter, Route } from 'react-router-dom';
+import App from './views/App';
 import store from 'store';
 import AuthenticationActions from 'actions/AuthenticationActions';
-import { browserHistory } from 'react-router';
 import Immutable from 'immutable';
 
 
@@ -53,9 +52,9 @@ queryTokenStatus();
 
 const router = (
   <Provider store={store}>
-    <Router history={browserHistory}>
-      {routes}
-    </Router>
+    <BrowserRouter>
+      <Route component={App} />
+    </BrowserRouter>
   </Provider>
 );
 

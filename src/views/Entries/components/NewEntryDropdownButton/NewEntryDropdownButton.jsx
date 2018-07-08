@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import DropdownButton from 'lib/components/DropdownButton';
 import List from 'lib/components/List';
 import s from './NewEntryDropdownButton.css';

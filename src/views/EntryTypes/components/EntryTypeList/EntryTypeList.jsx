@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import _ from 'lodash';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import FontAwesome from 'lib/components/FontAwesome';
 import List from 'lib/components/List';
 import s from './EntryTypeList.css';

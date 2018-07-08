@@ -3,19 +3,17 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import MediaSelectors from 'selectors/MediaSelectors';
 import MediaTagSelectors from 'selectors/MediaTagSelectors';
-import NotificationSelectors from 'selectors/NotificationSelectors';
 import { List, Map, fromJS } from 'immutable';
 import _ from 'lodash';
 import slugify from 'underscore.string/slugify';
 import MediaActions from 'actions/MediaActions';
 import MediaTagActions from 'actions/MediaTagActions';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Input from 'lib/components/Input';
 import ConfirmModal from 'lib/components/ConfirmModal';
 import Button from 'lib/components/Button';
 import ContentHeader from 'lib/components/ContentHeader';
 import MediaImage from './components/MediaImage';
-import Notification from 'lib/components/Notification';
 import s from './MediaEditor.css';
 
 
@@ -47,7 +45,7 @@ class MediaEditor extends Component {
     this.onCreateTag = this.onCreateTag.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const newState = {};
     if (nextProps.media !== this.state.media) {
       newState.media = nextProps.media;
@@ -59,16 +57,16 @@ class MediaEditor extends Component {
   }
 
   componentDidMount() {
-    this.props.listMediaTags(this.props.params.project_id);
+    this.props.listMediaTags(this.props.match.params.project_id);
     this.props.getMedia(
-      this.props.params.project_id,
-      this.props.params.media_id
+      this.props.match.params.project_id,
+      this.props.match.params.media_id
     );
   }
 
   onSaveClick() {
     this.props.saveMedia(
-      this.props.params.project_id,
+      this.props.match.params.project_id,
       this.state.media.toJS()
     );
   }
@@ -79,8 +77,9 @@ class MediaEditor extends Component {
 
   onConfirmDelete() {
     this.props.deleteMedia(
-      this.props.params.project_id,
-      this.state.media.toJS()
+      this.props.match.params.project_id,
+      this.state.media.toJS(),
+      this.props.history
     );
     this.setState({ confirmDeleteModalOpen: false });
   }
@@ -120,7 +119,7 @@ class MediaEditor extends Component {
         <ContentHeader title="Media editor">
           <Link
             className={s.cancelButton}
-            to={`/project/${this.props.params.project_id}/media/`}
+            to={`/project/${this.props.match.params.project_id}/media/`}
           >
             Cancel
           </Link>
@@ -173,7 +172,6 @@ class MediaEditor extends Component {
           </div>
         </div>
 
-        <Notification {...this.props.notification.toJS()} />
         <ConfirmModal
           onAccept={this.onConfirmDelete}
           onCancel={this.onCancelModal}
@@ -195,12 +193,14 @@ MediaEditor.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   isSending: PropTypes.bool.isRequired,
   mediaTags: PropTypes.instanceOf(List).isRequired,
-  notification: PropTypes.instanceOf(Map).isRequired,
   listMediaTags: PropTypes.func.isRequired,
   getMedia: PropTypes.func.isRequired,
   saveMedia: PropTypes.func.isRequired,
   deleteMedia: PropTypes.func.isRequired,
-  params: PropTypes.object.isRequired
+  match: PropTypes.shape({
+    params: PropTypes.shape()
+  }).isRequired,
+  history: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -209,8 +209,7 @@ const mapStateToProps = (state) => {
     err: MediaSelectors.detailError(state),
     isFetching: MediaSelectors.detailIsFetching(state),
     isSending: MediaSelectors.detailIsSending(state),
-    mediaTags: MediaTagSelectors.listData(state),
-    notification: NotificationSelectors.getNotification(state)
+    mediaTags: MediaTagSelectors.listData(state)
   };
 };
 
@@ -225,13 +224,10 @@ const mapDispatchToProps = (dispatch) => {
     saveMedia: (projectId, data) => {
       dispatch(MediaActions.save(projectId, data));
     },
-    deleteMedia: (projectId, data) => {
-      dispatch(MediaActions.destroy(projectId, data));
+    deleteMedia: (projectId, data, history) => {
+      dispatch(MediaActions.destroy(projectId, data, history));
     }
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MediaEditor);
+export default connect(mapStateToProps, mapDispatchToProps)(MediaEditor);

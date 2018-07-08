@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
 import EntryTypeSelectors from 'selectors/EntryTypeSelectors';
 import UserSelectors from 'selectors/UserSelectors';
 import EntryTypeActions from 'actions/EntryTypeActions';
@@ -20,23 +19,23 @@ class EntryTypes extends Component {
     this.onClickCreate = this.onClickCreate.bind(this);
   }
 
-  componentWillMount() {
-    const { params, userIsProjectAdmin } = this.props;
+  UNSAFE_componentWillMount() {
+    const { match, history, userIsProjectAdmin } = this.props;
     if (!userIsProjectAdmin) {
-      browserHistory.replace(`/project/${params.projectId}/entries`);
+      history.replace(`/project/${match.params.projectId}/entries`);
     }
   }
 
   componentDidMount() {
-    this.props.listEntryTypes(this.props.params.project_id);
+    this.props.listEntryTypes(this.props.match.params.project_id);
   }
 
   onClickCreate() {
-    this.context.router.push(`/project/${this.props.params.project_id}/entry-types/edit/`);
+    this.props.history.push(`/project/${this.props.match.params.project_id}/entry-types/edit/`);
   }
 
   render() {
-    const { isFetching, entryTypes, params } = this.props;
+    const { isFetching, entryTypes, match } = this.props;
 
     var content;
     if (isFetching) {
@@ -47,7 +46,7 @@ class EntryTypes extends Component {
       content = (
         <EntryTypeList
           entryTypes={entryTypes}
-          projectId={params.project_id}
+          projectId={match.params.project_id}
         />
       );
     } else {
@@ -80,14 +79,16 @@ class EntryTypes extends Component {
 
 EntryTypes.propTypes = {
   listEntryTypes: PropTypes.func.isRequired,
-  params: PropTypes.object.isRequired,
   entryTypes: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  userIsProjectAdmin: PropTypes.bool.isRequired
-};
-
-EntryTypes.contextTypes = {
-  router: PropTypes.object
+  userIsProjectAdmin: PropTypes.bool.isRequired,
+  history: PropTypes.shape({
+    replace: PropTypes.func,
+    push: PropTypes.func
+  }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape()
+  }).isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -106,7 +107,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(EntryTypes);
+export default connect(mapStateToProps, mapDispatchToProps)(EntryTypes);
