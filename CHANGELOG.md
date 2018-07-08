@@ -1,3 +1,6 @@
+# 0.8.1
+* Fixing dependencies required by server.js
+
 # 0.8.0
 * Flattened `src/views` directory hierarchy so it no longer follows the route hierarchy
 * Updated serveral node dependencies
