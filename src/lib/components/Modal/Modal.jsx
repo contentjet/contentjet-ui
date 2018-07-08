@@ -36,7 +36,7 @@ class Modal extends Component {
 
     return (
       <Portal>
-        <Motion defaultStyle={{opacity: 0}} style={{opacity: spring(1)}}>
+        <Motion defaultStyle={{ opacity: 0 }} style={{ opacity: spring(1) }}>
           {
             interpolatingStyle => (
               <div className={className} style={interpolatingStyle}>

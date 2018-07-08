@@ -61,7 +61,7 @@ class ColorInput extends Component {
       >
         <div
           className={s.swatch}
-          style={{background: value || '#fff'}}
+          style={{ background: value || '#fff' }}
           onClick={this.onClick}
         />
         { picker }

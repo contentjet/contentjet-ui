@@ -214,7 +214,7 @@ class MediaPickerModal extends Component {
                         interpolatingStyle => {
                           return (
                             <CheckboxListItem
-                              style={{transform: `translateY(${interpolatingStyle.y}px)`}}
+                              style={{ transform: `translateY(${interpolatingStyle.y}px)` }}
                               className={s.listItem}
                               onChange={_.partial(this.onSelectToggle, mediaItem)}
                               checked={this.mediaIsSelected(mediaItem)}

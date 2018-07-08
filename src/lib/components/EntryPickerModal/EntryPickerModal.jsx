@@ -205,7 +205,7 @@ class EntryPickerModal extends Component {
                         interpolatingStyle => {
                           return (
                             <CheckboxListItem
-                              style={{transform: `translateY(${interpolatingStyle.y}px)`}}
+                              style={{ transform: `translateY(${interpolatingStyle.y}px)` }}
                               className={s.listItem}
                               onChange={_.partial(this.onSelectToggle, entry)}
                               checked={this.entryIsSelected(entry)}
