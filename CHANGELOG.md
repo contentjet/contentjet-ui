@@ -5,7 +5,7 @@
 * Removed `gsap` (Tween Max) dependency
 * Added 2x new eslint rules
 * Fixed deprecated react eslint rule
-* Replaced `font-awesome` with `react-fontawesome`, upgrading from font-awesome 4 to 5 in the process
+* Replaced `font-awesome` with `react-fontawesome`, upgrading to font-awesome 5 in the process
 
 # 0.7.0
 * Update authentication endpoints to match changes in contentjet-api
