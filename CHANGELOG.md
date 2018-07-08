@@ -7,6 +7,7 @@
 * Fixed deprecated react eslint rule
 * Replaced `font-awesome` with `react-fontawesome`, upgrading to font-awesome 5 in the process
 * Updated to redux 4.0
+* Updated to webpack 4
 
 # 0.7.0
 * Update authentication endpoints to match changes in contentjet-api
