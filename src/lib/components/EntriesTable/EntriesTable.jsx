@@ -38,6 +38,7 @@ class EntriesTable extends Component {
               onChange={() => toggleSelect(entry)}
             />
           </td>
+          <td>{entry.id}</td>
           <td>
             <Link to={`/project/${projectId}/entries/${entry.entryTypeId}/${entry.id}`}>
               {entry.name}
@@ -67,6 +68,7 @@ class EntriesTable extends Component {
         <thead>
           <tr>
             <th></th>
+            <th>ID</th>
             <th>Name</th>
             <th>Tags</th>
             <th>Entry type</th>

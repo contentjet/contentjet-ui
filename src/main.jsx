@@ -4,7 +4,6 @@ import 'react-widgets/dist/css/react-widgets.css';
 import './styles/main.css';
 import './robots.txt';
 import axios from 'axios';
-import _ from 'lodash';
 import TokenStorage from 'services/TokenStorage';
 import { Provider } from 'react-redux';
 import React from 'react';
@@ -22,7 +21,7 @@ axios.interceptors.request.use(
   config => {
     const accessToken = TokenStorage.getToken();
     if (accessToken) {
-      config.headers = _.assign({}, config.headers, { 'Authorization': `Bearer ${accessToken}` });
+      config.headers = Object.assign({}, config.headers, { 'Authorization': `Bearer ${accessToken}` });
     }
     return config;
   }
