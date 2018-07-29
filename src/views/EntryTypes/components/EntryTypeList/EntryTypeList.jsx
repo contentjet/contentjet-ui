@@ -26,6 +26,7 @@ const EntryTypeList = (props) => {
                 />
                 <div className={s.content}>
                   <h1 className={s.title}>{entryType.name}</h1>
+                  <p className={s.id}>ID: { entryType.id }</p>
                   {entryType.description ? (<p className={s.description}>{entryType.description}</p>) : undefined}
                 </div>
               </Link>
