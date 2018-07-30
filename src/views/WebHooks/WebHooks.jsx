@@ -86,7 +86,7 @@ class WebHooks extends Component {
         onClick={this.onNewWebHookClick}
         disabled={isFetching}
       >
-        New Web Hook
+        New web hook
       </Button>
     );
 

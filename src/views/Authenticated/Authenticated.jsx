@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
+import TokenStorage from '../../services/TokenStorage';
 import AuthenticationActions from 'actions/AuthenticationActions';
 import AuthenticationSelectors from 'selectors/AuthenticationSelectors';
 import Projects from '../Projects';
@@ -13,7 +14,19 @@ class Authenticated extends Component {
 
   constructor(props) {
     super(props);
+    this.onStorage = this.onStorage.bind(this);
+    window.addEventListener('storage', this.onStorage);
     if (!props.isAuthenticated) props.history.replace('/login');
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('storage', this.onStorage);
+  }
+
+  onStorage() {
+    // Check if we're still logged in. If not redirect to login screen. This is
+    // needed in the case where the user logs out via another browser tab.
+    if (!TokenStorage.hasValidToken()) this.props.logout();
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
@@ -47,7 +60,8 @@ Authenticated.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string
   }).isRequired,
-  setRedirectPath: PropTypes.func.isRequired
+  setRedirectPath: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -58,7 +72,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setRedirectPath: (path) => dispatch(AuthenticationActions.setRedirectPath(path))
+    setRedirectPath: (path) => dispatch(AuthenticationActions.setRedirectPath(path)),
+    logout: () => dispatch(AuthenticationActions.logout())
   };
 };
 
