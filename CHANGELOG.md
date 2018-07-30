@@ -1,5 +1,5 @@
 # 0.8.2
-* Now showing ID column on entries table
+* Now showing ID and Entry type ID columns on entries table
 * Now showing ID on entry type list
 * App will now redirect to login screen when logging out on another open tab
 

@@ -48,6 +48,9 @@ class EntriesTable extends Component {
             {entry.tags.join(', ')}
           </td>
           <td>
+            {entry.entryType.id}
+          </td>
+          <td>
             {entry.entryType.name}
           </td>
           <td>
@@ -71,6 +74,7 @@ class EntriesTable extends Component {
             <th>ID</th>
             <th>Name</th>
             <th>Tags</th>
+            <th>Entry type ID</th>
             <th>Entry type</th>
             <th>Last modified by</th>
             <th>Published</th>

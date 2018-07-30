@@ -74,7 +74,7 @@ class API extends Component {
         onClick={this.onNewClientClick}
         disabled={isFetching}
       >
-        New Client
+        New client
       </Button>
     );
 
