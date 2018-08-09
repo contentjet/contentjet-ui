@@ -210,7 +210,10 @@ class EntryTypeFieldEditorModal extends Component {
 
   getNameErrors(name) {
     let nameErrors = [];
-    if (_.includes(this.props.existingFieldNames, name)) {
+    if (
+      _.includes(this.props.existingFieldNames, name) &&
+      name !== _.get(this.props, 'initialFieldProperties.name')
+    ) {
       nameErrors = ['A field with this name already exists.'];
     } else if (_.includes(invalidFieldNames, name)) {
       nameErrors = ['Invalid field name. This name is reserved.'];
@@ -231,7 +234,8 @@ class EntryTypeFieldEditorModal extends Component {
   }
 
   isValid() {
-    const { fieldProperties } = this.state;
+    const { fieldProperties, nameErrors } = this.state;
+    if (nameErrors.length) return false;
     if ('minLength' in fieldProperties && _.isNil(fieldProperties.minLength)) return false;
     if ('maxLength' in fieldProperties && _.isNil(fieldProperties.maxLength)) return false;
     if (
