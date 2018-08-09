@@ -1,16 +1,28 @@
 @import 'variables.css';
 
-
 .media {
+  display: grid;
   height: 100%;
+  grid-template-columns: 1fr 250px;
+  grid-template-rows: 56px 1fr;
 }
 
-.body {
+.header {
+  grid-column: 1 / span 2;
+}
+
+.content {
+  grid-column: 1;
+  grid-row: 2;
+  padding: 15px 20px 100px;
+}
+
+.sidebar {
+  grid-column: 2;
+  grid-row: 2;
+  background: #f9f9f9;
   bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: var(--header-height);
+  padding: 10px;
 }
 
 .searchInput {
@@ -20,16 +32,6 @@
 .btnGroup {
   display: inline-block;
   margin-right: 10px;
-}
-
-.content {
-  bottom: 0;
-  left: 0;
-  overflow-y: auto;
-  padding: 15px 40px;
-  position: absolute;
-  right: 250px;
-  top: 0;
 }
 
 .controls {
@@ -51,17 +53,6 @@
       margin-right: 0;
     }
   }
-}
-
-.sidebar {
-  background: #f9f9f9;
-  bottom: 0;
-  overflow-y: auto;
-  padding: 10px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 250px;
 }
 
 .clearCompletedButton {
