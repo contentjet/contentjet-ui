@@ -1,26 +1,27 @@
 @import 'variables.css';
 
-
 .project {
   background: #fff;
+  display: grid;
+  grid-template-columns: 125px 1fr;
+  grid-template-rows: 36px 1fr;
   height: 100%;
-  position: relative;
+}
+
+.header {
+  grid-column: 1 / span 2;
+  grid-row: 1 / 1;
 }
 
 .sidebar {
-  bottom: 0;
-  left: 0;
-  overflow-y: auto;
-  position: absolute;
-  top: 36px;
+  grid-column: 1;
+  grid-row: 2;
   width: 125px;
 }
 
 .content {
-  bottom: 0;
-  left: 125px;
+  flex: 1;
+  grid-column: 2;
+  grid-row: 2;
   overflow-y: auto;
-  position: absolute;
-  right: 0;
-  top: 36px;
 }

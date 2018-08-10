@@ -170,100 +170,100 @@ class Media extends Component {
 
     return (
       <div className={s.media}>
-        <ContentHeader title="Media">
-          <IconButton
-            className={s.reloadButton}
-            icon="sync-alt"
-            onClick={this.listMedia}
-            disabled={isFetching}
-          />
-          <div className={s.btnGroup}>
-            <Button
-              onClick={selectAll}
+        <div className={s.header}>
+          <ContentHeader title="Media">
+            <IconButton
+              className={s.reloadButton}
+              icon="sync-alt"
+              onClick={this.listMedia}
               disabled={isFetching}
-              buttonGroup
-            >
-              Select all
-            </Button>
-            <Button
-              onClick={selectNone}
-              disabled={isFetching}
-              buttonGroup
-            >
-              Select none
-            </Button>
-          </div>
-          <IconButton
-            icon="trash-alt"
-            onClick={this.onDeleteSelected}
-            disabled={!selectedMedia.length}
-          >
-            Delete selected
-          </IconButton>
-        </ContentHeader>
-
-        <div className={s.body}>
-          <div className={s.content}>
-
-            <div className={s.controls}>
-              <div className={s.column}>
-                <Input
-                  className={s.searchInput}
-                  type="search"
-                  name="media-search"
-                  label="Search"
-                  placeholder="Search"
-                  onChange={this.onSearch}
-                />
-              </div>
-              <div className={s.column}>
-                <Input
-                  type="select-object"
-                  name="pageSize"
-                  label="Order by"
-                  placeholder="Results per page"
-                  choices={orderByChoices}
-                  value={this.state.orderBy}
-                  textField="label"
-                  valueField="value"
-                  onChange={this.onOrderByChange}
-                  disabled={isFetching || !media.length}
-                />
-              </div>
-              <div className={s.column}>
-                <Input
-                  type="select"
-                  name="pageSize"
-                  label="Results per page"
-                  placeholder="Results per page"
-                  choices={resultsPerPageChoices}
-                  value={this.state.pageSize}
-                  onChange={this.onPageSizeChange}
-                  disabled={isFetching || !media.length}
-                />
-              </div>
+            />
+            <div className={s.btnGroup}>
+              <Button
+                onClick={selectAll}
+                disabled={isFetching}
+                buttonGroup
+              >
+                Select all
+              </Button>
+              <Button
+                onClick={selectNone}
+                disabled={isFetching}
+                buttonGroup
+              >
+                Select none
+              </Button>
             </div>
+            <IconButton
+              icon="trash-alt"
+              onClick={this.onDeleteSelected}
+              disabled={!selectedMedia.length}
+            >
+              Delete selected
+            </IconButton>
+          </ContentHeader>
+        </div>
 
-            { results }
+        <div className={s.content}>
+
+          <div className={s.controls}>
+            <div className={s.column}>
+              <Input
+                className={s.searchInput}
+                type="search"
+                name="media-search"
+                label="Search"
+                placeholder="Search"
+                onChange={this.onSearch}
+              />
+            </div>
+            <div className={s.column}>
+              <Input
+                type="select-object"
+                name="pageSize"
+                label="Order by"
+                placeholder="Results per page"
+                choices={orderByChoices}
+                value={this.state.orderBy}
+                textField="label"
+                valueField="value"
+                onChange={this.onOrderByChange}
+                disabled={isFetching || !media.length}
+              />
+            </div>
+            <div className={s.column}>
+              <Input
+                type="select"
+                name="pageSize"
+                label="Results per page"
+                placeholder="Results per page"
+                choices={resultsPerPageChoices}
+                value={this.state.pageSize}
+                onChange={this.onPageSizeChange}
+                disabled={isFetching || !media.length}
+              />
+            </div>
           </div>
 
-          <div className={s.sidebar}>
-            <Dropzone onDrop={this.onDrop} />
-            {
-              hasCompletedUploads ?
-                <Button
-                  className={s.clearCompletedButton}
-                  btnStyle="link"
-                  onClick={this.props.clearCompletedUploads}
-                  block
-                >
-                  Clear completed
-                </Button> :
-                null
-            }
+          { results }
+        </div>
 
-            <UploadsList uploads={uploads} />
-          </div>
+        <div className={s.sidebar}>
+          <Dropzone onDrop={this.onDrop} />
+          {
+            hasCompletedUploads ?
+              <Button
+                className={s.clearCompletedButton}
+                btnStyle="link"
+                onClick={this.props.clearCompletedUploads}
+                block
+              >
+                Clear completed
+              </Button> :
+              null
+          }
+
+          <UploadsList uploads={uploads} />
         </div>
 
         <ConfirmModal

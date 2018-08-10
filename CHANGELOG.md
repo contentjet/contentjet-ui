@@ -1,3 +1,8 @@
+# 0.8.3
+* Changing the name of an existing EntryType field no longer incorrectly shows an error on blur if name wasn't actually changed
+* Prevent accepting the EntryType field editor modal if there is a name error
+* Updated some screens to use css grid
+
 # 0.8.2
 * Now showing ID and Entry type ID columns on entries table
 * Now showing ID on entry type list

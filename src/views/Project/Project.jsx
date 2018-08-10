@@ -58,10 +58,12 @@ class Project extends Component {
 
     return (
       <div className={s.project}>
-        <AppHeader
-          onClickLogout={logout}
-          userName={me.get('name', '')}
-        />
+        <div className={s.header}>
+          <AppHeader
+            onClickLogout={logout}
+            userName={me.get('name', '')}
+          />
+        </div>
         <div className={s.sidebar}>
           <ProjectNav
             projectId={match.params.project_id}
