@@ -2583,14 +2583,8 @@ li.CheckboxListItem_checkboxListItem_3iN-e {
 }
 
 .ProjectSettingsRoot_body_sUN1N {
-  bottom: 0;
-  left: 0;
-  overflow-y: auto;
   padding-bottom: 50px;
   padding-top: 15px;
-  position: absolute;
-  right: 0;
-  top: 56px;
 }
 
 .ProjectSettingsRoot_content_1oJsH {
@@ -3143,89 +3137,68 @@ li.EntryTypeFieldItem_item_1bwuM.EntryTypeFieldItem_disabled_Gsxb5 .EntryTypeFie
   }
 
 .Media_media_2yDcM {
+  display: grid;
   height: 100%;
+  grid-template-columns: 1fr 250px;
+  grid-template-rows: 56px 1fr;
 }
 
+.Media_header_1wh5s {
+  grid-column: 1 / span 2;
+}
 
-.Media_body_SNAH0 {
+.Media_content_3rkTm {
+  grid-column: 1;
+  grid-row: 2;
+  padding: 15px 20px 100px;
+}
+
+.Media_sidebar_gKarb {
+  grid-column: 2;
+  grid-row: 2;
+  background: #f9f9f9;
   bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 56px;
+  padding: 10px;
 }
-
 
 .Media_searchInput_3GlIO {
   margin-bottom: 10px;
 }
-
 
 .Media_btnGroup_2JQub {
   display: inline-block;
   margin-right: 10px;
 }
 
-
-.Media_content_3rkTm {
-  bottom: 0;
-  left: 0;
-  overflow-y: auto;
-  padding: 15px 40px;
-  position: absolute;
-  right: 250px;
-  top: 0;
-}
-
-
 .Media_controls_FE1cu {
   display: flex;
 }
-
 
 .Media_controls_FE1cu .Media_column_14yOX {
     margin-right: 10px;
   }
 
-
 .Media_controls_FE1cu .Media_column_14yOX:nth-child(1) {
       flex: 0.65;
     }
 
-
 .Media_controls_FE1cu .Media_column_14yOX:nth-child(2) {
       flex: 0.2;
     }
-
 
 .Media_controls_FE1cu .Media_column_14yOX:nth-child(3) {
       flex: 0.15;
       margin-right: 0;
     }
 
-
-.Media_sidebar_gKarb {
-  background: #f9f9f9;
-  bottom: 0;
-  overflow-y: auto;
-  padding: 10px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 250px;
-}
-
-
 .Media_clearCompletedButton_3ufGD {
   font-size: 12px;
   margin-top: 10px;
 }
 
-
 .Media_loadingSpinner_33_yd {
   margin: 50px auto;
 }
-
 
 .Media_reloadButton_PqRIq {
   margin-right: 10px;
@@ -3300,28 +3273,28 @@ li.EntryTypeFieldItem_item_1bwuM.EntryTypeFieldItem_disabled_Gsxb5 .EntryTypeFie
 
 .Project_project_3MT2M {
   background: #fff;
+  display: grid;
+  grid-template-columns: 125px 1fr;
+  grid-template-rows: 36px 1fr;
   height: 100%;
-  position: relative;
 }
 
+.Project_header_2QWag {
+  grid-column: 1 / span 2;
+  grid-row: 1 / 1;
+}
 
 .Project_sidebar_JkxGM {
-  bottom: 0;
-  left: 0;
-  overflow-y: auto;
-  position: absolute;
-  top: 36px;
+  grid-column: 1;
+  grid-row: 2;
   width: 125px;
 }
 
-
 .Project_content_2kcvj {
-  bottom: 0;
-  left: 125px;
+  flex: 1;
+  grid-column: 2;
+  grid-row: 2;
   overflow-y: auto;
-  position: absolute;
-  right: 0;
-  top: 36px;
 }
 
 .NotFound_notFound_2KDbp {
