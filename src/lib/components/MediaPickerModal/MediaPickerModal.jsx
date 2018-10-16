@@ -16,6 +16,7 @@ import CheckboxListItem from 'lib/components/CheckboxListItem';
 import LoadingSpinner from 'lib/components/LoadingSpinner';
 import { Motion, spring } from 'react-motion';
 import s from './MediaPickerModal.css';
+import Alert from 'lib/components/Alert';
 
 
 const springConfig = { stiffness: 180, damping: 18 };
@@ -176,7 +177,7 @@ class MediaPickerModal extends Component {
       }
 
       leftColumnContent = (
-        <List emptyMessage={'You have not yet added any media.'} className={s.list}>
+        <List className={s.list}>
           { items }
         </List>
       );
@@ -190,60 +191,65 @@ class MediaPickerModal extends Component {
         isOpened={isOpened}
         wide
       >
-        <div className={s.controls}>
-          <div className={s.column}>
-            <Input
-              className={s.searchInput}
-              type="search"
-              name="search"
-              placeholder="Search"
-              onChange={this.onSearchChange}
-            />
-          </div>
-        </div>
+        {this.state.media.length > 0 ?
+          <div>
+            <div className={s.controls}>
+              <div className={s.column}>
+                <Input
+                  className={s.searchInput}
+                  type="search"
+                  name="search"
+                  placeholder="Search"
+                  onChange={this.onSearchChange}
+                />
+              </div>
+            </div>
 
-        <div className={s.listHolder}>
-          <div className={s.column}>
-            { leftColumnContent }
+            <div className={s.listHolder}>
+              <div className={s.column}>
+                { leftColumnContent }
+              </div>
+              <div className={s.column}>
+                <List className={s.list}>
+                  {
+                    selectedMedia.map((mediaItem, i) => {
+                      return (
+                        <Motion key={mediaItem.id} style={{ y: spring(i * 93, springConfig) }}>
+                          {
+                            interpolatingStyle => {
+                              return (
+                                <CheckboxListItem
+                                  style={{ transform: `translateY(${interpolatingStyle.y}px)` }}
+                                  className={s.listItem}
+                                  onChange={_.partial(this.onSelectToggle, mediaItem)}
+                                  checked={this.mediaIsSelected(mediaItem)}
+                                  onClickUp={_.partial(this.onMove, i, i - 1)}
+                                  onClickDown={_.partial(this.onMove, i, i + 1)}
+                                  upButtonDisabled={i === 0}
+                                  downButtonDisabled={i === selectedMedia.length - 1}
+                                >
+                                  <MediaItem
+                                    key={mediaItem.id}
+                                    data={mediaItem}
+                                    projectId={projectId}
+                                    imageHolderClassName={s.imageHolder}
+                                    inline
+                                    editDisabled
+                                  />
+                                </CheckboxListItem>
+                              );
+                            }
+                          }
+                        </Motion>
+                      );
+                    })
+                  }
+                </List>
+              </div>
+            </div>
           </div>
-          <div className={s.column}>
-            <List className={s.list}>
-              {
-                selectedMedia.map((mediaItem, i) => {
-                  return (
-                    <Motion key={mediaItem.id} style={{ y: spring(i * 93, springConfig) }}>
-                      {
-                        interpolatingStyle => {
-                          return (
-                            <CheckboxListItem
-                              style={{ transform: `translateY(${interpolatingStyle.y}px)` }}
-                              className={s.listItem}
-                              onChange={_.partial(this.onSelectToggle, mediaItem)}
-                              checked={this.mediaIsSelected(mediaItem)}
-                              onClickUp={_.partial(this.onMove, i, i - 1)}
-                              onClickDown={_.partial(this.onMove, i, i + 1)}
-                              upButtonDisabled={i === 0}
-                              downButtonDisabled={i === selectedMedia.length - 1}
-                            >
-                              <MediaItem
-                                key={mediaItem.id}
-                                data={mediaItem}
-                                projectId={projectId}
-                                imageHolderClassName={s.imageHolder}
-                                inline
-                                editDisabled
-                              />
-                            </CheckboxListItem>
-                          );
-                        }
-                      }
-                    </Motion>
-                  );
-                })
-              }
-            </List>
-          </div>
-        </div>
+          : <Alert>You have not yet added any media.</Alert>
+        }
       </Modal>
     );
   }
