@@ -176,7 +176,9 @@ class MediaPickerModal extends Component {
       }
 
       leftColumnContent = (
-        <List className={s.list}>{ items }</List>
+        <List emptyMessage={'You have not yet added any media.'} className={s.list}>
+          { items }
+        </List>
       );
     }
 
