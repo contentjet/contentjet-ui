@@ -1,13 +1,10 @@
-
-const listData = (state) => {
+const listData = state => {
   return state.getIn(['entryTag', 'list', 'data']);
 };
 
-
-const listIsFetching = (state) => {
+const listIsFetching = state => {
   return state.getIn(['entryTag', 'list', 'isFetching']);
 };
-
 
 export default {
   listData,

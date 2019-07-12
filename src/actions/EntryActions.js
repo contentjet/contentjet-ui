@@ -2,7 +2,6 @@ import { createAction } from 'redux-actions';
 import axios from 'axios';
 import NotificationActions from 'actions/NotificationActions';
 
-
 export const SAVE_ENTRY = 'SAVE_ENTRY';
 export const GET_ENTRY_LIST = 'GET_ENTRY_LIST';
 export const GET_ENTRY = 'GET_ENTRY';
@@ -28,7 +27,7 @@ const _save = createAction(
 );
 
 const save = (projectId, data, history) => {
-  return (dispatch) => {
+  return dispatch => {
     const saveAction = _save(projectId, data);
     dispatch(saveAction);
 
@@ -41,9 +40,7 @@ const save = (projectId, data, history) => {
         return response;
       },
       response => {
-        dispatch(NotificationActions.show(
-          'Save failed. See form below for errors.', 'error'
-        ));
+        dispatch(NotificationActions.show('Save failed. See form below for errors.', 'error'));
         return response;
       }
     );
@@ -58,7 +55,7 @@ const list = createAction(
   (projectId, params) => ({ queryParams: params })
 );
 
-const relist = (projectId) => {
+const relist = projectId => {
   return (dispatch, getState) => {
     const queryParams = getState().getIn(['entry', 'entryList', 'queryParams']);
     dispatch(list(projectId, queryParams));
@@ -69,7 +66,8 @@ const get = createAction(GET_ENTRY, (projectId, entryId) => {
   return axios.get(`project/${projectId}/entry/${entryId}/`);
 });
 
-const destroy = createAction(DESTROY_ENTRY,
+const destroy = createAction(
+  DESTROY_ENTRY,
   (projectId, entry, history) => {
     return axios.delete(`project/${projectId}/entry/${entry.id}/`).then(response => {
       history.replace(`/project/${projectId}/entries`);
@@ -82,15 +80,13 @@ const destroy = createAction(DESTROY_ENTRY,
 const _bulkDestroy = createAction(
   BULK_DESTROY_ENTRIES,
   (projectId, entryIds) => {
-    return axios.post(
-      `project/${projectId}/entry/bulk-delete/`, entryIds
-    );
+    return axios.post(`project/${projectId}/entry/bulk-delete/`, entryIds);
   },
   (projectId, entryIds) => entryIds
 );
 
 const bulkDestroy = (projectId, entryIds) => {
-  return (dispatch) => {
+  return dispatch => {
     const action = _bulkDestroy(projectId, entryIds);
     dispatch(action);
     action.payload.then(response => {

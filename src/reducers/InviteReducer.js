@@ -5,8 +5,7 @@ import { createListReducer, createDetailReducer, detailStructure } from './lib/u
 const initialDetailStructure = detailStructure.set('inviteToken', null);
 
 const extraListReducers = {
-
-  'BULK_DESTROY_INVITE': (state, action) => {
+  BULK_DESTROY_INVITE: (state, action) => {
     // Optimistically delete
     const ids = action.meta;
     const results = state.get('data').filter(item => {
@@ -14,38 +13,31 @@ const extraListReducers = {
     });
     return state.set('data', results);
   }
-
 };
 
-
 const extraDetailReducers = {
-
-  'SET_INVITE_TOKEN': (state, action) => {
+  SET_INVITE_TOKEN: (state, action) => {
     return state.set('inviteToken', action.payload);
   },
 
-  'ACCEPT_INVITE': (state) => {
+  ACCEPT_INVITE: state => {
     return state.set('isSending', true);
   },
 
-  'ACCEPT_INVITE_COMPLETED': (state, action) => {
+  ACCEPT_INVITE_COMPLETED: (state, action) => {
     return initialDetailStructure
       .set('isSending', false)
       .set('data', action.payload._immutableData);
   },
 
-  'ACCEPT_INVITE_FAILED': (state, action) => {
-    return state
-      .set('isSending', false)
-      .set('error', action.payload);
+  ACCEPT_INVITE_FAILED: (state, action) => {
+    return state.set('isSending', false).set('error', action.payload);
   },
 
-  'SIGN_UP_COMPLETED': (state) => {
+  SIGN_UP_COMPLETED: state => {
     return state.set('inviteToken', null);
   }
-
 };
-
 
 export default combineReducers({
   list: createListReducer('INVITE', extraListReducers),

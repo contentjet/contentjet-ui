@@ -1,48 +1,38 @@
-
-const listData = (state) => {
+const listData = state => {
   return state.getIn(['entry', 'entryList', 'data']);
 };
 
-
-const listIsFetching = (state) => {
+const listIsFetching = state => {
   return state.getIn(['entry', 'entryList', 'isFetching']);
 };
 
-
-const listDataResults = (state) => {
+const listDataResults = state => {
   return state.getIn(['entry', 'entryList', 'data', 'results']);
 };
 
-
-const detail = (state) => {
+const detail = state => {
   return state.getIn(['entry', 'entryDetail']);
 };
 
-
-const detailData = (state) => {
+const detailData = state => {
   return state.getIn(['entry', 'entryDetail', 'data']);
 };
 
-
-const detailError = (state) => {
+const detailError = state => {
   return state.getIn(['entry', 'entryDetail', 'error']);
 };
 
-
-const detailIsFetching = (state) => {
+const detailIsFetching = state => {
   return state.getIn(['entry', 'entryDetail', 'isFetching']);
 };
 
-
-const detailIsSending = (state) => {
+const detailIsSending = state => {
   return state.getIn(['entry', 'entryDetail', 'isSending']);
 };
 
-
-const selectedEntries = (state) => {
+const selectedEntries = state => {
   return state.getIn(['entry', 'selectedEntries']);
 };
-
 
 export default {
   listData,

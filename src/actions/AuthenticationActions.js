@@ -2,7 +2,6 @@ import { createAction } from 'redux-actions';
 import axios from 'axios';
 import TokenStorage from 'services/TokenStorage';
 
-
 export const INIT_AUTHENTICATION = 'INIT_AUTHENTICATION';
 export const SET_REDIRECT_PATH = 'SET_REDIRECT_PATH';
 export const LOGIN = 'LOGIN';
@@ -36,18 +35,16 @@ const refreshToken = createAction(REFRESH_TOKEN, () => {
     refresh_token: TokenStorage.getToken(),
     grant_type: 'refresh_token'
   };
-  return axios.post('token-refresh/', data).then(
-    response => {
-      TokenStorage.setToken(response.data.access_token);
-      return TokenStorage.hasValidToken();
-    }
-  );
+  return axios.post('token-refresh/', data).then(response => {
+    TokenStorage.setToken(response.data.access_token);
+    return TokenStorage.hasValidToken();
+  });
 });
 
 const _logout = createAction(LOGOUT);
 
 const logout = () => {
-  return (dispatch) => {
+  return dispatch => {
     TokenStorage.deleteToken();
     dispatch(_logout());
   };

@@ -1,7 +1,6 @@
 import { createAction } from 'redux-actions';
 import axios from 'axios';
 
-
 export const GET_WEB_HOOK_LIST = 'GET_WEB_HOOK_LIST';
 export const SAVE_WEB_HOOK = 'SAVE_WEB_HOOK';
 export const DESTROY_WEB_HOOK = 'DESTROY_WEB_HOOK';
@@ -18,7 +17,7 @@ const _save = createAction(SAVE_WEB_HOOK, (projectId, data) => {
 });
 
 const save = (projectId, data) => {
-  return (dispatch) => {
+  return dispatch => {
     const action = _save(projectId, data);
     dispatch(action);
     action.payload.then(response => {
@@ -37,7 +36,7 @@ const _destroy = createAction(
 );
 
 const destroy = (projectId, webHookId) => {
-  return (dispatch) => {
+  return dispatch => {
     const action = _destroy(projectId, webHookId);
     dispatch(action);
     action.payload.then(response => {

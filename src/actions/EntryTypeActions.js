@@ -2,7 +2,6 @@ import { createAction } from 'redux-actions';
 import axios from 'axios';
 import NotificationActions from 'actions/NotificationActions';
 
-
 export const SAVE_ENTRY_TYPE = 'SAVE_ENTRY_TYPE';
 export const GET_ENTRY_TYPE_LIST = 'GET_ENTRY_TYPE_LIST';
 export const GET_ENTRY_TYPE = 'GET_ENTRY_TYPE';
@@ -21,22 +20,18 @@ const _save = createAction(
 );
 
 const save = (projectId, data, history) => {
-  return (dispatch) => {
+  return dispatch => {
     const saveAction = _save(projectId, data);
     dispatch(saveAction);
 
     saveAction.payload.then(
       response => {
         dispatch(NotificationActions.show('Entry type saved'));
-        history.replace(
-          `/project/${projectId}/entry-types/edit/${response.data.id}`
-        );
+        history.replace(`/project/${projectId}/entry-types/edit/${response.data.id}`);
         return response;
       },
       response => {
-        dispatch(NotificationActions.show(
-          'Save failed. See below for errors.', 'error'
-        ));
+        dispatch(NotificationActions.show('Save failed. See below for errors.', 'error'));
         return response;
       }
     );

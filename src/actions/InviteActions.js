@@ -2,7 +2,6 @@ import { createAction } from 'redux-actions';
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
 
-
 export const SAVE_INVITE = 'SAVE_INVITE';
 export const GET_INVITE = 'GET_INVITE';
 export const GET_INVITE_LIST = 'GET_INVITE_LIST';
@@ -15,7 +14,7 @@ const _save = createAction(SAVE_INVITE, (projectId, data) => {
 });
 
 const save = (projectId, data) => {
-  return (dispatch) => {
+  return dispatch => {
     const action = _save(projectId, data);
     dispatch(action);
     action.payload.then(response => {
@@ -25,7 +24,7 @@ const save = (projectId, data) => {
   };
 };
 
-const list = createAction(GET_INVITE_LIST, (projectId) => {
+const list = createAction(GET_INVITE_LIST, projectId => {
   return axios.get(`project/${projectId}/invite/`);
 });
 
@@ -35,7 +34,7 @@ const get = createAction(GET_INVITE, (projectId, inviteId) => {
 
 const setInviteToken = createAction(SET_INVITE_TOKEN);
 
-const accept = createAction(ACCEPT_INVITE, (token) => {
+const accept = createAction(ACCEPT_INVITE, token => {
   const decodedToken = jwt.decode(token);
   const { projectId } = decodedToken;
   return axios.put(`project/${projectId}/invite/accept/`, { token });
@@ -44,15 +43,13 @@ const accept = createAction(ACCEPT_INVITE, (token) => {
 const _bulkDestroy = createAction(
   BULK_DESTROY_INVITE,
   (projectId, inviteIds) => {
-    return axios.post(
-      `project/${projectId}/invite/bulk-delete/`, inviteIds
-    );
+    return axios.post(`project/${projectId}/invite/bulk-delete/`, inviteIds);
   },
   (projectId, inviteIds) => inviteIds
 );
 
 const bulkDestroy = (projectId, inviteIds) => {
-  return (dispatch) => {
+  return dispatch => {
     const action = _bulkDestroy(projectId, inviteIds);
     dispatch(action);
     action.payload.then(response => {

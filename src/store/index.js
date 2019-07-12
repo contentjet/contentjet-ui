@@ -16,14 +16,11 @@ import webHook from 'reducers/WebHookReducer';
 import client from 'reducers/ClientReducer';
 import notification from 'reducers/NotificationReducer';
 
-
 const promiseMiddleware = store => next => action => {
   if (_.isFunction(_.get(action.payload, 'then'))) {
     action.payload.then(
       result => {
-        store.dispatch(
-          _.assign({}, action, { type: action.type + '_COMPLETED', payload: result })
-        );
+        store.dispatch(_.assign({}, action, { type: action.type + '_COMPLETED', payload: result }));
         return result;
       },
       error => {
@@ -37,9 +34,7 @@ const promiseMiddleware = store => next => action => {
   return next(action);
 };
 
-
 const initialState = Map();
-
 
 const rootReducer = combineReducers({
   authentication,
@@ -55,7 +50,6 @@ const rootReducer = combineReducers({
   client,
   notification
 });
-
 
 export default createStore(
   rootReducer,

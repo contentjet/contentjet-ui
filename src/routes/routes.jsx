@@ -40,13 +40,10 @@ import EntryEditor from 'views/EntryEditor';
 import Media from 'views/Media';
 import MediaEditor from 'views/MediaEditor';
 
-
 function requireAuth(nextState, replace) {
   const state = store.getState();
   if (!AuthenticationSelectors.isAuthenticated(state)) {
-    store.dispatch(
-      AuthenticationActions.setRedirectPath(nextState.location.pathname)
-    );
+    store.dispatch(AuthenticationActions.setRedirectPath(nextState.location.pathname));
     replace('/login');
   }
 }

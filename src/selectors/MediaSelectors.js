@@ -1,32 +1,26 @@
-
-const listResults = (state) => {
+const listResults = state => {
   return state.getIn(['media', 'mediaList', 'data', 'results']);
 };
 
-
-const listData = (state) => {
+const listData = state => {
   return state.getIn(['media', 'mediaList', 'data']);
 };
 
-
-const listIsFetching = (state) => {
+const listIsFetching = state => {
   return state.getIn(['media', 'mediaList', 'isFetching']);
 };
 
-
-const selectedMedia = (state) => {
+const selectedMedia = state => {
   return state.getIn(['media', 'selectedMedia']);
 };
 
-
-const uploads = (state) => {
+const uploads = state => {
   return state.getIn(['media', 'uploads']);
 };
 
-
-const numCompletedUploads = (state) => {
+const numCompletedUploads = state => {
   let count = 0;
-  uploads(state).forEach((upload) => {
+  uploads(state).forEach(upload => {
     if (upload.get('status') !== 'UPLOADING') {
       count++;
     }
@@ -34,26 +28,21 @@ const numCompletedUploads = (state) => {
   return count;
 };
 
-
-const detailData = (state) => {
+const detailData = state => {
   return state.getIn(['media', 'mediaDetail', 'data']);
 };
 
-
-const detailError = (state) => {
+const detailError = state => {
   return state.getIn(['media', 'mediaDetail', 'error']);
 };
 
-
-const detailIsFetching = (state) => {
+const detailIsFetching = state => {
   return state.getIn(['media', 'mediaDetail', 'isFetching']);
 };
 
-
-const detailIsSending = (state) => {
+const detailIsSending = state => {
   return state.getIn(['media', 'mediaDetail', 'isSending']);
 };
-
 
 export default {
   listResults,

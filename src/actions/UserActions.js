@@ -2,7 +2,6 @@ import { createAction } from 'redux-actions';
 import NotificationActions from 'actions/NotificationActions';
 import axios from 'axios';
 
-
 export const SIGN_UP = 'SIGN_UP';
 export const VERIFY_USER = 'VERIFY_USER';
 export const REQUEST_RESET_PASSWORD = 'REQUEST_RESET_PASSWORD';
@@ -11,15 +10,15 @@ export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 export const SAVE_ME = 'SAVE_ME';
 export const GET_ME = 'GET_ME';
 
-const signUp = createAction(SIGN_UP, (data) => {
+const signUp = createAction(SIGN_UP, data => {
   return axios.post('user/sign-up/', data);
 });
 
-const verifyUser = createAction(VERIFY_USER, (token) => {
+const verifyUser = createAction(VERIFY_USER, token => {
   return axios.post('user/verify/', { token });
 });
 
-const requestResetPassword = createAction(REQUEST_RESET_PASSWORD, (email) => {
+const requestResetPassword = createAction(REQUEST_RESET_PASSWORD, email => {
   return axios.post('user/request-password-reset/', { email });
 });
 
@@ -32,7 +31,7 @@ const _changePassword = createAction(CHANGE_PASSWORD, ({ password, newPassword }
 });
 
 const changePassword = ({ password, newPassword }) => {
-  return (dispatch) => {
+  return dispatch => {
     const changePasswordAction = _changePassword({ password, newPassword });
     dispatch(changePasswordAction);
     changePasswordAction.payload.then(
@@ -41,9 +40,9 @@ const changePassword = ({ password, newPassword }) => {
         return response;
       },
       response => {
-        dispatch(NotificationActions.show(
-          'Password change failed. See form below for errors.', 'error'
-        ));
+        dispatch(
+          NotificationActions.show('Password change failed. See form below for errors.', 'error')
+        );
         return response;
       }
     );
@@ -54,12 +53,12 @@ const getMe = createAction(GET_ME, () => {
   return axios.get('user/me');
 });
 
-const _saveMe = createAction(SAVE_ME, (data) => {
+const _saveMe = createAction(SAVE_ME, data => {
   return axios.put('user/me/', data);
 });
 
-const saveMe = (data) => {
-  return (dispatch) => {
+const saveMe = data => {
+  return dispatch => {
     const saveMeAction = _saveMe(data);
     dispatch(saveMeAction);
     saveMeAction.payload.then(
@@ -68,9 +67,7 @@ const saveMe = (data) => {
         return response;
       },
       response => {
-        dispatch(NotificationActions.show(
-          'Save failed. See form below for errors.', 'error'
-        ));
+        dispatch(NotificationActions.show('Save failed. See form below for errors.', 'error'));
         return response;
       }
     );

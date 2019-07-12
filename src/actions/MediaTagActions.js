@@ -1,7 +1,6 @@
 import { createAction } from 'redux-actions';
 import axios from 'axios';
 
-
 export const GET_MEDIA_TAG_LIST = 'GET_MEDIA_TAG_LIST';
 
 const list = createAction(GET_MEDIA_TAG_LIST, projectId => {

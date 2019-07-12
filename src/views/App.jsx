@@ -43,9 +43,7 @@ import 'meta/mstile-310x150.png';
 import 'meta/mstile-310x310.png';
 import NotificationSelectors from '../selectors/NotificationSelectors';
 
-
 class App extends Component {
-
   render() {
     const className = classnames(s.app, this.props.className);
     return (
@@ -97,10 +95,10 @@ class App extends Component {
 }
 
 App.propTypes = {
-  notification: PropTypes.instanceOf(Map).isRequired,
+  notification: PropTypes.instanceOf(Map).isRequired
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     notification: NotificationSelectors.getNotification(state)
   };

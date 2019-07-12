@@ -2,14 +2,13 @@ import { createAction } from 'redux-actions';
 import NotificationActions from 'actions/NotificationActions';
 import axios from 'axios';
 
-
 export const SAVE_PROJECT = 'SAVE_PROJECT';
 export const GET_PROJECT_LIST = 'GET_PROJECT_LIST';
 export const GET_PROJECT = 'GET_PROJECT';
 export const DESTROY_PROJECT = 'DESTROY_PROJECT';
 export const UPDATE_MEMBER = 'UPDATE_MEMBER';
 
-const _save = createAction(SAVE_PROJECT, (data) => {
+const _save = createAction(SAVE_PROJECT, data => {
   if (data.id) {
     return axios.put(`project/${data.id}/`, data);
   }
@@ -17,7 +16,7 @@ const _save = createAction(SAVE_PROJECT, (data) => {
 });
 
 const save = (data, redirectOnSuccess, history) => {
-  return (dispatch) => {
+  return dispatch => {
     const action = _save(data);
     dispatch(action);
     action.payload.then(
@@ -31,9 +30,7 @@ const save = (data, redirectOnSuccess, history) => {
         return response;
       },
       response => {
-        dispatch(NotificationActions.show(
-          'Save failed. See form below for errors.', 'error'
-        ));
+        dispatch(NotificationActions.show('Save failed. See form below for errors.', 'error'));
         return response;
       }
     );

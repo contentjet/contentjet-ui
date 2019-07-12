@@ -5,7 +5,6 @@ import queryString from 'query-string';
 import NotificationActions from 'actions/NotificationActions';
 import MediaTagActions from 'actions/MediaTagActions';
 
-
 export const GET_MEDIA_LIST = 'GET_MEDIA_LIST';
 export const GET_MEDIA = 'GET_MEDIA';
 export const SAVE_MEDIA = 'SAVE_MEDIA';
@@ -29,9 +28,11 @@ const list = createAction(
   (projectId, queryParams) => ({ queryParams })
 );
 
-const relist = (projectId) => {
+const relist = projectId => {
   return (dispatch, getState) => {
-    const queryParams = getState().getIn(['media', 'mediaList', 'queryParams']).toJS();
+    const queryParams = getState()
+      .getIn(['media', 'mediaList', 'queryParams'])
+      .toJS();
     dispatch(list(projectId, queryParams));
   };
 };
@@ -49,7 +50,7 @@ const _save = createAction(
 );
 
 const save = (projectId, data) => {
-  return (dispatch) => {
+  return dispatch => {
     const saveAction = _save(projectId, data);
     dispatch(saveAction);
     saveAction.payload.then(
@@ -60,23 +61,20 @@ const save = (projectId, data) => {
         return response;
       },
       response => {
-        dispatch(NotificationActions.show(
-          'Save failed. See form below for errors.', 'error'
-        ));
+        dispatch(NotificationActions.show('Save failed. See form below for errors.', 'error'));
         return response;
       }
     );
   };
 };
 
-const destroy = createAction(DESTROY_MEDIA,
+const destroy = createAction(
+  DESTROY_MEDIA,
   (projectId, mediaAsset, history) => {
-    return axios.delete(`project/${projectId}/media/${mediaAsset.id}/`).then(
-      response => {
-        history.replace(`/project/${projectId}/media`);
-        return response;
-      }
-    );
+    return axios.delete(`project/${projectId}/media/${mediaAsset.id}/`).then(response => {
+      history.replace(`/project/${projectId}/media`);
+      return response;
+    });
   },
   (projectId, mediaAsset) => mediaAsset
 );
@@ -84,15 +82,13 @@ const destroy = createAction(DESTROY_MEDIA,
 const _bulkDestroy = createAction(
   BULK_DESTROY_MEDIA,
   (projectId, mediaAssetIds) => {
-    return axios.post(
-      `project/${projectId}/media/bulk-delete/`, mediaAssetIds
-    );
+    return axios.post(`project/${projectId}/media/bulk-delete/`, mediaAssetIds);
   },
   (projectId, mediaAssetIds) => mediaAssetIds
 );
 
 const bulkDestroy = (projectId, mediaAssetIds) => {
-  return (dispatch) => {
+  return dispatch => {
     const action = _bulkDestroy(projectId, mediaAssetIds);
     dispatch(action);
     action.payload.then(response => {
@@ -117,7 +113,7 @@ const uploadFailed = createAction(UPLOAD_FAILED);
 const _upload = createAction(UPLOAD);
 
 const upload = (projectId, files) => {
-  return (dispatch) => {
+  return dispatch => {
     const url = `project/${projectId}/media/upload`;
     const uploads = [];
     const promises = [];
@@ -135,26 +131,25 @@ const upload = (projectId, files) => {
       data.append('name', file.name);
       data.append('file', file);
       // Post
-      const promise = axios.post(
-        url,
-        data,
-        {
-          onUploadProgress: (e) => {
+      const promise = axios
+        .post(url, data, {
+          onUploadProgress: e => {
             const done = e.position || e.loaded;
             const total = e.totalSize || e.total;
             uploadState.progress = (done / total) * 0.95;
             dispatch(uploadProgress(uploadState));
           }
-        }
-      ).then(() => {
-        uploadState.progress = 1;
-        uploadState.status = 'COMPLETED';
-        dispatch(uploadCompleted(uploadState));
-        dispatch(relist(projectId));
-      }).catch(() => {
-        uploadState.status = 'ERROR';
-        dispatch(uploadFailed(uploadState));
-      });
+        })
+        .then(() => {
+          uploadState.progress = 1;
+          uploadState.status = 'COMPLETED';
+          dispatch(uploadCompleted(uploadState));
+          dispatch(relist(projectId));
+        })
+        .catch(() => {
+          uploadState.status = 'ERROR';
+          dispatch(uploadFailed(uploadState));
+        });
       promises.push(promise);
       uploads.push(uploadState);
     });
