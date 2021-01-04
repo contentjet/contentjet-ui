@@ -30,7 +30,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.1.0",
     "@fortawesome/react-fontawesome": "^0.1.0",
     "ajv": "^6.5.2",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.5",
